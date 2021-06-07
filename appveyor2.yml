@@ -129,6 +129,7 @@ environment:
   - job_name: znc
     
 install:
+  - sh: sleep 140
   - sh: |
       echo "=========================="
       echo ""
