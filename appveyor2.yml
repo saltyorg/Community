@@ -6,14 +6,14 @@ skip_commits:
     - '*.yml.default'
   message: /\[minor\]/
 
-image: Ubuntu1804
+image: Cloudbox-traefik
 
 matrix:
   fast_finish: false
 
 # to disable automatic builds
 build: off
-max_jobs: 10
+max_jobs: 5
 
 environment:
   CLOUDBOX_BRANCH: "develop_python3"
@@ -128,9 +128,6 @@ environment:
   - job_name: xteve
   - job_name: znc
     
-init:
-  - sh: curl -s https://raw.githubusercontent.com/Cloudbox/cb/develop_python3/cb_install.sh | sudo -H bash
-
 install:
   - sh: |
       echo "=========================="
@@ -142,23 +139,6 @@ install:
       cp -n defaults/settings.yml.default settings.yml
       sudo ansible-playbook community.yml --syntax-check
       RC=$?; [ $RC -eq 0 ] || exit $RC;
-  - sh: |
-      echo ""
-      echo "=========================="
-      echo ""
-      echo "Cloudbox Branch: $CLOUDBOX_BRANCH"
-      echo ""
-      cd ${CLOUDBOX_PATH}
-      sudo chown -R appveyor:appveyor ${CLOUDBOX_PATH}
-      rm settings.yml accounts.yml adv_settings.yml
-      git checkout $CLOUDBOX_BRANCH &> /dev/null
-      curl -o ${CLOUDBOX_PATH}/daemon.json https://raw.githubusercontent.com/saltydk/AppveyorTest/main/daemon.json
-      cp -f daemon.json ${CLOUDBOX_PATH}/roles/docker/templates/daemon.json.j2
-      sudo ansible-playbook cloudbox.yml --syntax-check
-      sudo ansible-playbook cloudbox.yml --tags core \
-          --skip-tags sanity_check,settings \
-          --skip-tags kernel,hetzner,shell,rclone,system,motd,nvidia,mounts,scripts \
-          --extra-vars '{"continuous_integration":true}'
   - sh: |
       echo ""
       echo "=========================="
