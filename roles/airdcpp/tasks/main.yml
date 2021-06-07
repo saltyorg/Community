@@ -1,6 +1,6 @@
 #########################################################################
 # Title:         Community: AirDC++ Role                                #
-# Author(s):     l3uddz                                                 #
+# Author(s):     l3uddz, salty                                          #
 # URL:           https://github.com/Cloudbox/Community                  #
 # Docker Image:  gangefors/airdcpp-webclient                            #
 # --                                                                    #
@@ -9,28 +9,21 @@
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Set DNS Record on CloudFlare"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: airdcpp
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Stop and remove any existing container
+- name: Remove existing Docker container
   docker_container:
-    name: airdcpp
+    name: "{{ lookup('vars', role_name + '_docker_container') }}"
     state: absent
+    container_default_behavior: compatibility
 
-- name: Create airdcpp directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - /opt/airdcpp
-    - /mnt/local/downloads/airdcpp
-    - /mnt/local/downloads/airdcpp/Movies
-    - /mnt/local/downloads/airdcpp/TV
-    - /mnt/local/downloads/airdcpp/4K
-    - /mnt/local/downloads/airdcpp/4K/Movies
-    - /mnt/local/downloads/airdcpp/4K/TV
+- name: Create directories
+  file: "path={{ item }} state=directory owner={{ user.name }} group={{ user.name }} mode=0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
 - name: Check WebServer.xml exists
   stat:
@@ -62,32 +55,5 @@
     force: yes
   when: not dcplusplus_xml.stat.exists
 
-- name: Create and start container
-  docker_container:
-    name: airdcpp
-    image: "gangefors/airdcpp-webclient"
-    pull: yes
-    published_ports:
-      - "21248:21248"
-      - "21248:21248/udp"
-      - "21249:21249"
-    user: "{{ uid }}:{{ gid }}"
-    env:
-      TZ: "{{ tz }}"
-      VIRTUAL_HOST: "airdcpp.{{ user.domain }}"
-      VIRTUAL_PORT: "5600"
-      LETSENCRYPT_HOST: "airdcpp.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-    volumes:
-      - "/opt/airdcpp:/.airdcpp"
-      - "/mnt/local/downloads/airdcpp:/Downloads"
-      - "/mnt:/mnt"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - airdcpp
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
