@@ -6,14 +6,17 @@ skip_commits:
     - '*.yml.default'
   message: /\[minor\]/
 
-image: Cloudbox-traefik
+build_cloud: COMMUNITY
+
+image: 
+  - Cloudbox1804-traefik
 
 matrix:
   fast_finish: false
 
 # to disable automatic builds
 build: off
-max_jobs: 5
+max_jobs: 9
 
 environment:
   CLOUDBOX_BRANCH: "develop_python3"
