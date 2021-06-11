@@ -1,10 +1,22 @@
+<br /><img src="https://raw.githubusercontent.com/Cloudbox/assets/master/images/readme/Cloudbox-logo_dark.png" width="600">
+
+<br /><br />
+[![Website:](https://img.shields.io/badge/website-https%3A%2F%2Fcloudbox.works-blue)](https://cloudbox.works)
+[![Wiki:](https://img.shields.io/badge/wiki-https%3A%2F%2Fcloudbox.wiki-blue)](https://cloudbox.wiki)
+[![Lines of Code:](https://img.shields.io/tokei/lines/github/cloudbox2/community)](https://github.com/Cloudbox2/Community)
+[![Issues:](https://img.shields.io/github/issues/Cloudbox2/Community?color=blue)](https://github.com/Cloudbox2/Community/issues)
+[![Build status](https://appveyor.cloudbox.work/api/projects/status/udbprn4dg6lwm12l/branch/master?svg=true)](https://appveyor.cloudbox.work/project/AppVeyor/community/branch/master)
+[![Discord:](https://img.shields.io/discord/381077432285003776?color=blue)](https://discord.io/cloudbox)
+[![Reddit:](https://img.shields.io/badge/reddit-r/Cloudbox-blue)](https://reddit.com/r/Cloudbox)
+[![License:](https://img.shields.io/github/license/Cloudbox2/Community)](LICENSE.md)
+
 # Community Repo
 
 Community Repository for Unofficial Cloudbox Add-ons
 
 ## Requirements
 
-- [Cloudbox](https://github.com/Cloudbox/Cloudbox/)
+- [Cloudbox](https://github.com/Cloudbox2/Cloudbox/)
 
 ## Install
 
