@@ -1,6 +1,4 @@
-<br /><img src="https://raw.githubusercontent.com/Cloudbox/assets/master/images/readme/Cloudbox-logo_dark.png" width="600">
-
-<br /><br />
+# Cloudbox Community Repo
 [![Website:](https://img.shields.io/badge/website-https%3A%2F%2Fcloudbox.works-blue)](https://cloudbox.works)
 [![Wiki:](https://img.shields.io/badge/wiki-https%3A%2F%2Fcloudbox.wiki-blue)](https://cloudbox.wiki)
 [![Lines of Code:](https://img.shields.io/tokei/lines/github/cloudbox2/community)](https://github.com/Cloudbox2/Community)
@@ -10,23 +8,21 @@
 [![Reddit:](https://img.shields.io/badge/reddit-r/Cloudbox-blue)](https://reddit.com/r/Cloudbox)
 [![License:](https://img.shields.io/github/license/Cloudbox2/Community)](LICENSE.md)
 
-# Community Repo
-
 Community Repository for Unofficial Cloudbox Add-ons
 
-## Requirements
+### Requirements
 
 - [Cloudbox](https://github.com/Cloudbox2/Cloudbox/)
 
-## Install
+### Install
 
 - [Install](https://github.com/Cloudbox/Community/wiki/Install)
 
-## Wiki
+### Wiki
 
 - [Wiki](https://github.com/Cloudbox/Community/wiki)
 
-## Roles
+### Roles
 
 - **[arrX](../../wiki/arrX)** - Create multiple Sonarr/Radarr/Bazarr Docker containers.
 - **airsonic**
