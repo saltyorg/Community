@@ -16,13 +16,10 @@ matrix:
 
 # to disable automatic builds
 build: off
+test: off
 max_jobs: 9
 
 environment:
-  CLOUDBOX_BRANCH: "develop_python3"
-  CLOUDBOX_PATH: "/srv/git/cloudbox"
-  COMMUNITY_PATH: "/home/appveyor/projects/community"
-  
   matrix:
 
   - job_name: airdcpp
@@ -137,7 +134,6 @@ install:
       echo ""
       echo "Community Branch: $APPVEYOR_REPO_BRANCH"
       echo ""
-      cd ${COMMUNITY_PATH}
       cp -n defaults/ansible.cfg.default ansible.cfg
       cp -n defaults/settings.yml.default settings.yml
       sudo ansible-playbook community.yml --syntax-check
@@ -148,7 +144,6 @@ install:
       echo ""
       echo "Community Roles:"
       echo ""
-      cd ${COMMUNITY_PATH}
       echo --------------------------
       echo ""
       echo Running Tag: ${APPVEYOR_JOB_NAME}
