@@ -1,13 +1,11 @@
 # Cloudbox Community Repo
-[![Website:](https://img.shields.io/badge/website-https%3A%2F%2Fcloudbox.works-blue)](https://cloudbox.works)
-[![Wiki:](https://img.shields.io/badge/wiki-https%3A%2F%2Fcloudbox.wiki-blue)](https://cloudbox.wiki)
-[![Contributors:](https://img.shields.io/github/contributors/cloudbox2/community?color=blue)](https://github.com/Cloudbox2/Community)
-[![Lines of Code:](https://img.shields.io/tokei/lines/github/cloudbox2/community)](https://github.com/Cloudbox2/Community)
-[![Issues:](https://img.shields.io/github/issues/Cloudbox2/Community?color=blue)](https://github.com/Cloudbox2/Community/issues)
-[![Build status](https://appveyor.cloudbox.work/api/projects/status/udbprn4dg6lwm12l/branch/master?svg=true)](https://appveyor.cloudbox.work/project/AppVeyor/community/branch/master)
-[![Discord:](https://img.shields.io/discord/381077432285003776?color=blue)](https://discord.io/cloudbox)
-[![Reddit:](https://img.shields.io/badge/reddit-r/Cloudbox-blue)](https://reddit.com/r/Cloudbox)
-[![License:](https://img.shields.io/github/license/Cloudbox2/Community)](LICENSE.md)
+[![Website:](https://img.shields.io/badge/website-https%3A%2F%2Fsaltbox.dev-blue)](https://saltbox.dev)
+[![Wiki:](https://img.shields.io/badge/wiki-https%3A%2F%2Fwiki.saltbox.dev-blue)](https://wiki.saltbox.dev)
+[![Contributors:](https://img.shields.io/github/contributors/saltyorg/community?color=blue)](https://github.com/saltyorg/Community)
+[![Lines of Code:](https://img.shields.io/tokei/lines/github/saltyorg/community)](https://github.com/saltyorg/Community)
+[![Issues:](https://img.shields.io/github/issues/saltyorg/Community?color=blue)](https://github.com/saltyorg/Community/issues)
+[![Build status](https://appveyor.cloudbox.work/api/projects/status/tyraswwahlldwpnu/branch/master?svg=true)](https://appveyor.cloudbox.work/project/AppVeyor/community/branch/master)
+[![License:](https://img.shields.io/github/license/saltyorg/Community)](LICENSE.md)
 
 Community Repository for Unofficial Cloudbox Add-ons
 
