@@ -11,15 +11,15 @@ Community Repository for Unofficial Cloudbox Add-ons
 
 ### Requirements
 
-- [Cloudbox](https://github.com/Cloudbox2/Cloudbox/)
+- [Saltbox](https://github.com/saltyorg/Saltbox/)
 
 ### Install
 
-- [Install](https://github.com/Cloudbox/Community/wiki/Install)
+- [Install](https://wiki.saltbox.dev/Community/Install) (Not ready)
 
 ### Wiki
 
-- [Wiki](https://github.com/Cloudbox/Community/wiki)
+- [Wiki](https://wiki.saltbox.dev/Community) (Not ready)
 
 ### Roles
 
