@@ -79,7 +79,6 @@ environment:
   - job_name: medusa
   - job_name: minecraft
   - job_name: monitorr
-  - job_name: mylar
   - job_name: mylar3
   - job_name: navidrome
   - job_name: nextcloud
