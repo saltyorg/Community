@@ -1,4 +1,4 @@
-# Cloudbox Community Repo
+# Saltbox Community Repo
 [![Website:](https://img.shields.io/badge/website-https%3A%2F%2Fsaltbox.dev-blue)](https://saltbox.dev)
 [![Wiki:](https://img.shields.io/badge/wiki-https%3A%2F%2Fwiki.saltbox.dev-blue)](https://wiki.saltbox.dev)
 [![Contributors:](https://img.shields.io/github/contributors/saltyorg/community?color=blue)](https://github.com/saltyorg/Community)
@@ -7,7 +7,7 @@
 [![Build status](https://appveyor.cloudbox.work/api/projects/status/tyraswwahlldwpnu/branch/master?svg=true)](https://appveyor.cloudbox.work/project/AppVeyor/community/branch/master)
 [![License:](https://img.shields.io/github/license/saltyorg/Community)](LICENSE.md)
 
-Community Repository for Unofficial Cloudbox Add-ons
+Community Repository for Unofficial Saltbox Add-ons
 
 ### Requirements
 
