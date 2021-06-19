@@ -1,59 +1,28 @@
 #########################################################################
 # Title:            Community: alternatrr | Template                    #
-# Author(s):        TheUltimateC0der                                    #
-# URL:              https://github.com/Cloudbox/Community               #
+# Author(s):        TheUltimateC0der, salty                             #
+# URL:              https://github.com/saltyorg/Community               #
 # Docker Image(s):  theultimatecoder/alternatrr                         #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Install named alternatrr role"
-  debug:
-    msg: "Installing alternatrr"
-
-- name: "Set DNS Record on CloudFlare"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: "alternatrr"
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Create alternatrrx directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - "/opt/alternatrr"
-    - "/opt/alternatrr/app"
-
-- name: Set default_volumes variable
-  set_fact:
-    default_volumes:
-      - "/opt/alternatrr/app:/opt/alternatrr/app"
-      - "/opt/sonarr/app:/opt/sonarr/app"
-
-- name: Create and start container
+- name: Remove existing Docker container
   docker_container:
-    name: "alternatrr"
-    image: "theultimatecoder/alternatrr:latest"
-    pull: yes
-    env:
-      ConnectionStrings__DefaultConnection: Data Source=/opt/alternatrr/app/alternatrr.db
-      ConnectionStrings__sonarr: Data Source=/opt/sonarr/app/sonarr.db
-      Login__Username: "{{ user.name }}"
-      Login__Password: "{{ user.pass }}"
-      VIRTUAL_HOST: "alternatrr.{{ user.domain }}"
-      VIRTUAL_PORT: "80"
-      LETSENCRYPT_HOST: "alternatrr.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-    volumes: "{{ default_volumes }}"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-      "com.github.cloudbox.community": "alternatrr"
-    networks:
-      - name: cloudbox
-        aliases:
-          - "alternatrr"
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
+    name: "{{ lookup('vars', role_name + '_docker_container') }}"
+    state: absent
+    container_default_behavior: compatibility
+
+- name: Create directories
+  file: "path={{ item }} state=directory owner={{ user.name }} group={{ user.name }} mode=0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
+
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
