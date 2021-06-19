@@ -9,7 +9,7 @@ skip_commits:
 build_cloud: COMMUNITY
 
 image: 
-  - Cloudbox1804-traefik
+  - Saltbox1804
 
 matrix:
   fast_finish: false
