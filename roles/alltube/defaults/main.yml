@@ -1,9 +1,8 @@
 ##########################################################################
 # Title:         Community: AllTube | Default Variables                  #
 # Author(s):     salty                                                   #
-# URL:           https://github.com/cloudbox/cloudbox                    #
+# URL:           https://github.com/saltyorg/Community                   #
 # --                                                                     #
-#         Part of the Cloudbox project: https://cloudbox.works           #
 ##########################################################################
 #                   GNU General Public License v3.0                      #
 ##########################################################################
@@ -27,12 +26,9 @@ alltube_paths_folders_list:
 # Web
 ################################
 
-alltube_web_subdomain: "alltube"
+alltube_web_subdomain: "{{ alltube_name }}"
 alltube_web_domain: "{{ user.domain }}"
 alltube_web_port: "80"
-alltube_web_url: "{{ 'https://' + alltube_web_subdomain + '.' + alltube_web_domain
-                      if (reverse_proxy_is_enabled
-                      else 'http://localhost:' + alltube_web_port }}"
 
 ################################
 # DNS
@@ -48,7 +44,7 @@ alltube_dns_zone: "{{ alltube_web_domain }}"
 alltube_traefik_middleware: "secureHeaders@file,gzip"
 alltube_traefik_host: "{{ alltube_web_subdomain + '.' + alltube_web_domain }}"
 alltube_traefik_certresolver: "{{ traefik_default_certresolver }}"
-alltube_traefik_enabled: yes
+alltube_traefik_enabled: true
 
 ################################
 # Docker
@@ -58,7 +54,7 @@ alltube_traefik_enabled: yes
 alltube_docker_container: "{{ alltube_name }}"
 
 # Image
-alltube_docker_image_pull: yes
+alltube_docker_image_pull: true
 alltube_docker_image_tag: "latest"
 alltube_docker_image: "rudloff/alltube:{{ alltube_docker_image_tag }}"
 
@@ -76,13 +72,7 @@ alltube_docker_envs_default:
   PGID: "{{ gid }}"
   TZ: "{{ tz }}"
 alltube_docker_envs_custom: {}
-alltube_docker_envs_reverse_proxy: {}
 alltube_docker_envs: "{{ alltube_docker_envs_default
-                            | combine(alltube_docker_envs_custom)
-                            | combine(alltube_docker_envs_reverse_proxy)
-                            | combine(docker_envs_reverse_proxy_common)
-                        if (reverse_proxy_is_enabled)
-                        else alltube_docker_envs_default
                             | combine(alltube_docker_envs_custom) }}"
 
 # Commands
