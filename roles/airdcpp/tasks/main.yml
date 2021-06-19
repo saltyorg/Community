@@ -1,10 +1,9 @@
 #########################################################################
 # Title:         Community: AirDC++ Role                                #
 # Author(s):     l3uddz, salty                                          #
-# URL:           https://github.com/Cloudbox/Community                  #
+# URL:           https://github.com/saltyorg/Community                  #
 # Docker Image:  gangefors/airdcpp-webclient                            #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
@@ -42,7 +41,7 @@
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
     mode: 0775
-    force: yes
+    force: true
   when: not webserver_xml.stat.exists
 
 - name: Import default 'DCPlusPlus.xml'
@@ -52,7 +51,7 @@
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
     mode: 0775
-    force: yes
+    force: true
   when: not dcplusplus_xml.stat.exists
 
 - name: Create Docker container
