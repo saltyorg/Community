@@ -1,9 +1,8 @@
 ##########################################################################
 # Title:         Community: Petio | Default Variables                    #
 # Author(s):     salty                                                   #
-# URL:           https://github.com/Cloudbox/Community                   #
+# URL:           https://github.com/saltyorg/Community                   #
 # --                                                                     #
-#         Part of the Cloudbox project: https://cloudbox.works           #
 ##########################################################################
 #                   GNU General Public License v3.0                      #
 ##########################################################################
@@ -30,9 +29,6 @@ petio_paths_folders_list:
 petio_web_subdomain: "{{ petio_name }}"
 petio_web_domain: "{{ user.domain }}"
 petio_web_port: "7777"
-petio_web_url: "{{ 'https://' + petio_web_subdomain + '.' + petio_web_domain
-                  if (reverse_proxy_is_enabled)
-                  else 'http://localhost:' + petio_web_port }}"
 
 ################################
 # DNS
@@ -48,7 +44,7 @@ petio_dns_zone: "{{ petio_web_domain }}"
 petio_traefik_middleware: "secureHeaders@file,gzip"
 petio_traefik_host: "{{ petio_web_subdomain + '.' + petio_web_domain }}"
 petio_traefik_certresolver: "{{ traefik_default_certresolver }}"
-petio_traefik_enabled: yes
+petio_traefik_enabled: true
 
 ################################
 # Docker
@@ -58,7 +54,7 @@ petio_traefik_enabled: yes
 petio_docker_container: "{{ petio_name }}"
 
 # Image
-petio_docker_image_pull: yes
+petio_docker_image_pull: true
 petio_docker_image_tag: "release"
 petio_docker_image: "hotio/petio:{{ petio_docker_image_tag }}"
 
@@ -78,13 +74,7 @@ petio_docker_envs_default:
   UMASK: "002"
   TZ: "{{ tz }}"
 petio_docker_envs_custom: {}
-petio_docker_envs_reverse_proxy: {}
 petio_docker_envs: "{{ petio_docker_envs_default
-                          | combine(petio_docker_envs_custom)
-                          | combine(petio_docker_envs_reverse_proxy)
-                          | combine(docker_envs_reverse_proxy_common)
-                      if (reverse_proxy_is_enabled)
-                      else petio_docker_envs_default
                           | combine(petio_docker_envs_custom) }}"
 
 # Commands
