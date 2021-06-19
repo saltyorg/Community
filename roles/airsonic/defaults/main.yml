@@ -1,9 +1,8 @@
 ##########################################################################
 # Title:         Community: Airsonic | Default Variables                 #
 # Author(s):     salty                                                   #
-# URL:           https://github.com/cloudbox/cloudbox                    #
+# URL:           https://github.com/saltyorg/Community                   #
 # --                                                                     #
-#         Part of the Cloudbox project: https://cloudbox.works           #
 ##########################################################################
 #                   GNU General Public License v3.0                      #
 ##########################################################################
@@ -27,12 +26,9 @@ airsonic_paths_folders_list:
 # Web
 ################################
 
-airsonic_web_subdomain: "airsonic"
+airsonic_web_subdomain: "{{ airsonic_name }}"
 airsonic_web_domain: "{{ user.domain }}"
 airsonic_web_port: "4040"
-airsonic_web_url: "{{ 'https://' + airsonic_web_subdomain + '.' + airsonic_web_domain
-                      if (reverse_proxy_is_enabled
-                      else 'http://localhost:' + airsonic_web_port }}"
 
 ################################
 # DNS
@@ -48,7 +44,7 @@ airsonic_dns_zone: "{{ airsonic_web_domain }}"
 airsonic_traefik_middleware: "secureHeaders@file,gzip"
 airsonic_traefik_host: "{{ airsonic_web_subdomain + '.' + airsonic_web_domain }}"
 airsonic_traefik_certresolver: "{{ traefik_default_certresolver }}"
-airsonic_traefik_enabled: yes
+airsonic_traefik_enabled: true
 
 ################################
 # Docker
@@ -58,7 +54,7 @@ airsonic_traefik_enabled: yes
 airsonic_docker_container: "{{ airsonic_name }}"
 
 # Image
-airsonic_docker_image_pull: yes
+airsonic_docker_image_pull: true
 airsonic_docker_image_tag: "latest"
 airsonic_docker_image: "linuxserver/airsonic:{{ airsonic_docker_image_tag }}"
 
@@ -77,13 +73,7 @@ airsonic_docker_envs_default:
   PGID: "{{ gid }}"
   TZ: "{{ tz }}"
 airsonic_docker_envs_custom: {}
-airsonic_docker_envs_reverse_proxy: {}
 airsonic_docker_envs: "{{ airsonic_docker_envs_default
-                            | combine(airsonic_docker_envs_custom)
-                            | combine(airsonic_docker_envs_reverse_proxy)
-                            | combine(docker_envs_reverse_proxy_common)
-                        if (reverse_proxy_is_enabled)
-                        else airsonic_docker_envs_default
                             | combine(airsonic_docker_envs_custom) }}"
 
 # Commands
