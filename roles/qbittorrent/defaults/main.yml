@@ -1,10 +1,9 @@
 #########################################################################
 # Title:            Community: qBittorrent                              #
 # Author(s):        salty                                               #
-# URL:              https://github.com/Cloudbox/Community               #
+# URL:              https://github.com/saltyorg/Community               #
 # Docker Image(s):  sc4h/qbittorrent                                    #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
@@ -37,9 +36,6 @@ qbittorrent_paths_folders_list:
 qbittorrent_web_subdomain: "{{ qbittorrent_name }}"
 qbittorrent_web_domain: "{{ user.domain }}"
 qbittorrent_web_port: "8080"
-qbittorrent_web_url: "{{ 'https://' + qbittorrent_web_subdomain + '.' + qbittorrent_web_domain
-                        if (reverse_proxy_is_enabled)
-                        else 'http://localhost:' + qbittorrent_web_port }}"
 
 ################################
 # DNS
@@ -55,7 +51,7 @@ qbittorrent_dns_zone: "{{ qbittorrent_web_domain }}"
 qbittorrent_traefik_middleware: "secureHeaders@file,gzip"
 qbittorrent_traefik_host: "{{ qbittorrent_web_subdomain + '.' + qbittorrent_web_domain }}"
 qbittorrent_traefik_certresolver: "{{ traefik_default_certresolver }}"
-qbittorrent_traefik_enabled: yes
+qbittorrent_traefik_enabled: true
 
 ################################
 # Docker
@@ -65,7 +61,7 @@ qbittorrent_traefik_enabled: yes
 qbittorrent_docker_container: "{{ qbittorrent_name }}"
 
 # Image
-qbittorrent_docker_image_pull: yes
+qbittorrent_docker_image_pull: true
 qbittorrent_docker_image_tag: "latest"
 qbittorrent_docker_image: "sc4h/qbittorrent:{{ qbittorrent_docker_image_tag }}"
 
@@ -95,13 +91,7 @@ qbittorrent_docker_envs_default:
   TZ: "{{ tz }}"
   UMASK_SET: "002"
 qbittorrent_docker_envs_custom: {}
-qbittorrent_docker_envs_reverse_proxy: {}
 qbittorrent_docker_envs: "{{ qbittorrent_docker_envs_default
-                                | combine(qbittorrent_docker_envs_custom)
-                                | combine(qbittorrent_docker_envs_reverse_proxy)
-                                | combine(docker_envs_reverse_proxy_common)
-                            if (reverse_proxy_is_enabled)
-                            else qbittorrent_docker_envs_default
                                 | combine(qbittorrent_docker_envs_custom) }}"
 
 # Commands
