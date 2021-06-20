@@ -1,9 +1,8 @@
 #########################################################################
 # Title:         Community: Settings | Ansible Config                   #
-# Author(s):     l3uddz, desimaniac, Migz93                             #
-# URL:           https://github.com/Cloudbox/Community                  #
+# Author(s):     l3uddz, desimaniac, Migz93, salty                      #
+# URL:           https://github.com/saltyorg/Community                  #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
@@ -20,7 +19,7 @@
     owner: "{{ community_yml.stat.uid }}"
     group: "{{ community_yml.stat.gid }}"
     mode: 0664
-    force: yes
+    force: true
   when: not file.stat.exists
 
 - name: Add default entries to '{{ item }}'
@@ -30,7 +29,7 @@
     option: "{{ inner_item.option }}"
     value: "{{ inner_item.value | default(omit) }}"
     state: "{{ inner_item.state | default('present') }}"
-    no_extra_spaces: no
+    no_extra_spaces: false
     owner: "{{ community_yml.stat.uid }}"
     group: "{{ community_yml.stat.gid }}"
     mode: 0664
