@@ -1,16 +1,15 @@
 #########################################################################
 # Title:         Community: Sanity Check | Backup Check                 #
-# Author(s):     desimaniac                                             #
-# URL:           https://github.com/Cloudbox/Community                  #
+# Author(s):     desimaniac, salty                                      #
+# URL:           https://github.com/saltyorg/Community                  #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Check if 'backup.lock' is present in the 'cloudbox' folder"
+- name: "Check if 'backup.lock' is present in the 'saltbox' folder"
   stat:
-    path: "/home/{{ user.name }}/cloudbox/backup.lock"
+    path: "/srv/git/saltbox/backup.lock"
   register: backup_lock
 
 # Age in hours
@@ -22,7 +21,7 @@
 # Delete if older than 2 hours.
 - name: "Delete stale 'backup.lock'"
   file:
-    path: "/home/{{ user.name }}/cloudbox/backup.lock"
+    path: "/srv/git/saltbox/backup.lock"
     state: absent
   when: (backup_lock.stat.exists) and (backup_lock_age|int >= 2)
 
