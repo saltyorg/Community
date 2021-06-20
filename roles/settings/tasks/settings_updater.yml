@@ -1,9 +1,8 @@
 #########################################################################
 # Title:         Community: Settings | Settings Updater                 #
-# Author(s):     l3uddz, desimaniac, Migz93                             #
-# URL:           https://github.com/Cloudbox/Community                  #
+# Author(s):     l3uddz, desimaniac, Migz93, salty                      #
+# URL:           https://github.com/saltyorg/Community                  #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
@@ -24,38 +23,38 @@
       owner: "{{ community_yml.stat.uid }}"
       group: "{{ community_yml.stat.gid }}"
       mode: 0664
-      force: yes
+      force: true
     when: not file0.stat.exists
 
   # Decryption Tasks
   - name: Decryption Block
     block:
 
-    - name: "Check '{{ item }}' for encryption."
-      shell: "head -1 {{ item }} | grep -q \\$ANSIBLE_VAULT"
-      register: encryption_check
-      ignore_errors: yes
-      failed_when: encryption_check.rc > 1
+      - name: "Check '{{ item }}' for encryption."
+        shell: "head -1 {{ item }} | grep -q \\$ANSIBLE_VAULT"
+        register: encryption_check
+        ignore_errors: true
+        failed_when: encryption_check.rc > 1
 
-    - name: "Set 'file_is_encrypted' variable."
-      set_fact:
-        file_is_encrypted: "{{ ((encryption_check.rc == 0) | default(false,true)) }}"
+      - name: "Set 'file_is_encrypted' variable."
+        set_fact:
+          file_is_encrypted: "{{ ((encryption_check.rc == 0) | default(false,true)) }}"
 
-    - name: "Decrypt '{{ item }}' when encrypted."
-      shell: "ansible-vault decrypt {{ item }}"
-      become: yes
-      become_user: "{{ community_yml.stat.pw_name }}"
-      when: file_is_encrypted
+      - name: "Decrypt '{{ item }}' when encrypted."
+        shell: "ansible-vault decrypt {{ item }}"
+        become: true
+        become_user: "{{ community_yml.stat.pw_name }}"
+        when: file_is_encrypted
 
     when: file0.stat.exists
 
   # settings-updater.py tasks
   - name: "Run 'settings-updater.py' for '{{ item }}'."
     script: "roles/settings/files/settings-updater.py '{{ playbook_dir }}' 'defaults/{{ item }}.default' '{{ item }}'"
-    become: yes
+    become: true
     become_user: "{{ community_yml.stat.pw_name }}"
     register: settings_updater
-    ignore_errors: yes
+    ignore_errors: true
     failed_when: settings_updater.rc == 1
 
   - name: Build 'files_updated_successfully' list
@@ -74,8 +73,8 @@
     when: (settings_updater.rc == 2) or (settings_updater.rc == 1)
 
   always:
-  - name: "Re-encrypt '{{ item }}' if previously encrypted."
-    shell: "ansible-vault encrypt {{ item }}"
-    become: yes
-    become_user: "{{ community_yml.stat.pw_name }}"
-    when: file0.stat.exists and file_is_encrypted
+    - name: "Re-encrypt '{{ item }}' if previously encrypted."
+      shell: "ansible-vault encrypt {{ item }}"
+      become: true
+      become_user: "{{ community_yml.stat.pw_name }}"
+      when: file0.stat.exists and file_is_encrypted

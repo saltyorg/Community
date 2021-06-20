@@ -1,9 +1,8 @@
 #########################################################################
 # Title:         Community: Settings | Ansible Config                   #
-# Author(s):     l3uddz, desimaniac, Migz93                             #
-# URL:           https://github.com/Cloudbox/Community                  #
+# Author(s):     l3uddz, desimaniac, Migz93, salty                      #
+# URL:           https://github.com/saltyorg/Community                  #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
@@ -16,7 +15,7 @@
 
 - name: "Exit so that user can check updated config files"
   debug:
-    msg: "Cloudbox Installer will now exit."
+    msg: "Community Installer will now exit."
 
 - name: "Exit"
   meta: end_play
