@@ -1,0 +1,8 @@
+skip_list:
+  - braces
+  - git-latest
+  - command-instead-of-shell
+  - no-changed-when
+  - ignore-errors
+  - line-length
+  - risky-shell-pipe
