@@ -1,0 +1,32 @@
+#########################################################################
+# Title:         Community: Sanity Check | Ansible Tags                 #
+# Author(s):     desimaniac, EnorMOZ, kowalski                          #
+# URL:           https://github.com/saltyorg/Community                  #
+# --                                                                    #
+#########################################################################
+#                   GNU General Public License v3.0                     #
+#########################################################################
+---
+# Source: http://blog.leifmadsen.com/blog/2017/01/04/finding-available-ansible-tags-in-playbooks-and-roles/
+- name: Ansible Tags | Get all available Ansible tags
+  shell: "{{ sanity_check_ansible_tags_lookup_command }}"
+  register: t
+  changed_when: false
+  when:
+    - not continuous_integration
+    - "'saltbox_mod' not in playbook_dir"
+    - "'saltbox' not in playbook_dir"
+
+- name: Ansible Tags | Ensure valid Ansible tag(s) were provided
+  assert:
+    that:
+      - '"{{ item }}" in t.stdout_lines'
+    msg: >-
+      You must supply valid tag(s) via '--tags TAG'
+      (get a list of valid tags by running 'ansible-playbook community.yml --list-tags')
+    quiet: true
+  with_items: "{{ ansible_run_tags }}"
+  when:
+    - not continuous_integration
+    - "'saltbox_' not in playbook_dir"
+    - "'saltbox' not in playbook_dir"

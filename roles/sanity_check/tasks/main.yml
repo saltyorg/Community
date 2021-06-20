@@ -1,18 +1,34 @@
 #########################################################################
-# Title:         Community: Sanity Check                                #
-# Author(s):     desimaniac                                             #
-# URL:           https://github.com/Cloudbox/Community                  #
+# Title:         Saltbox: Sanity Check                                  #
+# Author(s):     l3uddz, desimaniac, salty, kowalski                    #
+# URL:           https://github.com/saltyorg/Saltbox                    #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Cloudbox Check"
-  import_tasks: "subtasks/cloudbox_check.yml"
+- name: Saltbox Exists Check
+  import_tasks: "subtasks/01_saltboxexists.yml"
+  tags: always
 
-- name: "Backup Check"
-  import_tasks: "subtasks/backup_check.yml"
+# if saltbox exists this may be redundant
+- name: Ansible Version Check
+  import_tasks: "subtasks/02_ansible_version.yml"
+  tags: always
 
-- name: "Tags Check"
-  import_tasks: "subtasks/tags_check.yml"
+# if saltbox exists this may be redundant
+- name: Python Version Check
+  import_tasks: "subtasks/03_python_version.yml"
+  tags: always
+
+- name: Tags Check
+  import_tasks: "subtasks/04_ansible_tags.yml"
+  tags: always
+
+- name: Backup Lock Check
+  import_tasks: "subtasks/05_backup.yml"
+  tags: always
+
+- name: Touch Logs
+  import_tasks: "subtasks/06_logs.yml"
+  tags: always

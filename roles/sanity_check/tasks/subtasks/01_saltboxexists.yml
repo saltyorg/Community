@@ -1,0 +1,18 @@
+#########################################################################
+# Title:         Saltbox: Sanity Check | saltbox exists                 #
+# Author(s):     desimaniac, kowalski                                   #
+# URL:           https://github.com/saltyorg/Saltbox                    #
+# --                                                                    #
+#########################################################################
+#                   GNU General Public License v3.0                     #
+#########################################################################
+---
+- name: saltbox | Get '{{ sanity_check_saltbox_path }}' info
+  stat:
+    path: "{{ sanity_check_logs_playbook_path }}"
+  register: saltbox_path
+
+- name: saltbox | Fail when 'saltbox' folder does not exist
+  fail:
+    msg: "saltbox installation is required before running the saltbox Community roles."
+  when: not saltbox_path.stat.exists
