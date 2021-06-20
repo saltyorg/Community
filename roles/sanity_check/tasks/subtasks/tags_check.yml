@@ -1,9 +1,8 @@
 #########################################################################
 # Title:         Community: Sanity Check | Tags Check                   #
-# Author(s):     desimaniac                                             #
-# URL:           https://github.com/Cloudbox/Community                  #
+# Author(s):     desimaniac, salty                                      #
+# URL:           https://github.com/saltyorg/Community                  #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
@@ -14,7 +13,7 @@
     ansible-playbook community.yml --list-tags 2>&1 | grep "TASK TAGS" \
       | cut -d":" -f2 | awk '{sub(/\[/, "")sub(/\]/, "")}1' | sed -e 's/,//g' | xargs -n 1 | sort -u
   register: tags
-  changed_when: no
+  changed_when: false
 
 - name: "List available tags"
   debug:
