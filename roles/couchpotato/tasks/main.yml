@@ -1,15 +1,14 @@
 #########################################################################
 # Title:            Community: Couchpotato                              #
 # Author(s):        javi11                                              #
-# URL:              https://github.com/Cloudbox/Community               #
+# URL:              https://github.com/saltyorg/Community               #
 # Docker Image(s):  linuxserver/couchpotato                             #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: 'Setting CloudFlare DNS Record'
+- name: "Setting CloudFlare DNS Record"
   include_role:
     name: cloudflare-dns
   vars:
@@ -22,7 +21,7 @@
     state: absent
 
 - name: Create couchpotato directories
-  file: 'path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}'
+  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
   with_items:
     - /opt/couchpotato
 
@@ -33,20 +32,20 @@
     pull: yes
     env:
       UMASK: "002"
-      TZ: '{{ tz }}'
-      PUID: '{{ uid }}'
-      PGID: '{{ gid }}'
-      VIRTUAL_HOST: 'couchpotato.{{ user.domain }}'
+      TZ: "{{ tz }}"
+      PUID: "{{ uid }}"
+      PGID: "{{ gid }}"
+      VIRTUAL_HOST: "couchpotato.{{ user.domain }}"
       VIRTUAL_PORT: "5050"
-      LETSENCRYPT_HOST: 'couchpotato.{{ user.domain }}'
-      LETSENCRYPT_EMAIL: '{{ user.email }}'
+      LETSENCRYPT_HOST: "couchpotato.{{ user.domain }}"
+      LETSENCRYPT_EMAIL: "{{ user.email }}"
     volumes:
-      - '/opt/couchpotato:/config'
-      - '/mnt:/mnt'
-      - '/mnt/unionfs/Media/Movies:/movies'
-      - '/mnt/local/downloads:/downloads'
+      - "/opt/couchpotato:/config"
+      - "/mnt:/mnt"
+      - "/mnt/unionfs/Media/Movies:/movies"
+      - "/mnt/local/downloads:/downloads"
     labels:
-      'com.github.cloudbox.cloudbox_managed': 'true'
+      "com.github.cloudbox.cloudbox_managed": "true"
     networks:
       - name: cloudbox
         aliases:

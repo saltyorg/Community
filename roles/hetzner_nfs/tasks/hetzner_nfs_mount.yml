@@ -1,15 +1,14 @@
 #########################################################################
 # Title:         Hetzner NFS: Hetzner NFS Mount Task                    #
 # Author(s):     l3uddz, desimaniac                                     #
-# URL:           https://github.com/Cloudbox/Community                  #
+# URL:              https://github.com/saltyorg/Community               #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
 - name: Create nfs server directories
-  file: 'path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}'
+  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
   with_items:
     - /opt/hetzner_nfs
     - /mnt/feeder
@@ -18,8 +17,8 @@
   template:
     src: client/hosts.deny.j2
     dest: /etc/hosts.deny
-    owner: '{{ user.name }}'
-    group: '{{ user.name }}'
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: 0644
     force: yes
 
@@ -27,8 +26,8 @@
   template:
     src: client/hosts.allow.j2
     dest: /etc/hosts.allow
-    owner: '{{ user.name }}'
-    group: '{{ user.name }}'
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: 0644
     force: yes
 
@@ -43,22 +42,22 @@
   template:
     src: client/init_vlan.sh.j2
     dest: /opt/hetzner_nfs/init_vlan.sh
-    owner: '{{ user.name }}'
-    group: '{{ user.name }}'
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: 0775
     force: yes
 
 - name: Check 'nfs_vlan.service' exists
   stat:
-    path: '/etc/systemd/system/nfs_vlan.service'
+    path: "/etc/systemd/system/nfs_vlan.service"
   register: nfs_vlan_service
 
 - name: Import 'nfs_vlan.service' file
   template:
     src: client/nfs_vlan.service.j2
     dest: /etc/systemd/system/nfs_vlan.service
-    owner: '{{ user.name }}'
-    group: '{{ user.name }}'
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
     mode: 0775
     force: yes
   when: not nfs_vlan_service.stat.exists
@@ -76,7 +75,7 @@
   become_user: "vnstat"
   ignore_errors: yes
 
- # unionfs edits
+  # unionfs edits
 
 - name: Add 'After=init_vlan.service' to 'unionfs.service'
   lineinfile:
@@ -91,7 +90,7 @@
   replace:
     path: /etc/systemd/system/unionfs.service
     regexp: "\\/mnt\\/local"
-    replace: '/mnt/feeder'
+    replace: "/mnt/feeder"
   when: unionfs_service.stat.exists
 
   # mergerfs edits
@@ -109,5 +108,5 @@
   replace:
     path: /etc/systemd/system/mergerfs.service
     regexp: "\\/mnt\\/local"
-    replace: '/mnt/feeder'
+    replace: "/mnt/feeder"
   when: mergerfs_service.stat.exists

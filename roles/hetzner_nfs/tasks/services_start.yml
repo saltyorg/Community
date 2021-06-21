@@ -1,9 +1,8 @@
 #########################################################################
 # Title:         Hetzner NFS: Start Services Task                       #
 # Author(s):     l3uddz, desimaniac                                     #
-# URL:           https://github.com/Cloudbox/Community                  #
+# URL:              https://github.com/saltyorg/Community               #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
@@ -22,6 +21,6 @@
   when: (docker_binary.stat.exists) and (docker_service_running) and not (docker_running_containers.stdout | trim | length == 0)
 
 - name: "Re-start all previously running Docker containers"
-  shell: 'docker start {{ docker_running_containers.stdout }}'
+  shell: "docker start {{ docker_running_containers.stdout }}"
   ignore_errors: yes
   when: (docker_binary.stat.exists) and (docker_service_running) and not (docker_running_containers.stdout | trim | length == 0)

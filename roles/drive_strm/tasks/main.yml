@@ -1,9 +1,8 @@
 #########################################################################
 # Title:            Community: DriveSTRM                                #
 # Author(s):        desimaniac, l3uddz                                  #
-# URL:              https://github.com/Cloudbox/Community               #
+# URL:              https://github.com/saltyorg/Community               #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
@@ -45,31 +44,30 @@
 
 - name: Do the following tasks when 'config.json' does not exist.
   block:
+    - name: "Get Google Drive Client ID"
+      pause:
+        prompt: "Enter your Google Drive Client ID"
+      register: client_id
 
-  - name: "Get Google Drive Client ID"
-    pause:
-      prompt: "Enter your Google Drive Client ID"
-    register: client_id
+    - name: "Display Google Drive Client ID"
+      debug: msg="Using Google Drive Client ID{{ ':' }} {{ client_id.user_input }}"
 
-  - name: "Display Google Drive Client ID"
-    debug: msg="Using Google Drive Client ID{{ ':' }} {{ client_id.user_input }}"
+    - name: "Get Google Drive Client Secret"
+      pause:
+        prompt: "Enter your Google Drive Client Secret"
+      register: client_secret
 
-  - name: "Get Google Drive Client Secret"
-    pause:
-      prompt: "Enter your Google Drive Client Secret"
-    register: client_secret
+    - name: "Display Google Drive Client Secret"
+      debug: msg="Using Google Drive Client Secret{{ ':' }} {{ client_secret.user_input }}"
 
-  - name: "Display Google Drive Client Secret"
-    debug: msg="Using Google Drive Client Secret{{ ':' }} {{ client_secret.user_input }}"
-
-  - name: Import 'config.json'
-    template:
-      src: config.json.j2
-      dest: /opt/drive_strm/config.json
-      owner: "{{ user.name }}"
-      group: "{{ user.name }}"
-      mode: 0775
-      force: yes
+    - name: Import 'config.json'
+      template:
+        src: config.json.j2
+        dest: /opt/drive_strm/config.json
+        owner: "{{ user.name }}"
+        group: "{{ user.name }}"
+        mode: 0775
+        force: yes
 
   when: not config_json.stat.exists
 
@@ -80,7 +78,6 @@
 
 - name: "Do the following tasks when 'vault.db' does not exist"
   block:
-
     - name: "Pull Docker image"
       docker_image:
         name: "cloudb0x/drive_strm:latest"
@@ -98,7 +95,6 @@
         cleanup: yes
         user: "{{ uid }}:{{ gid }}"
         volumes:
-
           - "/opt/drive_strm:/config"
           - "/mnt/strm:/strm"
         networks:

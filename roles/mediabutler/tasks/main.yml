@@ -1,10 +1,9 @@
 #########################################################################
 # Title:            Community: MediaButler                              #
 # Author(s):        Superduper09, desimaniac                            #
-# URL:              https://github.com/Cloudbox/Community               #
+# URL:              https://github.com/saltyorg/Community               #
 # Docker Image(s):  mediabutler/server                                  #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
@@ -37,18 +36,17 @@
 
 - name: "When plex 'Preferences.xml' exists, pull machine id"
   block:
+    - name: Pull plex machine id
+      xml:
+        path: "/opt/plex/Library/Application Support/Plex Media Server/Preferences.xml"
+        xpath: /Preferences
+        content: attribute
+        attribute: ProcessedMachineIdentifier
+      register: xmlresp
 
-  - name: Pull plex machine id
-    xml:
-      path: "/opt/plex/Library/Application Support/Plex Media Server/Preferences.xml"
-      xpath: /Preferences
-      content: attribute
-      attribute: ProcessedMachineIdentifier
-    register: xmlresp
-
-  - name: Set 'plex_machine_id' var
-    set_fact:
-      plex_machine_id: "{{ xmlresp.matches[0].Preferences.ProcessedMachineIdentifier }}"
+    - name: Set 'plex_machine_id' var
+      set_fact:
+        plex_machine_id: "{{ xmlresp.matches[0].Preferences.ProcessedMachineIdentifier }}"
 
   when: plex_preferences_xml.stat.exists
 

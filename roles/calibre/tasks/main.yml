@@ -1,10 +1,9 @@
 ########################################################################
 # Title:            Community: Calibre              #
 # Author(s):        Andrew Johnson and SK                                            #
-# URL:              https://github.com/Cloudbox/Community               #
+# URL:              https://github.com/saltyorg/Community               #
 # Docker Image(s):  linuxserver/calibre                         #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
@@ -24,8 +23,8 @@
 - name: Create calibre directories
   file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
   with_items:
-   - /opt/calibre
-   - /mnt/local/Media/Books
+    - /opt/calibre
+    - /mnt/local/Media/Books
 
 - name: Create and start container
   docker_container:

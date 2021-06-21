@@ -4,7 +4,7 @@
     #########################################################################
     # Title:         Settings Updater Script                                #
     # Author(s):     l3uddz                                                 #
-    # URL:           https://github.com/cloudbox/cloudbox                   #
+    # URL:              https://github.com/saltyorg/Community               #
     # Description:   Adds variables to settings.yml.                        #
     # --                                                                    #
     #         Part of the Cloudbox project: https://cloudbox.works          #

@@ -1,10 +1,9 @@
 #########################################################################
 # Title:         Community: Telly | Telly 1.1                           #
 # Author(s):     EnorMOZ, desimaniac, chazlarson                        #
-# URL:           https://github.com/Cloudbox/Community                  #
+# URL:              https://github.com/saltyorg/Community               #
 # Docker Image:  tellytv/telly:dev-ffmpeg                               #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
@@ -37,15 +36,14 @@
 
 - name: Do following tasks when config does not exist
   block:
-
-  - name: Import default config
-    template:
-      src: "telly11.config.json.j2"
-      dest: "/opt/telly/telly.config.json"
-      owner: "{{ user.name }}"
-      group: "{{ user.name }}"
-      mode: 0775
-      force: yes
+    - name: Import default config
+      template:
+        src: "telly11.config.json.j2"
+        dest: "/opt/telly/telly.config.json"
+        owner: "{{ user.name }}"
+        group: "{{ user.name }}"
+        mode: 0775
+        force: yes
 
   when: not telly_config.stat.exists
 

@@ -2,9 +2,8 @@
 # Title:         Community: Extended Personal Media Scanner (EPMS)      #
 #                           Plugin for Plex                             #
 # Author(s):     maximuskowalski                                        #
-# URL:           https://github.com/Cloudbox/Community                  #
+# URL:              https://github.com/saltyorg/Community               #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
@@ -27,14 +26,14 @@
 - name: Create Extended Personal Media Scanner directories
   file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
   with_items:
-    - '/opt/plex/Library/Application Support/Plex Media Server/Scanners'
-    - '/opt/plex/Library/Application Support/Plex Media Server/Scanners/Series'
+    - "/opt/plex/Library/Application Support/Plex Media Server/Scanners"
+    - "/opt/plex/Library/Application Support/Plex Media Server/Scanners/Series"
 
 - name: Get latest Extended Personal Media Scanner.py
   get_url:
     url: https://bitbucket.org/mjarends/plex-scanners/raw/e6b21a46375cb456af44aea437316faa644c5bb4/Series/Extended%20Personal%20Media%20Scanner.py
-    dest: '/opt/plex/Library/Application Support/Plex Media Server/Scanners/Series/Extended Personal Media Scanner.py'
-    mode: '0775'
+    dest: "/opt/plex/Library/Application Support/Plex Media Server/Scanners/Series/Extended Personal Media Scanner.py"
+    mode: "0775"
 
 - name: Set Extended Personal Media Scanner directory permissions
   file: "path='/opt/plex/Library/Application Support/Plex Media Server/Scanners' state=directory mode=0775 owner={{ user.name }} group={{ user.name }} recurse=yes"
@@ -42,7 +41,7 @@
 - name: Clone Extended Personal Media Scanner Bundle
   git:
     repo: https://bitbucket.org/mjarends/extendedpersonalmedia-agent.bundle.git
-    dest: '/opt/plex/Library/Application Support/Plex Media Server/Plug-ins/ExtendedPersonalMedia-Agent.bundle'
+    dest: "/opt/plex/Library/Application Support/Plex Media Server/Plug-ins/ExtendedPersonalMedia-Agent.bundle"
     clone: yes
     version: HEAD
     force: yes

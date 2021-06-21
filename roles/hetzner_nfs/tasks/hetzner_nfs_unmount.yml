@@ -1,16 +1,15 @@
 #########################################################################
 # Title:         Hetzner NFS: Hetzner NFS UnMount Task                  #
 # Author(s):     desimaniac                                             #
-# URL:           https://github.com/Cloudbox/Community                  #
+# URL:              https://github.com/saltyorg/Community               #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
 - name: Check 'nfs_vlan.service' exists
   stat:
-    path: '/etc/systemd/system/nfs_vlan.service'
+    path: "/etc/systemd/system/nfs_vlan.service"
   register: nfs_vlan_service
 
 - name: Stop 'nfs_vlan.service'
@@ -39,7 +38,7 @@
     - "/opt/hetzner_nfs"
     - "/mnt/feeder"
 
- # unionfs edits
+  # unionfs edits
 
 - name: Remove 'After=init_vlan.service' in 'unionfs.service'
   lineinfile:
@@ -54,7 +53,7 @@
   replace:
     path: /etc/systemd/system/unionfs.service
     regexp: "\\/mnt\\/feeder"
-    replace: '/mnt/local'
+    replace: "/mnt/local"
   when: unionfs_service.stat.exists
 
   # mergerfs edits
@@ -72,5 +71,5 @@
   replace:
     path: /etc/systemd/system/mergerfs.service
     regexp: "\\/mnt\\/feeder"
-    replace: '/mnt/local'
+    replace: "/mnt/local"
   when: mergerfs_service.stat.exists

@@ -1,10 +1,9 @@
 #########################################################################
 # Title:            Community: Jellyfin                                 #
 # Author(s):        maximuskowalski, desimaniac, owine                  #
-# URL:              https://github.com/Cloudbox/Community               #
+# URL:              https://github.com/saltyorg/Community               #
 # Docker Image(s):  hotio/jellyfin                                      #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
@@ -72,7 +71,12 @@
 
 - name: "Set custom hosts"
   set_fact:
-    jellyfin_custom_hosts: { "playback.svcs.mlb.com": "{{ (lazyman_ip|ipv4) | ternary(lazyman_ip,'127.0.0.1') }}", "mf.svc.nhl.com": "{{ (lazyman_ip|ipv4) | ternary(lazyman_ip,'127.0.0.1') }}", "mlb-ws-mf.media.mlb.com": "{{ (lazyman_ip|ipv4) | ternary(lazyman_ip, '127.0.0.1') }}" }
+    jellyfin_custom_hosts:
+      {
+        "playback.svcs.mlb.com": "{{ (lazyman_ip|ipv4) | ternary(lazyman_ip,'127.0.0.1') }}",
+        "mf.svc.nhl.com": "{{ (lazyman_ip|ipv4) | ternary(lazyman_ip,'127.0.0.1') }}",
+        "mlb-ws-mf.media.mlb.com": "{{ (lazyman_ip|ipv4) | ternary(lazyman_ip, '127.0.0.1') }}",
+      }
 
 - name: Create and start container
   docker_container:
@@ -123,7 +127,7 @@
 - name: Settings Tasks
   include_tasks: "jellyfin_settings.yml"
   when: not (
-        (jellyfin_system_xml.stat.exists)
-        or
-        (continuous_integration)
+    (jellyfin_system_xml.stat.exists)
+    or
+    (continuous_integration)
     )
