@@ -1,9 +1,8 @@
 ##########################################################################
 # Title:         Cloudbox: Transfer.sh | Default Variables               #
 # Author(s):     l3uddz, desimaniac, salty                               #
-# URL:           https://github.com/cloudbox/cloudbox                    #
+# URL:           https://github.com/saltyorg/Community                   #
 # --                                                                     #
-#         Part of the Cloudbox project: https://cloudbox.works           #
 ##########################################################################
 #                   GNU General Public License v3.0                      #
 ##########################################################################
@@ -31,9 +30,6 @@ transfer_paths_folders_list:
 transfer_web_subdomain: "{{ transfer_name }}"
 transfer_web_domain: "{{ user.domain }}"
 transfer_web_port: "8080"
-transfer_web_url: "{{ 'https://' + transfer_web_subdomain + '.' + transfer_web_domain
-                      if (reverse_proxy_is_enabled)
-                      else 'http://localhost:' + transfer_web_port }}"
 transfer_web_user: "{{ user.name }}"
 transfer_web_pass: "{{ user.pass }}"
 
@@ -51,7 +47,7 @@ transfer_dns_zone: "{{ transfer_web_domain }}"
 transfer_traefik_middleware: "secureHeaders@file,gzip"
 transfer_traefik_host: "{{ transfer_web_subdomain + '.' + transfer_web_domain }}"
 transfer_traefik_certresolver: "{{ traefik_default_certresolver }}"
-transfer_traefik_enabled: yes
+transfer_traefik_enabled: true
 
 ################################
 # Docker
@@ -61,7 +57,7 @@ transfer_traefik_enabled: yes
 transfer_docker_container: "{{ transfer_name }}"
 
 # Image
-transfer_docker_image_pull: yes
+transfer_docker_image_pull: true
 transfer_docker_image_tag: "latest"
 transfer_docker_image: "dutchcoders/transfer.sh:{{ transfer_docker_image_tag }}"
 
@@ -70,9 +66,9 @@ transfer_docker_ports_defaults:
   - "{{ transfer_web_port }}:{{ transfer_web_port }}"
 transfer_docker_ports_custom: []
 transfer_docker_ports: "{{ transfer_docker_ports_defaults
-                                + transfer_docker_ports_custom
-                            if (not reverse_proxy_is_enabled)
-                            else [] + transfer_docker_ports_custom }}"
+                            + transfer_docker_ports_custom
+                        if (not reverse_proxy_is_enabled)
+                        else [] + transfer_docker_ports_custom }}"
 
 # Envs
 transfer_docker_envs_default:
@@ -86,11 +82,11 @@ transfer_docker_envs_default:
 transfer_docker_envs_custom: {}
 transfer_docker_envs_reverse_proxy: {}
 transfer_docker_envs: "{{ transfer_docker_envs_default
-                              | combine(transfer_docker_envs_custom)
-                              | combine(transfer_docker_envs_reverse_proxy)
-                              | combine(docker_envs_reverse_proxy_common)
-                          if (reverse_proxy_is_enabled)
-                          else transfer_docker_envs_default
+                          | combine(transfer_docker_envs_custom)
+                          | combine(transfer_docker_envs_reverse_proxy)
+                          | combine(docker_envs_reverse_proxy_common)
+                        if (reverse_proxy_is_enabled)
+                        else transfer_docker_envs_default
                               | combine(transfer_docker_envs_custom) }}"
 
 # User
@@ -107,28 +103,28 @@ transfer_docker_volumes_default:
   - "{{ transfer_uploads_location }}:{{ transfer_uploads_location }}"
 transfer_docker_volumes_custom: []
 transfer_docker_volumes: "{{ transfer_docker_volumes_default
-                                  + transfer_docker_volumes_custom
-                                  + docker_volumes_downloads_common }}"
+                              + transfer_docker_volumes_custom
+                              + docker_volumes_downloads_common }}"
 
 # Devices
 transfer_docker_devices_default: []
 transfer_docker_devices_custom: []
 transfer_docker_devices: "{{ transfer_docker_devices_default
-                                  + transfer_docker_devices_custom }}"
+                              + transfer_docker_devices_custom }}"
 
 # Hosts
 transfer_docker_hosts_default: []
 transfer_docker_hosts_custom: []
 transfer_docker_hosts: "{{ docker_hosts_common
-                                | combine(transfer_docker_hosts_default)
-                                | combine(transfer_docker_hosts_custom) }}"
+                            | combine(transfer_docker_hosts_default)
+                            | combine(transfer_docker_hosts_custom) }}"
 
 # Labels
 transfer_docker_labels_default: {}
 transfer_docker_labels_custom: {}
 transfer_docker_labels: "{{ docker_labels_common
-                                | combine(transfer_docker_labels_default)
-                                | combine(transfer_docker_labels_custom) }}"
+                            | combine(transfer_docker_labels_default)
+                            | combine(transfer_docker_labels_custom) }}"
 
 # Hostname
 transfer_docker_hostname: "{{ transfer_name }}"
@@ -138,14 +134,14 @@ transfer_docker_networks_alias: "{{ transfer_name }}"
 transfer_docker_networks_default: []
 transfer_docker_networks_custom: []
 transfer_docker_networks: "{{ docker_networks_common
-                                  + transfer_docker_networks_default
-                                  + transfer_docker_networks_custom }}"
+                              + transfer_docker_networks_default
+                              + transfer_docker_networks_custom }}"
 
 # Capabilities
 transfer_docker_capabilities_default: []
 transfer_docker_capabilities_custom: []
 transfer_docker_capabilities: "{{ transfer_docker_capabilities_default
-                                      + transfer_docker_capabilities_custom }}"
+                                  + transfer_docker_capabilities_custom }}"
 
 # Security Opts
 transfer_docker_security_opts_default: []

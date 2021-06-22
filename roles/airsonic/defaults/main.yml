@@ -63,9 +63,9 @@ airsonic_docker_ports_defaults:
   - "{{ airsonic_web_port }}"
 airsonic_docker_ports_custom: []
 airsonic_docker_ports: "{{ airsonic_docker_ports_defaults
-                              + airsonic_docker_ports_custom
-                          if (not reverse_proxy_is_enabled)
-                          else [] + airsonic_docker_ports_custom }}"
+                            + airsonic_docker_ports_custom
+                            if (not reverse_proxy_is_enabled)
+                            else [] + airsonic_docker_ports_custom }}"
 
 # Envs
 airsonic_docker_envs_default:
@@ -74,7 +74,7 @@ airsonic_docker_envs_default:
   TZ: "{{ tz }}"
 airsonic_docker_envs_custom: {}
 airsonic_docker_envs: "{{ airsonic_docker_envs_default
-                            | combine(airsonic_docker_envs_custom) }}"
+                          | combine(airsonic_docker_envs_custom) }}"
 
 # Commands
 airsonic_docker_commands_default: []
@@ -107,8 +107,8 @@ airsonic_docker_hosts: "{{ docker_hosts_common
 airsonic_docker_labels_default: {}
 airsonic_docker_labels_custom: {}
 airsonic_docker_labels: "{{ docker_labels_common
-                              | combine(airsonic_docker_labels_default)
-                              | combine(airsonic_docker_labels_custom) }}"
+                            | combine(airsonic_docker_labels_default)
+                            | combine(airsonic_docker_labels_custom) }}"
 
 # Hostname
 airsonic_docker_hostname: "{{ airsonic_name }}"
@@ -118,14 +118,14 @@ airsonic_docker_networks_alias: "{{ airsonic_name }}"
 airsonic_docker_networks_default: []
 airsonic_docker_networks_custom: []
 airsonic_docker_networks: "{{ docker_networks_common
-                                + airsonic_docker_networks_default
-                                + airsonic_docker_networks_custom }}"
+                              + airsonic_docker_networks_default
+                              + airsonic_docker_networks_custom }}"
 
 # Capabilities
 airsonic_docker_capabilities_default: []
 airsonic_docker_capabilities_custom: []
 airsonic_docker_capabilities: "{{ airsonic_docker_capabilities_default
-                                    + airsonic_docker_capabilities_custom }}"
+                                  + airsonic_docker_capabilities_custom }}"
 
 # Security Opts
 airsonic_docker_security_opts_default: []

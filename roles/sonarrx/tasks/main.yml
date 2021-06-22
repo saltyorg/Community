@@ -1,15 +1,14 @@
 #########################################################################
 # Title:            Community: SonarrX                                  #
 # Author(s):        Kalroth, Migz93, salty                              #
-# URL:              https://github.com/Cloudbox/Community               #
+# URL:              https://github.com/saltyorg/Community               #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
 - name: "Execute SonarrX roles"
-  include_role: 
+  include_role:
     name: sonarr
   vars:
     sonarr_name: "sonarr{{ role }}"

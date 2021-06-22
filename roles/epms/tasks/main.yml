@@ -12,7 +12,7 @@
 - name: Gather list of running Docker containers
   shell: "docker ps --format '{{ '{{' }} .Names{{ '}}' }}' | xargs echo -n"
   register: docker_running_containers
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Convert to list
   set_fact:
@@ -22,6 +22,9 @@
   docker_container:
     name: plex
     state: stopped
+    container_default_behavior: compatibility
+    tls_hostname: localhost
+
   when: ('plex' in docker_running_containers)
 
 - name: Create Extended Personal Media Scanner directories
@@ -43,10 +46,10 @@
   git:
     repo: https://bitbucket.org/mjarends/extendedpersonalmedia-agent.bundle.git
     dest: '/opt/plex/Library/Application Support/Plex Media Server/Plug-ins/ExtendedPersonalMedia-Agent.bundle'
-    clone: yes
+    clone: true
     version: HEAD
-    force: yes
-  become: yes
+    force: true
+  become: true
   become_user: "{{ user.name }}"
 
 - name: Set Extended Personal Media Scanner directory permissions
@@ -56,4 +59,5 @@
   docker_container:
     name: plex
     state: started
+
   when: ('plex' in docker_running_containers)
