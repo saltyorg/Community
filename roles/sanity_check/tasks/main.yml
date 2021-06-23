@@ -7,8 +7,8 @@
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Cloudbox Check"
-  import_tasks: "subtasks/cloudbox_check.yml"
+- name: "Saltbox Check"
+  import_tasks: "subtasks/saltbox_check.yml"
 
 - name: "Backup Check"
   import_tasks: "subtasks/backup_check.yml"

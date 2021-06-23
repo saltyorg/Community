@@ -1,10 +1,9 @@
 #########################################################################
 # Title:            Community: RocketChat                               #
 # Author(s):        Minds3t                                             #
-# URL:              https://github.com/Cloudbox/Community               #
+# URL:              https://github.com/saltyorg/Community               #
 # Docker Image(s):  rocketchat/rocket.chat:latest, mongo:4.0            #
 # --                                                                    #
-#         Part of the Cloudbox project: https://cloudbox.works          #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
