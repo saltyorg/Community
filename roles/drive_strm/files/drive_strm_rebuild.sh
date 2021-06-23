@@ -5,7 +5,6 @@
 # URL:           https://github.com/saltyorg/Community                  #
 # Description:   Rebuilds STRMs while keeping config intact.            #
 # --                                                                    #
-#                                                                       #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
