@@ -36,10 +36,13 @@ transmission_paths_folders_list:
 transmission_web_subdomain: "{{ transmission_name }}"
 transmission_web_domain: "{{ user.domain }}"
 transmission_web_port: "9091"
+<<<<<<< HEAD
 transmission_web_url:
   "{{ 'https://' + transmission_web_subdomain + '.' + transmission_web_domain
   if (reverse_proxy_is_enabled)
   else 'http://localhost:' + transmission_web_port }}"
+=======
+>>>>>>> master
 
 ################################
 # DNS
@@ -55,7 +58,7 @@ transmission_dns_zone: "{{ transmission_web_domain }}"
 transmission_traefik_middleware: "secureHeaders@file,gzip"
 transmission_traefik_host: "{{ transmission_web_subdomain + '.' + transmission_web_domain }}"
 transmission_traefik_certresolver: "{{ traefik_default_certresolver }}"
-transmission_traefik_enabled: yes
+transmission_traefik_enabled: true
 
 ################################
 # Docker
@@ -65,7 +68,7 @@ transmission_traefik_enabled: yes
 transmission_docker_container: "{{ transmission_name }}"
 
 # Image
-transmission_docker_image_pull: yes
+transmission_docker_image_pull: true
 transmission_docker_image_tag: "latest"
 transmission_docker_image: "linuxserver/transmission:{{ transmission_docker_image_tag }}"
 
@@ -111,7 +114,11 @@ transmission_docker_envs: "{{ transmission_docker_envs_default
 transmission_docker_commands_default: []
 transmission_docker_commands_custom: []
 transmission_docker_commands: "{{ transmission_docker_commands_default
+<<<<<<< HEAD
   + transmission_docker_commands_custom}}"
+=======
+                                  + transmission_docker_commands_custom}}"
+>>>>>>> master
 
 # Volumes
 transmission_docker_volumes_default:
@@ -121,8 +128,13 @@ transmission_docker_volumes_default:
   - "{{ transmission_paths_downloads_location }}/watched:/watch"
 transmission_docker_volumes_custom: []
 transmission_docker_volumes: "{{ transmission_docker_volumes_default
+<<<<<<< HEAD
   + transmission_docker_volumes_custom
   + docker_volumes_downloads_common  }}"
+=======
+                                  + transmission_docker_volumes_custom
+                                  + docker_volumes_downloads_common  }}"
+>>>>>>> master
 
 # Devices
 transmission_docker_devices_default: []
@@ -141,8 +153,13 @@ transmission_docker_hosts: "{{ docker_hosts_common
 transmission_docker_labels_default: {}
 transmission_docker_labels_custom: {}
 transmission_docker_labels: "{{ docker_labels_common
+<<<<<<< HEAD
   | combine(transmission_docker_labels_default)
   | combine(transmission_docker_labels_custom) }}"
+=======
+                                | combine(transmission_docker_labels_default)
+                                | combine(transmission_docker_labels_custom) }}"
+>>>>>>> master
 
 # Hostname
 transmission_docker_hostname: "{{ transmission_name }}"
@@ -152,14 +169,23 @@ transmission_docker_networks_alias: "{{ transmission_name }}"
 transmission_docker_networks_default: []
 transmission_docker_networks_custom: []
 transmission_docker_networks: "{{ docker_networks_common
+<<<<<<< HEAD
   + transmission_docker_networks_default
   + transmission_docker_networks_custom }}"
+=======
+                                  + transmission_docker_networks_default
+                                  + transmission_docker_networks_custom }}"
+>>>>>>> master
 
 # Capabilities
 transmission_docker_capabilities_default: []
 transmission_docker_capabilities_custom: []
 transmission_docker_capabilities: "{{ transmission_docker_capabilities_default
+<<<<<<< HEAD
   + transmission_docker_capabilities_custom }}"
+=======
+                                      + transmission_docker_capabilities_custom }}"
+>>>>>>> master
 
 # Security Opts
 transmission_docker_security_opts_default: []

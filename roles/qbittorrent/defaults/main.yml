@@ -92,7 +92,7 @@ qbittorrent_docker_envs_default:
   UMASK_SET: "002"
 qbittorrent_docker_envs_custom: {}
 qbittorrent_docker_envs: "{{ qbittorrent_docker_envs_default
-                                | combine(qbittorrent_docker_envs_custom) }}"
+                              | combine(qbittorrent_docker_envs_custom) }}"
 
 # Commands
 qbittorrent_docker_commands_default: []
@@ -114,21 +114,21 @@ qbittorrent_docker_volumes: "{{ qbittorrent_docker_volumes_default
 qbittorrent_docker_devices_default: []
 qbittorrent_docker_devices_custom: []
 qbittorrent_docker_devices: "{{ qbittorrent_docker_devices_default
-                                  + qbittorrent_docker_devices_custom }}"
+                                + qbittorrent_docker_devices_custom }}"
 
 # Hosts
 qbittorrent_docker_hosts_default: []
 qbittorrent_docker_hosts_custom: []
 qbittorrent_docker_hosts: "{{ docker_hosts_common
-                                | combine(qbittorrent_docker_hosts_default)
-                                | combine(qbittorrent_docker_hosts_custom) }}"
+                              | combine(qbittorrent_docker_hosts_default)
+                              | combine(qbittorrent_docker_hosts_custom) }}"
 
 # Labels
 qbittorrent_docker_labels_default: {}
 qbittorrent_docker_labels_custom: {}
 qbittorrent_docker_labels: "{{ docker_labels_common
-                                  | combine(qbittorrent_docker_labels_default)
-                                  | combine(qbittorrent_docker_labels_custom) }}"
+                                | combine(qbittorrent_docker_labels_default)
+                                | combine(qbittorrent_docker_labels_custom) }}"
 
 # Hostname
 qbittorrent_docker_hostname: "{{ qbittorrent_name }}"
@@ -138,20 +138,20 @@ qbittorrent_docker_networks_alias: "{{ qbittorrent_name }}"
 qbittorrent_docker_networks_default: []
 qbittorrent_docker_networks_custom: []
 qbittorrent_docker_networks: "{{ docker_networks_common
-                                    + qbittorrent_docker_networks_default
-                                    + qbittorrent_docker_networks_custom }}"
+                                  + qbittorrent_docker_networks_default
+                                  + qbittorrent_docker_networks_custom }}"
 
 # Capabilities
 qbittorrent_docker_capabilities_default: []
 qbittorrent_docker_capabilities_custom: []
 qbittorrent_docker_capabilities: "{{ qbittorrent_docker_capabilities_default
-                                        + qbittorrent_docker_capabilities_custom }}"
+                                      + qbittorrent_docker_capabilities_custom }}"
 
 # Security Opts
 qbittorrent_docker_security_opts_default: []
 qbittorrent_docker_security_opts_custom: []
 qbittorrent_docker_security_opts: "{{ qbittorrent_docker_security_opts_default
-                                        + qbittorrent_docker_security_opts_custom }}"
+                                      + qbittorrent_docker_security_opts_custom }}"
 
 # Restart Policy
 qbittorrent_docker_restart_policy: unless-stopped

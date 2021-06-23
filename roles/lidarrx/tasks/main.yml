@@ -1,32 +1,24 @@
 #########################################################################
+<<<<<<< HEAD
 # Title:            Community: Lidarrx                                  #
 # Author(s):        paris-ci                                            #
 # URL:              https://github.com/saltyorg/Community               #
 # Docker Image(s):  hotio/lidarr                                        #
+=======
+# Title:            Community: LidarrX                                  #
+# Author(s):        paris-ci, salty                                     #
+# URL:              https://github.com/saltyorg/Community               #
+>>>>>>> master
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Gather list of lidarrx Docker containers"
-  shell: "docker ps -a --format '{{ '{{' }} .Names{{ '}}' }}' --filter label=com.github.cloudbox.community=lidarrx | xargs echo -n"
-  register: cloudbox_community_lidarrx
-  ignore_errors: yes
-
-- name: "Stop all lidarrx Docker containers"
-  shell: "docker stop {{ cloudbox_community_lidarrx.stdout }}"
-  ignore_errors: yes
-  when: (cloudbox_community_lidarrx.stdout | trim | length > 0)
-
-- name: "Remove all lidarrx Docker containers"
-  shell: "docker rm {{ cloudbox_community_lidarrx.stdout }}"
-  ignore_errors: yes
-  when: (cloudbox_community_lidarrx.stdout | trim | length > 0)
-
 - name: "Execute LidarrX roles"
-  include_tasks: template.yml
+  include_role:
+    name: lidarr
   vars:
-    rolename: "{{ role }}"
+    ombi_name: "lidarr{{ role }}"
   with_items: "{{ lidarrx.roles }}"
   loop_control:
     loop_var: role

@@ -72,7 +72,7 @@ environment:
     # - job_name: kitana
     # - job_name: komga
     # - job_name: lazylibrarian
-    # - job_name: lidarrx
+    - job_name: lidarrx
     # - job_name: logarr
     # - job_name: mediabutler
     # - job_name: medusa
@@ -87,7 +87,6 @@ environment:
     - job_name: ombix
     # - job_name: organizrv1
     # - job_name: ouroboros
-    - job_name: overseerr
     # - job_name: petio
     # - job_name: plex2
     - job_name: prowlarr
@@ -96,7 +95,7 @@ environment:
     # - job_name: qbittorrentvpn
     # - job_name: quassel
     - job_name: radarrx
-    - job_name: redbot
+    # - job_name: redbot
     # - job_name: requestrr
     # - job_name: requestrrx
     # - job_name: resilio-sync

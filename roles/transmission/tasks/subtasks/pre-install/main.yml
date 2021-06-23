@@ -12,4 +12,4 @@
     low_bound: 51413
     high_bound: 51433
   register: port_lookup_51413
-  ignore_errors: yes
+  ignore_errors: true
