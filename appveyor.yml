@@ -26,7 +26,6 @@ environment:
     - job_name: alltube
     - job_name: alternatrr
     - job_name: alternatrrx
-    # - job_name: amongus
     # - job_name: apprise
     # - job_name: archivebox
     - job_name: asshama
@@ -44,11 +43,8 @@ environment:
     # - job_name: comixed
     # - job_name: couchpotato
     # - job_name: deemix
-    # - job_name: deemixrr
-    # - job_name: deezloader-remix
     - job_name: deluge
     # - job_name: delugevpn
-    # - job_name: emby2
     # - job_name: embystat
     - job_name: epms
     # - job_name: filebot
@@ -76,30 +72,21 @@ environment:
     # - job_name: logarr
     # - job_name: mediabutler
     # - job_name: medusa
-    # - job_name: minecraft
     # - job_name: monitorr
     # - job_name: mylar3
     # - job_name: navidrome
     # - job_name: nextcloud
-    # - job_name: nowshowing
-    # - job_name: nzbhydra
     - job_name: ombi
     - job_name: ombix
-    # - job_name: organizrv1
     # - job_name: ouroboros
     # - job_name: petio
-    # - job_name: plex2
     - job_name: prowlarr
-    # - job_name: pyload
     - job_name: qbittorrent
     # - job_name: qbittorrentvpn
-    # - job_name: quassel
     - job_name: radarrx
-    # - job_name: redbot
     # - job_name: requestrr
     # - job_name: requestrrx
     # - job_name: resilio-sync
-    # - job_name: rocketchat
     # - job_name: sickchill
     - job_name: sonarrx
     - job_name: speedtest
@@ -107,9 +94,7 @@ environment:
     # - job_name: stash
     # - job_name: subsonic
     # - job_name: synclounge
-    # - job_name: tdarr
     # - job_name: telegraf
-    # - job_name: thelounge
     - job_name: transfer
     - job_name: transmission
   # - job_name: transmissionvpn
@@ -119,11 +104,9 @@ environment:
   # - job_name: unmanic
   # - job_name: varken
   # - job_name: vnstat
-  # - job_name: wallabag
   # - job_name: watchtower
   # - job_name: wordpress
   # - job_name: xteve
-  # - job_name: znc
 
 install:
   - sh: |
