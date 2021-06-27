@@ -41,8 +41,7 @@
     - { section: 'defaults', option: 'filter_plugins', value: '/srv/git/cloudbox/filter_plugins' }
     - { section: 'defaults', option: 'interpreter_python', value: '/usr/bin/python3' }
     - { section: 'defaults', option: 'log_path', value: './community.log' }
-    - { section: 'defaults', option: 'callback_whitelist', value: 'profile_tasks' }
-    - { section: 'defaults', option: 'command_warnings', value: False }
+    - { section: 'defaults', option: 'callback_enabled', value: 'profile_tasks' }
     - { section: 'defaults', option: 'retry_files_enabled', value: False }
     - { section: 'defaults', option: 'hash_behaviour', state: 'absent' }
   loop_control:
