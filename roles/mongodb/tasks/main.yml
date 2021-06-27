@@ -23,7 +23,7 @@
   docker_container:
     name: "mongo"
     image: "mongo:latest"
-    pull: yes
+    pull: true
     user: "{{ uid }}"
     env:
       MONGO_DATA_DIR: "/data/db"
@@ -33,11 +33,11 @@
       - "/opt/mongodb:/data/db:rw"
       - "/opt/mongodb/config:/data/configdb"
     labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
+      "com.github.saltbox.saltbox_managed": "true"
     networks:
-      - name: cloudbox
+      - name: saltbox
         aliases:
           - "mongodb"
-    purge_networks: yes
+    purge_networks: true
     restart_policy: unless-stopped
     state: started
