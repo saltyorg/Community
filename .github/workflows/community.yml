@@ -1,0 +1,32 @@
+name: Install
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  # This workflow contains a single job called "build"
+  install:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-20.04
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: curl https://raw.githubusercontent.com/saltyorg/sb/master/sb_install.sh --output sb_install.sh && sudo bash sb_install.sh -v
+
+      - name: Remove accounts.yml
+        run: cd /srv/git/saltbox && rm -rf accounts.yml
+
+      - name: Download Github Actions accounts.yml
+        run: cd /srv/git/saltbox && curl -o accounts.yml https://raw.githubusercontent.com/saltydk/AppveyorTest/main/github.yml
+
+      - name: Syntax Check
+        run: cd /srv/git/saltbox && sudo ansible-playbook saltbox.yml --syntax-check
+
+      - name: Install Saltbox
+        run: cd /srv/git/saltbox && sudo ansible-playbook saltbox.yml --tags "core" --skip-tags "sanity_check,settings,kernel,hetzner,shell,rclone,system,motd,nvidia,mounts,scripts" --extra-vars '{"continuous_integration":true}'
+
+      - name: Install Autoscan
+        run: sudo ansible-playbook community.yml --tags "autoscan"
