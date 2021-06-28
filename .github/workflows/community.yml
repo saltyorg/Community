@@ -16,6 +16,9 @@ jobs:
       - name: Install Dependencies
         run: curl https://raw.githubusercontent.com/saltyorg/sb/master/sb_install.sh --output sb_install.sh && sudo bash sb_install.sh -v
 
+      - name: Chown /srv/git
+        run: sudo chown -R runner:runner /srv/git
+
       - name: Remove accounts.yml
         run: cd /srv/git/saltbox && rm -rf accounts.yml
 
@@ -28,5 +31,74 @@ jobs:
       - name: Install Saltbox
         run: cd /srv/git/saltbox && sudo ansible-playbook saltbox.yml --tags "core" --skip-tags "sanity_check,settings,kernel,hetzner,shell,rclone,system,motd,nvidia,mounts,scripts" --extra-vars '{"continuous_integration":true}'
 
-      - name: Install Autoscan
+      - name: Install airdcpp
+        run: sudo ansible-playbook community.yml --tags "airdcpp"
+        if: ${{ always() }}
+
+      - name: Install airsonic
+        run: sudo ansible-playbook community.yml --tags "airsonic"
+        if: ${{ always() }}
+
+      - name: Install alltube
+        run: sudo ansible-playbook community.yml --tags "alltube"
+        if: ${{ always() }}
+
+      - name: Install alternatrr
+        run: sudo ansible-playbook community.yml --tags "alternatrr"
+        if: ${{ always() }}
+
+      - name: Install alternatrrx
+        run: sudo ansible-playbook community.yml --tags "alternatrrx"
+        if: ${{ always() }}
+
+      - name: Install asshama
+        run: sudo ansible-playbook community.yml --tags "asshama"
+        if: ${{ always() }}
+
+      - name: Install autoscan
         run: sudo ansible-playbook community.yml --tags "autoscan"
+        if: ${{ always() }}
+
+      - name: Install deluge
+        run: sudo ansible-playbook community.yml --tags "deluge"
+        if: ${{ always() }}
+
+      - name: Install grafana
+        run: sudo ansible-playbook community.yml --tags "grafana"
+        if: ${{ always() }}
+
+      - name: Install influxdb
+        run: sudo ansible-playbook community.yml --tags "influxdb"
+        if: ${{ always() }}
+
+      - name: Install lidarrx
+        run: sudo ansible-playbook community.yml --tags "lidarrx"
+        if: ${{ always() }}
+
+      - name: Install ombi
+        run: sudo ansible-playbook community.yml --tags "ombi"
+        if: ${{ always() }}
+
+      - name: Install ombix
+        run: sudo ansible-playbook community.yml --tags "ombix"
+        if: ${{ always() }}
+
+      - name: Install prowlarr
+        run: sudo ansible-playbook community.yml --tags "prowlarr"
+        if: ${{ always() }}
+
+      - name: Install qbittorrent
+        run: sudo ansible-playbook community.yml --tags "qbittorrent"
+        if: ${{ always() }}
+
+      - name: Install radarrx
+        run: sudo ansible-playbook community.yml --tags "radarrx"
+        if: ${{ always() }}
+
+      - name: Install transfer
+        run: sudo ansible-playbook community.yml --tags "transfer"
+        if: ${{ always() }}
+
+      - name: Install transmission
+        run: sudo ansible-playbook community.yml --tags "transmission"
+        if: ${{ always() }}
