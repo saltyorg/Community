@@ -61,3 +61,8 @@ jobs:
 
       - name: Install ${{ matrix.roles }}
         run: sudo ansible-playbook community.yml --tags "${{ matrix.roles }}" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
+
+      - uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
