@@ -38,73 +38,73 @@ jobs:
         run: cp -n defaults/ansible.cfg.default ansible.cfg && cp -n defaults/settings.yml.default settings.yml
 
       - name: Install airdcpp
-        run: sudo ansible-playbook community.yml --tags "airdcpp"
+        run: sudo ansible-playbook community.yml --tags "airdcpp" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install airsonic
-        run: sudo ansible-playbook community.yml --tags "airsonic"
+        run: sudo ansible-playbook community.yml --tags "airsonic" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install alltube
-        run: sudo ansible-playbook community.yml --tags "alltube"
+        run: sudo ansible-playbook community.yml --tags "alltube" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install alternatrr
-        run: sudo ansible-playbook community.yml --tags "alternatrr"
+        run: sudo ansible-playbook community.yml --tags "alternatrr" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install alternatrrx
-        run: sudo ansible-playbook community.yml --tags "alternatrrx"
+        run: sudo ansible-playbook community.yml --tags "alternatrrx" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install asshama
-        run: sudo ansible-playbook community.yml --tags "asshama"
+        run: sudo ansible-playbook community.yml --tags "asshama" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install autoscan
-        run: sudo ansible-playbook community.yml --tags "autoscan"
+        run: sudo ansible-playbook community.yml --tags "autoscan" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install deluge
-        run: sudo ansible-playbook community.yml --tags "deluge"
+        run: sudo ansible-playbook community.yml --tags "deluge" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install grafana
-        run: sudo ansible-playbook community.yml --tags "grafana"
+        run: sudo ansible-playbook community.yml --tags "grafana" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install influxdb
-        run: sudo ansible-playbook community.yml --tags "influxdb"
+        run: sudo ansible-playbook community.yml --tags "influxdb" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install lidarrx
-        run: sudo ansible-playbook community.yml --tags "lidarrx"
+        run: sudo ansible-playbook community.yml --tags "lidarrx" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install ombi
-        run: sudo ansible-playbook community.yml --tags "ombi"
+        run: sudo ansible-playbook community.yml --tags "ombi" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install ombix
-        run: sudo ansible-playbook community.yml --tags "ombix"
+        run: sudo ansible-playbook community.yml --tags "ombix" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install prowlarr
-        run: sudo ansible-playbook community.yml --tags "prowlarr"
+        run: sudo ansible-playbook community.yml --tags "prowlarr" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install qbittorrent
-        run: sudo ansible-playbook community.yml --tags "qbittorrent"
+        run: sudo ansible-playbook community.yml --tags "qbittorrent" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install radarrx
-        run: sudo ansible-playbook community.yml --tags "radarrx"
+        run: sudo ansible-playbook community.yml --tags "radarrx" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install transfer
-        run: sudo ansible-playbook community.yml --tags "transfer"
+        run: sudo ansible-playbook community.yml --tags "transfer" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
 
       - name: Install transmission
-        run: sudo ansible-playbook community.yml --tags "transmission"
+        run: sudo ansible-playbook community.yml --tags "transmission" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
         if: ${{ always() }}
