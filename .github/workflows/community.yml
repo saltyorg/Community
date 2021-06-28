@@ -1,9 +1,9 @@
-name: Install
+name: CI
 
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  job:
+  install:
     name: '${{ matrix.roles }}'
     runs-on: ubuntu-20.04
     strategy:
@@ -62,6 +62,12 @@ jobs:
       - name: Install ${{ matrix.roles }}
         run: sudo ansible-playbook community.yml --tags "${{ matrix.roles }}" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
 
+  webhook:
+    name: '${{ matrix.roles }}'
+    runs-on: ubuntu-20.04
+    needs: install
+    if: always()
+    steps:
       - uses: sarisia/actions-status-discord@v1
         if: always()
         with:
