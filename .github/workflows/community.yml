@@ -34,6 +34,9 @@ jobs:
       - name: Install Saltbox
         run: cd /srv/git/saltbox && sudo ansible-playbook saltbox.yml --tags "core" --skip-tags "sanity_check,settings,kernel,hetzner,shell,rclone,system,motd,nvidia,mounts,scripts" --extra-vars '{"continuous_integration":true}'
 
+      - name: Copy default configuration
+        run: cp -n defaults/ansible.cfg.default ansible.cfg && cp -n defaults/settings.yml.default settings.yml
+
       - name: Install airdcpp
         run: sudo ansible-playbook community.yml --tags "airdcpp"
         if: ${{ always() }}
