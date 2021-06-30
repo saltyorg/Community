@@ -75,5 +75,4 @@ jobs:
         if: always()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          noprefix: true
           status: ${{ env.WORKFLOW_CONCLUSION }}

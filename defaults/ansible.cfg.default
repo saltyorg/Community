@@ -8,3 +8,4 @@ log_path = ./community.log
 callback_enabled = profile_tasks
 retry_files_enabled = False
 interpreter_python = /usr/bin/python3
+force_color = True
