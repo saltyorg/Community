@@ -9,7 +9,6 @@ jobs:
     strategy:
       matrix:
         roles:
-          - gitea
           - airdcpp 
           - airsonic 
           - alltube 
@@ -63,7 +62,6 @@ jobs:
       - name: Install ${{ matrix.roles }}
         run: sudo ansible-playbook community.yml --tags "${{ matrix.roles }}" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
 
-### Need to fix webhook reporting success even if there is a failure in the matrix
   webhook:
     name: '${{ matrix.roles }}'
     runs-on: ubuntu-20.04
