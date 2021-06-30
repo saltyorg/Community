@@ -64,13 +64,15 @@ jobs:
         run: sudo ansible-playbook community.yml --tags "${{ matrix.roles }}" --skip-tags "sanity_check,settings" --extra-vars '{"continuous_integration":true}'
 
 ### Need to fix webhook reporting success even if there is a failure in the matrix
-#  webhook:
-#    name: '${{ matrix.roles }}'
-#    runs-on: ubuntu-20.04
-#    needs: install
-#    if: always()
-#    steps:
-#      - uses: sarisia/actions-status-discord@v1
-#        if: always()
-#        with:
-#          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+  webhook:
+    name: '${{ matrix.roles }}'
+    runs-on: ubuntu-20.04
+    needs: install
+    if: always()
+    steps:
+      - uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          noprefix: true
+          status: ${{ install.status }}
