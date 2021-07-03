@@ -80,14 +80,8 @@ transfer_docker_envs_default:
   HTTP_AUTH_USER: "{{ transfer_web_user }}"
   HTTP_AUTH_PASS: "{{ transfer_web_pass }}"
 transfer_docker_envs_custom: {}
-transfer_docker_envs_reverse_proxy: {}
 transfer_docker_envs: "{{ transfer_docker_envs_default
-                          | combine(transfer_docker_envs_custom)
-                          | combine(transfer_docker_envs_reverse_proxy)
-                          | combine(docker_envs_reverse_proxy_common)
-                        if (reverse_proxy_is_enabled)
-                        else transfer_docker_envs_default
-                              | combine(transfer_docker_envs_custom) }}"
+                          | combine(transfer_docker_envs_custom) }}"
 
 # User
 transfer_docker_user: "{{ uid }}:{{ gid }}"
