@@ -6,4 +6,4 @@ fact_path = /srv/git/saltbox/ansible_facts.d
 log_path = ./community.log
 callbacks_enabled = profile_tasks
 interpreter_python = /usr/bin/python3
-force_color = True
+force_color = true
