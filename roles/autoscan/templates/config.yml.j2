@@ -67,6 +67,9 @@ triggers:
 # <- targets ->
 
 targets:
+targets:
+{% plex_auth_token is defined %}
   plex:
     - url: {{ plex_web_url }} # URL of your Plex server
-      token: {{ plex_auth_token }} # Plex API Token
+      token: {{ plex_auth_token }} 
+{% endif %}
