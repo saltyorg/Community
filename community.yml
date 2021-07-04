@@ -22,7 +22,6 @@
     - { role: autoscan, tags: ['autoscan'] }
     # - { role: bazarrx, tags: ['bazarrx'] }
     # - { role: beets, tags: ['beets'] }
-    # - { role: bitwarden, tags: ['bitwarden'] }
     # - { role: booksonic, tags: ['booksonic'] }
     # - { role: bookstack, tags: ['bookstack'] }
     - { role: btrfsmaintenance, tags: ['btrfsmaintenance'] }
@@ -100,6 +99,7 @@
     # - { role: unifi, tags: ['unifi'] }
     # - { role: unmanic, tags: ['unmanic'] }
     # - { role: varken, tags: ['varken'] }
+    - { role: vaultwarden, tags: ['vaultwarden'] }
     # - { role: vnstat, tags: ['vnstat'] }
     # - { role: watchtower, tags: ['watchtower'] }
     # - { role: wordpress, tags: ['wordpress'] }
