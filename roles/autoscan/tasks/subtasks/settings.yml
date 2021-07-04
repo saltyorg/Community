@@ -47,6 +47,5 @@
       owner: "{{ user.name }}"
       group: "{{ user.name }}"
       mode: 0775
-      force: true
 
   when: not autoscan_config.stat.exists
