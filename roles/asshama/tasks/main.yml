@@ -12,7 +12,7 @@
 - name: Gather list of running Docker containers
   shell: "docker ps --format '{{ '{{' }} .Names{{ '}}' }}' | xargs echo -n"
   register: docker_running_containers
-  ignore_errors: yes
+  ignore_errors: true
 
 - name: Convert to list
   set_fact:
@@ -25,7 +25,12 @@
   when: ('plex' in docker_running_containers)
 
 - name: Create ASS and HAMA directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0775
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
   with_items:
     - '/opt/plex/Library/Application Support/Plex Media Server/Scanners'
     - '/opt/plex/Library/Application Support/Plex Media Server/Scanners/Series'
@@ -52,20 +57,32 @@
     mode: '0775'
 
 - name: Set ASS directory permissions
-  file: "path='/opt/plex/Library/Application Support/Plex Media Server/Scanners' state=directory mode=0775 owner={{ user.name }} group={{ user.name }} recurse=yes"
+  file:
+    path: '/opt/plex/Library/Application Support/Plex Media Server/Scanners'
+    state: directory
+    mode: 0775
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    recurse: true
 
 - name: Clone Hama Bundle
   git:
     repo: https://github.com/ZeroQI/Hama.bundle.git
     dest: '/opt/plex/Library/Application Support/Plex Media Server/Plug-ins/Hama.bundle'
-    clone: yes
+    clone: true
     version: HEAD
-    force: yes
-  become: yes
+    force: true
+  become: true
   become_user: "{{ user.name }}"
 
 - name: Set HAMA directory permissions
-  file: "path='/opt/plex/Library/Application Support/Plex Media Server/Plug-ins/Hama.bundle' state=directory mode=0775 owner={{ user.name }} group={{ user.name }} recurse=yes"
+  file:
+    path: '/opt/plex/Library/Application Support/Plex Media Server/Plug-ins/Hama.bundle'
+    state: directory
+    mode: 0775
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    recurse: true
 
 - name: Start Plex container
   docker_container:

@@ -27,7 +27,13 @@
   when: ('plex' in docker_running_containers)
 
 - name: Create Extended Personal Media Scanner directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0775
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    recurse: true
   with_items:
     - '/opt/plex/Library/Application Support/Plex Media Server/Scanners'
     - '/opt/plex/Library/Application Support/Plex Media Server/Scanners/Series'
@@ -39,7 +45,13 @@
     mode: '0775'
 
 - name: Set Extended Personal Media Scanner directory permissions
-  file: "path='/opt/plex/Library/Application Support/Plex Media Server/Scanners' state=directory mode=0775 owner={{ user.name }} group={{ user.name }} recurse=yes"
+  file:
+    path: '/opt/plex/Library/Application Support/Plex Media Server/Scanners'
+    state: directory
+    mode: 0775
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    recurse: true
 
 - name: Clone Extended Personal Media Scanner Bundle
   git:
@@ -52,7 +64,13 @@
   become_user: "{{ user.name }}"
 
 - name: Set Extended Personal Media Scanner directory permissions
-  file: "path='/opt/plex/Library/Application Support/Plex Media Server/Plug-ins/ExtendedPersonalMedia-Agent.bundle' state=directory mode=0775 owner={{ user.name }} group={{ user.name }} recurse=yes"
+  file:
+    path: '/opt/plex/Library/Application Support/Plex Media Server/Plug-ins/ExtendedPersonalMedia-Agent.bundle'
+    state: directory
+    mode: 0775
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    recurse: true
 
 - name: Start Plex container
   docker_container:

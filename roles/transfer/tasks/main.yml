@@ -32,8 +32,9 @@
   block:
 
     - name: Get latest transfer URL
-      shell: |
-        curl -s {{ cvm }}https://api.github.com/repos/l3uddz/transfer/releases/latest | jq -r ".assets[] | select(.name | test(\"transfer_v[0-9].[0-9].[0-9]_linux_amd64\")) | .browser_download_url"
+      shell: >-
+          curl -s {{ cvm }}https://api.github.com/repos/l3uddz/transfer/releases/latest |
+          jq -r ".assets[] | select(.name | test(\"transfer_v[0-9].[0-9].[0-9]_linux_amd64\")) | .browser_download_url"
       args:
         executable: /bin/bash
       register: transfer_download_url
