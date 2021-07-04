@@ -8,6 +8,8 @@
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
+- include_vars: /srv/git/saltbox/roles/plex/defaults/main.yml
+
 - name: "Settings | Check if '{{ plex_paths_config_location | basename }}' exists"
   stat:
     path: "{{ plex_paths_config_location }}"
