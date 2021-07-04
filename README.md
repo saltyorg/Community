@@ -4,7 +4,8 @@
 [![Contributors:](https://img.shields.io/github/contributors/saltyorg/community?color=blue)](https://github.com/saltyorg/Community)
 [![Lines of Code:](https://img.shields.io/tokei/lines/github/saltyorg/community)](https://github.com/saltyorg/Community)
 [![Issues:](https://img.shields.io/github/issues/saltyorg/Community?color=blue)](https://github.com/saltyorg/Community/issues)
-[![Build status](https://appveyor.cloudbox.work/api/projects/status/tyraswwahlldwpnu/branch/master?svg=true)](https://appveyor.cloudbox.work/project/AppVeyor/community/branch/master)
+[![CI](https://github.com/saltyorg/Community/actions/workflows/community.yml/badge.svg)](https://github.com/saltyorg/Community/actions/workflows/community.yml)
+[![Ansible Lint](https://github.com/saltyorg/Community/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/saltyorg/Community/actions/workflows/ansible-lint.yml)
 [![License:](https://img.shields.io/github/license/saltyorg/Community)](LICENSE.md)
 
 Community Repository for Unofficial Saltbox Add-ons
