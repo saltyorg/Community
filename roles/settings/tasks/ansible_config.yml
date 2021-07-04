@@ -36,7 +36,7 @@
   register: ansible_cfg_update_status
   loop:
     - { section: 'defaults', option: 'inventory', value: '/srv/git/saltbox/inventories/local' }
-    - { section: 'defaults', option: 'roles_path', value: 'roles:/srv/git/saltbox/roles:/srv/git/cloudbox/resources/roles' }
+    - { section: 'defaults', option: 'roles_path', value: 'roles:/srv/git/saltbox/roles:/srv/git/saltbox/resources/roles' }
     - { section: 'defaults', option: 'fact_path', value: '/srv/git/saltbox/ansible_facts.d' }
     - { section: 'defaults', option: 'filter_plugins', value: '/srv/git/saltbox/filter_plugins' }
     - { section: 'defaults', option: 'interpreter_python', value: '/usr/bin/python3' }
