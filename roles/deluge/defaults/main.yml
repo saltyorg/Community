@@ -71,13 +71,13 @@ deluge_docker_ports_defaults:
 # - Internal and External ports need to match for the next set of ports
 # - Lookup available ports and set docker ports accordingly
 deluge_docker_ports_58112: "{{ port_lookup_58112.port
-                                  if (port_lookup_58112.port is defined)
-                                      and (port_lookup_58112.port | trim | length > 0)
-                                  else '58112' }}"
+                            if (port_lookup_58112.port is defined)
+                                and (port_lookup_58112.port | trim | length > 0)
+                            else '58112' }}"
 deluge_docker_ports_58846: "{{ port_lookup_58846.port
-                                  if (port_lookup_58846.port is defined)
-                                      and (port_lookup_58846.port | trim | length > 0)
-                                  else '58846' }}"
+                            if (port_lookup_58846.port is defined)
+                                and (port_lookup_58846.port | trim | length > 0)
+                            else '58846' }}"
 
 deluge_docker_ports_torrents:
   - "{{ deluge_docker_ports_58112 }}:{{ deluge_docker_ports_58112 }}"
@@ -86,9 +86,9 @@ deluge_docker_ports_custom: []
 deluge_docker_ports: "{{ deluge_docker_ports_defaults
                           + deluge_docker_ports_torrents
                           + deluge_docker_ports_custom
-                          if (not reverse_proxy_is_enabled)
-                          else deluge_docker_ports_torrents
-                                + deluge_docker_ports_custom }}"
+                      if (not reverse_proxy_is_enabled)
+                      else deluge_docker_ports_torrents
+                            + deluge_docker_ports_custom }}"
 
 # Envs
 deluge_docker_envs_default:
@@ -98,7 +98,7 @@ deluge_docker_envs_default:
   UMASK: "002"
 deluge_docker_envs_custom: {}
 deluge_docker_envs: "{{ deluge_docker_envs_default
-                                | combine(deluge_docker_envs_custom) }}"
+                        | combine(deluge_docker_envs_custom) }}"
 
 # Commands
 deluge_docker_commands_default: []

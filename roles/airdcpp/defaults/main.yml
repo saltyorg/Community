@@ -71,9 +71,9 @@ airdcpp_docker_ports_defaults:
   - "21249:21249"
 airdcpp_docker_ports_custom: []
 airdcpp_docker_ports: "{{ airdcpp_docker_ports_defaults
-                            + airdcpp_docker_ports_custom
-                            if (not reverse_proxy_is_enabled)
-                            else [] + airdcpp_docker_ports_custom }}"
+                          + airdcpp_docker_ports_custom
+                        if (not reverse_proxy_is_enabled)
+                        else [] + airdcpp_docker_ports_custom }}"
 
 # Envs
 airdcpp_docker_envs_default:

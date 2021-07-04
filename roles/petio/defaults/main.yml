@@ -63,9 +63,9 @@ petio_docker_ports_defaults:
   - "{{ petio_web_port }}:{{ petio_web_port }}"
 petio_docker_ports_custom: []
 petio_docker_ports: "{{ petio_docker_ports_defaults
-                            + petio_docker_ports_custom
-                        if (not reverse_proxy_is_enabled)
-                        else [] + petio_docker_ports_custom }}"
+                        + petio_docker_ports_custom
+                      if (not reverse_proxy_is_enabled)
+                      else [] + petio_docker_ports_custom }}"
 
 # Envs
 petio_docker_envs_default:
@@ -75,41 +75,41 @@ petio_docker_envs_default:
   TZ: "{{ tz }}"
 petio_docker_envs_custom: {}
 petio_docker_envs: "{{ petio_docker_envs_default
-                          | combine(petio_docker_envs_custom) }}"
+                        | combine(petio_docker_envs_custom) }}"
 
 # Commands
 petio_docker_commands_default: []
 petio_docker_commands_custom: []
 petio_docker_commands: "{{ petio_docker_commands_default
-                              + petio_docker_commands_custom}}"
+                            + petio_docker_commands_custom}}"
 
 # Volumes
 petio_docker_volumes_default:
   - "{{ petio_paths_location }}:/config"
 petio_docker_volumes_custom: []
 petio_docker_volumes: "{{ petio_docker_volumes_default
-                              + petio_docker_volumes_custom
-                              + docker_volumes_downloads_common }}"
+                          + petio_docker_volumes_custom
+                          + docker_volumes_downloads_common }}"
 
 # Devices
 petio_docker_devices_default: []
 petio_docker_devices_custom: []
 petio_docker_devices: "{{ petio_docker_devices_default
-                              + petio_docker_devices_custom }}"
+                          + petio_docker_devices_custom }}"
 
 # Hosts
 petio_docker_hosts_default: []
 petio_docker_hosts_custom: []
 petio_docker_hosts: "{{ docker_hosts_common
-                            | combine(petio_docker_hosts_default)
-                            | combine(petio_docker_hosts_custom) }}"
+                        | combine(petio_docker_hosts_default)
+                        | combine(petio_docker_hosts_custom) }}"
 
 # Labels
 petio_docker_labels_default: {}
 petio_docker_labels_custom: {}
 petio_docker_labels: "{{ docker_labels_common
-                            | combine(petio_docker_labels_default)
-                            | combine(petio_docker_labels_custom) }}"
+                          | combine(petio_docker_labels_default)
+                          | combine(petio_docker_labels_custom) }}"
 
 # Hostname
 petio_docker_hostname: "{{ petio_name }}"
@@ -119,20 +119,20 @@ petio_docker_networks_alias: "{{ petio_name }}"
 petio_docker_networks_default: []
 petio_docker_networks_custom: []
 petio_docker_networks: "{{ docker_networks_common
-                              + petio_docker_networks_default
-                              + petio_docker_networks_custom }}"
+                            + petio_docker_networks_default
+                            + petio_docker_networks_custom }}"
 
 # Capabilities
 petio_docker_capabilities_default: []
 petio_docker_capabilities_custom: []
 petio_docker_capabilities: "{{ petio_docker_capabilities_default
-                                  + petio_docker_capabilities_custom }}"
+                                + petio_docker_capabilities_custom }}"
 
 # Security Opts
 petio_docker_security_opts_default: []
 petio_docker_security_opts_custom: []
 petio_docker_security_opts: "{{ petio_docker_security_opts_default
-                                    + petio_docker_security_opts_custom }}"
+                                + petio_docker_security_opts_custom }}"
 
 # Restart Policy
 petio_docker_restart_policy: unless-stopped
