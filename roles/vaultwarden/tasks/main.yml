@@ -45,7 +45,6 @@
         owner: "{{ user.name }}"
         group: "{{ user.name }}"
         mode: 0775
-        force: true
 
   when: not vaultwarden_env.stat.exists
 
