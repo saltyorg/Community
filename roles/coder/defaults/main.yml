@@ -64,9 +64,9 @@ coder_docker_ports_defaults:
   - "{{ coder_web_port }}:{{ coder_web_port }}"
 coder_docker_ports_custom: []
 coder_docker_ports: "{{ coder_docker_ports_defaults
-                            + coder_docker_ports_custom
-                          if (not reverse_proxy_is_enabled)
-                          else [] + coder_docker_ports_custom }}"
+                        + coder_docker_ports_custom
+                      if (not reverse_proxy_is_enabled)
+                      else [] + coder_docker_ports_custom }}"
 
 # Envs
 coder_docker_envs_default:
@@ -77,13 +77,13 @@ coder_docker_envs_default:
   PASSWORD: "{{ user.pass }}"
 coder_docker_envs_custom: {}
 coder_docker_envs: "{{ coder_docker_envs_default
-                           | combine(coder_docker_envs_custom) }}"
+                       | combine(coder_docker_envs_custom) }}"
 
 # Commands
 coder_docker_commands_default: []
 coder_docker_commands_custom: []
 coder_docker_commands: "{{ coder_docker_commands_default
-                               + coder_docker_commands_custom}}"
+                           + coder_docker_commands_custom}}"
 
 # Volumes
 coder_docker_volumes_default:
@@ -94,28 +94,28 @@ coder_docker_volumes_default:
 
 coder_docker_volumes_custom: []
 coder_docker_volumes: "{{ coder_docker_volumes_default
-                              + coder_docker_volumes_custom
-                              + docker_volumes_downloads_common }}"
+                          + coder_docker_volumes_custom
+                          + docker_volumes_downloads_common }}"
 
 # Devices
 coder_docker_devices_default: []
 coder_docker_devices_custom: []
 coder_docker_devices: "{{ coder_docker_devices_default
-                              + coder_docker_devices_custom }}"
+                          + coder_docker_devices_custom }}"
 
 # Hosts
 coder_docker_hosts_default: []
 coder_docker_hosts_custom: []
 coder_docker_hosts: "{{ docker_hosts_common
-                            | combine(coder_docker_hosts_default)
-                            | combine(coder_docker_hosts_custom) }}"
+                        | combine(coder_docker_hosts_default)
+                        | combine(coder_docker_hosts_custom) }}"
 
 # Labels
 coder_docker_labels_default: {}
 coder_docker_labels_custom: {}
 coder_docker_labels: "{{ docker_labels_common
-                             | combine(coder_docker_labels_default)
-                             | combine(coder_docker_labels_custom) }}"
+                         | combine(coder_docker_labels_default)
+                         | combine(coder_docker_labels_custom) }}"
 
 # Hostname
 coder_docker_hostname: "{{ coder_name }}"
@@ -125,20 +125,20 @@ coder_docker_networks_alias: "{{ coder_name }}"
 coder_docker_networks_default: []
 coder_docker_networks_custom: []
 coder_docker_networks: "{{ docker_networks_common
-                               + coder_docker_networks_default
-                               + coder_docker_networks_custom }}"
+                           + coder_docker_networks_default
+                           + coder_docker_networks_custom }}"
 
 # Capabilities
 coder_docker_capabilities_default: []
 coder_docker_capabilities_custom: []
 coder_docker_capabilities: "{{ coder_docker_capabilities_default
-                                   + coder_docker_capabilities_custom }}"
+                               + coder_docker_capabilities_custom }}"
 
 # Security Opts
 coder_docker_security_opts_default: []
 coder_docker_security_opts_custom: []
 coder_docker_security_opts: "{{ coder_docker_security_opts_default
-                                    + coder_docker_security_opts_custom }}"
+                                + coder_docker_security_opts_custom }}"
 
 # Restart Policy
 coder_docker_restart_policy: unless-stopped
