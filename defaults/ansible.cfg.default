@@ -1,6 +1,5 @@
 [defaults]
 inventory = /srv/git/saltbox/inventories/local
-library = /srv/git/saltbox/library
 roles_path = roles:/srv/git/saltbox/roles:/srv/git/saltbox/resources/roles
 filter_plugins = /srv/git/saltbox/filter_plugins
 fact_path = /srv/git/saltbox/ansible_facts.d
