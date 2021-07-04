@@ -1,6 +1,6 @@
 ##########################################################################
 # Title:         Community: Autoscan | Default Variables                 #
-# Author(s):     salty                                                   #
+# Author(s):     salty, TABLE                                            #
 # URL:           https://github.com/saltyorg/saltbox                     #
 # --                                                                     #
 ##########################################################################
@@ -21,6 +21,7 @@ autoscan_paths_folder: "{{ autoscan_name }}"
 autoscan_paths_location: "{{ server_appdata_path }}/{{ autoscan_paths_folder }}"
 autoscan_paths_folders_list:
   - "{{ autoscan_paths_location }}"
+autoscan_paths_config_location: "{{ autoscan_paths_location }}/config.yml"
 
 ################################
 # Web
