@@ -1,4 +1,4 @@
-## Bitwarden_RS Configuration File
+## Vaultwarden Configuration File
 ## Uncomment any of the following lines to change the defaults
 
 ## Main data folder
@@ -63,7 +63,7 @@ INVITATIONS_ALLOWED=true
 ## The domain must match the address from where you access the server
 ## Unless you are using U2F, or having problems with attachments not downloading, there is no need to change this
 ## For U2F to work, the server must use HTTPS, you can use Let's Encrypt for free certs
-DOMAIN=https://bitwarden.{{ user.domain }}
+DOMAIN=https://vaultwarden.{{ user.domain }}
 
 ## Yubico (Yubikey) Settings
 ## Set your Client ID and Secret Key for Yubikey OTP
@@ -82,7 +82,7 @@ DOMAIN=https://bitwarden.{{ user.domain }}
 ## Mail specific settings, set SMTP_HOST and SMTP_FROM to enable the mail service.
 ## Note: if SMTP_USERNAME is specified, SMTP_PASSWORD is mandatory
 # SMTP_HOST=smtp.domain.tld
-# SMTP_FROM=bitwarden-rs@domain.tld
+# SMTP_FROM=vaultwarden@domain.tld
 # SMTP_PORT=587
 # SMTP_SSL=true
 # SMTP_USERNAME=username
