@@ -21,9 +21,5 @@
   file: "path={{ item }} state=directory owner={{ user.name }} group={{ user.name }} mode=0775"
   with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
-# - name: Pre-Install Tasks
-#   import_tasks: "subtasks/htpasswd.yml"
-#   when: not continuous_integration
-
 - name: Create Docker container
   include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
