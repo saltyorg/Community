@@ -54,7 +54,7 @@ jobs:
     name: '${{ matrix.roles }}'
     runs-on: ubuntu-20.04
     needs: install
-    if: always
+    if: always()
     steps:
       - uses: technote-space/workflow-conclusion-action@v2
       - uses: sarisia/actions-status-discord@v1
