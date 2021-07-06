@@ -17,7 +17,7 @@
     - { role: alternatrr, tags: ['alternatrr'] }
     - { role: alternatrrx, tags: ['alternatrrx'] }
     - { role: apprise, tags: ['apprise'] }
-    # - { role: archivebox, tags: ['archivebox'] }
+    - { role: archivebox, tags: ['archivebox'] }
     - { role: asshama, tags: ['asshama'] }
     - { role: autoscan, tags: ['autoscan'] }
     # - { role: bazarrx, tags: ['bazarrx'] }

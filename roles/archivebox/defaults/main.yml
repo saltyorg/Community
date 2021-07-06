@@ -1,6 +1,6 @@
 #########################################################################
 # Title:            Community: Archive Box                              #
-# Author(s):        4everfun                                            #
+# Author(s):        4everfun, kowalski                                  #
 # URL:              https://github.com/saltyorg/Community               #
 # Docker Image(s):  archivebox/archivebox                               #
 # --                                                                    #
@@ -140,4 +140,3 @@ archivebox_docker_restart_policy: unless-stopped
 
 # State
 archivebox_docker_state: started
-
