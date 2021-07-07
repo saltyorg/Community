@@ -63,8 +63,8 @@ alltube_docker_ports_defaults: []
 alltube_docker_ports_custom: []
 alltube_docker_ports: "{{ alltube_docker_ports_defaults
                           + alltube_docker_ports_custom
-                        if (not reverse_proxy_is_enabled)
-                        else [] + alltube_docker_ports_custom }}"
+                       if (not reverse_proxy_is_enabled)
+                       else [] + alltube_docker_ports_custom }}"
 
 # Envs
 alltube_docker_envs_default:
@@ -73,13 +73,13 @@ alltube_docker_envs_default:
   TZ: "{{ tz }}"
 alltube_docker_envs_custom: {}
 alltube_docker_envs: "{{ alltube_docker_envs_default
-                          | combine(alltube_docker_envs_custom) }}"
+                         | combine(alltube_docker_envs_custom) }}"
 
 # Commands
 alltube_docker_commands_default: []
 alltube_docker_commands_custom: []
 alltube_docker_commands: "{{ alltube_docker_commands_default
-                              + alltube_docker_commands_custom}}"
+                             + alltube_docker_commands_custom}}"
 
 # Volumes
 alltube_docker_volumes_default:
@@ -106,8 +106,8 @@ alltube_docker_hosts: "{{ docker_hosts_common
 alltube_docker_labels_default: {}
 alltube_docker_labels_custom: {}
 alltube_docker_labels: "{{ docker_labels_common
-                            | combine(alltube_docker_labels_default)
-                            | combine(alltube_docker_labels_custom) }}"
+                           | combine(alltube_docker_labels_default)
+                           | combine(alltube_docker_labels_custom) }}"
 
 # Hostname
 alltube_docker_hostname: "{{ alltube_name }}"
@@ -117,14 +117,14 @@ alltube_docker_networks_alias: "{{ alltube_name }}"
 alltube_docker_networks_default: []
 alltube_docker_networks_custom: []
 alltube_docker_networks: "{{ docker_networks_common
-                              + alltube_docker_networks_default
-                              + alltube_docker_networks_custom }}"
+                             + alltube_docker_networks_default
+                             + alltube_docker_networks_custom }}"
 
 # Capabilities
 alltube_docker_capabilities_default: []
 alltube_docker_capabilities_custom: []
 alltube_docker_capabilities: "{{ alltube_docker_capabilities_default
-                                  + alltube_docker_capabilities_custom }}"
+                                 + alltube_docker_capabilities_custom }}"
 
 # Security Opts
 alltube_docker_security_opts_default: []

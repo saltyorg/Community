@@ -63,7 +63,7 @@ airsonic_docker_ports_defaults:
   - "{{ airsonic_web_port }}"
 airsonic_docker_ports_custom: []
 airsonic_docker_ports: "{{ airsonic_docker_ports_defaults
-                            + airsonic_docker_ports_custom
+                           + airsonic_docker_ports_custom
                         if (not reverse_proxy_is_enabled)
                         else [] + airsonic_docker_ports_custom }}"
 
@@ -87,21 +87,21 @@ airsonic_docker_volumes_default:
   - "{{ airsonic_paths_location }}:/config"
 airsonic_docker_volumes_custom: []
 airsonic_docker_volumes: "{{ airsonic_docker_volumes_default
-                              + airsonic_docker_volumes_custom
-                              + docker_volumes_downloads_common }}"
+                             + airsonic_docker_volumes_custom
+                             + docker_volumes_downloads_common }}"
 
 # Devices
 airsonic_docker_devices_default: []
 airsonic_docker_devices_custom: []
 airsonic_docker_devices: "{{ airsonic_docker_devices_default
-                              + airsonic_docker_devices_custom }}"
+                             + airsonic_docker_devices_custom }}"
 
 # Hosts
 airsonic_docker_hosts_default: []
 airsonic_docker_hosts_custom: []
 airsonic_docker_hosts: "{{ docker_hosts_common
-                            | combine(airsonic_docker_hosts_default)
-                            | combine(airsonic_docker_hosts_custom) }}"
+                           | combine(airsonic_docker_hosts_default)
+                           | combine(airsonic_docker_hosts_custom) }}"
 
 # Labels
 airsonic_docker_labels_default: {}
@@ -131,7 +131,7 @@ airsonic_docker_capabilities: "{{ airsonic_docker_capabilities_default
 airsonic_docker_security_opts_default: []
 airsonic_docker_security_opts_custom: []
 airsonic_docker_security_opts: "{{ airsonic_docker_security_opts_default
-                                    + airsonic_docker_security_opts_custom }}"
+                                   + airsonic_docker_security_opts_custom }}"
 
 # Restart Policy
 airsonic_docker_restart_policy: unless-stopped

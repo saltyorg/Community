@@ -30,7 +30,7 @@
     - { role: coder, tags: ['coder'] }
     # - { role: comixed, tags: ['comixed'] }
     # - { role: comicstreamer, tags: ['comicstreamer'] }
-    # - { role: deemix, tags: ['deemix'] }
+    - { role: deemix, tags: ['deemix'] }
     # - { role: couchpotato, tags: ['couchpotato'] }
     - { role: deluge, tags: ['deluge'] }
     # - { role: delugevpn, tags: ['delugevpn'] }
