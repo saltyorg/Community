@@ -1,6 +1,6 @@
 #########################################################################
 # Title:            Community: Archive Box                              #
-# Author(s):        4everfun                                            #
+# Author(s):        4everfun, kowalski                                  #
 # URL:              https://github.com/saltyorg/Community               #
 # Docker Image(s):  archivebox/archivebox                               #
 # --                                                                    #
@@ -8,45 +8,23 @@
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Set DNS Record on CloudFlare"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: archivebox
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Stop and remove any existing container
-  docker_container:
-    name: archivebox
-    state: absent
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
 
-- name: Create archivebox directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - /opt/archivebox
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: "0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
-- name: Create and start container
-  docker_container:
-    name: archivebox
-    image: "archivebox/archivebox:latest"
-    pull: yes
-    env:
-      TZ: "{{ tz }}"
-      PUID: "{{ uid }}"
-      PGID: "{{ gid }}"
-      VIRTUAL_HOST: "archivebox.{{ user.domain }}"
-      VIRTUAL_PORT: "8000"
-      LETSENCRYPT_HOST: "archivebox.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-    command: 
-    volumes:
-      - "/opt/archivebox:/data"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - archivebox
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
