@@ -64,7 +64,7 @@ alternatrr_docker_ports_defaults:
   - "{{ alternatrr_web_port }}"
 alternatrr_docker_ports_custom: []
 alternatrr_docker_ports: "{{ alternatrr_docker_ports_defaults
-                              + alternatrr_docker_ports_custom
+                             + alternatrr_docker_ports_custom
                           if (not reverse_proxy_is_enabled)
                           else [] + alternatrr_docker_ports_custom }}"
 
@@ -90,21 +90,21 @@ alternatrr_docker_volumes_default:
   - "{{ sonarr_paths_location }}/app:/opt/sonarr/app"
 alternatrr_docker_volumes_custom: []
 alternatrr_docker_volumes: "{{ alternatrr_docker_volumes_default
-                                + alternatrr_docker_volumes_custom
-                                + docker_volumes_downloads_common }}"
+                               + alternatrr_docker_volumes_custom
+                               + docker_volumes_downloads_common }}"
 
 # Devices
 alternatrr_docker_devices_default: []
 alternatrr_docker_devices_custom: []
 alternatrr_docker_devices: "{{ alternatrr_docker_devices_default
-                                + alternatrr_docker_devices_custom }}"
+                               + alternatrr_docker_devices_custom }}"
 
 # Hosts
 alternatrr_docker_hosts_default: []
 alternatrr_docker_hosts_custom: []
 alternatrr_docker_hosts: "{{ docker_hosts_common
-                              | combine(alternatrr_docker_hosts_default)
-                              | combine(alternatrr_docker_hosts_custom) }}"
+                             | combine(alternatrr_docker_hosts_default)
+                             | combine(alternatrr_docker_hosts_custom) }}"
 
 # Labels
 alternatrr_docker_labels_default: {}
@@ -134,7 +134,7 @@ alternatrr_docker_capabilities: "{{ alternatrr_docker_capabilities_default
 alternatrr_docker_security_opts_default: []
 alternatrr_docker_security_opts_custom: []
 alternatrr_docker_security_opts: "{{ alternatrr_docker_security_opts_default
-                                      + alternatrr_docker_security_opts_custom }}"
+                                     + alternatrr_docker_security_opts_custom }}"
 
 # Restart Policy
 alternatrr_docker_restart_policy: unless-stopped

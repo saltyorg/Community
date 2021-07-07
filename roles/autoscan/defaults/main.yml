@@ -64,7 +64,7 @@ autoscan_docker_ports_defaults:
   - "{{ autoscan_web_port }}"
 autoscan_docker_ports_custom: []
 autoscan_docker_ports: "{{ autoscan_docker_ports_defaults
-                            + autoscan_docker_ports_custom
+                           + autoscan_docker_ports_custom
                         if (not reverse_proxy_is_enabled)
                         else [] + autoscan_docker_ports_custom }}"
 
@@ -89,21 +89,21 @@ autoscan_docker_volumes_default:
   - "/mnt:/mnt:ro"
 autoscan_docker_volumes_custom: []
 autoscan_docker_volumes: "{{ autoscan_docker_volumes_default
-                              + autoscan_docker_volumes_custom
-                              + docker_volumes_downloads_common }}"
+                             + autoscan_docker_volumes_custom
+                             + docker_volumes_downloads_common }}"
 
 # Devices
 autoscan_docker_devices_default: []
 autoscan_docker_devices_custom: []
 autoscan_docker_devices: "{{ autoscan_docker_devices_default
-                              + autoscan_docker_devices_custom }}"
+                             + autoscan_docker_devices_custom }}"
 
 # Hosts
 autoscan_docker_hosts_default: []
 autoscan_docker_hosts_custom: []
 autoscan_docker_hosts: "{{ docker_hosts_common
-                            | combine(autoscan_docker_hosts_default)
-                            | combine(autoscan_docker_hosts_custom) }}"
+                           | combine(autoscan_docker_hosts_default)
+                           | combine(autoscan_docker_hosts_custom) }}"
 
 # Labels
 autoscan_docker_labels_default: {}
@@ -133,7 +133,7 @@ autoscan_docker_capabilities: "{{ autoscan_docker_capabilities_default
 autoscan_docker_security_opts_default: []
 autoscan_docker_security_opts_custom: []
 autoscan_docker_security_opts: "{{ autoscan_docker_security_opts_default
-                                    + autoscan_docker_security_opts_custom }}"
+                                   + autoscan_docker_security_opts_custom }}"
 
 # Restart Policy
 autoscan_docker_restart_policy: unless-stopped

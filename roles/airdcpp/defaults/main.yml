@@ -133,7 +133,7 @@ airdcpp_docker_networks: "{{ docker_networks_common
 airdcpp_docker_capabilities_default: []
 airdcpp_docker_capabilities_custom: []
 airdcpp_docker_capabilities: "{{ airdcpp_docker_capabilities_default
-                                  + airdcpp_docker_capabilities_custom }}"
+                                 + airdcpp_docker_capabilities_custom }}"
 
 # Security Opts
 airdcpp_docker_security_opts_default: []
