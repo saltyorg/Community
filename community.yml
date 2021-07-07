@@ -46,7 +46,7 @@
     # - { role: gitea, tags: ['gitea'] }
     # - { role: glances, tags: ['glances'] }
     # - { role: goplaxt, tags: ['goplaxt'] }
-    # - { role: gotify, tags: ['gotify'] }
+    - { role: gotify, tags: ['gotify'] }
     - { role: grafana, tags: ['grafana'] }
     # - { role: guacamole, tags: ['guacamole'] }
     # - { role: handbrake, tags: ['handbrake'] }
