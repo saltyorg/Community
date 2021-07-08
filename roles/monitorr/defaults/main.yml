@@ -1,0 +1,186 @@
+#########################################################################
+# Title:            Community: Monitorr                                 #
+# Author(s):        Superduper09, Kalroth, kowalski                     #
+# URL:              https://github.com/saltyorg/Community               #
+# Docker Image(s):  monitorr/monitorr                                   #
+# --                                                                    #
+#########################################################################
+#                   GNU General Public License v3.0                     #
+#########################################################################
+---
+################################
+# Basics
+################################
+
+monitorr_name: monitorr
+
+################################
+# Paths
+################################
+
+monitorr_paths_folder: "{{ monitorr_name }}"
+monitorr_paths_location: "{{ server_appdata_path }}/{{ monitorr_paths_folder }}"
+monitorr_paths_folders_list:
+  - "{{ monitorr_paths_location }}"
+monitorr_paths_config_location: "{{ monitorr_paths_location }}/config.yml"
+
+################################
+# Web
+################################
+
+monitorr_web_subdomain: "{{ monitorr_name }}"
+monitorr_web_domain: "{{ user.domain }}"
+monitorr_web_port: "80"
+
+################################
+# DNS
+################################
+
+monitorr_dns_record: "{{ monitorr_web_subdomain }}"
+monitorr_dns_zone: "{{ monitorr_web_domain }}"
+
+################################
+# Traefik
+################################
+
+monitorr_traefik_middleware: "secureHeaders@file,gzip"
+monitorr_traefik_host: "{{ monitorr_web_subdomain + '.' + monitorr_web_domain }}"
+monitorr_traefik_certresolver: "{{ traefik_default_certresolver }}"
+monitorr_traefik_enabled: true
+
+################################
+# Docker
+################################
+
+# Container
+monitorr_docker_container: "{{ monitorr_name }}"
+
+# Image
+monitorr_docker_image_pull: true
+monitorr_docker_image_tag: "develop"
+monitorr_docker_image: "monitorr/monitorr:{{ monitorr_docker_image_tag }}"
+
+# Ports
+monitorr_docker_ports_defaults:
+  - "{{ monitorr_web_port }}"
+monitorr_docker_ports_custom: []
+monitorr_docker_ports: "{{ monitorr_docker_ports_defaults
+                           + monitorr_docker_ports_custom
+                        if (not reverse_proxy_is_enabled)
+                        else [] + monitorr_docker_ports_custom }}"
+
+# Envs
+monitorr_docker_envs_default:
+  PUID: "{{ uid }}"
+  PGID: "{{ gid }}"
+  TZ: "{{ tz }}"
+monitorr_docker_envs_custom: {}
+monitorr_docker_envs: "{{ monitorr_docker_envs_default
+                          | combine(monitorr_docker_envs_custom) }}"
+
+# Commands
+monitorr_docker_commands_default: []
+monitorr_docker_commands_custom: []
+monitorr_docker_commands: "{{ monitorr_docker_commands_default
+                              + monitorr_docker_commands_custom}}"
+
+# Volumes
+monitorr_docker_volumes_default:
+  - "{{ monitorr_paths_location }}:/app"
+monitorr_docker_volumes_custom: []
+monitorr_docker_volumes: "{{ monitorr_docker_volumes_default
+                             + monitorr_docker_volumes_custom
+                             + docker_volumes_downloads_common }}"
+
+# Devices
+monitorr_docker_devices_default: []
+monitorr_docker_devices_custom: []
+monitorr_docker_devices: "{{ monitorr_docker_devices_default
+                             + monitorr_docker_devices_custom }}"
+
+# Hosts
+monitorr_docker_hosts_default: []
+monitorr_docker_hosts_custom: []
+monitorr_docker_hosts: "{{ docker_hosts_common
+                           | combine(monitorr_docker_hosts_default)
+                           | combine(monitorr_docker_hosts_custom) }}"
+
+# Labels
+monitorr_docker_labels_default: {}
+monitorr_docker_labels_custom: {}
+monitorr_docker_labels: "{{ docker_labels_common
+                            | combine(monitorr_docker_labels_default)
+                            | combine(monitorr_docker_labels_custom) }}"
+
+# Hostname
+monitorr_docker_hostname: "{{ monitorr_name }}"
+
+# Networks
+monitorr_docker_networks_alias: "{{ monitorr_name }}"
+monitorr_docker_networks_default: []
+monitorr_docker_networks_custom: []
+monitorr_docker_networks: "{{ docker_networks_common
+                              + monitorr_docker_networks_default
+                              + monitorr_docker_networks_custom }}"
+
+# Capabilities
+monitorr_docker_capabilities_default: []
+monitorr_docker_capabilities_custom: []
+monitorr_docker_capabilities: "{{ monitorr_docker_capabilities_default
+                                  + monitorr_docker_capabilities_custom }}"
+
+# Security Opts
+monitorr_docker_security_opts_default: []
+monitorr_docker_security_opts_custom: []
+monitorr_docker_security_opts: "{{ monitorr_docker_security_opts_default
+                                   + monitorr_docker_security_opts_custom }}"
+
+# Restart Policy
+monitorr_docker_restart_policy: unless-stopped
+
+# State
+monitorr_docker_state: started
+
+
+
+##################################################
+# - name: "Setting CloudFlare DNS Record"
+#   include_role:
+#     name: cloudflare-dns
+#   vars:
+#     record: monitorr
+#   when: cloudflare_enabled
+
+# - name: Stop and remove any existing container
+#   docker_container:
+#     name: monitorr
+#     state: absent
+
+# - name: Create monitorr directories
+#   file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
+#   with_items:
+#     - /opt/monitorr
+
+- name: Create and start container
+  docker_container:
+    # name: monitorr
+    # image: monitorr/monitorr:develop
+    pull: yes
+    env:
+      TZ: "{{ tz }}"
+      PUID: "{{ uid }}"
+      PGID: "{{ gid }}"
+      # VIRTUAL_HOST: "monitorr.{{ user.domain }}"
+      # VIRTUAL_PORT: "80"
+      # LETSENCRYPT_HOST: "monitorr.{{ user.domain }}"
+      # LETSENCRYPT_EMAIL: "{{ user.email }}"
+    volumes:
+      - "/opt/monitorr:/app"
+    labels:
+      "com.github.cloudbox.cloudbox_managed": "true"
+    networks:
+      - name: cloudbox
+        aliases:
+          - monitorr
+    restart_policy: unless-stopped
+    state: started
