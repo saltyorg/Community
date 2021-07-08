@@ -25,7 +25,7 @@
     # - { role: booksonic, tags: ['booksonic'] }
     # - { role: bookstack, tags: ['bookstack'] }
     - { role: btrfsmaintenance, tags: ['btrfsmaintenance'] }
-    # - { role: calibre, tags: ['calibre'] }
+    - { role: calibre, tags: ['calibre'] }
     # - { role: calibre-web, tags: ['calibre-web'] }
     - { role: coder, tags: ['coder'] }
     # - { role: comixed, tags: ['comixed'] }
