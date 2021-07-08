@@ -1,6 +1,6 @@
 #########################################################################
 # Title:            Community: Medusa                                   #
-# Author(s):        javi11                                              #
+# Author(s):        javi11, kowalski                                    #
 # URL:              https://github.com/saltyorg/Community               #
 # Docker Image(s):  linuxserver/medusa                                  #
 # --                                                                    #
@@ -8,52 +8,23 @@
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Setting CloudFlare DNS Record"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: medusa
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Stop and remove any existing container
-  docker_container:
-    name: medusa
-    state: absent
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
 
-- name: Create medusa directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - /opt/medusa
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: "0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
-- name: Set default_volumes variable
-  set_fact:
-    default_volumes:
-      - "/opt/medusa:/config"
-      - "/opt/scripts:/scripts"
-      - "/mnt:/mnt"
-      - "/mnt/unionfs/Media/TV:/tv"
-
-- name: Create and start container
-  docker_container:
-    name: medusa
-    image: linuxserver/medusa
-    pull: yes
-    env:
-      TZ: "{{ tz }}"
-      PUID: "{{ uid }}"
-      PGID: "{{ gid }}"
-      UMASK: "002"
-      VIRTUAL_HOST: "medusa.{{ user.domain }}"
-      VIRTUAL_PORT: "8081"
-      LETSENCRYPT_HOST: "medusa.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-    volumes: "{{ default_volumes + nzbs_downloads_path|default([]) + torrents_downloads_path|default([]) }}"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - medusa
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"

@@ -65,7 +65,7 @@
     - { role: lidarrx, tags: ['lidarrx'] }
     # - { role: logarr, tags: ['logarr'] }
     # - { role: mediabutler, tags: ['mediabutler'] }
-    # - { role: medusa, tags: ['medusa'] }
+    - { role: medusa, tags: ['medusa'] }
     - { role: monitorr, tags: ['monitorr'] }
     # - { role: mylar3, tags: ['mylar3'] }
     # - { role: navidrome, tags: ['navidrome'] }
