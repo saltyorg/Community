@@ -145,9 +145,3 @@ calibre_docker_restart_policy: unless-stopped
 
 # State
 calibre_docker_state: started
-
-#####################################################
-#
-    # exposed_ports:
-    #   - 8080
-    #   - 8081
