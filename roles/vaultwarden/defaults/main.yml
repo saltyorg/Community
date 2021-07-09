@@ -21,7 +21,6 @@ vaultwarden_paths_folder: "{{ vaultwarden_name }}"
 vaultwarden_paths_location: "{{ server_appdata_path }}/{{ vaultwarden_paths_folder }}"
 vaultwarden_paths_folders_list:
   - "{{ vaultwarden_paths_location }}"
-  - "{{ vaultwarden_paths_location }}/env"
 vaultwarden_paths_config_location: "{{ vaultwarden_paths_location }}/env"
 
 ################################
