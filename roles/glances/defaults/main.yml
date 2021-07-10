@@ -22,6 +22,7 @@ glances_paths_folder: "{{ glances_name }}"
 glances_paths_location: "{{ server_appdata_path }}/{{ glances_paths_folder }}"
 glances_paths_folders_list:
   - "{{ glances_paths_location }}"
+  - "{{ glances_paths_location }}/config"
 glances_paths_config_location: "{{ glances_paths_location }}/config/glances.conf"
 
 ################################
@@ -69,8 +70,8 @@ glances_docker_ports_defaults:
 glances_docker_ports_custom: []
 glances_docker_ports: "{{ glances_docker_ports_defaults
                           + glances_docker_ports_custom
-                        if (not reverse_proxy_is_enabled)
-                        else [] + glances_docker_ports_custom }}"
+                       if (not reverse_proxy_is_enabled)
+                       else [] + glances_docker_ports_custom }}"
 
 # Envs
 glances_docker_envs_default:
