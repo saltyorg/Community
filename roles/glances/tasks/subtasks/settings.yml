@@ -17,8 +17,8 @@
   block:
 
   - name: Settings | Import default `{{ glances_paths_config_location | basename }}`
-    template:
-      src: glances.conf.j2
+    copy:
+      src: glances.conf
       dest: "{{ glances_paths_config_location }}"
       owner: "{{ user.name }}"
       group: "{{ user.name }}"
