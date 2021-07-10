@@ -65,8 +65,8 @@
     - { role: lidarrx, tags: ['lidarrx'] }
     # - { role: logarr, tags: ['logarr'] }
     # - { role: mediabutler, tags: ['mediabutler'] }
-    # - { role: medusa, tags: ['medusa'] }
-    # - { role: monitorr, tags: ['monitorr'] }
+    - { role: medusa, tags: ['medusa'] }
+    - { role: monitorr, tags: ['monitorr'] }
     # - { role: mylar3, tags: ['mylar3'] }
     # - { role: navidrome, tags: ['navidrome'] }
     # - { role: nextcloud, tags: ['nextcloud'] }
@@ -85,7 +85,7 @@
     # - { role: sickchill, tags: ['sickchill'] }
     - { role: sonarrx, tags: ['sonarrx'] }
     - { role: speedtest, tags: ['speedtest'] }
-    # - { role: sshwifty, tags: ['sshwifty'] }
+    - { role: sshwifty, tags: ['sshwifty'] }
     # - { role: stash, tags: ['stash'] }
     # - { role: subsonic, tags: ['subsonic'] }
     # - { role: synclounge, tags: ['synclounge'] }
