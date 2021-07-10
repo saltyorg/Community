@@ -110,7 +110,7 @@ glances_docker_hosts: "{{ docker_hosts_common
                           | combine(glances_docker_hosts_custom) }}"
 
 # Labels
-glances_docker_labels_default: {}
+glances_docker_labels_default:
   traefik.http.middlewares.glances-auth.basicauth.usersfile: "{{ glances_auth }}"
 glances_docker_labels_custom: {}
 glances_docker_labels: "{{ docker_labels_common
