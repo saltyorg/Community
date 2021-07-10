@@ -23,3 +23,5 @@
       owner: "{{ user.name }}"
       group: "{{ user.name }}"
       mode: 0775
+
+  when: not sshwifty_config.stat.exists
