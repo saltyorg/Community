@@ -45,7 +45,6 @@ glances_dns_zone: "{{ glances_web_domain }}"
 ################################
 
 glances_traefik_middleware: "secureHeaders@file,gzip,glances-auth"
-glances_traefik_host: "{{ glances_web_subdomain + '.' + glances_web_domain }}"
 glances_traefik_certresolver: "{{ traefik_default_certresolver }}"
 glances_traefik_enabled: true
 glances_auth: "/etc/traefik/auth"
@@ -92,7 +91,7 @@ glances_docker_commands: "{{ glances_docker_commands_default
 
 # Volumes
 glances_docker_volumes_default:
-  - "{{ glances_paths_location }}/config:/glances/conf:rw"
+  - "{{ glances_paths_config_location }}:/glances/conf/glances.conf:rw"
   #- "/var/run/docker.sock:/var/run/docker.sock:ro"
 glances_docker_volumes_custom: []
 glances_docker_volumes: "{{ glances_docker_volumes_default
