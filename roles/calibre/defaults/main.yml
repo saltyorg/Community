@@ -73,7 +73,7 @@ calibre_docker_envs_default:
   PUID: "{{ uid }}"
   PGID: "{{ gid }}"
   TZ: "{{ tz }}"
-  PASSWORD: "{{ user.pass | hash('md5') }}"
+  PASSWORD: "{{ user.pass }}"
   LIBRARYINTERNALPATH: "/library"
 calibre_docker_envs_custom: {}
 calibre_docker_envs: "{{ calibre_docker_envs_default
