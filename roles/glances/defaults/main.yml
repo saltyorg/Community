@@ -60,7 +60,7 @@ glances_docker_container: "{{ glances_name }}"
 
 # Image
 glances_docker_image_pull: true
-glances_docker_image_tag: "alpine-latest"
+glances_docker_image_tag: "latest-full"
 glances_docker_image: "nicolargo/glances:{{ glances_docker_image_tag }}"
 
 # Ports
@@ -78,7 +78,7 @@ glances_docker_envs_default:
   GID: "{{ gid }}"
   TZ: "{{ tz }}"
   GLANCES_OPT: "-w"
-  DOCKER_HOST: "docker-socket-proxy:2375"
+  # DOCKER_HOST: "docker-socket-proxy:2375"
 glances_docker_envs_custom: {}
 glances_docker_envs: "{{ glances_docker_envs_default
                          | combine(glances_docker_envs_custom) }}"
@@ -92,7 +92,7 @@ glances_docker_commands: "{{ glances_docker_commands_default
 # Volumes
 glances_docker_volumes_default:
   - "{{ glances_paths_config_location }}:/glances/conf/glances.conf:rw"
-  #- "/var/run/docker.sock:/var/run/docker.sock:ro"
+  - "/var/run/docker.sock:/var/run/docker.sock:ro"
 glances_docker_volumes_custom: []
 glances_docker_volumes: "{{ glances_docker_volumes_default
                             + glances_docker_volumes_custom }}"
