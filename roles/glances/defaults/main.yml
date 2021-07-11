@@ -48,8 +48,6 @@ glances_traefik_middleware: "secureHeaders@file,gzip,glances-auth"
 glances_traefik_certresolver: "{{ traefik_default_certresolver }}"
 glances_traefik_enabled: true
 glances_auth: "/etc/traefik/auth"
-# can possibly write passwd to config file instead
-# yet to be tested - see line 318 of glances.conf
 
 ################################
 # Docker
@@ -78,7 +76,7 @@ glances_docker_envs_default:
   GID: "{{ gid }}"
   TZ: "{{ tz }}"
   GLANCES_OPT: "-w"
-  # DOCKER_HOST: "docker-socket-proxy:2375"
+  DOCKER_HOST: "tcp://docker-socket-proxy:2375"
 glances_docker_envs_custom: {}
 glances_docker_envs: "{{ glances_docker_envs_default
                          | combine(glances_docker_envs_custom) }}"
@@ -92,7 +90,6 @@ glances_docker_commands: "{{ glances_docker_commands_default
 # Volumes
 glances_docker_volumes_default:
   - "{{ glances_paths_config_location }}:/glances/conf/glances.conf:rw"
-  - "/var/run/docker.sock:/var/run/docker.sock:ro"
 glances_docker_volumes_custom: []
 glances_docker_volumes: "{{ glances_docker_volumes_default
                             + glances_docker_volumes_custom }}"
