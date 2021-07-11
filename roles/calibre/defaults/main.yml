@@ -44,7 +44,6 @@ calibre_dns_zone: "{{ calibre_web_domain }}"
 ################################
 
 calibre_traefik_middleware: "secureHeaders@file,gzip"
-calibre_traefik_host: "{{ calibre_web_subdomain + '.' + calibre_web_domain }}"
 calibre_traefik_certresolver: "{{ traefik_default_certresolver }}"
 calibre_traefik_enabled: true
 
@@ -74,9 +73,7 @@ calibre_docker_envs_default:
   PUID: "{{ uid }}"
   PGID: "{{ gid }}"
   TZ: "{{ tz }}"
-  PASSWORD: "{{ user.name }}"
-  # GUAC_USER: "{{ user.name }}"
-  # GUAC_PASS: "{{ user.pass | hash('md5') }}"
+  PASSWORD: "{{ user.pass | hash('md5') }}"
   LIBRARYINTERNALPATH: "/library"
 calibre_docker_envs_custom: {}
 calibre_docker_envs: "{{ calibre_docker_envs_default
