@@ -57,8 +57,8 @@
     # - { role: invoiceninja, tags: ['invoiceninja'] }
     # - { role: jellyfin, tags: ['jellyfin'] }
     # - { role: jirafeau, tags: ['jirafeau'] }
-    - { role: kcptun-client, tags: ['kcptun-client'] }
-    - { role: kcptun-server, tags: ['kcptun-server'] }
+    - { role: kcptun_client, tags: ['kcptun-client'] }
+    - { role: kcptun_server, tags: ['kcptun-server'] }
     # - { role: kitana, tags: ['kitana'] }
     # - { role: komga, tags: ['komga'] }
     # - { role: lazylibrarian, tags: ['lazylibrarian'] }
