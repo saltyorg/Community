@@ -1,7 +1,6 @@
 # Saltbox Community Repo
-[![Website:](https://img.shields.io/badge/website-https%3A%2F%2Fsaltbox.dev-blue)](https://saltbox.dev)
-[![Wiki:](https://img.shields.io/badge/wiki-https%3A%2F%2Fwiki.saltbox.dev-blue)](https://wiki.saltbox.dev)
-[![Contributors:](https://img.shields.io/github/contributors/saltyorg/community?color=blue)](https://github.com/saltyorg/Community)
+[![Docs:](https://img.shields.io/badge/docs-docs.saltbox.dev-blue)](https://docs.saltbox.dev)
+[![Contributors:](https://img.shields.io/github/contributors/saltyorg/community?color=blue)](https://github.com/saltyorg/Community/graphs/contributors)
 [![Lines of Code:](https://img.shields.io/tokei/lines/github/saltyorg/community)](https://github.com/saltyorg/Community)
 [![Issues:](https://img.shields.io/github/issues/saltyorg/Community?color=blue)](https://github.com/saltyorg/Community/issues)
 [![CI](https://github.com/saltyorg/Community/actions/workflows/community.yml/badge.svg)](https://github.com/saltyorg/Community/actions/workflows/community.yml)
@@ -14,13 +13,9 @@ Community Repository for Unofficial Saltbox Add-ons
 
 - [Saltbox](https://github.com/saltyorg/Saltbox/)
 
-### Install
+### Documentation
 
-- [Install](https://wiki.saltbox.dev/Community/Install) (Not ready)
-
-### Wiki
-
-- [Wiki](https://wiki.saltbox.dev/Community) (Not ready)
+- [Docs](https://docs.saltbox.dev) (WIP)
 
 ### Roles
 
