@@ -22,6 +22,7 @@ logarr_paths_folder: "{{ logarr_name }}"
 logarr_paths_location: "{{ server_appdata_path }}/{{ logarr_paths_folder }}"
 logarr_paths_folders_list:
   - "{{ logarr_paths_location }}"
+  - "{{ logarr_paths_location }}/userdata"
 logarr_paths_config_location: "{{ logarr_paths_location }}/userdata/config.json"
 
 ################################
