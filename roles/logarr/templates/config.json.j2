@@ -11,7 +11,7 @@
         "liveSearch": "false"
     },
     "preferences": {
-        "sitetitle": "CloudBox",
+        "sitetitle": "saltbox",
         "siteurl": "https:\/\/logarr.{{ user.domain }}",
         "updateBranch": "alpha",
         "timezone": "Etc\/GMT",
@@ -25,6 +25,12 @@
     },
     "logs": [
         {
+            "logTitle": "autoscan",
+            "path": "\/opt\/autoscan\/activity.log",
+            "enabled": "Yes",
+            "category": "Apps"
+        },
+        {
             "logTitle": "Plex_Autoscan",
             "path": "\/opt\/plex_autoscan\/plex_autoscan.log",
             "enabled": "Yes",
@@ -33,6 +39,12 @@
         {
             "logTitle": "CloudPlow",
             "path": "\/opt\/cloudplow\/cloudplow.log",
+            "enabled": "Yes",
+            "category": "Apps"
+        },
+        {
+            "logTitle": "crop",
+            "path": "\/opt\/crop\/activity.log",
             "enabled": "Yes",
             "category": "Apps"
         },
