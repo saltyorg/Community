@@ -30,8 +30,8 @@ alltube_web_subdomain: "{{ alltube_name }}"
 alltube_web_domain: "{{ user.domain }}"
 alltube_web_port: "80"
 alltube_web_url: "{{ 'https://' + alltube_web_subdomain + '.' + alltube_web_domain
-              if (reverse_proxy_is_enabled)
-              else 'http://localhost:' + alltube_web_port }}"
+                  if (reverse_proxy_is_enabled)
+                  else 'http://localhost:' + alltube_web_port }}"
 
 ################################
 # DNS
