@@ -30,8 +30,8 @@ prowlarr_web_subdomain: "{{ prowlarr_name }}"
 prowlarr_web_domain: "{{ user.domain }}"
 prowlarr_web_port: "9696"
 prowlarr_web_url: "{{ 'https://' + prowlarr_web_subdomain + '.' + prowlarr_web_domain
-              if (reverse_proxy_is_enabled)
-              else 'http://localhost:' + prowlarr_web_port }}"
+                   if (reverse_proxy_is_enabled)
+                   else 'http://localhost:' + prowlarr_web_port }}"
 
 ################################
 # DNS
