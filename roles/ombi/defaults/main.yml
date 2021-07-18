@@ -29,6 +29,9 @@ ombi_paths_folders_list:
 ombi_web_subdomain: "{{ ombi_name }}"
 ombi_web_domain: "{{ user.domain }}"
 ombi_web_port: "5000"
+ombi_web_url: "{{ 'https://' + ombi_web_subdomain + '.' + ombi_web_domain
+               if (reverse_proxy_is_enabled)
+               else 'http://localhost:' + ombi_web_port }}"
 
 ################################
 # DNS

@@ -32,6 +32,9 @@ glances_paths_config_location: "{{ glances_paths_location }}/config/glances.conf
 glances_web_subdomain: "{{ glances_name }}"
 glances_web_domain: "{{ user.domain }}"
 glances_web_port: "61208"
+glances_web_url: "{{ 'https://' + glances_web_subdomain + '.' + glances_web_domain
+                  if (reverse_proxy_is_enabled)
+                  else 'http://localhost:' + glances_web_port }}"
 
 ################################
 # DNS

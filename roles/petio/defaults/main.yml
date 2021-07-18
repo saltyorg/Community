@@ -29,6 +29,9 @@ petio_paths_folders_list:
 petio_web_subdomain: "{{ petio_name }}"
 petio_web_domain: "{{ user.domain }}"
 petio_web_port: "7777"
+petio_web_url: "{{ 'https://' + petio_web_subdomain + '.' + petio_web_domain
+                if (reverse_proxy_is_enabled)
+                else 'http://localhost:' + petio_web_port }}"
 
 ################################
 # DNS
