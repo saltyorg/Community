@@ -36,6 +36,9 @@ qbittorrent_paths_folders_list:
 qbittorrent_web_subdomain: "{{ qbittorrent_name }}"
 qbittorrent_web_domain: "{{ user.domain }}"
 qbittorrent_web_port: "8080"
+qbittorrent_web_url: "{{ 'https://' + qbittorrent_web_subdomain + '.' + qbittorrent_web_domain
+                      if (reverse_proxy_is_enabled)
+                      else 'http://localhost:' + qbittorrent_web_port }}"
 
 ################################
 # DNS
