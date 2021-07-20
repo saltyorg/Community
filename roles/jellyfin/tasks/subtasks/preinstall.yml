@@ -64,14 +64,6 @@
     path: "{{ jellyfin_paths_dlna_location }}"
   register: jellyfin_dlna
 
-- name: Preinstall STAT | Check if '/dev/dri' exists
-  stat:
-    path: "/dev/dri"
-  register: dev_dri
-  set_fact:
-    jellyfin_docker_devices_custom:
-      - { "{{ '/dev/dri:/dev/dri' if (gpu.intel and dev_dri.stat.exists) | default(false) else omit }}" }
-
 - name: Preinstall FACTS | Get "IP for LazyMan"
   set_fact: lazyman_ip="{{ lookup('dig', 'nhl.freegamez.ga.', '@8.8.8.8', 'qtype=A') }}"
 
