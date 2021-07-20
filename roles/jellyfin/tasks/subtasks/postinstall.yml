@@ -14,7 +14,7 @@
 
 - name: Post-Install | Ensure transcodes folder has the correct permissions
   file:
-    path: "{{ jellyfin_paths_transcodes_location}}"
+    path: "{{ jellyfin_paths_transcodes_location }}"
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
     mode: 0775
