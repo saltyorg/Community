@@ -8,8 +8,3 @@ skip_list:
   - no-handler
   - command-instead-of-module
   - command-instead-of-shell
-
-mock_modules:
-  - find_next_open_port
-
-skip_action_validation: true
