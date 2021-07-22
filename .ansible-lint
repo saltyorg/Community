@@ -11,3 +11,5 @@ skip_list:
 
 mock_modules:
   - find_next_open_port
+
+skip_action_validation: true
