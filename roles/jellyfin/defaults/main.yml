@@ -67,12 +67,12 @@ jellyfin_system_settings_default:
   - { xpath: 'PublicPort', value: '80' }
   - { xpath: 'PublicHttpsPort', value: '443' }
   - { xpath: 'EnableHttps', value: 'true' }
-  - { xpath: 'RequireHttps', value: 'false' }
-  - { xpath: 'EnableUPnP', value: 'false' }
+  - { xpath: 'RequireHttps', value: 'false' } # default
+  - { xpath: 'EnableUPnP', value: 'false' } # default
   - { xpath: 'EnableFolderView', value: 'true' }
-  - { xpath: 'EnableMetrics', value: 'false' }
-  - { xpath: 'UPnPCreateHttpPortMap', value: 'false' }
-  - { xpath: 'EnableNewOmdbSupport', value: 'true' }
+  - { xpath: 'EnableMetrics', value: 'false' } # default
+  - { xpath: 'UPnPCreateHttpPortMap', value: 'false' } # default
+  - { xpath: 'EnableNewOmdbSupport', value: 'true' } # default
   - { xpath: 'QuickConnectAvailable', value: 'true' }
   # - { xpath: 'HttpsPortNumber', value: '' } # check defaults
   # - { xpath: 'BaseUrl', value: '' } # check defaults
@@ -87,12 +87,12 @@ jellyfin_network_settings_default:
   - { xpath: 'PublicPort', value: '80' }
   - { xpath: 'PublicHttpsPort', value: '443' }
   - { xpath: 'EnableHttps', value: 'true' }
-  - { xpath: 'RequireHttps', value: 'false' }
-  - { xpath: 'EnableUPnP', value: 'false' }
-  - { xpath: 'UPnPCreateHttpPortMap', value: 'false' }
+  - { xpath: 'RequireHttps', value: 'false' } # default
+  - { xpath: 'EnableUPnP', value: 'false' } # default
+  - { xpath: 'UPnPCreateHttpPortMap', value: 'false' } # default
   - { xpath: 'PublishedServerUriBySubnet/string', value: '{{ jellyfin_web_subdomain }}.{{ jellyfin_web_domain }}' }
-  # - { xpath: 'BaseUrl', value: '' } # check defaults
-  # - { xpath: 'EnableRemoteAccess', value: 'false' }
+  # - { xpath: 'BaseUrl', value: '' } # defaults  to blank>
+  # - { xpath: 'EnableRemoteAccess', value: 'false' } # defaults  to true
 
 jellyfin_network_settings_custom: []
 jellyfin_network_settings_list: "{{ jellyfin_network_settings_default + jellyfin_network_settings_custom }}"
