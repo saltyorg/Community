@@ -30,8 +30,4 @@
 
 - name: Post-Install | Settings Tasks
   import_tasks: "settings.yml"
-  when: not jellyfin_new_install.stat.exists
-
-- name: Post-Install | Network Tasks
-  import_tasks: "settings.yml"
-  when: reverse_proxy_is_enabled
+  when: not jellyfin_existing_install.stat.exists

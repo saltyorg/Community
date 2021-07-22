@@ -40,7 +40,7 @@
 - name: Import postinstall task
   import_tasks: "subtasks/postinstall.yml"
   when: not (
-            (jellyfin_new_install.stat.exists)
+            (jellyfin_existing_install.stat.exists)
         or
             (continuous_integration)
         )
