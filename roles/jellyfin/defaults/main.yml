@@ -66,7 +66,6 @@ jellyfin_traefik_enabled: true
 jellyfin_system_settings_default:
   - { xpath: 'PublicPort', value: '80' }
   - { xpath: 'PublicHttpsPort', value: '443' }
-  - { xpath: 'EnableHttps', value: 'true' }
   - { xpath: 'EnableFolderView', value: 'true' }
   - { xpath: 'QuickConnectAvailable', value: 'true' }
   - { xpath: 'EnableRemoteAccess', value: 'true' }
@@ -79,7 +78,6 @@ jellyfin_system_settings_list: "{{ jellyfin_system_settings_default + jellyfin_s
 jellyfin_network_settings_default:
   - { xpath: 'PublicPort', value: '80' }
   - { xpath: 'PublicHttpsPort', value: '443' }
-  - { xpath: 'EnableHttps', value: 'true' }
   - { xpath: 'PublishedServerUriBySubnet/string', value: '{{ jellyfin_web_subdomain }}.{{ jellyfin_web_domain }}' }
 
 jellyfin_network_settings_custom: []
