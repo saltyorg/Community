@@ -31,6 +31,9 @@ deemix_paths_config_location: "{{ deemix_paths_location }}/config.yml"
 deemix_web_subdomain: "{{ deemix_name }}"
 deemix_web_domain: "{{ user.domain }}"
 deemix_web_port: "6595"
+deemix_web_url: "{{ 'https://' + deemix_web_subdomain + '.' + deemix_web_domain
+                 if (reverse_proxy_is_enabled)
+                 else 'http://localhost:' + deemix_web_port }}"
 
 ################################
 # DNS
