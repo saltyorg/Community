@@ -61,7 +61,7 @@ glances_docker_container: "{{ glances_name }}"
 
 # Image
 glances_docker_image_pull: true
-glances_docker_image_tag: "latest-full"
+glances_docker_image_tag: "alpine-latest-full"
 glances_docker_image: "nicolargo/glances:{{ glances_docker_image_tag }}"
 
 # Ports
