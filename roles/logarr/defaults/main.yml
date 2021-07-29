@@ -32,6 +32,9 @@ logarr_paths_config_location: "{{ logarr_paths_location }}/userdata/config.json"
 logarr_web_subdomain: "{{ logarr_name }}"
 logarr_web_domain: "{{ user.domain }}"
 logarr_web_port: "80"
+logarr_web_url: "{{ 'https://' + logarr_web_subdomain + '.' + logarr_web_domain
+                 if (reverse_proxy_is_enabled)
+                 else 'http://localhost:' + logarr_web_port }}"
 
 ################################
 # DNS
@@ -45,6 +48,7 @@ logarr_dns_zone: "{{ logarr_web_domain }}"
 ################################
 
 logarr_traefik_middleware: "secureHeaders@file,gzip"
+logarr_traefik_host: "{{ logarr_web_subdomain + '.' + logarr_web_domain }}"
 logarr_traefik_certresolver: "{{ traefik_default_certresolver }}"
 logarr_traefik_enabled: true
 
