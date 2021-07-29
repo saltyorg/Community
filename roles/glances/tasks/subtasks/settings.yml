@@ -1,0 +1,27 @@
+#########################################################################
+# Title:            Community: Glances                                  #
+# Author(s):        Satz, kowalski                                      #
+# URL:              https://github.com/saltyorg/Community               #
+# Docker Image(s):  nicolargo/glances                                   #
+# --                                                                    #
+#########################################################################
+#                   GNU General Public License v3.0                     #
+#########################################################################
+---
+- name: Settings | Check if `{{ glances_paths_config_location | basename }}` exists
+  stat:
+    path: "{{ glances_paths_config_location }}"
+  register: glances_config
+
+- name: Settings | New `{{ glances_paths_config_location | basename }}` tasks
+  block:
+
+  - name: Settings | Import default `{{ glances_paths_config_location | basename }}`
+    copy:
+      src: glances.conf
+      dest: "{{ glances_paths_config_location }}"
+      owner: "{{ user.name }}"
+      group: "{{ user.name }}"
+      mode: 0775
+
+  when: not glances_config.stat.exists
