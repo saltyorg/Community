@@ -20,7 +20,8 @@
     - { role: archivebox, tags: ['archivebox'] }
     - { role: asshama, tags: ['asshama'] }
     - { role: autoscan, tags: ['autoscan'] }
-    # - { role: bazarrx, tags: ['bazarrx'] }
+    - { role: bazarr, tags: ['bazarr'] }
+    - { role: bazarrx, tags: ['bazarrx'] }
     # - { role: beets, tags: ['beets'] }
     # - { role: booksonic, tags: ['booksonic'] }
     # - { role: bookstack, tags: ['bookstack'] }
