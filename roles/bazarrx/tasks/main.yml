@@ -1,32 +1,17 @@
 #########################################################################
 # Title:            Community: BazarrX                                  #
-# Author(s):        Migz93                                              #
+# Author(s):        Migz93, salty                                       #
 # URL:              https://github.com/saltyorg/Community               #
-# Docker Image(s):  linuxserver/bazarr                                  #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Gather list of bazarrx Docker containers"
-  shell: "docker ps -a --format '{{ '{{' }} .Names{{ '}}' }}' --filter label=com.github.cloudbox.community=bazarrx | xargs echo -n"
-  register: cloudbox_community_bazarrx
-  ignore_errors: yes
-
-- name: "Stop all bazarrx Docker containers"
-  shell: "docker stop {{ cloudbox_community_bazarrx.stdout }}"
-  ignore_errors: yes
-  when: (cloudbox_community_bazarrx.stdout | trim | length > 0)
-
-- name: "Remove all bazarrx Docker containers"
-  shell: "docker rm {{ cloudbox_community_bazarrx.stdout }}"
-  ignore_errors: yes
-  when: (cloudbox_community_bazarrx.stdout | trim | length > 0)
-
 - name: "Execute BazarrX roles"
-  include_tasks: template.yml
+  include_role:
+    name: bazarr
   vars:
-    rolename: "{{ role }}"
-  with_items: "{{ bazarrx.roles }}"
+    ombi_name: "bazarr{{ role }}"
+  with_items: "{{ bazarr.roles }}"
   loop_control:
     loop_var: role
