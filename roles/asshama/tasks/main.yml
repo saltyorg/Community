@@ -9,7 +9,8 @@
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- include_vars: /srv/git/saltbox/roles/plex/defaults/main.yml
+- name: Import Default Plex variables
+  include_vars: /srv/git/saltbox/roles/plex/defaults/main.yml
 
 - name: Gather list of running Docker containers
   shell: "docker ps --format '{{ '{{' }} .Names{{ '}}' }}' | xargs echo -n"
