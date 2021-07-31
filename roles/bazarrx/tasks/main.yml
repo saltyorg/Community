@@ -11,7 +11,7 @@
   include_role:
     name: bazarr
   vars:
-    ombi_name: "bazarr{{ role }}"
+    bazarr_name: "bazarr{{ role }}"
   with_items: "{{ bazarr.roles }}"
   loop_control:
     loop_var: role
