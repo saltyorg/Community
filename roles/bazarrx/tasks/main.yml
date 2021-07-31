@@ -12,6 +12,6 @@
     name: bazarr
   vars:
     bazarr_name: "bazarr{{ role }}"
-  with_items: "{{ bazarr.roles }}"
+  with_items: "{{ bazarrx.roles }}"
   loop_control:
     loop_var: role
