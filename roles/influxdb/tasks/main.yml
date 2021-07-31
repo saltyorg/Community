@@ -2,8 +2,6 @@
 # Title:            Community: InfluxDB Role                            #
 # Author(s):        desimaniac                                          #
 # URL:              https://github.com/saltyorg/Community               #
-# Docker Image(s):  influxdb                                            #
-# --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################

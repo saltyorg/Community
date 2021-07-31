@@ -2,9 +2,6 @@
 # Title:            Community: Monitorr                                 #
 # Author(s):        Superduper09, Kalroth, kowalski                     #
 # URL:              https://github.com/saltyorg/Community               #
-# Docker Image(s):  monitorr/monitorr                                   #
-# --                                                                    #
-#########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
