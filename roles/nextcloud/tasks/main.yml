@@ -2,9 +2,6 @@
 # Title:            Community: Nextcloud Role                           #
 # Author(s):        l3uddz, desimaniac                                  #
 # URL:              https://github.com/saltyorg/Community               #
-# Docker Image(s):  linuxserver/nextcloud                               #
-# --                                                                    #
-#########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
