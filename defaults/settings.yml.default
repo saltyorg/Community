@@ -11,8 +11,6 @@ bookstack:
   subdomain: bookstack
 calibreweb: 
   caliblur: true
-deluge: 
-  version: v2
 delugevpn: 
   version: v2
   vpn_endpoint: netherlands.ovpn
