@@ -60,7 +60,7 @@ comixed_docker_container: "{{ comixed_name }}"
 
 # Image
 comixed_docker_image_pull: true
-comixed_docker_image_tag: "release"
+comixed_docker_image_tag: "latest"
 comixed_docker_image: "comixed/comixed:{{ comixed_docker_image_tag }}"
 
 # Ports
