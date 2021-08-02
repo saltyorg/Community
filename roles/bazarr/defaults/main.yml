@@ -45,7 +45,7 @@ bazarr_dns_zone: "{{ bazarr_web_domain }}"
 # Traefik
 ################################
 
-bazarr_traefik_middleware: "secureHeaders@file,gzip"
+bazarr_traefik_middleware: "secureHeaders@file,customRequestHeaders@file,customResponseHeaders@file,gzip"
 bazarr_traefik_host: "{{ bazarr_web_subdomain + '.' + bazarr_web_domain }}"
 bazarr_traefik_certresolver: "{{ traefik_default_certresolver }}"
 bazarr_traefik_enabled: true

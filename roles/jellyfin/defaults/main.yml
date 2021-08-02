@@ -53,7 +53,7 @@ jellyfin_dns_zone: "{{ jellyfin_web_domain }}"
 # Traefik
 ################################
 
-jellyfin_traefik_middleware: "secureHeaders@file,gzip"
+jellyfin_traefik_middleware: "secureHeaders@file,customRequestHeaders@file,customResponseHeaders@file,gzip"
 jellyfin_traefik_certresolver: "{{ traefik_default_certresolver }}"
 jellyfin_traefik_enabled: true
 

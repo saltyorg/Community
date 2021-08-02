@@ -45,7 +45,7 @@ autoscan_dns_zone: "{{ autoscan_web_domain }}"
 # Traefik
 ################################
 
-autoscan_traefik_middleware: "secureHeaders@file,gzip"
+autoscan_traefik_middleware: "secureHeaders@file,customRequestHeaders@file,customResponseHeaders@file,gzip"
 autoscan_traefik_host: "{{ autoscan_web_subdomain + '.' + autoscan_web_domain }}"
 autoscan_traefik_certresolver: "{{ traefik_default_certresolver }}"
 autoscan_traefik_enabled: true

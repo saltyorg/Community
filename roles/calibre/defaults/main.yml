@@ -45,7 +45,7 @@ calibre_dns_zone: "{{ calibre_web_domain }}"
 # Traefik
 ################################
 
-calibre_traefik_middleware: "secureHeaders@file,gzip"
+calibre_traefik_middleware: "secureHeaders@file,customRequestHeaders@file,customResponseHeaders@file,gzip"
 calibre_traefik_certresolver: "{{ traefik_default_certresolver }}"
 calibre_traefik_enabled: true
 

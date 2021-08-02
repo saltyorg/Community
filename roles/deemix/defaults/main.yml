@@ -45,7 +45,7 @@ deemix_dns_zone: "{{ deemix_web_domain }}"
 # Traefik
 ################################
 
-deemix_traefik_middleware: "secureHeaders@file,gzip"
+deemix_traefik_middleware: "secureHeaders@file,customRequestHeaders@file,customResponseHeaders@file,gzip"
 deemix_traefik_host: "{{ deemix_web_subdomain + '.' + deemix_web_domain }}"
 deemix_traefik_certresolver: "{{ traefik_default_certresolver }}"
 deemix_traefik_enabled: true
