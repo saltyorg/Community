@@ -7,13 +7,10 @@ bazarrx:
   roles: 
     - 1080webdl
     - 1080remux
-  version: latest
 bookstack: 
   subdomain: bookstack
 calibreweb: 
   caliblur: true
-deluge: 
-  version: v2
 delugevpn: 
   version: v2
   vpn_endpoint: netherlands.ovpn
@@ -72,7 +69,7 @@ transmissionx:
 unifi: 
   port: 8080
 varken: 
-  tautulli_subdomain: plexpy
+  tautulli_subdomain: tautulli
 wordpress: 
   direct_domain: false
   subdomain: wordpress

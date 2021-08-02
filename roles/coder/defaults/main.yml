@@ -2,7 +2,6 @@
 # Title:            Community: Coder                                    #
 # Author(s):        astroMD, kowalski                                   #
 # URL:              https://github.com/saltyorg/Community               #
-# Docker Image(s):  codercom/code-server                                #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
@@ -30,6 +29,9 @@ coder_paths_folders_list:
 coder_web_subdomain: "{{ coder_name }}"
 coder_web_domain: "{{ user.domain }}"
 coder_web_port: "8080"
+coder_web_url: "{{ 'https://' + coder_web_subdomain + '.' + coder_web_domain
+                if (reverse_proxy_is_enabled)
+                else 'http://localhost:' + coder_web_port }}"
 
 ################################
 # DNS

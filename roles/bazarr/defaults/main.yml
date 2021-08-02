@@ -1,0 +1,146 @@
+##########################################################################
+# Title:         Community: Bazarr | Default Variables                   #
+# Author(s):     salty                                                   #
+# URL:           https://github.com/saltyorg/saltbox                     #
+# --                                                                     #
+##########################################################################
+#                   GNU General Public License v3.0                      #
+##########################################################################
+---
+################################
+# Basics
+################################
+
+bazarr_name: bazarr
+
+################################
+# Paths
+################################
+
+bazarr_paths_folder: "{{ bazarr_name }}"
+bazarr_paths_location: "{{ server_appdata_path }}/{{ bazarr_paths_folder }}"
+bazarr_paths_folders_list:
+  - "{{ bazarr_paths_location }}"
+bazarr_paths_config_location: "{{ bazarr_paths_location }}/config.yml"
+
+################################
+# Web
+################################
+
+bazarr_web_subdomain: "{{ bazarr_name }}"
+bazarr_web_domain: "{{ user.domain }}"
+bazarr_web_port: "6767"
+bazarr_web_url: "{{ 'https://' + bazarr_web_subdomain + '.' + bazarr_web_domain
+                   if (reverse_proxy_is_enabled)
+                   else 'http://localhost:' + bazarr_web_port }}"
+
+################################
+# DNS
+################################
+
+bazarr_dns_record: "{{ bazarr_web_subdomain }}"
+bazarr_dns_zone: "{{ bazarr_web_domain }}"
+
+################################
+# Traefik
+################################
+
+bazarr_traefik_middleware: "secureHeaders@file,gzip"
+bazarr_traefik_host: "{{ bazarr_web_subdomain + '.' + bazarr_web_domain }}"
+bazarr_traefik_certresolver: "{{ traefik_default_certresolver }}"
+bazarr_traefik_enabled: true
+
+################################
+# Docker
+################################
+
+# Container
+bazarr_docker_container: "{{ bazarr_name }}"
+
+# Image
+bazarr_docker_image_pull: true
+bazarr_docker_image_tag: "latest"
+bazarr_docker_image: "hotio/bazarr:{{ bazarr_docker_image_tag }}"
+
+# Ports
+bazarr_docker_ports_defaults:
+  - "{{ bazarr_web_port }}"
+bazarr_docker_ports_custom: []
+bazarr_docker_ports: "{{ bazarr_docker_ports_defaults
+                         + bazarr_docker_ports_custom
+                      if (not reverse_proxy_is_enabled)
+                      else [] + bazarr_docker_ports_custom }}"
+
+# Envs
+bazarr_docker_envs_default:
+  PUID: "{{ uid }}"
+  PGID: "{{ gid }}"
+  TZ: "{{ tz }}"
+bazarr_docker_envs_custom: {}
+bazarr_docker_envs: "{{ bazarr_docker_envs_default
+                        | combine(bazarr_docker_envs_custom) }}"
+
+# Commands
+bazarr_docker_commands_default: []
+bazarr_docker_commands_custom: []
+bazarr_docker_commands: "{{ bazarr_docker_commands_default
+                            + bazarr_docker_commands_custom}}"
+
+# Volumes
+bazarr_docker_volumes_default:
+  - "{{ bazarr_paths_location }}:/config"
+  - "/opt/scripts:/scripts"
+  - "/mnt:/mnt"
+bazarr_docker_volumes_custom: []
+bazarr_docker_volumes: "{{ bazarr_docker_volumes_default
+                           + bazarr_docker_volumes_custom
+                           + docker_volumes_downloads_common }}"
+
+# Devices
+bazarr_docker_devices_default: []
+bazarr_docker_devices_custom: []
+bazarr_docker_devices: "{{ bazarr_docker_devices_default
+                           + bazarr_docker_devices_custom }}"
+
+# Hosts
+bazarr_docker_hosts_default: []
+bazarr_docker_hosts_custom: []
+bazarr_docker_hosts: "{{ docker_hosts_common
+                         | combine(bazarr_docker_hosts_default)
+                         | combine(bazarr_docker_hosts_custom) }}"
+
+# Labels
+bazarr_docker_labels_default: {}
+bazarr_docker_labels_custom: {}
+bazarr_docker_labels: "{{ docker_labels_common
+                          | combine(bazarr_docker_labels_default)
+                          | combine(bazarr_docker_labels_custom) }}"
+
+# Hostname
+bazarr_docker_hostname: "{{ bazarr_name }}"
+
+# Networks
+bazarr_docker_networks_alias: "{{ bazarr_name }}"
+bazarr_docker_networks_default: []
+bazarr_docker_networks_custom: []
+bazarr_docker_networks: "{{ docker_networks_common
+                            + bazarr_docker_networks_default
+                            + bazarr_docker_networks_custom }}"
+
+# Capabilities
+bazarr_docker_capabilities_default: []
+bazarr_docker_capabilities_custom: []
+bazarr_docker_capabilities: "{{ bazarr_docker_capabilities_default
+                                + bazarr_docker_capabilities_custom }}"
+
+# Security Opts
+bazarr_docker_security_opts_default: []
+bazarr_docker_security_opts_custom: []
+bazarr_docker_security_opts: "{{ bazarr_docker_security_opts_default
+                                 + bazarr_docker_security_opts_custom }}"
+
+# Restart Policy
+bazarr_docker_restart_policy: unless-stopped
+
+# State
+bazarr_docker_state: started

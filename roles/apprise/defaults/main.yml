@@ -2,7 +2,6 @@
 # Title:            Community: Apprise                                  #
 # Author(s):        owine, kowalski                                     #
 # URL:              https://github.com/saltyorg/Community               #
-# Docker Image(s):  caronc/apprise                                      #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
@@ -30,6 +29,9 @@ apprise_paths_folders_list:
 apprise_web_subdomain: "{{ apprise_name }}"
 apprise_web_domain: "{{ user.domain }}"
 apprise_web_port: "8000"
+apprise_web_url: "{{ 'https://' + apprise_web_subdomain + '.' + apprise_web_domain
+                  if (reverse_proxy_is_enabled)
+                  else 'http://localhost:' + apprise_web_port }}"
 
 ################################
 # DNS

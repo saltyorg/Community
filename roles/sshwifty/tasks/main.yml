@@ -1,61 +1,32 @@
 #########################################################################
 # Title:            Community: Sshwifty                                 #
-# Author(s):        astromd                                             #
+# Author(s):        astromd, kowalski                                   #
 # URL:              https://github.com/saltyorg/Community               #
-# Docker Image(s):  niruix/sshwifty                                     #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Set DNS Record on CloudFlare"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: sshwifty
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Create required directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - /opt/sshwifty
-    - /opt/sshwifty/config
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
 
-- name: Import config file
-  template:
-    src: "sshwifty.conf.json.j2"
-    dest: "/opt/sshwifty/config/sshwifty.conf.json"
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
-    mode: 0775
-    force: no
+    mode: "0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
-- name: Stop and remove any existing containers
-  docker_container:
-    name: sshwifty
-    state: absent
+- name: Import Settings task
+  import_tasks: "subtasks/settings.yml"
 
-- name: Create and start sshwifty container
-  docker_container:
-    name: sshwifty
-    image: "niruix/sshwifty:latest"
-    pull: yes
-    env:
-      TZ: "{{ tz }}"
-      SSHWIFTY_CONFIG: "/config/sshwifty.conf.json"
-      VIRTUAL_HOST: "sshwifty.{{ user.domain }}"
-      VIRTUAL_PORT: "8182"
-      LETSENCRYPT_HOST: "sshwifty.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-    volumes:
-      - "/opt/sshwifty/config:/config"
-      - "/mnt:/mnt"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - sshwifty
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"

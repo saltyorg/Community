@@ -2,7 +2,6 @@
 # Title:            Community: Monitorr                                 #
 # Author(s):        Superduper09, Kalroth, kowalski                     #
 # URL:              https://github.com/saltyorg/Community               #
-# Docker Image(s):  monitorr/monitorr                                   #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
@@ -31,6 +30,9 @@ monitorr_paths_config_location: "{{ monitorr_paths_location }}/config.yml"
 monitorr_web_subdomain: "{{ monitorr_name }}"
 monitorr_web_domain: "{{ user.domain }}"
 monitorr_web_port: "80"
+monitorr_web_url: "{{ 'https://' + monitorr_web_subdomain + '.' + monitorr_web_domain
+                   if (reverse_proxy_is_enabled)
+                   else 'http://localhost:' + monitorr_web_port }}"
 
 ################################
 # DNS

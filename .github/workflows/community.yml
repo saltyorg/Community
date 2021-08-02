@@ -1,6 +1,19 @@
 name: CI
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    paths-ignore:
+      - '*.md'
+      - '.gitignore'
+      - 'roles/settings/**'
+      - 'roles/hetzner_nfs/**'
+  pull_request:
+    paths-ignore:
+      - '*.md'
+      - '.gitignore'
+      - 'roles/settings/**'
+      - 'roles/hetzner_nfs/**'
+  workflow_dispatch:
 
 jobs:
   find-roles:

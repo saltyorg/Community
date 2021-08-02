@@ -2,7 +2,6 @@
 # Title:            Community: Gotify-server                            #
 # Author(s):        Bas, kowalski                                       #
 # URL:              https://github.com/saltyorg/Community               #
-# Docker Image(s):  gotify/server                                       #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
@@ -31,6 +30,9 @@ gotify_paths_config_location: "{{ gotify_paths_location }}/config.yml"
 gotify_web_subdomain: "{{ gotify_name }}"
 gotify_web_domain: "{{ user.domain }}"
 gotify_web_port: "80"
+gotify_web_url: "{{ 'https://' + gotify_web_subdomain + '.' + gotify_web_domain
+                 if (reverse_proxy_is_enabled)
+                 else 'http://localhost:' + gotify_web_port }}"
 
 ################################
 # DNS

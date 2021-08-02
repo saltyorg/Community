@@ -2,10 +2,6 @@
 # Title:            Community: Guacamole                                #
 # Author(s):        RXWatcher                                           #
 # URL:              https://github.com/saltyorg/Community               #
-# Docker Image(s):  jasonbean/guacamole                                 #
-# --                                                                    #
-#########################################################################
-#                   GNU General Public License v3.0                     #
 #########################################################################
 ---
 - name: "Setting CloudFlare DNS Record"

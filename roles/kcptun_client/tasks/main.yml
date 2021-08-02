@@ -1,33 +1,31 @@
 #########################################################################
-# Title:            Community: kcptun Server                            #
+# Title:            Community: kcptun Client                            #
 # Author(s):        RXWatcher                                           #
 # URL:              https://github.com/saltyorg/Community               #
-# Docker Image(s):  horjulf/kcptun                                      #
-# --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
 - name: Stop and remove any existing container
   docker_container:
-   name: kcptun-server
+   name: kcptun-client
    state: absent
 
 - name: Create opt directory
   file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
   with_items:
-    - /opt/kcptun-server
-    - /opt/kcptun-server/config
+    - /opt/kcptun-client
+    - /opt/kcptun-client/config
 
-- name: "Check if kcptun-server config file exists"
+- name: "Check if kcptun-client config file exists"
   stat:
-    path: "/opt/kcptun-server/config/config.json"
+    path: "/opt/kcptun-client/config/config.json"
   register: kcptun_config
 
 - name: "Import config file if it doesnt exist"
   template:
     src: config.json.j2
-    dest: /opt/kcptun-server/config/config.json
+    dest: /opt/kcptun-client/config/config.json
     force: yes
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
@@ -36,14 +34,14 @@
 
 - name: Create and start container
   docker_container:
-    name: kcptun-server
+    name: kcptun-client
     image: horjulf/kcptun:latest
     pull: yes
     env:
       TZ: "{{ tz }}"
     volumes:
-      - "/opt/kcptun-server/config:/config"
-    command: "/bin/server -c /config/config.json"
+      - "/opt/kcptun-client/config:/config"
+    command: "/bin/client -c /config/config.json"
     labels:
       "com.github.cloudbox.cloudbox_managed": "true"
     user: "{{ uid }}:{{ gid }}"
