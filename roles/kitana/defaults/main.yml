@@ -46,7 +46,7 @@ kitana_dns_zone: "{{ kitana_web_domain }}"
 # Traefik
 ################################
 
-kitana_traefik_middleware: "secureHeaders@file,gzip"
+kitana_traefik_middleware: "secureHeaders@file,customRequestHeaders@file,customResponseHeaders@file,gzip"
 kitana_traefik_certresolver: "{{ traefik_default_certresolver }}"
 kitana_traefik_enabled: true
 
