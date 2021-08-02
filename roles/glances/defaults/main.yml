@@ -45,7 +45,7 @@ glances_dns_zone: "{{ glances_web_domain }}"
 # Traefik
 ################################
 
-glances_traefik_middleware: "secureHeaders@file,customRequestHeaders@file,customResponseHeaders@file,gzip,glances-auth"
+glances_traefik_middleware: "secureHeaders@file,gzip,glances-auth"
 glances_traefik_certresolver: "{{ traefik_default_certresolver }}"
 glances_traefik_enabled: true
 glances_auth: "/etc/traefik/auth"

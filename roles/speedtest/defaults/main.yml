@@ -44,7 +44,7 @@ speedtest_dns_zone: "{{ speedtest_web_domain }}"
 # Traefik
 ################################
 
-speedtest_traefik_middleware: "secureHeaders@file,customRequestHeaders@file,customResponseHeaders@file,gzip"
+speedtest_traefik_middleware: "secureHeaders@file,gzip"
 speedtest_traefik_host: "{{ speedtest_web_subdomain + '.' + speedtest_web_domain }}"
 speedtest_traefik_certresolver: "{{ traefik_default_certresolver }}"
 speedtest_traefik_enabled: true

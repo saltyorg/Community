@@ -43,7 +43,7 @@ grafana_dns_zone: "{{ grafana_web_domain }}"
 # Traefik
 ################################
 
-grafana_traefik_middleware: "secureHeaders@file,customRequestHeaders@file,customResponseHeaders@file,gzip"
+grafana_traefik_middleware: "secureHeaders@file,gzip"
 grafana_traefik_host: "{{ grafana_web_subdomain + '.' + grafana_web_domain }}"
 grafana_traefik_certresolver: "{{ traefik_default_certresolver }}"
 grafana_traefik_enabled: true

@@ -45,7 +45,7 @@ logarr_dns_zone: "{{ logarr_web_domain }}"
 # Traefik
 ################################
 
-logarr_traefik_middleware: "secureHeaders@file,customRequestHeaders@file,customResponseHeaders@file,gzip"
+logarr_traefik_middleware: "secureHeaders@file,gzip"
 logarr_traefik_host: "{{ logarr_web_subdomain + '.' + logarr_web_domain }}"
 logarr_traefik_certresolver: "{{ traefik_default_certresolver }}"
 logarr_traefik_enabled: true

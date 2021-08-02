@@ -49,7 +49,7 @@ qbittorrent_dns_zone: "{{ qbittorrent_web_domain }}"
 # Traefik
 ################################
 
-qbittorrent_traefik_middleware: "secureHeaders@file,customRequestHeaders@file,customResponseHeaders@file,gzip"
+qbittorrent_traefik_middleware: "secureHeaders@file,gzip"
 qbittorrent_traefik_host: "{{ qbittorrent_web_subdomain + '.' + qbittorrent_web_domain }}"
 qbittorrent_traefik_certresolver: "{{ traefik_default_certresolver }}"
 qbittorrent_traefik_enabled: true
