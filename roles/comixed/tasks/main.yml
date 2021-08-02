@@ -1,53 +1,41 @@
 #########################################################################
 # Title:            Community: comixed                                  #
-# Author(s):        theotocopulitos                                     #
+# Author(s):        theotocopulitos, kowalski                           #
 # URL:              https://github.com/saltyorg/Community               #
+# Docker Image(s):  comixed/comixed                                     #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Setting CloudFlare DNS Record"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: comixed
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Stop and remove any existing container
-  docker_container:
-    name: comixed
-    state: absent
+# - name: Create MariaDB container
+#   include_role:
+#     name: mariadb
 
-- name: Create comixed directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - /opt/comixed
-    - /mnt/local/Media/Comics
-- name: Create and start container
-  docker_container:
-    name: comixed
-    image: comixed/comixed:latest
-    pull: yes
-    env:
-      TZ: "{{ tz }}"
-      PUID: "{{ uid }}"
-      PGID: "{{ gid }}"
-      VIRTUAL_HOST: "comixed.{{ user.domain }}"
-      VIRTUAL_PORT: "7171"
-      LETSENCRYPT_HOST: "comixed.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-    volumes:
-      - "/opt/comixed:/root/.comixed"
-      - "/mnt/unionfs/Media/Comics:/comics"
-      - "mnt:/mnt"
+# - name: MariaDB ready state | Wait 120 seconds before continuing
+#   wait_for:
+#     timeout: 120
 
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - comixed
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
+
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: "0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
+
+# - name: Import Settings task
+#   import_tasks: "subtasks/settings.yml"
+
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
