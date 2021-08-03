@@ -46,7 +46,7 @@ bookstack_dns_zone: "{{ bookstack_web_domain }}"
 # Traefik
 ################################
 
-bookstack_traefik_middleware: "secureHeaders@file,customRequestHeaders@file,customResponseHeaders@file,gzip"
+bookstack_traefik_middleware: "secureHeaders@file,gzip"
 bookstack_traefik_certresolver: "{{ traefik_default_certresolver }}"
 bookstack_traefik_enabled: true
 
