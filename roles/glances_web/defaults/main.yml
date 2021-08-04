@@ -1,0 +1,146 @@
+#########################################################################
+# Title:            Community: Glances                                  #
+# Author(s):        Satz, kowalski                                      #
+# URL:              https://github.com/saltyorg/Community               #
+#########################################################################
+#                   GNU General Public License v3.0                     #
+#########################################################################
+---
+################################
+# Basics
+################################
+
+glancesweb_name: glances
+
+################################
+# Paths
+################################
+
+glancesweb_paths_folder: "{{ glancesweb_name }}"
+glancesweb_paths_location: "{{ server_appdata_path }}/{{ glancesweb_paths_folder }}"
+glancesweb_paths_folders_list:
+  - "{{ glancesweb_paths_location }}"
+  - "{{ glancesweb_paths_location }}/config"
+glancesweb_paths_config_location: "{{ glancesweb_paths_location }}/config/glances.conf"
+
+################################
+# Web
+################################
+
+glancesweb_web_subdomain: "{{ glancesweb_name }}"
+glancesweb_web_domain: "{{ user.domain }}"
+glancesweb_web_port: "61208"
+glancesweb_web_url: "{{ 'https://' + glancesweb_web_subdomain + '.' + glancesweb_web_domain
+                   if (reverse_proxy_is_enabled)
+                   else 'http://localhost:' + glancesweb_web_port }}"
+
+################################
+# DNS
+################################
+
+glancesweb_dns_record: "{{ glancesweb_web_subdomain }}"
+glancesweb_dns_zone: "{{ glancesweb_web_domain }}"
+
+################################
+# Traefik
+################################
+
+glancesweb_traefik_middleware: "secureHeaders@file,gzip,glances-auth"
+glancesweb_traefik_certresolver: "{{ traefik_default_certresolver }}"
+glancesweb_traefik_enabled: true
+glancesweb_auth: "/etc/traefik/auth"
+
+################################
+# Docker
+################################
+
+# Container
+glancesweb_docker_container: "{{ glancesweb_name }}"
+
+# Image
+glancesweb_docker_image_pull: true
+glancesweb_docker_image_tag: "alpine-latest-full"
+glancesweb_docker_image: "nicolargo/glances:{{ glancesweb_docker_image_tag }}"
+
+# Ports
+glancesweb_docker_ports_defaults:
+  - "{{ glancesweb_web_port }}"
+glancesweb_docker_ports_custom: []
+glancesweb_docker_ports: "{{ glancesweb_docker_ports_defaults
+                          + glancesweb_docker_ports_custom
+                       if (not reverse_proxy_is_enabled)
+                       else [] + glancesweb_docker_ports_custom }}"
+
+# Envs
+glancesweb_docker_envs_default:
+  UID: "{{ uid }}"
+  GID: "{{ gid }}"
+  TZ: "{{ tz }}"
+  glancesweb_OPT: "-w"
+  DOCKER_HOST: "tcp://docker-socket-proxy:2375"
+glancesweb_docker_envs_custom: {}
+glancesweb_docker_envs: "{{ glancesweb_docker_envs_default
+                         | combine(glancesweb_docker_envs_custom) }}"
+
+# Commands
+glancesweb_docker_commands_default: []
+glancesweb_docker_commands_custom: []
+glancesweb_docker_commands: "{{ glancesweb_docker_commands_default
+                             + glancesweb_docker_commands_custom }}"
+
+# Volumes
+glancesweb_docker_volumes_default:
+  - "{{ glancesweb_paths_config_location }}:/glances/conf/glances.conf:rw"
+glancesweb_docker_volumes_custom: []
+glancesweb_docker_volumes: "{{ glancesweb_docker_volumes_default
+                            + glancesweb_docker_volumes_custom }}"
+
+# Devices
+glancesweb_docker_devices_default: []
+glancesweb_docker_devices_custom: []
+glancesweb_docker_devices: "{{ glancesweb_docker_devices_default
+                            + glancesweb_docker_devices_custom }}"
+
+# Hosts
+glancesweb_docker_hosts_default: []
+glancesweb_docker_hosts_custom: []
+glancesweb_docker_hosts: "{{ docker_hosts_common
+                          | combine(glancesweb_docker_hosts_default)
+                          | combine(glancesweb_docker_hosts_custom) }}"
+
+# Labels
+glancesweb_docker_labels_default:
+  traefik.http.middlewares.glances-auth.basicauth.usersfile: "{{ glancesweb_auth }}"
+glancesweb_docker_labels_custom: {}
+glancesweb_docker_labels: "{{ docker_labels_common
+                           | combine(glancesweb_docker_labels_default)
+                           | combine(glancesweb_docker_labels_custom) }}"
+
+# Hostname
+glancesweb_docker_hostname: "{{ glancesweb_name }}"
+
+# Networks
+glancesweb_docker_networks_alias: "{{ glancesweb_name }}"
+glancesweb_docker_networks_default: []
+glancesweb_docker_networks_custom: []
+glancesweb_docker_networks: "{{ docker_networks_common
+                             + glancesweb_docker_networks_default
+                             + glancesweb_docker_networks_custom }}"
+
+# Capabilities
+glancesweb_docker_capabilities_default: []
+glancesweb_docker_capabilities_custom: []
+glancesweb_docker_capabilities: "{{ glancesweb_docker_capabilities_default
+                                 + glancesweb_docker_capabilities_custom }}"
+
+# Security Opts
+glancesweb_docker_security_opts_default: []
+glancesweb_docker_security_opts_custom: []
+glancesweb_docker_security_opts: "{{ glancesweb_docker_security_opts_default
+                                  + glancesweb_docker_security_opts_custom }}"
+
+# Restart Policy
+glancesweb_docker_restart_policy: unless-stopped
+
+# State
+glancesweb_docker_state: started
