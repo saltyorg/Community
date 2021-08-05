@@ -92,7 +92,7 @@ comixed_docker_volumes_default:
 comixed_docker_volumes_custom: []
 comixed_docker_volumes: "{{ comixed_docker_volumes_default
                             + comixed_docker_volumes_custom
-                            + docker_volumes_downloads_common }}"  # CHECK IF NEEDED
+                            + docker_volumes_downloads_common }}"
 
 # Devices
 comixed_docker_devices_default: []
