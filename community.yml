@@ -30,7 +30,7 @@
     # - { role: calibre-web, tags: ['calibre-web'] }
     - { role: coder, tags: ['coder'] }
     # - { role: comixed, tags: ['comixed'] }
-    # - { role: comicstreamer, tags: ['comicstreamer'] }
+    - { role: comicstreamer, tags: ['comicstreamer'] }
     - { role: deemix, tags: ['deemix'] }
     # - { role: couchpotato, tags: ['couchpotato'] }
     - { role: deluge, tags: ['deluge'] }
