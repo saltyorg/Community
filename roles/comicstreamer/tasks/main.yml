@@ -1,8 +1,8 @@
 #########################################################################
-# Title:            Community: rolename                                 #
-# Author(s):        kowalski                                            #
+# Title:            Community: comicstreamer                            #
+# Author(s):        theotocopulitos, kowalski                           #
 # URL:              https://github.com/saltyorg/Community               #
-# Docker Image(s):  ghcr.io/hotio/appname                               #
+# Docker Image(s):  kalinon/comicstreamer                               #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
