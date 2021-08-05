@@ -24,13 +24,13 @@
     - { role: bazarrx, tags: ['bazarrx'] }
     # - { role: beets, tags: ['beets'] }
     # - { role: booksonic, tags: ['booksonic'] }
-    # - { role: bookstack, tags: ['bookstack'] }
+    - { role: bookstack, tags: ['bookstack'] }
     - { role: btrfsmaintenance, tags: ['btrfsmaintenance'] }
     - { role: calibre, tags: ['calibre'] }
-    # - { role: calibre-web, tags: ['calibre-web'] }
+    - { role: calibre_web, tags: ['calibre-web'] }
     - { role: coder, tags: ['coder'] }
-    # - { role: comixed, tags: ['comixed'] }
     - { role: comicstreamer, tags: ['comicstreamer'] }
+    - { role: comixed, tags: ['comixed'] }
     - { role: deemix, tags: ['deemix'] }
     # - { role: couchpotato, tags: ['couchpotato'] }
     - { role: deluge, tags: ['deluge'] }
