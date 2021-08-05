@@ -24,7 +24,7 @@
     - { role: bazarrx, tags: ['bazarrx'] }
     # - { role: beets, tags: ['beets'] }
     # - { role: booksonic, tags: ['booksonic'] }
-    # - { role: bookstack, tags: ['bookstack'] }
+    - { role: bookstack, tags: ['bookstack'] }
     - { role: btrfsmaintenance, tags: ['btrfsmaintenance'] }
     - { role: calibre, tags: ['calibre'] }
     - { role: calibre_web, tags: ['calibre-web'] }
