@@ -14,14 +14,6 @@
     dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
     dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-# - name: Create MariaDB container
-#   include_role:
-#     name: mariadb
-
-# - name: MariaDB ready state | Wait 120 seconds before continuing
-#   wait_for:
-#     timeout: 120
-
 - name: Remove existing Docker container
   include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
 
@@ -33,9 +25,6 @@
     group: "{{ user.name }}"
     mode: "0775"
   with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
-
-# - name: Import Settings task
-#   import_tasks: "subtasks/settings.yml"
 
 - name: Create Docker container
   include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
