@@ -34,6 +34,13 @@ calibre_web_url: "{{ 'https://' + calibre_web_subdomain + '.' + calibre_web_doma
                   if (reverse_proxy_is_enabled)
                   else 'http://localhost:' + calibre_web_port }}"
 
+calibre_web2_subdomain: "calibrebooks"
+calibre_web2_domain: "{{ user.domain }}"
+calibre_web2_port: "8081"
+calibre_web2_url: "{{ 'https://' + calibre_web2_subdomain + '.' + calibre_web2_domain
+                  if (reverse_proxy_is_enabled)
+                  else 'http://localhost:' + calibre_web2_port }}"
+
 ################################
 # DNS
 ################################
@@ -111,7 +118,13 @@ calibre_docker_hosts: "{{ docker_hosts_common
                           | combine(calibre_docker_hosts_custom) }}"
 
 # Labels
-calibre_docker_labels_default: {}
+calibre_docker_labels_default:
+  - '{ "traefik.http.routers.{{ calibre_web2_subdomain }}.entrypoints": "websecure" }'
+  - '{ "traefik.http.routers.{{ calibre_web2_subdomain }}.rule": "Host(`{{ calibre_web2_subdomain + dns_record_suffix + "." + calibre_web2_domain }}`)" }'
+  - '{ "traefik.http.routers.{{ calibre_web2_subdomain }}.tls.options": "securetls@file" }'
+  - '{ "traefik.http.routers.{{ calibre_web2_subdomain }}.tls.certresolver": "{{ calibre_traefik_certresolver }}" }'
+  - '{ "traefik.http.routers.{{ calibre_web2_subdomain }}.middlewares": "{{ calibre_traefik_middleware }}" }'
+  - '{ "traefik.http.services.{{ calibre_web2_subdomain }}.loadbalancer.server.port": "{{ calibre_web2_port }}" }'
 calibre_docker_labels_custom: {}
 calibre_docker_labels: "{{ docker_labels_common
                            | combine(calibre_docker_labels_default)
