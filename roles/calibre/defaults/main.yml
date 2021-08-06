@@ -123,6 +123,7 @@ calibre_docker_hosts: "{{ docker_hosts_common
 # Labels
 calibre_docker_labels_default:
   - '{ "traefik.http.routers.{{ calibre_web2_subdomain }}.entrypoints": "websecure" }'
+  - '{ "traefik.http.routers.{{ calibre_web2_subdomain }}.service": "{{ calibre_web2_subdomain }}" }'
   - '{ "traefik.http.routers.{{ calibre_web2_subdomain }}.rule": "Host(`{{ calibre_web2_subdomain + dns_record_suffix + "." + calibre_web2_domain }}`)" }'
   - '{ "traefik.http.routers.{{ calibre_web2_subdomain }}.tls.options": "securetls@file" }'
   - '{ "traefik.http.routers.{{ calibre_web2_subdomain }}.tls.certresolver": "{{ calibre_traefik_certresolver }}" }'
