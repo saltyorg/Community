@@ -29,8 +29,8 @@
     - { role: calibre, tags: ['calibre'] }
     - { role: calibre_web, tags: ['calibre-web'] }
     - { role: coder, tags: ['coder'] }
+    - { role: comicstreamer, tags: ['comicstreamer'] }
     - { role: comixed, tags: ['comixed'] }
-    # - { role: comicstreamer, tags: ['comicstreamer'] }
     - { role: deemix, tags: ['deemix'] }
     # - { role: couchpotato, tags: ['couchpotato'] }
     - { role: deluge, tags: ['deluge'] }

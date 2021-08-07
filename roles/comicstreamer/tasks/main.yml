@@ -1,54 +1,30 @@
 #########################################################################
 # Title:            Community: comicstreamer                            #
-# Author(s):        theotocopulitos                                     #
+# Author(s):        theotocopulitos, kowalski                           #
 # URL:              https://github.com/saltyorg/Community               #
+# Docker Image(s):  kalinon/comicstreamer                               #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Setting CloudFlare DNS Record"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: comicstreamer
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Stop and remove any existing container
-  docker_container:
-    name: comicstreamer
-    state: absent
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
 
-- name: Create comicstreamer directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - /opt/comicstreamer
-    - /mnt/local/Media/Comics
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: "0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
-- name: Create and start container
-  docker_container:
-    name: comicstreamer
-    image: kalinon/comicstreamer
-    pull: yes
-    env:
-      TZ: "{{ tz }}"
-      PUID: "{{ uid }}"
-      PGID: "{{ gid }}"
-      VIRTUAL_HOST: "comicstreamer.{{ user.domain }}"
-      VIRTUAL_PORT: "32500"
-      LETSENCRYPT_HOST: "comicstreamer.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-    volumes:
-      - "/opt/comicstreamer:/config"
-      - "/mnt/unionfs/Media/Comics:/comics"
-      - "/mnt:/mnt"
-
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - comicstreamer
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
