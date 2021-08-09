@@ -13,12 +13,12 @@
 - name: Settings | New `{{ glances_web_paths_config_location | basename }}` tasks
   block:
 
-  - name: Settings | Import default `{{ glances_web_paths_config_location | basename }}`
-    copy:
-      src: glances.conf
-      dest: "{{ glances_web_paths_config_location }}"
-      owner: "{{ user.name }}"
-      group: "{{ user.name }}"
-      mode: 0775
+    - name: Settings | Import default `{{ glances_web_paths_config_location | basename }}`
+      copy:
+        src: glances.conf
+        dest: "{{ glances_web_paths_config_location }}"
+        owner: "{{ user.name }}"
+        group: "{{ user.name }}"
+        mode: 0775
 
   when: not glances_web_config.stat.exists
