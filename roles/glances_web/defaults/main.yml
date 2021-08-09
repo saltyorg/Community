@@ -144,3 +144,9 @@ glances_web_docker_restart_policy: unless-stopped
 
 # State
 glances_web_docker_state: started
+
+# Force Kill
+glances_web_docker_force_kill: yes
+
+# PID Mode
+glances_web_docker_pid_mode: host
