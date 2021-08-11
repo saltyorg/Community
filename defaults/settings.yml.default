@@ -58,6 +58,9 @@ sonarrx:
 synclounge: 
   domain: ~
   subdomain: synclounge
+tautullix:
+  tautulli: plex
+  tautulli2: plex2
 transmissionvpn: 
   vpn_endpoint: netherlands.ovpn
   vpn_pass: your_vpn_password
