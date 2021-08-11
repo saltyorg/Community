@@ -76,6 +76,3 @@ varken:
 wordpress: 
   direct_domain: false
   subdomain: wordpress
-overseerr:
-  subdomain: overseerr
-  direct_domain: false

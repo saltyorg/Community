@@ -7,10 +7,14 @@
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
+- include_vars: /srv/git/saltbox/roles/plex/defaults/main.yml
+
 - name: "Execute TautulliX roles"
   include_role:
     name: tautulli
   vars:
-    tautulli_name: "{{ item.key }}"
-    plex_name: "{{ item.value }}"
+    tautulli_name: "{{ role.key }}"
+    plex_name: "{{ role.value }}"
   loop: "{{ tautullix | dict2items }}"
+  loop_control:
+    loop_var: role
