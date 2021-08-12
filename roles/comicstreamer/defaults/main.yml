@@ -23,7 +23,6 @@ comicstreamer_paths_location: "{{ server_appdata_path }}/{{ comicstreamer_paths_
 comicstreamer_paths_folders_list:
   - "{{ comicstreamer_paths_location }}"
   - "/mnt/local/Media/Comics"
-comicstreamer_paths_config_location: "{{ comicstreamer_paths_location }}/config.yml"
 
 ################################
 # Web

@@ -22,7 +22,6 @@ mylar3_paths_location: "{{ server_appdata_path }}/{{ mylar3_paths_folder }}"
 mylar3_paths_folders_list:
   - "{{ mylar3_paths_location }}"
   - /mnt/local/Media/Comics
-mylar3_paths_config_location: "{{ mylar3_paths_location }}/config.yml"
 
 ################################
 # Web

@@ -22,7 +22,6 @@ bookstack_paths_folder: "{{ bookstack_name }}"
 bookstack_paths_location: "{{ server_appdata_path }}/{{ bookstack_paths_folder }}"
 bookstack_paths_folders_list:
   - "{{ bookstack_paths_location }}"
-bookstack_paths_config_location: "{{ bookstack_paths_location }}/config.yml"
 
 ################################
 # Web

@@ -21,7 +21,6 @@ bazarr_paths_folder: "{{ bazarr_name }}"
 bazarr_paths_location: "{{ server_appdata_path }}/{{ bazarr_paths_folder }}"
 bazarr_paths_folders_list:
   - "{{ bazarr_paths_location }}"
-bazarr_paths_config_location: "{{ bazarr_paths_location }}/config.yml"
 
 ################################
 # Web

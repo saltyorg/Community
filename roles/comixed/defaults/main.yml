@@ -23,7 +23,6 @@ comixed_paths_location: "{{ server_appdata_path }}/{{ comixed_paths_folder }}"
 comixed_paths_folders_list:
   - "{{ comixed_paths_location }}"
   - "/mnt/local/Media/Comics"
-comixed_paths_config_location: "{{ comixed_paths_location }}/config.yml"
 
 ################################
 # Web

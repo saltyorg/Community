@@ -21,7 +21,6 @@ medusa_paths_folder: "{{ medusa_name }}"
 medusa_paths_location: "{{ server_appdata_path }}/{{ medusa_paths_folder }}"
 medusa_paths_folders_list:
   - "{{ medusa_paths_location }}"
-medusa_paths_config_location: "{{ medusa_paths_location }}/config.yml"
 
 ################################
 # Web
