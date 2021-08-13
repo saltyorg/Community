@@ -14,13 +14,9 @@
     dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
     dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Create MariaDB container
+- name: MariaDB Role
   include_role:
     name: mariadb
-
-- name: MariaDB ready state | Wait 120 seconds before continuing
-  wait_for:
-    timeout: 120
 
 - name: MariaDB | Create bookstackapp database
   command: "docker exec mariadb mysql -u root -ppassword321 -e 'create schema bookstackapp DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'"
