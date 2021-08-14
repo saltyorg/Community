@@ -26,7 +26,7 @@ stash_paths_folders_list:
   - "{{ stash_paths_location }}/metadata"
   - "{{ stash_paths_location }}/cache"
   - "{{ stash_paths_location }}/generated"
-  - "/mnt/unionfs/Media/adult"
+  - "/mnt/unionfs/Media/Adult"
 
 ################################
 # Web
@@ -97,7 +97,7 @@ stash_docker_volumes_default:
   - "{{ stash_paths_location }}/metadata:/metadata"
   - "{{ stash_paths_location }}/cache:/cache"
   - "{{ stash_paths_location }}/generated:/generated"
-  - "/mnt/unionfs/Media/adult:/data"
+  - "/mnt/unionfs/Media/Adult:/data"
   - "/mnt:/mnt"
 stash_docker_volumes_custom: []
 stash_docker_volumes: "{{ stash_docker_volumes_default
