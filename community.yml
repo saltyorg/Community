@@ -38,7 +38,7 @@
     # - { role: embystat, tags: ['embystat'] }
     - { role: epms, tags: ['epms'] }
     # - { role: filebot, tags: ['filebot'] }
-    # - { role: filebrowser, tags: ['filebrowser'] }
+    - { role: filebrowser, tags: ['filebrowser'] }
     # - { role: filezilla, tags: ['filezilla'] }
     # - { role: flaresolverr, tags: ['flaresolverr'] }
     # - { role: funkwhale, tags: ['funkwhale'] }
