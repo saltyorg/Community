@@ -8,7 +8,6 @@
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-
 - name: "Settings | Check if '{{ filebrowser_paths_config_location | basename }}' exists"
   stat:
     path: "{{ filebrowser_paths_config_location }}"
