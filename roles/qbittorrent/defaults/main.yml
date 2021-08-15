@@ -64,7 +64,7 @@ qbittorrent_docker_container: "{{ qbittorrent_name }}"
 # Image
 qbittorrent_docker_image_pull: true
 qbittorrent_docker_image_tag: "latest"
-qbittorrent_docker_image: "sc4h/qbittorrent:{{ qbittorrent_docker_image_tag }}"
+qbittorrent_docker_image: "saltydk/qbittorrent:{{ qbittorrent_docker_image_tag }}"
 
 # Ports
 qbittorrent_docker_ports_defaults:
