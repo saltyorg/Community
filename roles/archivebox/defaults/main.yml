@@ -21,7 +21,6 @@ archivebox_paths_folder: "{{ archivebox_name }}"
 archivebox_paths_location: "{{ server_appdata_path }}/{{ archivebox_paths_folder }}"
 archivebox_paths_folders_list:
   - "{{ archivebox_paths_location }}"
-archivebox_paths_config_location: "{{ archivebox_paths_location }}/config.yml"
 
 ################################
 # Web

@@ -22,7 +22,6 @@ calibre_paths_location: "{{ server_appdata_path }}/{{ calibre_paths_folder }}"
 calibre_paths_folders_list:
   - "{{ calibre_paths_location }}"
   - /mnt/local/Media/Books
-calibre_paths_config_location: "{{ calibre_paths_location }}/config.yml"
 
 ################################
 # Web

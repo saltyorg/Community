@@ -21,7 +21,6 @@ deemix_paths_folder: "{{ deemix_name }}"
 deemix_paths_location: "{{ server_appdata_path }}/{{ deemix_paths_folder }}"
 deemix_paths_folders_list:
   - "{{ deemix_paths_location }}"
-deemix_paths_config_location: "{{ deemix_paths_location }}/config.yml"
 
 ################################
 # Web

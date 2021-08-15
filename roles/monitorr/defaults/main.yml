@@ -21,7 +21,6 @@ monitorr_paths_folder: "{{ monitorr_name }}"
 monitorr_paths_location: "{{ server_appdata_path }}/{{ monitorr_paths_folder }}"
 monitorr_paths_folders_list:
   - "{{ monitorr_paths_location }}"
-monitorr_paths_config_location: "{{ monitorr_paths_location }}/config.yml"
 
 ################################
 # Web

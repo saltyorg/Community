@@ -21,7 +21,6 @@ gotify_paths_folder: "{{ gotify_name }}"
 gotify_paths_location: "{{ server_appdata_path }}/{{ gotify_paths_folder }}"
 gotify_paths_folders_list:
   - "{{ gotify_paths_location }}"
-gotify_paths_config_location: "{{ gotify_paths_location }}/config.yml"
 
 ################################
 # Web

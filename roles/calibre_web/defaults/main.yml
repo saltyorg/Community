@@ -22,7 +22,6 @@ calibre_web_paths_folder: "{{ calibre_web_name }}"
 calibre_web_paths_location: "{{ server_appdata_path }}/{{ calibre_web_paths_folder }}"
 calibre_web_paths_folders_list:
   - "{{ calibre_web_paths_location }}"
-calibre_web_paths_config_location: "{{ calibre_web_paths_location }}/config.yml"
 
 ################################
 # Web
