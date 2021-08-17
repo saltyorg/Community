@@ -113,9 +113,9 @@ nextcloud_docker_hosts: "{{ docker_hosts_common
 
 # Labels
 nextcloud_docker_labels_default:
-  - "traefik.http.middlewares.nextcloud-caldav.redirectregex.permanent=true"
-  - "traefik.http.middlewares.nextcloud-caldav.redirectregex.regex=^https://(.*)/.well-known/(card|cal)dav"
-  - "traefik.http.middlewares.nextcloud-caldav.redirectregex.replacement=https://$${1}/remote.php/dav/"
+  traefik.http.middlewares.nextcloud-caldav.redirectregex.permanent: "true"
+  traefik.http.middlewares.nextcloud-caldav.redirectregex.regex: "^https://(.*)/.well-known/(card|cal)dav"
+  traefik.http.middlewares.nextcloud-caldav.redirectregex.replacement: "https://$${1}/remote.php/dav/"
 nextcloud_docker_labels_custom: {}
 nextcloud_docker_labels: "{{ docker_labels_common
                             | combine(nextcloud_docker_labels_default)
