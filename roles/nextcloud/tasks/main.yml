@@ -1,7 +1,9 @@
 #########################################################################
-# Title:            Community: Nextcloud Role                           #
-# Author(s):        l3uddz, desimaniac                                  #
+# Title:            Community: Nextcloud                                #
+# Author(s):        l3uddz, desimaniac, salty                           #
 # URL:              https://github.com/saltyorg/Community               #
+# --                                                                    #
+#########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
@@ -9,52 +11,23 @@
   include_role:
     name: mariadb
 
-- name: "sleep for 120 seconds and continue"
-  wait_for: timeout=120
-
-- name: "Set DNS Record on CloudFlare"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: nextcloud
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Stop and remove any existing containers
-  docker_container: "name={{ item }} state=absent"
-  with_items:
-    - nextcloud
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
 
-- name: Create required directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - /opt/nextcloud
-    - /opt/nextcloud/conf
-    - /opt/nextcloud/data
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: "0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
-- name: Create and start nextcloud container
-  docker_container:
-    name: nextcloud
-    image: "linuxserver/nextcloud"
-    pull: yes
-    env:
-      TZ: "{{ tz }}"
-      PUID: "{{ uid }}"
-      PGID: "{{ gid }}"
-      VIRTUAL_HOST: "nextcloud.{{ user.domain }}"
-      VIRTUAL_PORT: "443"
-      VIRTUAL_PROTO: "https"
-      LETSENCRYPT_HOST: "nextcloud.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-    volumes:
-      - "/opt/nextcloud/conf:/config"
-      - "/opt/nextcloud/data:/data"
-      - "/mnt:/mnt"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - nextcloud
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
