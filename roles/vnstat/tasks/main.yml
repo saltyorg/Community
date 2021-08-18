@@ -1,59 +1,20 @@
 #########################################################################
-# Title:            Community: Vnstat Dashboard                         #
-# Author(s):        desimaniac                                          #
+# Title:            Community: vnstat Dashboard                         #
+# Author(s):        desimaniac, salty                                   #
 # URL:              https://github.com/saltyorg/Community               #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: Set CloudFlare DNS Record
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: vnstat
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Stop and remove any existing container
-  docker_container:
-    name: vnstat
-    state: absent
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
 
-- name: Lookup htpasswd
-  stat:
-    path: "/opt/nginx-proxy/htpasswd/vnstat.{{ user.domain }}"
-  register: htpasswd_lookup
-
-- name: Create htpasswd
-  htpasswd:
-    path: "/opt/nginx-proxy/htpasswd/vnstat.{{ user.domain }}"
-    name: "{{ user.name }}"
-    password: "{{ user.pass }}"
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
-    mode: 0664
-  when: not htpasswd_lookup.stat.exists
-
-- name: Create and start container
-  docker_container:
-    name: vnstat
-    image: amarston/vnstat-dashboard
-    pull: yes
-    env:
-      TZ: "{{ tz }}"
-      VIRTUAL_HOST: "vnstat.{{ user.domain }}"
-      VIRTUAL_PORT: "80"
-      LETSENCRYPT_HOST: "vnstat.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-    volumes:
-      - "/usr/bin/vnstat:/usr/bin/vnstat:ro"
-      - "/var/lib/vnstat:/var/lib/vnstat:ro"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - vnstat
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
