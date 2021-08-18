@@ -91,7 +91,7 @@ kitana_docker_volumes_default:
 kitana_docker_volumes_custom: []
 kitana_docker_volumes: "{{ kitana_docker_volumes_default
                            + kitana_docker_volumes_custom
-                           + docker_volumes_downloads_common }}"  # CHECK IF NEEDED
+                           + docker_volumes_downloads_common }}"
 
 # Devices
 kitana_docker_devices_default: []
