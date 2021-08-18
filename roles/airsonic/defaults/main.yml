@@ -45,7 +45,6 @@ airsonic_dns_zone: "{{ airsonic_web_domain }}"
 ################################
 
 airsonic_traefik_middleware: "secureHeaders@file,gzip"
-airsonic_traefik_host: "{{ airsonic_web_subdomain + '.' + airsonic_web_domain }}"
 airsonic_traefik_certresolver: "{{ traefik_default_certresolver }}"
 airsonic_traefik_enabled: true
 

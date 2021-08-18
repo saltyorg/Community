@@ -45,7 +45,6 @@ apprise_dns_zone: "{{ apprise_web_domain }}"
 ################################
 
 apprise_traefik_middleware: "secureHeaders@file,gzip,apprise-auth"
-apprise_traefik_host: "{{ apprise_web_subdomain + '.' + apprise_web_domain }}"
 apprise_traefik_certresolver: "{{ traefik_default_certresolver }}"
 apprise_traefik_enabled: true
 apprise_auth: "/etc/traefik/auth"

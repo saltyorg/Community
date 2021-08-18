@@ -45,7 +45,6 @@ medusa_dns_zone: "{{ medusa_web_domain }}"
 ################################
 
 medusa_traefik_middleware: "secureHeaders@file,gzip"
-medusa_traefik_host: "{{ medusa_web_subdomain + '.' + medusa_web_domain }}"
 medusa_traefik_certresolver: "{{ traefik_default_certresolver }}"
 medusa_traefik_enabled: true
 

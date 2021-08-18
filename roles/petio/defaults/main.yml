@@ -45,7 +45,6 @@ petio_dns_zone: "{{ petio_web_domain }}"
 ################################
 
 petio_traefik_middleware: "secureHeaders@file,gzip"
-petio_traefik_host: "{{ petio_web_subdomain + '.' + petio_web_domain }}"
 petio_traefik_certresolver: "{{ traefik_default_certresolver }}"
 petio_traefik_enabled: true
 

@@ -45,7 +45,6 @@ gotify_dns_zone: "{{ gotify_web_domain }}"
 ################################
 
 gotify_traefik_middleware: "secureHeaders@file,gzip"
-gotify_traefik_host: "{{ gotify_web_subdomain + '.' + gotify_web_domain }}"
 gotify_traefik_certresolver: "{{ traefik_default_certresolver }}"
 gotify_traefik_enabled: true
 

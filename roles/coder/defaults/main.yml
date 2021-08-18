@@ -45,7 +45,6 @@ coder_dns_zone: "{{ coder_web_domain }}"
 ################################
 
 coder_traefik_middleware: "secureHeaders@file,gzip"
-coder_traefik_host: "{{ coder_web_subdomain + '.' + coder_web_domain }}"
 coder_traefik_certresolver: "{{ traefik_default_certresolver }}"
 coder_traefik_enabled: true
 

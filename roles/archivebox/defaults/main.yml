@@ -45,7 +45,6 @@ archivebox_dns_zone: "{{ archivebox_web_domain }}"
 ################################
 
 archivebox_traefik_middleware: "secureHeaders@file,gzip"
-archivebox_traefik_host: "{{ archivebox_web_subdomain + '.' + archivebox_web_domain }}"
 archivebox_traefik_certresolver: "{{ traefik_default_certresolver }}"
 archivebox_traefik_enabled: true
 

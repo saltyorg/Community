@@ -46,7 +46,6 @@ alternatrr_dns_zone: "{{ alternatrr_web_domain }}"
 ################################
 
 alternatrr_traefik_middleware: "secureHeaders@file,gzip"
-alternatrr_traefik_host: "{{ alternatrr_web_subdomain + '.' + alternatrr_web_domain }}"
 alternatrr_traefik_certresolver: "{{ traefik_default_certresolver }}"
 alternatrr_traefik_enabled: true
 

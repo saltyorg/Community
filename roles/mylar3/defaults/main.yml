@@ -46,7 +46,6 @@ mylar3_dns_zone: "{{ mylar3_web_domain }}"
 ################################
 
 mylar3_traefik_middleware: "secureHeaders@file,gzip"
-mylar3_traefik_host: "{{ mylar3_web_subdomain + '.' + mylar3_web_domain }}"
 mylar3_traefik_certresolver: "{{ traefik_default_certresolver }}"
 mylar3_traefik_enabled: true
 
