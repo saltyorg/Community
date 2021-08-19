@@ -90,7 +90,7 @@ filezilla_docker_commands: "{{ filezilla_docker_commands_default
 
 # Volumes
 filezilla_docker_volumes_default:
-  - "{{ filezilla_paths_location }}config:/config"
+  - "{{ filezilla_paths_location }}/config:/config"
   - "/mnt:/mnt"
   - "/home/{{ user.name }}:/storage"
 filezilla_docker_volumes_custom: []

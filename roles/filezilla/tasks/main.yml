@@ -29,16 +29,16 @@
 - name: Create Docker container
   include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
 
-- name: Filezilla directory permissions | Wait 30 seconds before continuing
-  wait_for:
-    timeout: 30
+# - name: Filezilla directory permissions | Wait 30 seconds before continuing
+#   wait_for:
+#     timeout: 30
 
-- name: Reset directory permissions
-  file:
-    path: "{{ item }}"
-    state: directory
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
-    mode: "0775"
-    recurse: "yes"
-  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
+# - name: Reset directory permissions
+#   file:
+#     path: "{{ item }}"
+#     state: directory
+#     owner: "{{ user.name }}"
+#     group: "{{ user.name }}"
+#     mode: "0775"
+#     recurse: "yes"
+#   with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
