@@ -1,0 +1,13 @@
+on: [push]
+
+name: Contrib
+
+jobs:
+    contrib-readme-job:
+        runs-on: ubuntu-latest
+        name: Update Contributers
+        steps:
+            - name: Contribute List
+              uses: akhilmhdh/contributors-readme-action@v2.2
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
