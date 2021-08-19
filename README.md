@@ -80,14 +80,22 @@ cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep
         <a href=https://github.com/BluebonnetSK>
             <img src=https://avatars.githubusercontent.com/u/43162289?v=4 width="100;"  alt=BluebonnetSK/>
             <br />
+<<<<<<< HEAD
             <sub style="font-size:14px"><b>BluebonnetSK</b></sub>
+=======
+            <sub><b>Desimaniac</b></sub>
+>>>>>>> feeb1a3 (contrib-readme-action has updated readme)
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/satzisa>
             <img src=https://avatars.githubusercontent.com/u/54035525?v=4 width="100;"  alt=isa/>
             <br />
+<<<<<<< HEAD
             <sub style="font-size:14px"><b>isa</b></sub>
+=======
+            <sub><b>Owine</b></sub>
+>>>>>>> feeb1a3 (contrib-readme-action has updated readme)
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
@@ -182,14 +190,22 @@ cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep
         <a href=https://github.com/stijnthurkow>
             <img src=https://avatars.githubusercontent.com/u/22298631?v=4 width="100;"  alt=Stijn/>
             <br />
+<<<<<<< HEAD
             <sub style="font-size:14px"><b>Stijn</b></sub>
+=======
+            <sub><b>Grostim</b></sub>
+>>>>>>> feeb1a3 (contrib-readme-action has updated readme)
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/fuller882>
             <img src=https://avatars.githubusercontent.com/u/43045024?v=4 width="100;"  alt=fuller882/>
             <br />
+<<<<<<< HEAD
             <sub style="font-size:14px"><b>fuller882</b></sub>
+=======
+            <sub><b>Theotocopulitos</b></sub>
+>>>>>>> feeb1a3 (contrib-readme-action has updated readme)
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
@@ -233,7 +249,11 @@ cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep
         <a href=https://github.com/addbee>
             <img src=https://avatars.githubusercontent.com/u/4490516?v=4 width="100;"  alt=adbe/>
             <br />
+<<<<<<< HEAD
             <sub style="font-size:14px"><b>adbe</b></sub>
+=======
+            <sub><b>Fuller882</b></sub>
+>>>>>>> feeb1a3 (contrib-readme-action has updated readme)
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
@@ -321,7 +341,11 @@ cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep
         <a href=https://github.com/Loomaanaatii>
             <img src=https://avatars.githubusercontent.com/u/10216384?v=4 width="100;"  alt=Loomaanaatii/>
             <br />
+<<<<<<< HEAD
             <sub style="font-size:14px"><b>Loomaanaatii</b></sub>
+=======
+            <sub><b>Astrodad</b></sub>
+>>>>>>> feeb1a3 (contrib-readme-action has updated readme)
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
