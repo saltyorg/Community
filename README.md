@@ -39,14 +39,14 @@ cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep
         <a href="https://github.com/desimaniac">
             <img src="https://avatars.githubusercontent.com/u/5501908?v=4" width="100;" alt="desimaniac"/>
             <br />
-            <sub><b>desimaniac</b></sub>
+            <sub><b>Desimaniac</b></sub>
         </a>
     </td>
     <td align="center">
         <a href="https://github.com/owine">
             <img src="https://avatars.githubusercontent.com/u/4283702?v=4" width="100;" alt="owine"/>
             <br />
-            <sub><b>owine</b></sub>
+            <sub><b>Owine</b></sub>
         </a>
     </td>
     <td align="center">
@@ -139,14 +139,14 @@ cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep
         <a href="https://github.com/grostim">
             <img src="https://avatars.githubusercontent.com/u/3714755?v=4" width="100;" alt="grostim"/>
             <br />
-            <sub><b>grostim</b></sub>
+            <sub><b>Grostim</b></sub>
         </a>
     </td>
     <td align="center">
         <a href="https://github.com/theotocopulitos">
             <img src="https://avatars.githubusercontent.com/u/1540135?v=4" width="100;" alt="theotocopulitos"/>
             <br />
-            <sub><b>theotocopulitos</b></sub>
+            <sub><b>Theotocopulitos</b></sub>
         </a>
     </td>
     <td align="center">
@@ -189,7 +189,7 @@ cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep
         <a href="https://github.com/fuller882">
             <img src="https://avatars.githubusercontent.com/u/43045024?v=4" width="100;" alt="fuller882"/>
             <br />
-            <sub><b>fuller882</b></sub>
+            <sub><b>Fuller882</b></sub>
         </a>
     </td>
     <td align="center">
@@ -239,7 +239,7 @@ cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep
         <a href="https://github.com/astrodad">
             <img src="https://avatars.githubusercontent.com/u/1663239?v=4" width="100;" alt="astrodad"/>
             <br />
-            <sub><b>astrodad</b></sub>
+            <sub><b>Astrodad</b></sub>
         </a>
     </td></tr>
 </table>
