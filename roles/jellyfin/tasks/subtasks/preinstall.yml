@@ -19,19 +19,19 @@
 - name: Preinstall MIGRATE | New `{{ jellyfin_paths_xml_loct_old | basename }}` tasks
   block:
 
-  - name: Preinstall MIGRATE | Import `{{ jellyfin_paths_xml_loct_old | basename }}` if it exists
-    copy:
-      src: "{{ jellyfin_paths_xml_loct_old }}"
-      dest: "{{ jellyfin_paths_sys_xml_location }}"
-      owner: "{{ user.name }}"
-      group: "{{ user.name }}"
-      mode: 0775
-      force: no
+    - name: Preinstall MIGRATE | Import `{{ jellyfin_paths_xml_loct_old | basename }}` if it exists
+      copy:
+        src: "{{ jellyfin_paths_xml_loct_old }}"
+        dest: "{{ jellyfin_paths_sys_xml_location }}"
+        owner: "{{ user.name }}"
+        group: "{{ user.name }}"
+        mode: 0775
+        force: false
 
-  - name: Preinstall MIGRATE | Remove old `{{ jellyfin_paths_xml_loct_old | basename }}` if it exists"
-    file:
-      path: "{{ jellyfin_paths_xml_loct_old }}"
-      state: absent
+    - name: Preinstall MIGRATE | Remove old `{{ jellyfin_paths_xml_loct_old | basename }}` if it exists"
+      file:
+        path: "{{ jellyfin_paths_xml_loct_old }}"
+        state: absent
 
   when: jellyfin_xml_old.stat.exists
 
@@ -80,13 +80,13 @@
 - name: Settings DLNA | New `{{ jellyfin_paths_dlna_location | basename }}` tasks
   block:
 
-  - name: Import 'dlna.xml' config
-    copy:
-      src: "dlna.xml"
-      dest: "{{ jellyfin_paths_dlna_location }}"
-      owner: "{{ user.name }}"
-      group: "{{ user.name }}"
-      mode: 0775
-      force: no
+    - name: Import 'dlna.xml' config
+      copy:
+        src: "dlna.xml"
+        dest: "{{ jellyfin_paths_dlna_location }}"
+        owner: "{{ user.name }}"
+        group: "{{ user.name }}"
+        mode: 0775
+        force: false
 
   when: not jellyfin_dlna.stat.exists
