@@ -3,6 +3,7 @@ name: Ansible Lint  # feel free to pick your own name
 on:
   push:
     paths-ignore:
+      - '.github/**'
       - '*.md'
       - '*.sh'
       - '*.j2'
