@@ -42,7 +42,6 @@
     - { role: filezilla, tags: ['filezilla'] }
     # - { role: flaresolverr, tags: ['flaresolverr'] }
     # - { role: funkwhale, tags: ['funkwhale'] }
-    # - { role: gazee, tags: ['gazee'] }
     # - { role: gitea, tags: ['gitea'] }
     - { role: glances_web, tags: ['glances-web'] }
     # - { role: goplaxt, tags: ['goplaxt'] }
@@ -103,5 +102,5 @@
     - { role: vaultwarden, tags: ['vaultwarden'] }
     - { role: vnstat, tags: ['vnstat'] }
     # - { role: watchtower, tags: ['watchtower'] }
-    # - { role: wordpress, tags: ['wordpress'] }
+    - { role: wordpress, tags: ['wordpress'] }
     # - { role: xteve, tags: ['xteve'] }
