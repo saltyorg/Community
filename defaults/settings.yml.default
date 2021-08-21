@@ -7,8 +7,6 @@ bazarrx:
   roles: 
     - 1080webdl
     - 1080remux
-bookstack: 
-  subdomain: bookstack
 calibreweb: 
   caliblur: true
 delugevpn: 

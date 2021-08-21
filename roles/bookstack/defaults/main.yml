@@ -27,10 +27,10 @@ bookstack_paths_folders_list:
 # Web
 ################################
 
-bookstack_web_subdomain: "{{ bookstack.subdomain|default('bookstack',true) }}"
+bookstack_web_subdomain: "{{ bookstack_name }}"
 bookstack_web_domain: "{{ user.domain }}"
 bookstack_web_port: "80"
-bookstack_web_url: "{{ 'https://' + bookstack_web_subdomain + '.' + bookstack_web_domain
+bookstack_web_url: "{{ 'https://' + bookstack_web_subdomain + dns_record_suffix + '.' + bookstack_web_domain
                     if (reverse_proxy_is_enabled)
                     else 'http://localhost:' + bookstack_web_port }}"
 
@@ -75,7 +75,7 @@ bookstack_docker_envs_default:
   TZ: "{{ tz }}"
   PUID: "{{ uid }}"
   PGID: "{{ gid }}"
-  APP_URL: "https://{{ bookstack.subdomain|default('bookstack',true) }}.{{ user.domain }}"
+  APP_URL: "https://{{ bookstack_web_subdomain + dns_record_suffix + '.' + bookstack_web_domain }}"
   DB_HOST: "mariadb:3306"
   DB_USER: root
   DB_PASS: password321
