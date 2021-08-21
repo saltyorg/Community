@@ -22,7 +22,7 @@
     - { role: autoscan, tags: ['autoscan'] }
     - { role: bazarr, tags: ['bazarr'] }
     - { role: bazarrx, tags: ['bazarrx'] }
-    # - { role: beets, tags: ['beets'] }
+    - { role: beets, tags: ['beets'] }
     # - { role: booksonic, tags: ['booksonic'] }
     - { role: bookstack, tags: ['bookstack'] }
     - { role: btrfsmaintenance, tags: ['btrfsmaintenance'] }
