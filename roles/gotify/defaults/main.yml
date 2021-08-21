@@ -29,7 +29,7 @@ gotify_paths_folders_list:
 gotify_web_subdomain: "{{ gotify_name }}"
 gotify_web_domain: "{{ user.domain }}"
 gotify_web_port: "80"
-gotify_web_url: "{{ 'https://' + gotify_web_subdomain + '.' + gotify_web_domain
+gotify_web_url: "{{ 'https://' + gotify_web_subdomain + dns_record_suffix + '.' + gotify_web_domain
                  if (reverse_proxy_is_enabled)
                  else 'http://localhost:' + gotify_web_port }}"
 

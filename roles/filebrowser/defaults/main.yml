@@ -32,7 +32,7 @@ filebrowser_paths_db_location: "{{ filebrowser_paths_location }}/filebrowser.db"
 filebrowser_web_subdomain: "{{ filebrowser_name }}"
 filebrowser_web_domain: "{{ user.domain }}"
 filebrowser_web_port: "80"
-filebrowser_web_url: "{{ 'https://' + filebrowser_web_subdomain + '.' + filebrowser_web_domain
+filebrowser_web_url: "{{ 'https://' + filebrowser_web_subdomain + dns_record_suffix + '.' + filebrowser_web_domain
                       if (reverse_proxy_is_enabled)
                       else 'http://localhost:' + filebrowser_web_port }}"
 
