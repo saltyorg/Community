@@ -34,7 +34,7 @@
     - { role: deemix, tags: ['deemix'] }
     - { role: couchpotato, tags: ['couchpotato'] }
     - { role: deluge, tags: ['deluge'] }
-    # - { role: delugevpn, tags: ['delugevpn'] }
+    - { role: delugevpn, tags: ['delugevpn'] }
     # - { role: embystat, tags: ['embystat'] }
     - { role: epms, tags: ['epms'] }
     # - { role: filebot, tags: ['filebot'] }
