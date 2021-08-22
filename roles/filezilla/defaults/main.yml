@@ -30,7 +30,7 @@ filezilla_paths_folders_list:
 filezilla_web_subdomain: "{{ filezilla_name }}"
 filezilla_web_domain: "{{ user.domain }}"
 filezilla_web_port: "5800"
-filezilla_web_url: "{{ 'https://' + filezilla_web_subdomain + '.' + filezilla_web_domain
+filezilla_web_url: "{{ 'https://' + filezilla_web_subdomain + dns_record_suffix + '.' + filezilla_web_domain
                     if (reverse_proxy_is_enabled)
                     else 'http://localhost:' + filezilla_web_port }}"
 

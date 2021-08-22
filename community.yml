@@ -22,8 +22,8 @@
     - { role: autoscan, tags: ['autoscan'] }
     - { role: bazarr, tags: ['bazarr'] }
     - { role: bazarrx, tags: ['bazarrx'] }
-    # - { role: beets, tags: ['beets'] }
-    # - { role: booksonic, tags: ['booksonic'] }
+    - { role: beets, tags: ['beets'] }
+    - { role: booksonic, tags: ['booksonic'] }
     - { role: bookstack, tags: ['bookstack'] }
     - { role: btrfsmaintenance, tags: ['btrfsmaintenance'] }
     - { role: calibre, tags: ['calibre'] }
@@ -32,7 +32,7 @@
     - { role: comicstreamer, tags: ['comicstreamer'] }
     - { role: comixed, tags: ['comixed'] }
     - { role: deemix, tags: ['deemix'] }
-    # - { role: couchpotato, tags: ['couchpotato'] }
+    - { role: couchpotato, tags: ['couchpotato'] }
     - { role: deluge, tags: ['deluge'] }
     # - { role: delugevpn, tags: ['delugevpn'] }
     # - { role: embystat, tags: ['embystat'] }
@@ -42,7 +42,6 @@
     - { role: filezilla, tags: ['filezilla'] }
     # - { role: flaresolverr, tags: ['flaresolverr'] }
     # - { role: funkwhale, tags: ['funkwhale'] }
-    # - { role: gazee, tags: ['gazee'] }
     # - { role: gitea, tags: ['gitea'] }
     - { role: glances_web, tags: ['glances-web'] }
     # - { role: goplaxt, tags: ['goplaxt'] }
@@ -103,5 +102,5 @@
     - { role: vaultwarden, tags: ['vaultwarden'] }
     - { role: vnstat, tags: ['vnstat'] }
     # - { role: watchtower, tags: ['watchtower'] }
-    # - { role: wordpress, tags: ['wordpress'] }
+    - { role: wordpress, tags: ['wordpress'] }
     # - { role: xteve, tags: ['xteve'] }

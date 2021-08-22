@@ -7,10 +7,6 @@ bazarrx:
   roles: 
     - 1080webdl
     - 1080remux
-bookstack: 
-  subdomain: bookstack
-calibreweb: 
-  caliblur: true
 delugevpn: 
   version: v2
   vpn_endpoint: netherlands.ovpn
@@ -22,8 +18,6 @@ gitea:
 goplaxt: 
   trakt_id: ~
   trakt_secret: ~
-grafana: 
-  plugins: "grafana-piechart-panel,grafana-worldmap-panel"
 invoiceninja: 
   subdomain: invoiceninja
 jirafeau: 

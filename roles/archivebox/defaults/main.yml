@@ -29,7 +29,7 @@ archivebox_paths_folders_list:
 archivebox_web_subdomain: "{{ archivebox_name }}"
 archivebox_web_domain: "{{ user.domain }}"
 archivebox_web_port: "8000"
-archivebox_web_url: "{{ 'https://' + archivebox_web_subdomain + '.' + archivebox_web_domain
+archivebox_web_url: "{{ 'https://' + archivebox_web_subdomain + dns_record_suffix + '.' + archivebox_web_domain
                      if (reverse_proxy_is_enabled)
                      else 'http://localhost:' + archivebox_web_port }}"
 

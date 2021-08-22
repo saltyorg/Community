@@ -3,11 +3,18 @@ on: [push]
 name: Contrib
 
 jobs:
-    contrib-readme-job:
-        runs-on: ubuntu-latest
-        name: Update Contributers
-        steps:
-            - name: Contribute List
-              uses: akhilmhdh/contributors-readme-action@v2.2
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  add-contributors:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: BobAnkh/add-contributors@master
+      with:
+        REPO_NAME: 'saltyorg/Community'
+        CONTRIBUTOR: '### Contributors'
+        COLUMN_PER_ROW: '6'
+        ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        IMG_WIDTH: '100'
+        FONT_SIZE: '14'
+        PATH: '/README.md'
+        COMMIT_MESSAGE: 'docs(README): update contributors'
+        AVATAR_SHAPE: 'square'
