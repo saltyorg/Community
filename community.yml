@@ -81,6 +81,7 @@
     # - { role: requestrr, tags: ['requestrr'] }
     # - { role: requestrrx, tags: ['requestrrx'] }
     # - { role: resilio-sync, tags: ['resilio-sync'] }
+    - { role: rflood, tags: ['rflood'] }
     # - { role: sickchill, tags: ['sickchill'] }
     - { role: sonarrx, tags: ['sonarrx'] }
     - { role: speedtest, tags: ['speedtest'] }
