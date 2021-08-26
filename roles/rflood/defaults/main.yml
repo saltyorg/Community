@@ -27,6 +27,9 @@ rflood_paths_folders_list:
   - "{{ rflood_paths_downloads_location }}/watched"
   - "{{ rflood_paths_downloads_location }}/torrents"
 
+# Config files
+rflood_paths_rtorrent_rc_location: "{{ rflood_paths_location }}/rtorrent.rc"
+
 ################################
 # Web
 ################################
@@ -53,6 +56,27 @@ rflood_traefik_middleware: "secureHeaders@file,gzip,rflood-auth"
 rflood_traefik_certresolver: "{{ traefik_default_certresolver }}"
 rflood_traefik_enabled: true
 rflood_auth: "/etc/traefik/auth"
+
+################################
+# Config
+################################
+
+rflood_config_public_trackers: false
+
+# rtorrent.rc
+rflood_config_rflood_rc_settings_default:
+  # IP address that is reported to the tracker
+  - { option: "network.local_address.set", value: "{{ ip_address_public }}" }
+  # Ports
+  - { option: "network.port_range.set", value: "{{ rflood_docker_ports_50000 }}-{{ rflood_docker_ports_50000 }}" }
+  - { option: "dht.port.set", value: "{{ rflood_docker_ports_6881 }}" }
+  # Enable / Disable Public Trackers
+  - { option: "dht.mode.set", value: "{{ rflood_config_public_trackers | ternary('on','disable') }}" }
+  - { option: "trackers.use_udp.set", value: "{{ rflood_config_public_trackers | ternary('yes','no') }}" }
+  - { option: "protocol.pex.set", value: "{{ rflood_config_public_trackers | ternary('yes','no') }}" }
+rflood_config_rflood_rc_settings_custom: []
+rflood_config_rflood_rc_settings_list: "{{ rflood_config_rflood_rc_settings_default
+                                           + rflood_config_rflood_rc_settings_custom }}"
 
 ################################
 # Docker
