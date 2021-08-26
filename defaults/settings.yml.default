@@ -45,6 +45,9 @@ requestrrx:
   roles: 
     - 1080
     - 4k
+rfloodx: 
+  roles: 
+    - ""
 sonarrx: 
   roles: 
     - 1080webdl
