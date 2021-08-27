@@ -7,27 +7,11 @@
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Gather list of transmissionx Docker containers"
-  shell: "docker ps -a --format '{{ '{{' }} .Names{{ '}}' }}' --filter label=com.github.cloudbox.community=transmissionx | xargs echo -n"
-  register: cloudbox_community_transmissionx
-  ignore_errors: yes
-
-- name: "Stop all transmissionx Docker containers"
-  shell: "docker stop {{ cloudbox_community_transmissionx.stdout }}"
-  ignore_errors: yes
-  when: (cloudbox_community_transmissionx.stdout | trim | length > 0)
-
-- name: "Remove all transmissionx Docker containers"
-  shell: "docker rm {{ cloudbox_community_transmissionx.stdout }}"
-  ignore_errors: yes
-  when: (cloudbox_community_transmissionx.stdout | trim | length > 0)
-
-- name: "Execute transmissionx roles"
-  include_tasks: template.yml
+- name: "Execute transmissionX roles"
+  include_role:
+    name: transmission
   vars:
-    rolename: "{{ role }}"
-    roleport: "{{ 51513 + index }}"
+    transmission_name: "transmission{{ role }}"
   with_items: "{{ transmissionx.roles }}"
   loop_control:
     loop_var: role
-    index_var: index

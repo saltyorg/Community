@@ -96,7 +96,7 @@
     - { role: transfer, tags: ['transfer'] }
     - { role: transmission, tags: ['transmission'] }
     # - { role: transmissionvpn, tags: ['transmissionvpn'] }
-    # - { role: transmissionx, tags: ['transmissionx'] }
+    - { role: transmissionx, tags: ['transmissionx'] }
     # - { role: ubooquity, tags: ['ubooquity'] }
     # - { role: unifi, tags: ['unifi'] }
     # - { role: unmanic, tags: ['unmanic'] }
