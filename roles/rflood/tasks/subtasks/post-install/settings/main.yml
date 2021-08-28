@@ -7,7 +7,7 @@
 #                   GNU General Public License v3.0                                #
 ####################################################################################
 ---
-- name: Post-Install | Settings | Existing Installs | Update 'rtorrent.rc' config settings
+- name: Post-Install | Settings | Update 'rtorrent.rc' config settings
   ini_file:
     path: "{{ rflood_paths_rtorrent_rc_location }}"
     section: null
