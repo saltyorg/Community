@@ -24,12 +24,12 @@
 - name: Gather list of running Docker containers
   shell: "docker ps --format '{{ '{{' }} .Names{{ '}}' }}' | xargs echo -n"
   register: docker_running_containers
-  ignore_errors: yes
+  ignore_errors: true
   when: (docker_binary.stat.exists) and (docker_service_running)
 
 - name: Stop all running Docker containers
   shell: "docker stop {{ docker_running_containers.stdout }}"
-  ignore_errors: yes
+  ignore_errors: true
   when: (docker_binary.stat.exists) and (docker_service_running) and not (docker_running_containers.stdout | trim | length == 0)
 
 - name: Wait for 10 seconds before commencing
@@ -59,7 +59,9 @@
   when: unionfs_service.stat.exists
 
 - name: Stop existing 'unionfs.service'
-  systemd: state=stopped name=unionfs
+  systemd:
+    state: stopped
+    name: unionfs
   when: unionfs_service.stat.exists and unionfs_service_running
 
  # stop mergerfs
@@ -70,7 +72,9 @@
   when: mergerfs_service.stat.exists
 
 - name: Stop existing 'mergerfs.service'
-  systemd: state=stopped name=mergerfs
+  systemd:
+    state: stopped
+    name: mergerfs
   when: mergerfs_service.stat.exists and mergerfs_service_running
 
  # force unmount remotes
@@ -80,4 +84,4 @@
   with_items:
     - "/mnt/unionfs"
     - "/mnt/feeder"
-  ignore_errors: yes
+  ignore_errors: true

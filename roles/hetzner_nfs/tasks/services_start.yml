@@ -8,11 +8,19 @@
 #########################################################################
 ---
 - name: Start 'unionfs.service'
-  systemd: state=started name=unionfs daemon_reload=yes enabled=yes
+  systemd:
+    state: started
+    name: unionfs
+    daemon_reload: true
+    enabled: true
   when: unionfs_service.stat.exists and unionfs_service_running
 
 - name: Start 'mergerfs.service'
-  systemd: state=started name=mergerfs daemon_reload=yes enabled=yes
+  systemd:
+    state: started
+    name: mergerfs
+    daemon_reload: true
+    enabled: true
   when: mergerfs_service.stat.exists and mergerfs_service_running
 
 - name: Wait for 30 seconds before commencing
@@ -22,5 +30,5 @@
 
 - name: "Re-start all previously running Docker containers"
   shell: 'docker start {{ docker_running_containers.stdout }}'
-  ignore_errors: yes
+  ignore_errors: true
   when: (docker_binary.stat.exists) and (docker_service_running) and not (docker_running_containers.stdout | trim | length == 0)

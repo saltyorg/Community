@@ -1,8 +1,7 @@
 #########################################################################
-# Title:            Community: Deluge VPN                               #
-# Author(s):        maximuskowalski, Migz93, salty                      #
+# Title:            Community: rflood                                   #
+# Author(s):        salty                                               #
 # URL:              https://github.com/saltyorg/Community               #
-# --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
@@ -25,5 +24,13 @@
     mode: "0775"
   with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
+- name: Pre-Install Tasks
+  import_tasks: "subtasks/pre-install/main.yml"
+  when: not continuous_integration
+
 - name: Create Docker container
   include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
+
+- name: Post-Install Tasks
+  import_tasks: "subtasks/post-install/main.yml"
+  when: not continuous_integration

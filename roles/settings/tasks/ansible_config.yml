@@ -42,6 +42,8 @@
     - { section: 'defaults', option: 'interpreter_python', value: '/usr/bin/python3' }
     - { section: 'defaults', option: 'log_path', value: './community.log' }
     - { section: 'defaults', option: 'callbacks_enabled', value: 'profile_tasks' }
+    - { section: 'defaults', option: 'callback_whitelist', state: 'absent' }
+    - { section: 'defaults', option: 'command_warnings', state: 'absent' }
   loop_control:
     loop_var: "inner_item"
   when: file.stat.exists

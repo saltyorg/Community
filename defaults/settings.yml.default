@@ -8,11 +8,11 @@ bazarrx:
     - 1080webdl
     - 1080remux
 delugevpn: 
-  version: v2
   vpn_endpoint: netherlands.ovpn
   vpn_pass: your_vpn_password
   vpn_prov: pia
   vpn_user: your_vpn_username
+  vpn_client: wireguard # 'wireguard' or 'openvpn'
 gitea: 
   subdomain: git
 goplaxt: 
@@ -45,6 +45,9 @@ requestrrx:
   roles: 
     - 1080
     - 4k
+rfloodx: 
+  roles: 
+    - ""
 sonarrx: 
   roles: 
     - 1080webdl

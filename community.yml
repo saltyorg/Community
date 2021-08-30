@@ -34,7 +34,7 @@
     - { role: deemix, tags: ['deemix'] }
     - { role: couchpotato, tags: ['couchpotato'] }
     - { role: deluge, tags: ['deluge'] }
-    # - { role: delugevpn, tags: ['delugevpn'] }
+    - { role: delugevpn, tags: ['delugevpn'] }
     - { role: embystat, tags: ['embystat'] }
     - { role: epms, tags: ['epms'] }
     # - { role: filebot, tags: ['filebot'] }
@@ -59,7 +59,7 @@
     - { role: kcptun_client, tags: ['kcptun-client'] }
     - { role: kcptun_server, tags: ['kcptun-server'] }
     - { role: kitana, tags: ['kitana'] }
-    # - { role: komga, tags: ['komga'] }
+    - { role: komga, tags: ['komga'] }
     # - { role: lazylibrarian, tags: ['lazylibrarian'] }
     - { role: lidarrx, tags: ['lidarrx'] }
     - { role: logarr, tags: ['logarr'] }
@@ -81,6 +81,8 @@
     # - { role: requestrr, tags: ['requestrr'] }
     # - { role: requestrrx, tags: ['requestrrx'] }
     # - { role: resilio-sync, tags: ['resilio-sync'] }
+    - { role: rflood, tags: ['rflood'] }
+    - { role: rfloodx, tags: ['rfloodx'] }
     # - { role: sickchill, tags: ['sickchill'] }
     - { role: sonarrx, tags: ['sonarrx'] }
     - { role: speedtest, tags: ['speedtest'] }
@@ -94,7 +96,7 @@
     - { role: transfer, tags: ['transfer'] }
     - { role: transmission, tags: ['transmission'] }
     # - { role: transmissionvpn, tags: ['transmissionvpn'] }
-    # - { role: transmissionx, tags: ['transmissionx'] }
+    - { role: transmissionx, tags: ['transmissionx'] }
     # - { role: ubooquity, tags: ['ubooquity'] }
     # - { role: unifi, tags: ['unifi'] }
     # - { role: unmanic, tags: ['unmanic'] }

@@ -16,8 +16,8 @@
   systemd:
     state: stopped
     name: nfs_vlan
-    daemon_reload: yes
-    enabled: no
+    daemon_reload: true
+    enabled: false
   when: nfs_vlan_service.stat.exists
 
 - name: Uninstall nfs requirements
