@@ -8,7 +8,12 @@
 #########################################################################
 ---
 - name: Create nfs server directories
-  file: 'path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}'
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0775
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
   with_items:
     - /opt/hetzner_nfs
 
@@ -19,7 +24,7 @@
     owner: '{{ user.name }}'
     group: '{{ user.name }}'
     mode: 0644
-    force: yes
+    force: true
 
 - name: Install nfs server
   apt:
@@ -35,7 +40,7 @@
     owner: '{{ user.name }}'
     group: '{{ user.name }}'
     mode: 0644
-    force: yes
+    force: true
 
 - name: Reload exports
   shell: 'exportfs -ra'
@@ -47,7 +52,7 @@
     owner: '{{ user.name }}'
     group: '{{ user.name }}'
     mode: 0775
-    force: yes
+    force: true
 
 - name: Check 'nfs_vlan.service' exists
   stat:
@@ -61,18 +66,18 @@
     owner: '{{ user.name }}'
     group: '{{ user.name }}'
     mode: 0775
-    force: yes
+    force: true
   when: not nfs_vlan_service.stat.exists
 
 - name: Start 'nfs_vlan.service'
   systemd:
     state: started
     name: nfs_vlan
-    daemon_reload: yes
-    enabled: yes
+    daemon_reload: true
+    enabled: true
 
 - name: "Add nfs vlan interface to vnstat"
   shell: "vnstat -i {{ ansible_default_ipv4.interface }}.{{ hetzner_nfs.vlan_id }} -u"
-  become: yes
+  become: true
   become_user: "vnstat"
-  ignore_errors: yes
+  ignore_errors: true
