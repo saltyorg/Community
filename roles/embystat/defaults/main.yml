@@ -71,9 +71,7 @@ embystat_docker_ports: "{{ embystat_docker_ports_defaults
                         else [] + embystat_docker_ports_custom }}"
 
 # Envs
-embystat_docker_envs_default:
-  EMBYSTAT_NOUPDATES=true
-  EMBYSTAT_LOGLEVEL=2
+embystat_docker_envs_default: {}
 embystat_docker_envs_custom: {}
 embystat_docker_envs: "{{ embystat_docker_envs_default
                           | combine(embystat_docker_envs_custom) }}"
