@@ -1,70 +1,43 @@
-#########################################################################
-# Title:           Community: EmbyStat                                  #
-# Author(s):       Satz                                                 #
-# URL:             https://github.com/saltyorg/Community                #
-#########################################################################
-#                   GNU General Public License v3.0                     #
-#########################################################################
+##########################################################################
+# Title:            Community: EmbyStat                                  #
+# Author(s):        Satz, kowalski                                       #
+# URL:              https://github.com/saltyorg/Community                #
+# --                                                                     #
+##########################################################################
+#                   GNU General Public License v3.0                      #
+##########################################################################
 ---
-- name: "Set DNS Record on CloudFlare"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: embystat
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Stop and remove existing legacy container
-  docker_container:
-    name: embystats
-    state: absent
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
 
-- name: Stop and remove existing container
-  docker_container:
-    name: embystat
-    state: absent
-
-- name: Move existing files into 'config' subfolder if needed
-  import_tasks: "subtasks/migration.yml"
-
-- name: Create embystat directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - /opt/embystat
-    - /opt/embystat/config
-
-- name: Create and start container
-  docker_container:
-    name: embystat
-    image: "uping/embystat:beta"
-    pull: yes
-    volumes:
-      - "/opt/embystat/config:/app/config:rw"
-    env:
-      TZ: "{{ tz }}"
-      PUID: "{{ uid }}"
-      PGID: "{{ gid }}"
-      VIRTUAL_HOST: "embystat.{{ user.domain }}"
-      VIRTUAL_PORT: "6555"
-      LETSENCRYPT_HOST: "embystat.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - embystat
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
-
-- name: Sleep for 10 seconds and continue
-  wait_for:
-    timeout: 10
-
-- name: "Change ownership of config folder"
+- name: Create directories
   file:
-    path: /opt/embystat/config
+    path: "{{ item }}"
+    state: directory
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
-    mode: 0775
-    recurse: yes
+    mode: "0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
+
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
+
+- name: EmbyStat directory permissions | Wait 30 seconds before continuing
+  wait_for:
+    timeout: 30
+
+- name: Reset directory permissions
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: "0775"
+    recurse: true
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"

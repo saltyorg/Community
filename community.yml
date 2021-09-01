@@ -35,7 +35,7 @@
     - { role: couchpotato, tags: ['couchpotato'] }
     - { role: deluge, tags: ['deluge'] }
     - { role: delugevpn, tags: ['delugevpn'] }
-    # - { role: embystat, tags: ['embystat'] }
+    - { role: embystat, tags: ['embystat'] }
     - { role: epms, tags: ['epms'] }
     # - { role: filebot, tags: ['filebot'] }
     - { role: filebrowser, tags: ['filebrowser'] }
