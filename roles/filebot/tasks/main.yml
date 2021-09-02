@@ -1,56 +1,29 @@
 #########################################################################
 # Title:            Community: FileBot                                  #
-# Author(s):        atilling                                            #
+# Author(s):        atilling, salty                                     #
 # URL:              https://github.com/saltyorg/Community               #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Setting CloudFlare DNS Record"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: filebot
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Stop and remove any existing container
-  docker_container:
-    name: filebot
-    state: absent
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
 
-- name: Create filebot directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - /opt/filebot
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: "0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
-- name: Create and start container
-  docker_container:
-    name: filebot
-    image: jlesage/filebot
-    pull: yes
-    env:
-      TZ: "{{ tz }}"
-      USER_ID: "{{ uid }}"
-      GROUP_ID: "{{ gid }}"
-      VIRTUAL_HOST: "filebot.{{ user.domain }}"
-      VIRTUAL_PORT: "5800"
-      LETSENCRYPT_HOST: "filebot.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-    volumes:
-      - "/opt/filebot:/config"
-      - "/mnt:/mnt"
-      - "/mnt/unionfs/Media/TV:/storage/Media/TV Shows"
-      - "/mnt/unionfs/Media/Movies:/storage/Media/Movies"
-      - "/mnt/local/downloads:/storage/downloads"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - filebot
-    exposed_ports:
-      - 5800
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
