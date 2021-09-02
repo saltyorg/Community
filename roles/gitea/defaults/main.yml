@@ -80,7 +80,7 @@ gitea_docker_envs_default:
   DB_DATABASE: "gitea"
   DISABLE_SSH: "true"
   RUN_MODE: "prod"
-  ROOT_URL: "https://{{ gitea_web_url }}/"
+  ROOT_URL: "{{ gitea_web_url }}/"
 gitea_docker_envs_custom: {}
 gitea_docker_envs: "{{ gitea_docker_envs_default
                        | combine(gitea_docker_envs_custom) }}"
