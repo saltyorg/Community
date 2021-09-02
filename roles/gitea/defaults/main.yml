@@ -89,7 +89,7 @@ gitea_docker_envs: "{{ gitea_docker_envs_default
 gitea_docker_commands_default: []
 gitea_docker_commands_custom: []
 gitea_docker_commands: "{{ gitea_docker_commands_default
-                        + gitea_docker_commands_custom }}"
+                           + gitea_docker_commands_custom }}"
 
 # Volumes
 gitea_docker_volumes_default:
