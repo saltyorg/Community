@@ -81,6 +81,8 @@ gitea_docker_envs_default:
   DISABLE_SSH: "true"
   RUN_MODE: "prod"
   ROOT_URL: "{{ gitea_web_url }}/"
+  DEFAULT_THEME: "arc-green"
+  THEMES: "gitea,arc-green"
 gitea_docker_envs_custom: {}
 gitea_docker_envs: "{{ gitea_docker_envs_default
                        | combine(gitea_docker_envs_custom) }}"
