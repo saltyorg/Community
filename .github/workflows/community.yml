@@ -43,11 +43,8 @@ jobs:
       - name: Chown /srv/git
         run: sudo chown -R runner:runner /srv/git
 
-      - name: Remove accounts.yml
-        run: cd /srv/git/saltbox && rm -rf accounts.yml
-
-      - name: Download Github Actions accounts.yml
-        run: cd /srv/git/saltbox && curl -o accounts.yml https://raw.githubusercontent.com/saltydk/AppveyorTest/main/github.yml
+      - name: Edit accounts.yml
+        run: sed -i 's/seed/runner/g' accounts.yml
 
       - name: Create, chown and chmod /tmp/ansible
         run: sudo mkdir /tmp/ansible && sudo chown -R runner:runner /tmp/ansible && chmod 0777 /tmp/ansible
