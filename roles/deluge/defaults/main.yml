@@ -19,6 +19,7 @@ deluge_name: deluge
 
 deluge_paths_folder: "{{ deluge_name }}"
 deluge_paths_location: "{{ server_appdata_path }}/{{ deluge_paths_folder }}"
+deluge_paths_conf: "{{ deluge_paths_location }}/core.conf"
 deluge_paths_downloads_location: "{{ downloads.torrents }}/{{ deluge_paths_folder }}"
 deluge_paths_folders_list:
   - "{{ deluge_paths_location }}"
@@ -73,23 +74,24 @@ deluge_docker_ports_defaults:
 # - Lookup available ports and set docker ports accordingly
 deluge_docker_ports_58112: "{{ port_lookup_58112.port
                             if (port_lookup_58112.port is defined)
-                                and (port_lookup_58112.port | trim | length > 0)
+                               and (port_lookup_58112.port | trim | length > 0)
                             else '58112' }}"
 deluge_docker_ports_58846: "{{ port_lookup_58846.port
                             if (port_lookup_58846.port is defined)
-                                and (port_lookup_58846.port | trim | length > 0)
+                               and (port_lookup_58846.port | trim | length > 0)
                             else '58846' }}"
 
 deluge_docker_ports_torrents:
   - "{{ deluge_docker_ports_58112 }}:{{ deluge_docker_ports_58112 }}"
-  - "{{ deluge_docker_ports_58846 }}:{{ deluge_docker_ports_58846 }}"
+  - "{{ deluge_docker_ports_58112 }}:{{ deluge_docker_ports_58112 }}/udp"
+  - "{{ deluge_docker_ports_58846 }}:58846"
 deluge_docker_ports_custom: []
 deluge_docker_ports: "{{ deluge_docker_ports_defaults
-                          + deluge_docker_ports_torrents
-                          + deluge_docker_ports_custom
+                         + deluge_docker_ports_torrents
+                         + deluge_docker_ports_custom
                       if (not reverse_proxy_is_enabled)
                       else deluge_docker_ports_torrents
-                            + deluge_docker_ports_custom }}"
+                         + deluge_docker_ports_custom }}"
 
 # Envs
 deluge_docker_envs_default:
@@ -114,21 +116,21 @@ deluge_docker_volumes_default:
   - "/mnt:/mnt"
 deluge_docker_volumes_custom: []
 deluge_docker_volumes: "{{ deluge_docker_volumes_default
-                            + deluge_docker_volumes_custom
-                            + docker_volumes_downloads_common  }}"
+                           + deluge_docker_volumes_custom
+                           + docker_volumes_downloads_common  }}"
 
 # Devices
 deluge_docker_devices_default: []
 deluge_docker_devices_custom: []
 deluge_docker_devices: "{{ deluge_docker_devices_default
-                            + deluge_docker_devices_custom }}"
+                           + deluge_docker_devices_custom }}"
 
 # Hosts
 deluge_docker_hosts_default: []
 deluge_docker_hosts_custom: []
 deluge_docker_hosts: "{{ docker_hosts_common
-                          | combine(deluge_docker_hosts_default)
-                          | combine(deluge_docker_hosts_custom) }}"
+                         | combine(deluge_docker_hosts_default)
+                         | combine(deluge_docker_hosts_custom) }}"
 
 # Labels
 deluge_docker_labels_default: {}
@@ -158,7 +160,7 @@ deluge_docker_capabilities: "{{ deluge_docker_capabilities_default
 deluge_docker_security_opts_default: []
 deluge_docker_security_opts_custom: []
 deluge_docker_security_opts: "{{ deluge_docker_security_opts_default
-                                  + deluge_docker_security_opts_custom }}"
+                                 + deluge_docker_security_opts_custom }}"
 
 # Restart Policy
 deluge_docker_restart_policy: unless-stopped

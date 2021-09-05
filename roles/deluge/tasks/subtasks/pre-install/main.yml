@@ -18,5 +18,5 @@
   find_next_open_port:
     low_bound: 58846
     high_bound: 58866
-  register: port_lookup_58866
+  register: port_lookup_58846
   ignore_errors: true
