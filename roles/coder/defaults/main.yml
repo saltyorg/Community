@@ -21,6 +21,8 @@ coder_paths_folder: "{{ coder_name }}"
 coder_paths_location: "{{ server_appdata_path }}/{{ coder_paths_folder }}"
 coder_paths_folders_list:
   - "{{ coder_paths_location }}"
+  - "{{ coder_paths_location }}/project"
+  - "{{ coder_paths_location }}/.config"
 
 ################################
 # Web
@@ -88,9 +90,9 @@ coder_docker_commands: "{{ coder_docker_commands_default
 
 # Volumes
 coder_docker_volumes_default:
-  - "{{ coder_paths_location }}:/config"
+  - "{{ coder_paths_location }}/project:/home/coder/project"
+  - "{{ coder_paths_location }}/.config:/home/coder/.config"
   - "{{ server_appdata_path }}:/host_opt"
-  - "/home/{{ user.name }}:/home/coder/host"
   - "/mnt:/mnt"
 
 coder_docker_volumes_custom: []
