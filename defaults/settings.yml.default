@@ -37,6 +37,9 @@ qbittorrentvpn:
   vpn_pass: your_vpn_password
   vpn_prov: pia
   vpn_client: wireguard # 'wireguard' or 'openvpn'
+qbittorrentx: 
+  roles: 
+    - ""
 radarrx: 
   roles: 
     - 1080webdl
