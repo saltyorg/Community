@@ -68,16 +68,15 @@ coder_docker_ports_defaults:
 coder_docker_ports_custom: []
 coder_docker_ports: "{{ coder_docker_ports_defaults
                         + coder_docker_ports_custom
-                      if (not reverse_proxy_is_enabled)
-                      else [] + coder_docker_ports_custom }}"
+                     if (not reverse_proxy_is_enabled)
+                     else [] + coder_docker_ports_custom }}"
 
 # Envs
 coder_docker_envs_default:
-  PUID: "{{ uid }}"
-  PGID: "{{ gid }}"
   UMASK: "002"
   TZ: "{{ tz }}"
   PASSWORD: "{{ user.pass }}"
+  DOCKER_USER: "{{ user.name }}"
 coder_docker_envs_custom: {}
 coder_docker_envs: "{{ coder_docker_envs_default
                        | combine(coder_docker_envs_custom) }}"
@@ -148,3 +147,9 @@ coder_docker_restart_policy: unless-stopped
 
 # State
 coder_docker_state: started
+
+# Stop Timeout
+coder_docker_stop_timeout: 15
+
+# User
+coder_docker_user: "{{ uid }}:{{ gid }}"
