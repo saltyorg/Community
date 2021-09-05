@@ -76,15 +76,11 @@ deluge_docker_ports_58112: "{{ port_lookup_58112.port
                             if (port_lookup_58112.port is defined)
                                and (port_lookup_58112.port | trim | length > 0)
                             else '58112' }}"
-deluge_docker_ports_58846: "{{ port_lookup_58846.port
-                            if (port_lookup_58846.port is defined)
-                               and (port_lookup_58846.port | trim | length > 0)
-                            else '58846' }}"
 
 deluge_docker_ports_torrents:
   - "{{ deluge_docker_ports_58112 }}:{{ deluge_docker_ports_58112 }}"
   - "{{ deluge_docker_ports_58112 }}:{{ deluge_docker_ports_58112 }}/udp"
-  - "{{ deluge_docker_ports_58846 }}:58846"
+  - "58846-58866:58846"
 deluge_docker_ports_custom: []
 deluge_docker_ports: "{{ deluge_docker_ports_defaults
                          + deluge_docker_ports_torrents
