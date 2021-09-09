@@ -123,7 +123,6 @@ jellyfin_docker_volumes_default:
   - "{{ jellyfin_paths_location }}:/config:rw"
   - "{{ server_appdata_path }}/scripts:/scripts"
   - "/mnt/unionfs/Media:/data"
-  - "/mnt/unionfs/Media:/media"
   - "/mnt:/mnt"
   - "/tmp:/tmp"
   - "/dev/shm:/dev/shm"

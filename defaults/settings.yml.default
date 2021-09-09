@@ -13,6 +13,9 @@ delugevpn:
   vpn_prov: pia
   vpn_user: your_vpn_username
   vpn_client: wireguard # 'wireguard' or 'openvpn'
+delugex: 
+  roles: 
+    - ""
 gitea: 
   subdomain: git
 goplaxt: 
@@ -37,6 +40,9 @@ qbittorrentvpn:
   vpn_pass: your_vpn_password
   vpn_prov: pia
   vpn_client: wireguard # 'wireguard' or 'openvpn'
+qbittorrentx: 
+  roles: 
+    - ""
 radarrx: 
   roles: 
     - 1080webdl

@@ -35,14 +35,15 @@
     - { role: couchpotato, tags: ['couchpotato'] }
     - { role: deluge, tags: ['deluge'] }
     - { role: delugevpn, tags: ['delugevpn'] }
+    - { role: delugex, tags: ['delugex'] }
     - { role: embystat, tags: ['embystat'] }
     - { role: epms, tags: ['epms'] }
-    # - { role: filebot, tags: ['filebot'] }
+    - { role: filebot, tags: ['filebot'] }
     - { role: filebrowser, tags: ['filebrowser'] }
     - { role: filezilla, tags: ['filezilla'] }
     # - { role: flaresolverr, tags: ['flaresolverr'] }
     # - { role: funkwhale, tags: ['funkwhale'] }
-    # - { role: gitea, tags: ['gitea'] }
+    - { role: gitea, tags: ['gitea'] }
     - { role: glances_web, tags: ['glances-web'] }
     # - { role: goplaxt, tags: ['goplaxt'] }
     - { role: gotify, tags: ['gotify'] }
@@ -77,6 +78,7 @@
     - { role: prowlarr, tags: ['prowlarr'] }
     - { role: qbittorrent, tags: ['qbittorrent'] }
     # - { role: qbittorrentvpn, tags: ['qbittorrentvpn'] }
+    - { role: qbittorrentx, tags: ['qbittorrentx'] }
     - { role: radarrx, tags: ['radarrx'] }
     # - { role: requestrr, tags: ['requestrr'] }
     # - { role: requestrrx, tags: ['requestrrx'] }
@@ -102,7 +104,6 @@
     # - { role: unmanic, tags: ['unmanic'] }
     # - { role: varken, tags: ['varken'] }
     - { role: vaultwarden, tags: ['vaultwarden'] }
-    - { role: vnstat, tags: ['vnstat'] }
     # - { role: watchtower, tags: ['watchtower'] }
     - { role: wordpress, tags: ['wordpress'] }
     # - { role: xteve, tags: ['xteve'] }

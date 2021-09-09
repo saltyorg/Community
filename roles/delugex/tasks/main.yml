@@ -1,0 +1,17 @@
+#########################################################################
+# Title:            Community: DelugeX                                  #
+# Author(s):        salty                                               #
+# URL:              https://github.com/saltyorg/Community               #
+# --                                                                    #
+#########################################################################
+#                   GNU General Public License v3.0                     #
+#########################################################################
+---
+- name: "Execute DelugeX roles"
+  include_role:
+    name: deluge
+  vars:
+    deluge_name: "deluge{{ role }}"
+  with_items: "{{ delugex.roles }}"
+  loop_control:
+    loop_var: role
