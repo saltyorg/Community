@@ -45,7 +45,7 @@
     # - { role: funkwhale, tags: ['funkwhale'] }
     - { role: gitea, tags: ['gitea'] }
     - { role: glances_web, tags: ['glances-web'] }
-    # - { role: goplaxt, tags: ['goplaxt'] }
+    - { role: goplaxt, tags: ['goplaxt'] }
     - { role: gotify, tags: ['gotify'] }
     - { role: grafana, tags: ['grafana'] }
     # - { role: guacamole, tags: ['guacamole'] }
