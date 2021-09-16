@@ -193,14 +193,21 @@ cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/javi11>
+            <img src=https://avatars.githubusercontent.com/u/3855051?v=4 width="100;"  alt=Javier Blanco/>
+            <br />
+            <sub style="font-size:14px"><b>Javier Blanco</b></sub>
+        </a>
+    </td>
+</tr>
+<tr>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/Thomvh>
             <img src=https://avatars.githubusercontent.com/u/1483055?v=4 width="100;"  alt=Thomvh/>
             <br />
             <sub style="font-size:14px"><b>Thomvh</b></sub>
         </a>
     </td>
-</tr>
-<tr>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/BeansIsFat>
             <img src=https://avatars.githubusercontent.com/u/24848012?v=4 width="100;"  alt=BeansIsFat/>
@@ -213,13 +220,6 @@ cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep
             <img src=https://avatars.githubusercontent.com/u/10052873?v=4 width="100;"  alt=Giorgio/>
             <br />
             <sub style="font-size:14px"><b>Giorgio</b></sub>
-        </a>
-    </td>
-    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
-        <a href=https://github.com/javi11>
-            <img src=https://avatars.githubusercontent.com/u/3855051?v=4 width="100;"  alt=Javier Blanco/>
-            <br />
-            <sub style="font-size:14px"><b>Javier Blanco</b></sub>
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
@@ -369,21 +369,14 @@ cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
-        <a href=https://github.com/javierblancosp>
-            <img src=https://avatars.githubusercontent.com/u/16775039?v=4 width="100;"  alt=Javier Blanco Martinez/>
-            <br />
-            <sub style="font-size:14px"><b>Javier Blanco Martinez</b></sub>
-        </a>
-    </td>
-</tr>
-<tr>
-    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/l3uddz>
             <img src=https://avatars.githubusercontent.com/u/7897162?v=4 width="100;"  alt=l3uddz/>
             <br />
             <sub style="font-size:14px"><b>l3uddz</b></sub>
         </a>
     </td>
+</tr>
+<tr>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/muplah>
             <img src=https://avatars.githubusercontent.com/u/12591932?v=4 width="100;"  alt=muplah/>
