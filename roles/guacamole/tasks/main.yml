@@ -1,57 +1,41 @@
-#########################################################################
-# Title:            Community: Guacamole                                #
-# Author(s):        RXWatcher                                           #
-# URL:              https://github.com/saltyorg/Community               #
-#########################################################################
+##########################################################################
+# Title:            Community: Guacamole                                 #
+# Author(s):        RXWatcher, kowalski                                  #
+# URL:              https://github.com/saltyorg/Community                #
+# --                                                                     #
+##########################################################################
+#                   GNU General Public License v3.0                      #
+##########################################################################
 ---
-- name: "Setting CloudFlare DNS Record"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: guacamole
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Stop and remove any existing container
-  docker_container:
-    name: guacamole
-    state: absent
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
 
-- name: Create guacamole directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }} recurse=yes"
-  with_items:
-    - /opt/guacamole
-    - /opt/guacamole/config
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: "0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
-- name: Create and start container
-  docker_container:
-    name: guacamole
-    image: jasonbean/guacamole:latest
-    pull: yes
-    env:
-      PUID: "{{ uid }}"
-      PGID: "{{ gid }}"
-      TZ: "{{ tz }}"
-      VIRTUAL_HOST: "guacamole.{{ user.domain }}"
-      VIRTUAL_PORT: "8080"
-      LETSENCRYPT_HOST: "guacamole.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-      OPT_MYSQL: "Y"
-    volumes:
-      - "/opt/guacamole/config:/config"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - guacamole
-    restart_policy: unless-stopped
-    state: started
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
 
-- name: "Wait for 30 seconds"
+- name: Post-Install | Wait 30 seconds before continuing
   wait_for:
     timeout: 30
 
-- name: Reset guacamole directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }} recurse=yes"
-  with_items:
-    - /opt/guacamole
+- name: Post-Install | Ensure guacamole config folder has the correct permissions
+  file:
+    path: "{{ guacamole_paths_location }}"
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: 0775
+    recurse: true
