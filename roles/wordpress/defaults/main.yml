@@ -84,7 +84,7 @@ wordpress_docker_envs: "{{ wordpress_docker_envs_default
 wordpress_docker_commands_default: []
 wordpress_docker_commands_custom: []
 wordpress_docker_commands: "{{ wordpress_docker_commands_default
-                               + wordpress_docker_commands_custom}}"
+                               + wordpress_docker_commands_custom }}"
 
 # Volumes
 wordpress_docker_volumes_default:

@@ -84,7 +84,7 @@ deemix_docker_envs: "{{ deemix_docker_envs_default
 deemix_docker_commands_default: []
 deemix_docker_commands_custom: []
 deemix_docker_commands: "{{ deemix_docker_commands_default
-                            + deemix_docker_commands_custom}}"
+                            + deemix_docker_commands_custom }}"
 
 # Volumes
 deemix_docker_volumes_default:

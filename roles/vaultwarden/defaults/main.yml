@@ -82,7 +82,7 @@ vaultwarden_docker_envs: "{{ vaultwarden_docker_envs_default
 vaultwarden_docker_commands_default: []
 vaultwarden_docker_commands_custom: []
 vaultwarden_docker_commands: "{{ vaultwarden_docker_commands_default
-                                  + vaultwarden_docker_commands_custom}}"
+                                  + vaultwarden_docker_commands_custom }}"
 
 # Volumes
 vaultwarden_docker_volumes_default:

@@ -83,7 +83,7 @@ petio_docker_envs: "{{ petio_docker_envs_default
 petio_docker_commands_default: []
 petio_docker_commands_custom: []
 petio_docker_commands: "{{ petio_docker_commands_default
-                            + petio_docker_commands_custom}}"
+                            + petio_docker_commands_custom }}"
 
 # Volumes
 petio_docker_volumes_default:

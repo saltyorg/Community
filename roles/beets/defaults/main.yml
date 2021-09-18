@@ -84,7 +84,7 @@ beets_docker_envs: "{{ beets_docker_envs_default
 beets_docker_commands_default: []
 beets_docker_commands_custom: []
 beets_docker_commands: "{{ beets_docker_commands_default
-                           + beets_docker_commands_custom}}"
+                           + beets_docker_commands_custom }}"
 
 # Volumes
 beets_docker_volumes_default:

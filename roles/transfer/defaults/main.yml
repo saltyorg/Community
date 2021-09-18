@@ -89,7 +89,7 @@ transfer_docker_envs: "{{ transfer_docker_envs_default
 transfer_docker_commands_default: []
 transfer_docker_commands_custom: []
 transfer_docker_commands: "{{ transfer_docker_commands_default
-                              + transfer_docker_commands_custom}}"
+                              + transfer_docker_commands_custom }}"
 
 # Volumes
 transfer_docker_volumes_default:

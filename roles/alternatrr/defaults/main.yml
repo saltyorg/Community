@@ -84,7 +84,7 @@ alternatrr_docker_envs: "{{ alternatrr_docker_envs_default
 alternatrr_docker_commands_default: []
 alternatrr_docker_commands_custom: []
 alternatrr_docker_commands: "{{ alternatrr_docker_commands_default
-                                + alternatrr_docker_commands_custom}}"
+                                + alternatrr_docker_commands_custom }}"
 
 # Volumes
 alternatrr_docker_volumes_default:

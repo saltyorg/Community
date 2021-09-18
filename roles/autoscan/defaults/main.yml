@@ -83,7 +83,7 @@ autoscan_docker_envs: "{{ autoscan_docker_envs_default
 autoscan_docker_commands_default: []
 autoscan_docker_commands_custom: []
 autoscan_docker_commands: "{{ autoscan_docker_commands_default
-                              + autoscan_docker_commands_custom}}"
+                              + autoscan_docker_commands_custom }}"
 
 # Volumes
 autoscan_docker_volumes_default:

@@ -85,7 +85,7 @@ coder_docker_envs: "{{ coder_docker_envs_default
 coder_docker_commands_default: []
 coder_docker_commands_custom: []
 coder_docker_commands: "{{ coder_docker_commands_default
-                           + coder_docker_commands_custom}}"
+                           + coder_docker_commands_custom }}"
 
 # Volumes
 coder_docker_volumes_default:

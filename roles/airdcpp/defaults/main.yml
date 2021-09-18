@@ -88,7 +88,7 @@ airdcpp_docker_envs: "{{ airdcpp_docker_envs_default
 airdcpp_docker_commands_default: []
 airdcpp_docker_commands_custom: []
 airdcpp_docker_commands: "{{ airdcpp_docker_commands_default
-                              + airdcpp_docker_commands_custom}}"
+                              + airdcpp_docker_commands_custom }}"
 
 # Volumes
 airdcpp_docker_volumes_default:
