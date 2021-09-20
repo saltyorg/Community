@@ -42,7 +42,7 @@
     - { role: filebrowser, tags: ['filebrowser'] }
     - { role: filezilla, tags: ['filezilla'] }
     - { role: flaresolverr, tags: ['flaresolverr'] }
-    # - { role: funkwhale, tags: ['funkwhale'] }
+    - { role: funkwhale, tags: ['funkwhale'] }
     - { role: gitea, tags: ['gitea'] }
     - { role: glances_web, tags: ['glances-web'] }
     - { role: goplaxt, tags: ['goplaxt'] }
