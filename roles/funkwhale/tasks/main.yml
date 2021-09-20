@@ -1,57 +1,29 @@
 #########################################################################
 # Title:            Community: Funkwhale                                #
-# Author(s):        RXWatcher, Superduper09                             #
+# Author(s):        RXWatcher, Superduper09, salty                      #
 # URL:              https://github.com/saltyorg/Community               #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Set DNS Record on CloudFlare"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: funkwhale
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: "Stop and remove funkwhale container"
-  docker_container:
-    name: funkwhale
-    state: absent
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
 
-- name: "Create funkwhale directories"
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - /opt/funkwhale
-    - /opt/funkwhale/data
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: "0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
-- name: "Create and start funkwhale container"
-  docker_container:
-    name: funkwhale
-    image: funkwhale/all-in-one:develop
-    pull: yes
-    env:
-      FUNKWHALE_HOSTNAME: "funkwhale.{{ user.domain }}"
-      NESTED_PROXY: "1"
-      VIRTUAL_HOST: "funkwhale.{{ user.domain }}"
-      VIRTUAL_PORT: "80"
-      LETSENCRYPT_HOST: "funkwhale.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-      PUID: "{{ uid }}"
-      PGID: "{{ gid }}"
-    volumes:
-      - "/opt/funkwhale/data:/data"
-      - "/mnt/unionfs/:/music:ro"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - funkwhale
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
-
-- name: "sleep for 10 seconds and continue"
-  wait_for: 
-    timeout: 10
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
