@@ -50,6 +50,14 @@ calibre_web_traefik_certresolver: "{{ traefik_default_certresolver }}"
 calibre_web_traefik_enabled: true
 
 ################################
+# THEME
+################################
+
+# Options can be found at https://github.com/gilbN/theme.park
+calibre_web_themepark_enabled: false
+calibre_web_themepark_theme: "{{ global_themepark_theme }}"
+
+################################
 # Docker
 ################################
 
@@ -78,8 +86,16 @@ calibre_web_docker_envs_default:
   USE_CONFIG_DIR: "true"
   DOCKER_MODS: linuxserver/calibre-web:calibre
 calibre_web_docker_envs_custom: {}
+calibre_web_docker_envs_theme:
+  DOCKER_MODS: "linuxserver/calibre-web:calibre|ghcr.io/gilbn/theme.park:calibre-web"
+  TP_DOMAIN: "gilbn.github.io"
+  TP_THEME: "{{ calibre_web_themepark_theme }}"
 calibre_web_docker_envs: "{{ calibre_web_docker_envs_default
-                             | combine(calibre_web_docker_envs_custom) }}"
+                             | combine(calibre_web_docker_envs_custom)
+                          if not (calibre_web_themepark_enabled)
+                          else calibre_web_docker_envs_default
+                             | combine(calibre_web_docker_envs_custom)
+                             | combine(calibre_web_docker_envs_theme) }}"
 
 # Commands
 calibre_web_docker_commands_default: []
