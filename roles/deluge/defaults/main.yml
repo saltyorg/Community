@@ -56,6 +56,14 @@ deluge_traefik_certresolver: "{{ traefik_default_certresolver }}"
 deluge_traefik_enabled: true
 
 ################################
+# THEME
+################################
+
+# Options can be found at https://github.com/gilbN/theme.park
+deluge_themepark_enabled: false
+deluge_themepark_theme: "{{ global_themepark_theme }}"
+
+################################
 # Docker
 ################################
 
@@ -96,14 +104,22 @@ deluge_docker_envs_default:
   TZ: "{{ tz }}"
   UMASK: "002"
 deluge_docker_envs_custom: {}
+deluge_docker_envs_theme:
+  DOCKER_MODS: "ghcr.io/gilbn/theme.park:deluge"
+  TP_DOMAIN: "gilbn.github.io"
+  TP_THEME: "{{ deluge_themepark_theme }}"
 deluge_docker_envs: "{{ deluge_docker_envs_default
-                        | combine(deluge_docker_envs_custom) }}"
+                        | combine(deluge_docker_envs_custom)
+                     if not (deluge_themepark_enabled)
+                     else deluge_docker_envs_default
+                        | combine(deluge_docker_envs_custom)
+                        | combine(deluge_docker_envs_theme) }}"
 
 # Commands
 deluge_docker_commands_default: []
 deluge_docker_commands_custom: []
 deluge_docker_commands: "{{ deluge_docker_commands_default
-                            + deluge_docker_commands_custom}}"
+                            + deluge_docker_commands_custom }}"
 
 # Volumes
 deluge_docker_volumes_default:
@@ -113,7 +129,7 @@ deluge_docker_volumes_default:
 deluge_docker_volumes_custom: []
 deluge_docker_volumes: "{{ deluge_docker_volumes_default
                            + deluge_docker_volumes_custom
-                           + docker_volumes_downloads_common  }}"
+                           + docker_volumes_downloads_common }}"
 
 # Devices
 deluge_docker_devices_default: []
