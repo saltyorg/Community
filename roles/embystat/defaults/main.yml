@@ -30,7 +30,7 @@ embystat_paths_folders_list:
 embystat_web_subdomain: "{{ embystat_name }}"
 embystat_web_domain: "{{ user.domain }}"
 embystat_web_port: "6555"
-embystat_web_url: "{{ 'https://' + embystat_web_subdomain + dns_record_suffix + '.' + embystat_web_domain
+embystat_web_url: "{{ 'https://' + embystat_web_subdomain + '.' + embystat_web_domain
                    if (reverse_proxy_is_enabled)
                    else 'http://localhost:' + embystat_web_port }}"
 

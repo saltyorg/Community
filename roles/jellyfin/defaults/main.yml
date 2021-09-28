@@ -38,7 +38,7 @@ jellyfin_paths_xml_loct_old: "{{ jellyfin_paths_location }}/app/config/system.xm
 jellyfin_web_subdomain: "{{ jellyfin_name }}"
 jellyfin_web_domain: "{{ user.domain }}"
 jellyfin_web_port: "8096"
-jellyfin_web_url: "{{ 'https://' + jellyfin_web_subdomain + dns_record_suffix + '.' + jellyfin_web_domain
+jellyfin_web_url: "{{ 'https://' + jellyfin_web_subdomain + '.' + jellyfin_web_domain
                    if (reverse_proxy_is_enabled)
                    else 'http://localhost:' + jellyfin_web_port }}"
 

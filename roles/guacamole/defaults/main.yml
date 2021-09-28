@@ -31,7 +31,7 @@ guacamole_paths_folders_list:
 guacamole_web_subdomain: "{{ guacamole_name }}"
 guacamole_web_domain: "{{ user.domain }}"
 guacamole_web_port: "8080"
-guacamole_web_url: "{{ 'https://' + guacamole_web_subdomain + dns_record_suffix + '.' + guacamole_web_domain
+guacamole_web_url: "{{ 'https://' + guacamole_web_subdomain + '.' + guacamole_web_domain
                     if (reverse_proxy_is_enabled)
                     else 'http://localhost:' + guacamole_web_port }}"
 

@@ -31,7 +31,7 @@ handbrake_paths_folders_list:
 handbrake_web_subdomain: "{{ handbrake_name }}"
 handbrake_web_domain: "{{ user.domain }}"
 handbrake_web_port: "5800"
-handbrake_web_url: "{{ 'https://' + handbrake_web_subdomain + dns_record_suffix + '.' + handbrake_web_domain
+handbrake_web_url: "{{ 'https://' + handbrake_web_subdomain + '.' + handbrake_web_domain
                     if (reverse_proxy_is_enabled)
                     else 'http://localhost:' + handbrake_web_port }}"
 

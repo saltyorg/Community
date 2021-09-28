@@ -30,7 +30,7 @@ autoscan_paths_config_location: "{{ autoscan_paths_location }}/config.yml"
 autoscan_web_subdomain: "{{ autoscan_name }}"
 autoscan_web_domain: "{{ user.domain }}"
 autoscan_web_port: "3030"
-autoscan_web_url: "{{ 'https://' + autoscan_web_subdomain + dns_record_suffix + '.' + autoscan_web_domain
+autoscan_web_url: "{{ 'https://' + autoscan_web_subdomain + '.' + autoscan_web_domain
                    if (reverse_proxy_is_enabled)
                    else 'http://localhost:' + autoscan_web_port }}"
 

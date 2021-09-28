@@ -31,7 +31,7 @@ kitana_paths_config_location: "{{ kitana_paths_location }}/config.yml"
 kitana_web_subdomain: "{{ kitana_name }}"
 kitana_web_domain: "{{ user.domain }}"
 kitana_web_port: "31337"
-kitana_web_url: "{{ 'https://' + kitana_web_subdomain + dns_record_suffix + '.' + kitana_web_domain
+kitana_web_url: "{{ 'https://' + kitana_web_subdomain + '.' + kitana_web_domain
                  if (reverse_proxy_is_enabled)
                  else 'http://localhost:' + kitana_web_port }}"
 

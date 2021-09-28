@@ -30,7 +30,7 @@ beets_paths_folders_list:
 beets_web_subdomain: "{{ beets_name }}"
 beets_web_domain: "{{ user.domain }}"
 beets_web_port: "8337"
-beets_web_url: "{{ 'https://' + beets_web_subdomain + dns_record_suffix + '.' + beets_web_domain
+beets_web_url: "{{ 'https://' + beets_web_subdomain + '.' + beets_web_domain
                 if (reverse_proxy_is_enabled)
                 else 'http://localhost:' + beets_web_port }}"
 

@@ -30,7 +30,7 @@ filebot_paths_config_location: "{{ filebot_paths_location }}/config.yml"
 filebot_web_subdomain: "{{ filebot_name }}"
 filebot_web_domain: "{{ user.domain }}"
 filebot_web_port: "5800"
-filebot_web_url: "{{ 'https://' + filebot_web_subdomain + dns_record_suffix + '.' + filebot_web_domain
+filebot_web_url: "{{ 'https://' + filebot_web_subdomain + '.' + filebot_web_domain
                   if (reverse_proxy_is_enabled)
                   else 'http://localhost:' + filebot_web_port }}"
 

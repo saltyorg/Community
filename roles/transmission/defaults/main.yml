@@ -36,7 +36,7 @@ transmission_paths_setttings_location: "{{ transmission_paths_location }}/settin
 transmission_web_subdomain: "{{ transmission_name }}"
 transmission_web_domain: "{{ user.domain }}"
 transmission_web_port: "9091"
-transmission_web_url: "{{ 'https://' + transmission_web_subdomain + dns_record_suffix + '.' + transmission_web_domain
+transmission_web_url: "{{ 'https://' + transmission_web_subdomain + '.' + transmission_web_domain
                        if (reverse_proxy_is_enabled)
                        else 'http://localhost:' + transmission_web_port }}"
 

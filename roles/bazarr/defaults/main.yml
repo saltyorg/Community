@@ -29,7 +29,7 @@ bazarr_paths_folders_list:
 bazarr_web_subdomain: "{{ bazarr_name }}"
 bazarr_web_domain: "{{ user.domain }}"
 bazarr_web_port: "6767"
-bazarr_web_url: "{{ 'https://' + bazarr_web_subdomain + dns_record_suffix + '.' + bazarr_web_domain
+bazarr_web_url: "{{ 'https://' + bazarr_web_subdomain + '.' + bazarr_web_domain
                    if (reverse_proxy_is_enabled)
                    else 'http://localhost:' + bazarr_web_port }}"
 

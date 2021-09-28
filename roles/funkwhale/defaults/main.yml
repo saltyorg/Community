@@ -30,7 +30,7 @@ funkwhale_paths_folders_list:
 funkwhale_web_subdomain: "{{ funkwhale_name }}"
 funkwhale_web_domain: "{{ user.domain }}"
 funkwhale_web_port: "80"
-funkwhale_web_url: "{{ 'https://' + funkwhale_web_subdomain + dns_record_suffix + '.' + funkwhale_web_domain
+funkwhale_web_url: "{{ 'https://' + funkwhale_web_subdomain + '.' + funkwhale_web_domain
                     if (reverse_proxy_is_enabled)
                     else 'http://localhost:' + funkwhale_web_port }}"
 
@@ -72,7 +72,7 @@ funkwhale_docker_ports: "{{ funkwhale_docker_ports_defaults
 
 # Envs
 funkwhale_docker_envs_default:
-  FUNKWHALE_HOSTNAME: "{{ funkwhale_web_subdomain + dns_record_suffix + '.' + funkwhale_web_domain }}"
+  FUNKWHALE_HOSTNAME: "{{ funkwhale_web_subdomain + '.' + funkwhale_web_domain }}"
   NESTED_PROXY: "1"
   PUID: "{{ uid }}"
   PGID: "{{ gid }}"

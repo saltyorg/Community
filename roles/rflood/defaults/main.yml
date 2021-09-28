@@ -37,7 +37,7 @@ rflood_paths_rtorrent_rc_location: "{{ rflood_paths_location }}/rtorrent.rc"
 rflood_web_subdomain: "{{ rflood_name }}"
 rflood_web_domain: "{{ user.domain }}"
 rflood_web_port: "3000"
-rflood_web_url: "{{ 'https://' + rflood_web_subdomain + dns_record_suffix + '.' + rflood_web_domain
+rflood_web_url: "{{ 'https://' + rflood_web_subdomain + '.' + rflood_web_domain
                  if (reverse_proxy_is_enabled)
                  else 'http://localhost:' + rflood_web_port }}"
 
