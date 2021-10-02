@@ -104,6 +104,6 @@
     # - { role: unmanic, tags: ['unmanic'] }
     # - { role: varken, tags: ['varken'] }
     - { role: vaultwarden, tags: ['vaultwarden'] }
-    # - { role: watchtower, tags: ['watchtower'] }
+    - { role: watchtower, tags: ['watchtower'] }
     - { role: wordpress, tags: ['wordpress'] }
     # - { role: xteve, tags: ['xteve'] }
