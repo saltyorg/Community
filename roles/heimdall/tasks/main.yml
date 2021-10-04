@@ -1,62 +1,29 @@
-#########################################################################
-# Title:         Community: Heimdall Role                               #
-# Author(s):     TheBradz, desimaniac                                   #
-# URL:           https://github.com/saltyorg/Community                  #
-# --                                                                    #
-#########################################################################
-#                   GNU General Public License v3.0                     #
-#########################################################################
+##########################################################################
+# Title:            Community: Heimdall                                  #
+# Author(s):        TheBradz, desimaniac, kowalski                       #
+# URL:              https://github.com/saltyorg/Community                #
+# --                                                                     #
+##########################################################################
+#                   GNU General Public License v3.0                      #
+##########################################################################
 ---
-- name: "Set DNS Record on CloudFlare"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: heimdall
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Create htpasswd
-  htpasswd:
-    path: "/opt/nginx-proxy/htpasswd/{{ item }}.{{ user.domain }}"
-    name: "{{ user.name }}"
-    password: "{{ user.pass }}"
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
+
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
-    mode: 0664
-  with_items:
-    - heimdall
+    mode: "0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
-- name: Stop and remove any existing container
-  docker_container:
-    name: heimdall
-    state: absent
-
-- name: Create heimdall directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - /opt/heimdall
-
-- name: Create and start container
-  docker_container:
-    name: heimdall
-    image: linuxserver/heimdall
-    pull: yes
-    env:
-      TZ: "{{ tz }}"
-      PUID: "{{ uid }}"
-      PGID: "{{ gid }}"
-      VIRTUAL_HOST: "heimdall.{{ user.domain }}"
-      VIRTUAL_PORT: "443"
-      VIRTUAL_PROTO: "https"
-      LETSENCRYPT_HOST: "heimdall.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-    volumes:
-      - "/opt/heimdall:/config"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - heimdall
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
