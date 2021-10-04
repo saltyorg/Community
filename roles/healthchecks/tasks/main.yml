@@ -1,64 +1,32 @@
-#########################################################################
-# Title:         Community: Healthchecks Role                           #
-# Author(s):     danqbudz                                               #
-# URL:           https://github.com/saltyorg/Community                  #
-#########################################################################
-#                   GNU General Public License v3.0                     #
-#########################################################################
+##########################################################################
+# Title:            Community: healthchecks                              #
+# Author(s):        danqbudz, kowalski                                   #
+# URL:              https://github.com/saltyorg/Community                #
+# --                                                                     #
+##########################################################################
+#                   GNU General Public License v3.0                      #
+##########################################################################
 ---
-- name: "Set DNS Record on CloudFlare"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: healthchecks
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Stop and remove any existing container
-  docker_container:
-    name: healthchecks
-    state: absent
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
 
-- name: Create healthchecks directory
-  file: "path={{ item }} state=directory mode=0755 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - /opt/healthchecks
-
-- name: "Check if local_settings.py file exists"
-  stat:
-    path: "/opt/healthchecks/local_settings.py"
-  register: local_settings_py
-
-- name: "Import config file if it doesnt exist"
-  template:
-    src: local_settings.py.j2
-    dest: /opt/healthchecks/local_settings.py
-    force: yes
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
-    mode: 0644
-  when: not local_settings_py.stat.exists
+    mode: "0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
-- name: Create and start container
-  docker_container:
-    name: healthchecks
-    image: linuxserver/healthchecks
-    pull: yes
-    env:
-      TZ: "{{ tz }}"
-      PUID: "{{ uid }}"
-      PGID: "{{ gid }}"
-      VIRTUAL_HOST: "healthchecks.{{ user.domain }}"
-      VIRTUAL_PORT: "8000"
-      LETSENCRYPT_HOST: "healthchecks.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-    volumes:
-      - "/opt/healthchecks:/config"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - healthchecks
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
+- name: Import Settings task
+  import_tasks: "subtasks/settings.yml"
+
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
