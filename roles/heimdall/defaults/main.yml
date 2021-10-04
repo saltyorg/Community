@@ -29,7 +29,7 @@ heimdall_paths_folders_list:
 heimdall_web_subdomain: "{{ heimdall_name }}"
 heimdall_web_domain: "{{ user.domain }}"
 heimdall_web_port: "80"
-heimdall_web_url: "{{ 'https://' + heimdall_web_subdomain + dns_record_suffix + '.' + heimdall_web_domain
+heimdall_web_url: "{{ 'https://' + heimdall_web_subdomain + '.' + heimdall_web_domain
                    if (reverse_proxy_is_enabled)
                    else 'http://localhost:' + heimdall_web_port }}"
 
