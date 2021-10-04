@@ -29,7 +29,7 @@ nextcloud_paths_folders_list:
 nextcloud_web_subdomain: "{{ nextcloud_name }}"
 nextcloud_web_domain: "{{ user.domain }}"
 nextcloud_web_port: "80"
-nextcloud_web_url: "{{ 'https://' + nextcloud_web_subdomain + dns_record_suffix + '.' + nextcloud_web_domain
+nextcloud_web_url: "{{ 'https://' + nextcloud_web_subdomain + '.' + nextcloud_web_domain
                     if (reverse_proxy_is_enabled)
                     else 'http://localhost:' + nextcloud_web_port }}"
 
@@ -80,7 +80,7 @@ nextcloud_docker_envs: "{{ nextcloud_docker_envs_default
 nextcloud_docker_commands_default: []
 nextcloud_docker_commands_custom: []
 nextcloud_docker_commands: "{{ nextcloud_docker_commands_default
-                               + nextcloud_docker_commands_custom}}"
+                               + nextcloud_docker_commands_custom }}"
 
 # Volumes
 nextcloud_docker_volumes_default:

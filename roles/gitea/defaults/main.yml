@@ -29,7 +29,7 @@ gitea_paths_folders_list:
 gitea_web_subdomain: "{{ gitea_name }}"
 gitea_web_domain: "{{ user.domain }}"
 gitea_web_port: "3000"
-gitea_web_url: "{{ 'https://' + gitea_web_subdomain + dns_record_suffix + '.' + gitea_web_domain
+gitea_web_url: "{{ 'https://' + gitea_web_subdomain + '.' + gitea_web_domain
                 if (reverse_proxy_is_enabled)
                 else 'http://localhost:' + gitea_web_port }}"
 

@@ -29,7 +29,7 @@ booksonic_paths_folders_list:
 booksonic_web_subdomain: "{{ booksonic_name }}"
 booksonic_web_domain: "{{ user.domain }}"
 booksonic_web_port: "4040"
-booksonic_web_url: "{{ 'https://' + booksonic_web_subdomain + dns_record_suffix + '.' + booksonic_web_domain
+booksonic_web_url: "{{ 'https://' + booksonic_web_subdomain + '.' + booksonic_web_domain
                    if (reverse_proxy_is_enabled)
                    else 'http://localhost:' + booksonic_web_port }}"
 
@@ -82,7 +82,7 @@ booksonic_docker_envs: "{{ booksonic_docker_envs_default
 booksonic_docker_commands_default: []
 booksonic_docker_commands_custom: []
 booksonic_docker_commands: "{{ booksonic_docker_commands_default
-                               + booksonic_docker_commands_custom}}"
+                               + booksonic_docker_commands_custom }}"
 
 # Volumes
 booksonic_docker_volumes_default:

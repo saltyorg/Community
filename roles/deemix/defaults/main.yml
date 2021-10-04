@@ -29,7 +29,7 @@ deemix_paths_folders_list:
 deemix_web_subdomain: "{{ deemix_name }}"
 deemix_web_domain: "{{ user.domain }}"
 deemix_web_port: "6595"
-deemix_web_url: "{{ 'https://' + deemix_web_subdomain + dns_record_suffix + '.' + deemix_web_domain
+deemix_web_url: "{{ 'https://' + deemix_web_subdomain + '.' + deemix_web_domain
                  if (reverse_proxy_is_enabled)
                  else 'http://localhost:' + deemix_web_port }}"
 
@@ -84,7 +84,7 @@ deemix_docker_envs: "{{ deemix_docker_envs_default
 deemix_docker_commands_default: []
 deemix_docker_commands_custom: []
 deemix_docker_commands: "{{ deemix_docker_commands_default
-                            + deemix_docker_commands_custom}}"
+                            + deemix_docker_commands_custom }}"
 
 # Volumes
 deemix_docker_volumes_default:

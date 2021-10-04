@@ -30,7 +30,7 @@ logarr_paths_config_location: "{{ logarr_paths_location }}/userdata/config.json"
 logarr_web_subdomain: "{{ logarr_name }}"
 logarr_web_domain: "{{ user.domain }}"
 logarr_web_port: "80"
-logarr_web_url: "{{ 'https://' + logarr_web_subdomain + dns_record_suffix + '.' + logarr_web_domain
+logarr_web_url: "{{ 'https://' + logarr_web_subdomain + '.' + logarr_web_domain
                  if (reverse_proxy_is_enabled)
                  else 'http://localhost:' + logarr_web_port }}"
 

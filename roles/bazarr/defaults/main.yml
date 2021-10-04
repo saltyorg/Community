@@ -29,7 +29,7 @@ bazarr_paths_folders_list:
 bazarr_web_subdomain: "{{ bazarr_name }}"
 bazarr_web_domain: "{{ user.domain }}"
 bazarr_web_port: "6767"
-bazarr_web_url: "{{ 'https://' + bazarr_web_subdomain + dns_record_suffix + '.' + bazarr_web_domain
+bazarr_web_url: "{{ 'https://' + bazarr_web_subdomain + '.' + bazarr_web_domain
                    if (reverse_proxy_is_enabled)
                    else 'http://localhost:' + bazarr_web_port }}"
 
@@ -47,6 +47,14 @@ bazarr_dns_zone: "{{ bazarr_web_domain }}"
 bazarr_traefik_middleware: "secureHeaders@file,gzip"
 bazarr_traefik_certresolver: "{{ traefik_default_certresolver }}"
 bazarr_traefik_enabled: true
+
+################################
+# THEME
+################################
+
+# Options can be found at https://github.com/gilbN/theme.park
+bazarr_themepark_enabled: false
+bazarr_themepark_theme: "{{ global_themepark_theme }}"
 
 ################################
 # Docker
@@ -74,6 +82,9 @@ bazarr_docker_envs_default:
   PUID: "{{ uid }}"
   PGID: "{{ gid }}"
   TZ: "{{ tz }}"
+  TP_DOMAIN: "gilbn.github.io"
+  TP_THEME: "{{ bazarr_themepark_theme }}"
+  TP_HOTIO: "true"
 bazarr_docker_envs_custom: {}
 bazarr_docker_envs: "{{ bazarr_docker_envs_default
                         | combine(bazarr_docker_envs_custom) }}"
@@ -82,7 +93,7 @@ bazarr_docker_envs: "{{ bazarr_docker_envs_default
 bazarr_docker_commands_default: []
 bazarr_docker_commands_custom: []
 bazarr_docker_commands: "{{ bazarr_docker_commands_default
-                            + bazarr_docker_commands_custom}}"
+                            + bazarr_docker_commands_custom }}"
 
 # Volumes
 bazarr_docker_volumes_default:
@@ -90,9 +101,16 @@ bazarr_docker_volumes_default:
   - "/opt/scripts:/scripts"
   - "/mnt:/mnt"
 bazarr_docker_volumes_custom: []
+bazarr_docker_volumes_theme:
+  - "{{ bazarr_paths_location }}/98-themepark.sh:/etc/cont-init.d/98-themepark"
 bazarr_docker_volumes: "{{ bazarr_docker_volumes_default
                            + bazarr_docker_volumes_custom
-                           + docker_volumes_downloads_common }}"
+                           + docker_volumes_downloads_common
+                        if not (bazarr_themepark_enabled)
+                        else bazarr_docker_volumes_default
+                           + bazarr_docker_volumes_custom
+                           + docker_volumes_downloads_common
+                           + bazarr_docker_volumes_theme }}"
 
 # Devices
 bazarr_docker_devices_default: []

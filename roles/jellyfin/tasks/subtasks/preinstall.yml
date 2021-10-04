@@ -63,16 +63,6 @@
     path: "{{ jellyfin_paths_dlna_location }}"
   register: jellyfin_dlna
 
-- name: Preinstall FACTS | Get "IP for LazyMan"
-  set_fact: lazyman_ip="{{ lookup('dig', 'nhl.freegamez.ga.', '@8.8.8.8', 'qtype=A') }}"
-
-- name: Preinstall FACTS | "Set custom hosts"
-  set_fact:
-    jellyfin_custom_hosts:
-      - { "playback.svcs.mlb.com": "{{ (lazyman_ip|ipv4) | ternary(lazyman_ip,'127.0.0.1') }}",
-          "mf.svc.nhl.com": "{{ (lazyman_ip|ipv4) | ternary(lazyman_ip,'127.0.0.1') }}",
-          "mlb-ws-mf.media.mlb.com": "{{ (lazyman_ip|ipv4) | ternary(lazyman_ip, '127.0.0.1') }}", }
-
 ################################
 # Block DLNA network spam
 ################################

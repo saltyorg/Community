@@ -7,7 +7,7 @@
     - ['/srv/git/saltbox/adv_settings.yml', '/srv/git/saltbox/defaults/adv_settings.yml.default']
   roles:
     # Reqs
-    - { role: settings, tags: ['always', 'settings'] }
+    - { role: settings, tags: ['settings'] }
     - { role: sanity_check, tags: ['always', 'sanity_check'] }
     - { role: pre_tasks, tags: ['pre_tasks'] }
     # Apps
@@ -42,14 +42,14 @@
     - { role: filebrowser, tags: ['filebrowser'] }
     - { role: filezilla, tags: ['filezilla'] }
     - { role: flaresolverr, tags: ['flaresolverr'] }
-    # - { role: funkwhale, tags: ['funkwhale'] }
+    - { role: funkwhale, tags: ['funkwhale'] }
     - { role: gitea, tags: ['gitea'] }
     - { role: glances_web, tags: ['glances-web'] }
     - { role: goplaxt, tags: ['goplaxt'] }
     - { role: gotify, tags: ['gotify'] }
     - { role: grafana, tags: ['grafana'] }
-    # - { role: guacamole, tags: ['guacamole'] }
-    # - { role: handbrake, tags: ['handbrake'] }
+    - { role: guacamole, tags: ['guacamole'] }
+    - { role: handbrake, tags: ['handbrake'] }
     # - { role: healthchecks, tags: ['healthchecks'] }
     # - { role: heimdall, tags: ['heimdall'] }
     - { role: hetzner_nfs, tags: ['hetzner_nfs_server', 'hetzner_nfs_server_uninstall', 'hetzner_nfs_client_mount', 'hetzner_nfs_client_unmount'] }
@@ -57,6 +57,7 @@
     # - { role: invoiceninja, tags: ['invoiceninja'] }
     - { role: jellyfin, tags: ['jellyfin'] }
     # - { role: jirafeau, tags: ['jirafeau'] }
+    - { role: kavita, tags: ['kavita'] }
     - { role: kcptun_client, tags: ['kcptun-client'] }
     - { role: kcptun_server, tags: ['kcptun-server'] }
     - { role: kitana, tags: ['kitana'] }
@@ -104,6 +105,6 @@
     # - { role: unmanic, tags: ['unmanic'] }
     # - { role: varken, tags: ['varken'] }
     - { role: vaultwarden, tags: ['vaultwarden'] }
-    # - { role: watchtower, tags: ['watchtower'] }
+    - { role: watchtower, tags: ['watchtower'] }
     - { role: wordpress, tags: ['wordpress'] }
     # - { role: xteve, tags: ['xteve'] }
