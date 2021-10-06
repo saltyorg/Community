@@ -57,7 +57,6 @@ influxdb_docker_commands: "{{ influxdb_docker_commands_default
 # Volumes
 influxdb_docker_volumes_default:
   - "{{ influxdb_paths_location }}:/var/lib/influxdb"
-  - "/etc/localtime:/etc/localtime:ro"
 influxdb_docker_volumes_custom: []
 influxdb_docker_volumes: "{{ influxdb_docker_volumes_default
                              + influxdb_docker_volumes_custom
