@@ -45,7 +45,7 @@ filezilla_dns_zone: "{{ filezilla_web_domain }}"
 # Traefik
 ################################
 
-filezilla_traefik_middleware: "secureHeaders@file,gzip,filezilla-auth"
+filezilla_traefik_middleware: "{{ traefik_default_middleware }},filezilla-auth"
 filezilla_traefik_certresolver: "{{ traefik_default_certresolver }}"
 filezilla_traefik_enabled: true
 filezilla_auth: "/etc/traefik/auth"

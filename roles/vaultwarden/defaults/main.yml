@@ -45,7 +45,7 @@ vaultwarden_dns_zone: "{{ vaultwarden_web_domain }}"
 # Traefik
 ################################
 
-vaultwarden_traefik_middleware: "secureHeaders@file,gzip"
+vaultwarden_traefik_middleware: "{{ traefik_default_middleware }}"
 vaultwarden_traefik_certresolver: "{{ traefik_default_certresolver }}"
 vaultwarden_traefik_enabled: true
 

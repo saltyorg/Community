@@ -50,7 +50,7 @@ airdcpp_dns_zone: "{{ airdcpp_web_domain }}"
 # Traefik
 ################################
 
-airdcpp_traefik_middleware: "secureHeaders@file,gzip"
+airdcpp_traefik_middleware: "{{ traefik_default_middleware }}"
 airdcpp_traefik_certresolver: "{{ traefik_default_certresolver }}"
 airdcpp_traefik_enabled: true
 

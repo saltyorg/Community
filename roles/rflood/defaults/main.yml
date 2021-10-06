@@ -52,7 +52,7 @@ rflood_dns_zone: "{{ rflood_web_domain }}"
 # Traefik
 ################################
 
-rflood_traefik_middleware: "secureHeaders@file,gzip,rflood-auth"
+rflood_traefik_middleware: "{{ traefik_default_middleware }},rflood-auth"
 rflood_traefik_certresolver: "{{ traefik_default_certresolver }}"
 rflood_traefik_enabled: true
 rflood_auth: "/etc/traefik/auth"

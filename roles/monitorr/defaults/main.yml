@@ -44,7 +44,7 @@ monitorr_dns_zone: "{{ monitorr_web_domain }}"
 # Traefik
 ################################
 
-monitorr_traefik_middleware: "secureHeaders@file,gzip"
+monitorr_traefik_middleware: "{{ traefik_default_middleware }}"
 monitorr_traefik_certresolver: "{{ traefik_default_certresolver }}"
 monitorr_traefik_enabled: true
 

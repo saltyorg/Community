@@ -44,7 +44,7 @@ prowlarr_dns_zone: "{{ prowlarr_web_domain }}"
 # Traefik
 ################################
 
-prowlarr_traefik_middleware: "secureHeaders@file,gzip"
+prowlarr_traefik_middleware: "{{ traefik_default_middleware }}"
 prowlarr_traefik_certresolver: "{{ traefik_default_certresolver }}"
 prowlarr_traefik_enabled: true
 

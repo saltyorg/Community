@@ -46,7 +46,7 @@ comicstreamer_dns_zone: "{{ comicstreamer_web_domain }}"
 # Traefik
 ################################
 
-comicstreamer_traefik_middleware: "secureHeaders@file,gzip"
+comicstreamer_traefik_middleware: "{{ traefik_default_middleware }}"
 comicstreamer_traefik_certresolver: "{{ traefik_default_certresolver }}"
 comicstreamer_traefik_enabled: true
 

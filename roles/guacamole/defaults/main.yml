@@ -46,7 +46,7 @@ guacamole_dns_zone: "{{ guacamole_web_domain }}"
 # Traefik
 ################################
 
-guacamole_traefik_middleware: "secureHeaders@file,gzip"
+guacamole_traefik_middleware: "{{ traefik_default_middleware }}"
 guacamole_traefik_certresolver: "{{ traefik_default_certresolver }}"
 guacamole_traefik_enabled: true
 

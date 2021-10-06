@@ -46,7 +46,7 @@ sshwifty_dns_zone: "{{ sshwifty_web_domain }}"
 # Traefik
 ################################
 
-sshwifty_traefik_middleware: "secureHeaders@file,gzip"
+sshwifty_traefik_middleware: "{{ traefik_default_middleware }}"
 sshwifty_traefik_certresolver: "{{ traefik_default_certresolver }}"
 sshwifty_traefik_enabled: true
 

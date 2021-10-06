@@ -44,7 +44,7 @@ booksonic_dns_zone: "{{ booksonic_web_domain }}"
 # Traefik
 ################################
 
-booksonic_traefik_middleware: "secureHeaders@file,gzip"
+booksonic_traefik_middleware: "{{ traefik_default_middleware }}"
 booksonic_traefik_certresolver: "{{ traefik_default_certresolver }}"
 booksonic_traefik_enabled: true
 

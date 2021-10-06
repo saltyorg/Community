@@ -44,7 +44,7 @@ kavita_dns_zone: "{{ kavita_web_domain }}"
 # Traefik
 ################################
 
-kavita_traefik_middleware: "secureHeaders@file,gzip"
+kavita_traefik_middleware: "{{ traefik_default_middleware }}"
 kavita_traefik_certresolver: "{{ traefik_default_certresolver }}"
 kavita_traefik_enabled: true
 

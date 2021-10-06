@@ -47,7 +47,7 @@ filebrowser_dns_zone: "{{ filebrowser_web_domain }}"
 # Traefik
 ################################
 
-filebrowser_traefik_middleware: "secureHeaders@file,gzip"
+filebrowser_traefik_middleware: "{{ traefik_default_middleware }}"
 filebrowser_traefik_certresolver: "{{ traefik_default_certresolver }}"
 filebrowser_traefik_enabled: true
 

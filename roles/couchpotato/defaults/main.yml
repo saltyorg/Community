@@ -44,7 +44,7 @@ couchpotato_dns_zone: "{{ couchpotato_web_domain }}"
 # Traefik
 ################################
 
-couchpotato_traefik_middleware: "secureHeaders@file,gzip"
+couchpotato_traefik_middleware: "{{ traefik_default_middleware }}"
 couchpotato_traefik_certresolver: "{{ traefik_default_certresolver }}"
 couchpotato_traefik_enabled: true
 

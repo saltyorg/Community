@@ -50,7 +50,7 @@ delugevpn_dns_zone: "{{ delugevpn_web_domain }}"
 # Traefik
 ################################
 
-delugevpn_traefik_middleware: "secureHeaders@file,gzip"
+delugevpn_traefik_middleware: "{{ traefik_default_middleware }}"
 delugevpn_traefik_certresolver: "{{ traefik_default_certresolver }}"
 delugevpn_traefik_enabled: true
 

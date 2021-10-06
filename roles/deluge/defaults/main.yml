@@ -51,7 +51,7 @@ deluge_dns_zone: "{{ deluge_web_domain }}"
 # Traefik
 ################################
 
-deluge_traefik_middleware: "secureHeaders@file,gzip"
+deluge_traefik_middleware: "{{ traefik_default_middleware }}"
 deluge_traefik_certresolver: "{{ traefik_default_certresolver }}"
 deluge_traefik_enabled: true
 

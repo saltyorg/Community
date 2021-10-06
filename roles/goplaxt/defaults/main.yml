@@ -45,7 +45,7 @@ goplaxt_dns_zone: "{{ goplaxt_web_domain }}"
 # Traefik
 ################################
 
-goplaxt_traefik_middleware: "secureHeaders@file,gzip"
+goplaxt_traefik_middleware: "{{ traefik_default_middleware }}"
 goplaxt_traefik_certresolver: "{{ traefik_default_certresolver }}"
 goplaxt_traefik_enabled: true
 

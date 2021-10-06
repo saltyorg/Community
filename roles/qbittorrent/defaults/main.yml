@@ -50,7 +50,7 @@ qbittorrent_dns_zone: "{{ qbittorrent_web_domain }}"
 # Traefik
 ################################
 
-qbittorrent_traefik_middleware: "secureHeaders@file,gzip"
+qbittorrent_traefik_middleware: "{{ traefik_default_middleware }}"
 qbittorrent_traefik_certresolver: "{{ traefik_default_certresolver }}"
 qbittorrent_traefik_enabled: true
 

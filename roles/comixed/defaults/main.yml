@@ -46,7 +46,7 @@ comixed_dns_zone: "{{ comixed_web_domain }}"
 # Traefik
 ################################
 
-comixed_traefik_middleware: "secureHeaders@file,gzip"
+comixed_traefik_middleware: "{{ traefik_default_middleware }}"
 comixed_traefik_certresolver: "{{ traefik_default_certresolver }}"
 comixed_traefik_enabled: true
 
