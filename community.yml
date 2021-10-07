@@ -81,7 +81,7 @@
     # - { role: qbittorrentvpn, tags: ['qbittorrentvpn'] }
     - { role: qbittorrentx, tags: ['qbittorrentx'] }
     - { role: radarrx, tags: ['radarrx'] }
-    # - { role: requestrr, tags: ['requestrr'] }
+    - { role: requestrr, tags: ['requestrr'] }
     # - { role: requestrrx, tags: ['requestrrx'] }
     # - { role: resilio-sync, tags: ['resilio-sync'] }
     - { role: rflood, tags: ['rflood'] }
