@@ -84,6 +84,13 @@ cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/TABLE272>
+            <img src=https://avatars.githubusercontent.com/u/11992630?v=4 width="100;"  alt=TABLE272/>
+            <br />
+            <sub style="font-size:14px"><b>TABLE272</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/satzisa>
             <img src=https://avatars.githubusercontent.com/u/54035525?v=4 width="100;"  alt=isa/>
             <br />
@@ -102,13 +109,6 @@ cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep
             <img src=https://avatars.githubusercontent.com/u/6299049?v=4 width="100;"  alt=Martin Danielsen/>
             <br />
             <sub style="font-size:14px"><b>Martin Danielsen</b></sub>
-        </a>
-    </td>
-    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
-        <a href=https://github.com/TABLE272>
-            <img src=https://avatars.githubusercontent.com/u/11992630?v=4 width="100;"  alt=TABLE272/>
-            <br />
-            <sub style="font-size:14px"><b>TABLE272</b></sub>
         </a>
     </td>
 </tr>
