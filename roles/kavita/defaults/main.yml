@@ -139,6 +139,3 @@ kavita_docker_restart_policy: unless-stopped
 
 # State
 kavita_docker_state: started
-
-# User
-kavita_docker_user: "{{ uid }}:{{ gid }}"
