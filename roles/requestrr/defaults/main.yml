@@ -87,7 +87,7 @@ requestrr_docker_commands: "{{ requestrr_docker_commands_default
 
 # Volumes
 requestrr_docker_volumes_default:
-  - "{{ requestrr_paths_location }}:/config"
+  - "{{ requestrr_paths_location }}:/root/config"
   - "/mnt:/mnt"
 requestrr_docker_volumes_custom: []
 requestrr_docker_volumes: "{{ requestrr_docker_volumes_default
