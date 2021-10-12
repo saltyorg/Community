@@ -72,6 +72,9 @@ requestrr_docker_ports: "{{ requestrr_docker_ports_defaults
 # Envs
 requestrr_docker_envs_default:
   TZ: "{{ tz }}"
+  PUID: "1000"
+  PGID: "1000"
+  UMASK: "002"
 requestrr_docker_envs_custom: {}
 requestrr_docker_envs: "{{ requestrr_docker_envs_default
                            | combine(requestrr_docker_envs_custom) }}"
@@ -84,7 +87,7 @@ requestrr_docker_commands: "{{ requestrr_docker_commands_default
 
 # Volumes
 requestrr_docker_volumes_default:
-  - "{{ requestrr_paths_location }}:/root/config"
+  - "{{ requestrr_paths_location }}:/config"
   - "/mnt:/mnt"
 requestrr_docker_volumes_custom: []
 requestrr_docker_volumes: "{{ requestrr_docker_volumes_default
@@ -139,6 +142,3 @@ requestrr_docker_restart_policy: unless-stopped
 
 # State
 requestrr_docker_state: started
-
-# User
-requestrr_docker_user: "{{ uid }}:{{ gid }}"
