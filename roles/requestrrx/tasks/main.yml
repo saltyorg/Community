@@ -1,31 +1,17 @@
 #########################################################################
 # Title:            Community: RequestrrX                               #
-# Author(s):        Kalroth, Migz93, no5tyle, Mbryde                    #
+# Author(s):        Kalroth, Migz93, no5tyle, Mbryde, salty             #
 # URL:              https://github.com/saltyorg/Community               #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Gather list of requestrrx Docker containers"
-  shell: "docker ps -a --format '{{ '{{' }} .Names{{ '}}' }}' --filter label=com.github.cloudbox.community=requestrrx | xargs echo -n"
-  register: cloudbox_community_requestrrx
-  ignore_errors: yes
-
-- name: "Stop all requestrrx Docker containers"
-  shell: "docker stop {{ cloudbox_community_requestrrx.stdout }}"
-  ignore_errors: yes
-  when: (cloudbox_community_requestrrx.stdout | trim | length > 0)
-
-- name: "Remove all requestrrx Docker containers"
-  shell: "docker rm {{ cloudbox_community_requestrrx.stdout }}"
-  ignore_errors: yes
-  when: (cloudbox_community_requestrrx.stdout | trim | length > 0)
-
-- name: "Execute requestrrX roles"
-  include_tasks: template.yml
+- name: "Execute RequestrrX roles"
+  include_role:
+    name: requestrr
   vars:
-    rolename: "{{ role }}"
+    ombi_name: "requestrr{{ role }}"
   with_items: "{{ requestrrx.roles }}"
   loop_control:
     loop_var: role
