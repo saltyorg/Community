@@ -31,6 +31,8 @@
 - name: Stop and remove any existing containers
   docker_container:
     name: varken
+    container_default_behavior: compatibility
+    tls_hostname: localhost
     state: absent
 
 - name: Create required directories
