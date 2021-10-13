@@ -1,0 +1,14 @@
+#########################################################################
+# Title:            Community: Varken Role                              #
+# Author(s):        salty                                               #
+# URL:              https://github.com/saltyorg/Community               #
+# --                                                                    #
+#########################################################################
+#                   GNU General Public License v3.0                     #
+#########################################################################
+---
+
+varken_ombi_db: "{{ ombi_paths_location }}/OmbiSettings.db"
+varken_radarr_config: "{{ radarr_paths_location }}/config.xml"
+varken_sonarr_config: "{{ sonarr_paths_location }}/config.xml"
+varken_tautulli_config: "{{ tautulli_paths_location }}/config.ini"
