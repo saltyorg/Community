@@ -96,7 +96,6 @@
     # - { role: synclounge, tags: ['synclounge'] }
     - { role: tautullix, tags: ['tautullix'] }
     - { role: telegraf, tags: ['telegraf'] }
-    # - { role: telly, tags: ['telly'] }
     - { role: transfer, tags: ['transfer'] }
     - { role: transmission, tags: ['transmission'] }
     # - { role: transmissionvpn, tags: ['transmissionvpn'] }
