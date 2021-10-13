@@ -38,8 +38,8 @@ calibre_web2_subdomain: "calibrebooks"
 calibre_web2_domain: "{{ user.domain }}"
 calibre_web2_port: "8081"
 calibre_web2_url: "{{ 'https://' + calibre_web2_subdomain + '.' + calibre_web2_domain
-                  if (reverse_proxy_is_enabled)
-                  else 'http://localhost:' + calibre_web2_port }}"
+                   if (reverse_proxy_is_enabled)
+                   else 'http://localhost:' + calibre_web2_port }}"
 
 ################################
 # DNS
