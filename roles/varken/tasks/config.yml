@@ -17,10 +17,6 @@
     path: "{{ varken_tautulli_config }}"
   register: tautulli_config
 
-- name: Set 'tautulli_api_key'
-  set_fact:
-    tautulli_api_key: "{{ (lookup('ini', 'api_key section=General file={{ varken_tautulli_config }}'}})) if tautulli_config.stat.exists else '' }}"
-
 # Sonarr Tasks
 - name: "Check if sonarr exists"
   stat:
