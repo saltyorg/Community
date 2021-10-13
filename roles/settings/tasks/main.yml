@@ -32,7 +32,6 @@
   include_tasks: "settings_updater.yml"
   with_items:
     - "settings.yml"
-    - "telly.yml"
 
 - name: "Settings: Exit After Changes"
   include_tasks: "exit.yml"
