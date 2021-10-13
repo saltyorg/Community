@@ -61,6 +61,7 @@
       - name: saltbox
         aliases:
           - telegraf
+    network_mode: "saltbox"
     networks_cli_compatible: true
     purge_networks: yes
     tls_hostname: localhost
