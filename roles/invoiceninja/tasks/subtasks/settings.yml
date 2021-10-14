@@ -1,0 +1,26 @@
+##########################################################################
+# Title:            Community: Invoice Ninja | settings                  #
+# Author(s):        RXWatcher, kowalski                                  #
+# URL:              https://github.com/saltyorg/Community                #
+# --                                                                     #
+##########################################################################
+#                   GNU General Public License v3.0                      #
+##########################################################################
+---
+- name: Settings | Check if `{{ invoiceninja_paths_config_location | basename }}` exists
+  stat:
+    path: "{{ invoiceninja_paths_config_location }}"
+  register: invoiceninja_env
+
+- name: Settings | New `{{ invoiceninja_paths_config_location | basename }}` tasks
+  block:
+
+    - name: Settings | Import default `{{ invoiceninja_paths_config_location | basename }}`
+      copy:
+        src: invoiceninja_env.j2
+        dest: "{{ invoiceninja_paths_config_location }}"
+        owner: "{{ user.name }}"
+        group: "{{ user.name }}"
+        mode: 0775
+
+  when: not invoiceninja_env.stat.exists

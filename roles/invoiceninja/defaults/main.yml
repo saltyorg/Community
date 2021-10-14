@@ -1,0 +1,157 @@
+##########################################################################
+# Title:            Community: Invoice Ninja | Default Variables         #
+# Author(s):        RXWatcher, kowalski                                  #
+# URL:              https://github.com/saltyorg/Community                #
+# --                                                                     #
+##########################################################################
+#                   GNU General Public License v3.0                      #
+##########################################################################
+---
+################################
+# Basics
+################################
+
+invoiceninja_name: invoiceninja
+
+################################
+# Paths
+################################
+
+invoiceninja_paths_folder: "{{ invoiceninja_name }}"
+invoiceninja_paths_location: "{{ server_appdata_path }}/{{ invoiceninja_paths_folder }}"
+invoiceninja_paths_folders_list:
+  - "{{ invoiceninja_paths_location }}"
+  - "{{ invoiceninja_paths_location }}/public/logo"
+  - "{{ invoiceninja_paths_location }}/storage"
+  - "{{ invoiceninja_paths_location }}/logs"
+  - "{{ invoiceninja_paths_location }}/logs/cron"
+  - "{{ invoiceninja_paths_location }}/logs/nginx"
+invoiceninja_paths_config_location: "{{ invoiceninja_paths_location }}/env"
+
+################################
+# Web
+################################
+
+invoiceninja_web_subdomain: "{{ invoiceninja.subdomain|default('invoiceninja',true) }}"
+invoiceninja_web_domain: "{{ user.domain }}"
+invoiceninja_web_port: "80"
+invoiceninja_web_url: "{{ 'https://' + invoiceninja_web_subdomain + '.' + invoiceninja_web_domain
+                       if (reverse_proxy_is_enabled)
+                       else 'http://localhost:' + invoiceninja_web_port }}"
+
+################################
+# DNS
+################################
+
+invoiceninja_dns_record: "{{ invoiceninja_web_subdomain }}"
+invoiceninja_dns_zone: "{{ invoiceninja_web_domain }}"
+
+################################
+# Traefik
+################################
+
+invoiceninja_traefik_middleware: "secureHeaders@file,gzip"
+invoiceninja_traefik_certresolver: "{{ traefik_default_certresolver }}"
+invoiceninja_traefik_enabled: true
+
+################################
+# Docker
+################################
+
+# Container
+invoiceninja_docker_container: "{{ invoiceninja_name }}"
+
+# Image
+invoiceninja_docker_image_pull: true
+invoiceninja_docker_image_tag: "latest"
+invoiceninja_docker_image: "rxwatcher/docker-invoiceninja-nginx:{{ invoiceninja_docker_image_tag }}"
+
+# Ports
+invoiceninja_docker_ports_defaults:
+  - "{{ invoiceninja_web_port }}"
+invoiceninja_docker_ports_custom: []
+invoiceninja_docker_ports: "{{ invoiceninja_docker_ports_defaults
+                               + invoiceninja_docker_ports_custom
+                            if (not reverse_proxy_is_enabled)
+                            else [] + invoiceninja_docker_ports_custom }}"
+
+# Envs
+invoiceninja_docker_envs_default:
+  PUID: "{{ uid }}"
+  PGID: "{{ gid }}"
+  TZ: "{{ tz }}"
+  DB_HOST: "mariadb:3306"
+  DB_USER: "root"
+  DB_PASS: "password321"
+  DB_DATABASE: "invoiceninja"
+invoiceninja_docker_envs_custom: {}
+invoiceninja_docker_envs: "{{ invoiceninja_docker_envs_default
+                              | combine(invoiceninja_docker_envs_custom) }}"
+
+# Commands
+invoiceninja_docker_commands_default: []
+invoiceninja_docker_commands_custom: []
+invoiceninja_docker_commands: "{{ invoiceninja_docker_commands_default
+                                  + invoiceninja_docker_commands_custom }}"
+
+# Volumes
+invoiceninja_docker_volumes_default:
+  - "{{ invoiceninja_paths_location }}/public/logo:/var/www/app/public/logo"
+  - "{{ invoiceninja_paths_location }}/storage:/var/www/app/storage"
+  - "{{ invoiceninja_paths_location }}/logs/cron:/var/log/ninja_cron"
+  - "{{ invoiceninja_paths_location }}/logs/nginx:/var/log/nginx"
+  - "{{ invoiceninja_paths_location }}/env:/var/www/app/.env"
+
+invoiceninja_docker_volumes_custom: []
+invoiceninja_docker_volumes: "{{ invoiceninja_docker_volumes_default
+                                 + invoiceninja_docker_volumes_custom
+                                 + docker_volumes_downloads_common }}"
+
+# Devices
+invoiceninja_docker_devices_default: []
+invoiceninja_docker_devices_custom: []
+invoiceninja_docker_devices: "{{ invoiceninja_docker_devices_default
+                                 + invoiceninja_docker_devices_custom }}"
+
+# Hosts
+invoiceninja_docker_hosts_default: []
+invoiceninja_docker_hosts_custom: []
+invoiceninja_docker_hosts: "{{ docker_hosts_common
+                               | combine(invoiceninja_docker_hosts_default)
+                               | combine(invoiceninja_docker_hosts_custom) }}"
+
+# Labels
+invoiceninja_docker_labels_default: {}
+invoiceninja_docker_labels_custom: {}
+invoiceninja_docker_labels: "{{ docker_labels_common
+                                | combine(invoiceninja_docker_labels_default)
+                                | combine(invoiceninja_docker_labels_custom) }}"
+
+# Hostname
+invoiceninja_docker_hostname: "{{ invoiceninja_name }}"
+
+# Networks
+invoiceninja_docker_networks_alias: "{{ invoiceninja_name }}"
+invoiceninja_docker_networks_default: []
+invoiceninja_docker_networks_custom: []
+invoiceninja_docker_networks: "{{ docker_networks_common
+                                  + invoiceninja_docker_networks_default
+                                  + invoiceninja_docker_networks_custom }}"
+
+# Capabilities
+invoiceninja_docker_capabilities_default: []
+invoiceninja_docker_capabilities_custom: []
+invoiceninja_docker_capabilities: "{{ invoiceninja_docker_capabilities_default
+                                      + invoiceninja_docker_capabilities_custom }}"
+
+# Security Opts
+invoiceninja_docker_security_opts_default: []
+invoiceninja_docker_security_opts_custom: []
+invoiceninja_docker_security_opts: "{{ invoiceninja_docker_security_opts_default
+                                       + invoiceninja_docker_security_opts_custom }}"
+
+# Restart Policy
+invoiceninja_docker_restart_policy: unless-stopped
+
+# State
+invoiceninja_docker_state: started
