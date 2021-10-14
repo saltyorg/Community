@@ -16,7 +16,7 @@
   block:
 
     - name: Settings | Import default `{{ invoiceninja_paths_config_location | basename }}`
-      copy:
+      template:
         src: invoiceninja_env.j2
         dest: "{{ invoiceninja_paths_config_location }}"
         owner: "{{ user.name }}"
