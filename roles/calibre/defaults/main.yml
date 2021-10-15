@@ -38,8 +38,8 @@ calibre_web2_subdomain: "calibrebooks"
 calibre_web2_domain: "{{ user.domain }}"
 calibre_web2_port: "8081"
 calibre_web2_url: "{{ 'https://' + calibre_web2_subdomain + '.' + calibre_web2_domain
-                  if (reverse_proxy_is_enabled)
-                  else 'http://localhost:' + calibre_web2_port }}"
+                   if (reverse_proxy_is_enabled)
+                   else 'http://localhost:' + calibre_web2_port }}"
 
 ################################
 # DNS
@@ -54,7 +54,7 @@ calibre_dns2_zone: "{{ calibre_web2_domain }}"
 # Traefik
 ################################
 
-calibre_traefik_middleware: "secureHeaders@file,gzip"
+calibre_traefik_middleware: "{{ traefik_default_middleware }}"
 calibre_traefik_certresolver: "{{ traefik_default_certresolver }}"
 calibre_traefik_enabled: true
 

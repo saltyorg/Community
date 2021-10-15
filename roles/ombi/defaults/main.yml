@@ -44,7 +44,7 @@ ombi_dns_zone: "{{ ombi_web_domain }}"
 # Traefik
 ################################
 
-ombi_traefik_middleware: "secureHeaders@file,gzip"
+ombi_traefik_middleware: "{{ traefik_default_middleware }}"
 ombi_traefik_certresolver: "{{ traefik_default_certresolver }}"
 ombi_traefik_enabled: true
 

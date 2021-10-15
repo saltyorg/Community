@@ -45,7 +45,7 @@ funkwhale_dns_zone: "{{ funkwhale_web_domain }}"
 # Traefik
 ################################
 
-funkwhale_traefik_middleware: "secureHeaders@file,gzip"
+funkwhale_traefik_middleware: "{{ traefik_default_middleware }}"
 funkwhale_traefik_certresolver: "{{ traefik_default_certresolver }}"
 funkwhale_traefik_enabled: true
 

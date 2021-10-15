@@ -45,7 +45,7 @@ embystat_dns_zone: "{{ embystat_web_domain }}"
 # Traefik
 ################################
 
-embystat_traefik_middleware: "secureHeaders@file,gzip"
+embystat_traefik_middleware: "{{ traefik_default_middleware }}"
 embystat_traefik_certresolver: "{{ traefik_default_certresolver }}"
 embystat_traefik_enabled: true
 

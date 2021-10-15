@@ -46,7 +46,7 @@ handbrake_dns_zone: "{{ handbrake_web_domain }}"
 # Traefik
 ################################
 
-handbrake_traefik_middleware: "secureHeaders@file,gzip"
+handbrake_traefik_middleware: "{{ traefik_default_middleware }}"
 handbrake_traefik_certresolver: "{{ traefik_default_certresolver }}"
 handbrake_traefik_enabled: true
 

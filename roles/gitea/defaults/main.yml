@@ -44,7 +44,7 @@ gitea_dns_zone: "{{ gitea_web_domain }}"
 # Traefik
 ################################
 
-gitea_traefik_middleware: "secureHeaders@file,gzip"
+gitea_traefik_middleware: "{{ traefik_default_middleware }}"
 gitea_traefik_certresolver: "{{ traefik_default_certresolver }}"
 gitea_traefik_enabled: true
 

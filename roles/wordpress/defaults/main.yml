@@ -44,7 +44,7 @@ wordpress_dns_zone: "{{ wordpress_web_domain }}"
 # Traefik
 ################################
 
-wordpress_traefik_middleware: "secureHeaders@file,gzip"
+wordpress_traefik_middleware: "{{ traefik_default_middleware }}"
 wordpress_traefik_certresolver: "{{ traefik_default_certresolver }}"
 wordpress_traefik_enabled: true
 

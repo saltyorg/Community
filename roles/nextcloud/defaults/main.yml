@@ -44,7 +44,7 @@ nextcloud_dns_zone: "{{ nextcloud_web_domain }}"
 # Traefik
 ################################
 
-nextcloud_traefik_middleware: "secureHeaders@file,gzip,nextcloud-caldav"
+nextcloud_traefik_middleware: "{{ traefik_default_middleware }},nextcloud-caldav"
 nextcloud_traefik_certresolver: "{{ traefik_default_certresolver }}"
 nextcloud_traefik_enabled: true
 

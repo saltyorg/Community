@@ -49,7 +49,7 @@ stash_dns_zone: "{{ stash_web_domain }}"
 # Traefik
 ################################
 
-stash_traefik_middleware: "secureHeaders@file,gzip"
+stash_traefik_middleware: "{{ traefik_default_middleware }}"
 stash_traefik_certresolver: "{{ traefik_default_certresolver }}"
 stash_traefik_enabled: true
 

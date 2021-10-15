@@ -45,7 +45,7 @@ beets_dns_zone: "{{ beets_web_domain }}"
 # Traefik
 ################################
 
-beets_traefik_middleware: "secureHeaders@file,gzip,beets-auth"
+beets_traefik_middleware: "{{ traefik_default_middleware }},beets-auth"
 beets_traefik_certresolver: "{{ traefik_default_certresolver }}"
 beets_traefik_enabled: true
 beets_auth: "/etc/traefik/auth"

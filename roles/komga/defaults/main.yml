@@ -45,7 +45,7 @@ komga_dns_zone: "{{ komga_web_domain }}"
 # Traefik
 ################################
 
-komga_traefik_middleware: "secureHeaders@file,gzip"
+komga_traefik_middleware: "{{ traefik_default_middleware }}"
 komga_traefik_certresolver: "{{ traefik_default_certresolver }}"
 komga_traefik_enabled: true
 

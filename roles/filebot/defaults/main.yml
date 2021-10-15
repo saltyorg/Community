@@ -45,7 +45,7 @@ filebot_dns_zone: "{{ filebot_web_domain }}"
 # Traefik
 ################################
 
-filebot_traefik_middleware: "secureHeaders@file,gzip"
+filebot_traefik_middleware: "{{ traefik_default_middleware }}"
 filebot_traefik_certresolver: "{{ traefik_default_certresolver }}"
 filebot_traefik_enabled: true
 

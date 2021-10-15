@@ -20,6 +20,7 @@ logarr_paths_folder: "{{ logarr_name }}"
 logarr_paths_location: "{{ server_appdata_path }}/{{ logarr_paths_folder }}"
 logarr_paths_folders_list:
   - "{{ logarr_paths_location }}"
+  - "{{ logarr_paths_location }}/config"
   - "{{ logarr_paths_location }}/userdata"
 logarr_paths_config_location: "{{ logarr_paths_location }}/userdata/config.json"
 
@@ -45,7 +46,7 @@ logarr_dns_zone: "{{ logarr_web_domain }}"
 # Traefik
 ################################
 
-logarr_traefik_middleware: "secureHeaders@file,gzip"
+logarr_traefik_middleware: "{{ traefik_default_middleware }}"
 logarr_traefik_certresolver: "{{ traefik_default_certresolver }}"
 logarr_traefik_enabled: true
 
@@ -88,6 +89,7 @@ logarr_docker_commands: "{{ logarr_docker_commands_default
 # Volumes
 logarr_docker_volumes_default:
   - "{{ logarr_paths_location }}:/app"
+  - "{{ logarr_paths_location }}/config:/config"
   - "{{ server_appdata_path }}:/opt"
   - "/mnt:/mnt"
 logarr_docker_volumes_custom: []

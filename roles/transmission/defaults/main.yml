@@ -51,7 +51,7 @@ transmission_dns_zone: "{{ transmission_web_domain }}"
 # Traefik
 ################################
 
-transmission_traefik_middleware: "secureHeaders@file,gzip"
+transmission_traefik_middleware: "{{ traefik_default_middleware }}"
 transmission_traefik_certresolver: "{{ traefik_default_certresolver }}"
 transmission_traefik_enabled: true
 
