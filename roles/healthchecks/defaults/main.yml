@@ -45,7 +45,7 @@ healthchecks_dns_zone: "{{ healthchecks_web_domain }}"
 # Traefik
 ################################
 
-healthchecks_traefik_middleware: "secureHeaders@file,gzip"
+healthchecks_traefik_middleware: "{{ traefik_default_middleware }}"
 healthchecks_traefik_certresolver: "{{ traefik_default_certresolver }}"
 healthchecks_traefik_enabled: true
 
