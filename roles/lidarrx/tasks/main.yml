@@ -11,7 +11,7 @@
   include_role:
     name: lidarr
   vars:
-    ombi_name: "lidarr{{ role }}"
+    lidarr_name: "lidarr{{ role }}"
   with_items: "{{ lidarrx.roles }}"
   loop_control:
     loop_var: role
