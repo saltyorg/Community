@@ -143,3 +143,6 @@ goaccess_docker_restart_policy: unless-stopped
 
 # State
 goaccess_docker_state: started
+
+# Force Kill
+goaccess__docker_force_kill: true
