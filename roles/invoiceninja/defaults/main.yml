@@ -32,7 +32,7 @@ invoiceninja_paths_config_location: "{{ invoiceninja_paths_location }}/env"
 # Web
 ################################
 
-invoiceninja_web_subdomain: "{{ invoiceninja.subdomain|default('invoiceninja',true) }}"
+invoiceninja_web_subdomain: "{{ invoiceninja_name }}"
 invoiceninja_web_domain: "{{ user.domain }}"
 invoiceninja_web_port: "80"
 invoiceninja_web_url: "{{ 'https://' + invoiceninja_web_subdomain + '.' + invoiceninja_web_domain
@@ -64,7 +64,7 @@ invoiceninja_docker_container: "{{ invoiceninja_name }}"
 # Image
 invoiceninja_docker_image_pull: true
 invoiceninja_docker_image_tag: "latest"
-invoiceninja_docker_image: "rxwatcher/docker-invoiceninja-nginx:{{ invoiceninja_docker_image_tag }}"
+invoiceninja_docker_image: "anojht/invoiceninja:{{ invoiceninja_docker_image_tag }}"
 
 # Ports
 invoiceninja_docker_ports_defaults:
@@ -77,12 +77,9 @@ invoiceninja_docker_ports: "{{ invoiceninja_docker_ports_defaults
 
 # Envs
 invoiceninja_docker_envs_default:
-  PUID: "{{ uid }}"
-  PGID: "{{ gid }}"
-  TZ: "{{ tz }}"
   DB_HOST: "mariadb:3306"
-  DB_USER: "root"
-  DB_PASS: "password321"
+  DB_USERNAME: "root"
+  DB_PASSWORD: "password321"
   DB_DATABASE: "invoiceninja"
 invoiceninja_docker_envs_custom: {}
 invoiceninja_docker_envs: "{{ invoiceninja_docker_envs_default
