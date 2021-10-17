@@ -11,7 +11,7 @@
   include_role:
     name: readarr
   vars:
-    radarr_name: "readarr{{ role }}"
+    readarr_name: "readarr{{ role }}"
   with_items: "{{ readarrx.roles }}"
   loop_control:
     loop_var: role

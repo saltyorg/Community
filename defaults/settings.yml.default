@@ -16,8 +16,6 @@ delugevpn:
 delugex:
   roles:
     - ""
-gitea:
-  subdomain: git
 goplaxt:
   trakt_id: ~
   trakt_secret: ~
@@ -80,8 +78,3 @@ transmissionx:
     - ""
 unifi:
   port: 8080
-varken:
-  tautulli_subdomain: tautulli
-wordpress:
-  direct_domain: false
-  subdomain: wordpress

@@ -11,7 +11,7 @@
   include_role:
     name: requestrr
   vars:
-    ombi_name: "requestrr{{ role }}"
+    requestrr_name: "requestrr{{ role }}"
   with_items: "{{ requestrrx.roles }}"
   loop_control:
     loop_var: role
