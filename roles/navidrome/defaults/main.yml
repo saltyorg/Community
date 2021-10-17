@@ -84,7 +84,6 @@ navidrome_docker_commands: "{{ navidrome_docker_commands_default
 # Volumes
 navidrome_docker_volumes_default:
   - "{{ navidrome_paths_location }}:/data"
-  - "{{ navidrome.musicfolder }}:/music"
   - "/mnt:/mnt"
 navidrome_docker_volumes_custom: []
 navidrome_docker_volumes: "{{ navidrome_docker_volumes_default
