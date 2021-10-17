@@ -62,7 +62,7 @@
     - { role: kcptun_server, tags: ['kcptun-server'] }
     - { role: kitana, tags: ['kitana'] }
     - { role: komga, tags: ['komga'] }
-    # - { role: lazylibrarian, tags: ['lazylibrarian'] }
+    - { role: lazylibrarian, tags: ['lazylibrarian'] }
     - { role: lidarrx, tags: ['lidarrx'] }
     - { role: logarr, tags: ['logarr'] }
     # - { role: mediabutler, tags: ['mediabutler'] }
