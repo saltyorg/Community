@@ -73,6 +73,8 @@ goaccess_docker_ports: "{{ goaccess_docker_ports_defaults
 # Envs
 goaccess_docker_envs_default:
   TZ: "{{ tz }}"
+  PUID: "{{ uid }}"
+  PGID: "{{ gid }}"
 goaccess_docker_envs_custom: {}
 goaccess_docker_envs: "{{ goaccess_docker_envs_default
                           | combine(goaccess_docker_envs_custom) }}"
