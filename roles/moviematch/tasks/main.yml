@@ -14,7 +14,7 @@
 
 - name: Run Role
   block:
-  
+
     - name: Add DNS record
       include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
       vars:
