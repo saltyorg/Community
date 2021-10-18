@@ -71,7 +71,7 @@
     - { role: medusa, tags: ['medusa'] }
     - { role: monitorr, tags: ['monitorr'] }
     - { role: mylar3, tags: ['mylar3'] }
-    # - { role: navidrome, tags: ['navidrome'] }
+    - { role: navidrome, tags: ['navidrome'] }
     - { role: nextcloud, tags: ['nextcloud'] }
     - { role: ombi, tags: ['ombi'] }
     - { role: ombix, tags: ['ombix'] }
