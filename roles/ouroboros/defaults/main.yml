@@ -37,9 +37,9 @@ ouroboros_docker_image: "pyouroboros/ouroboros:{{ ouroboros_docker_image_tag }}"
 # Envs
 ouroboros_docker_envs_default:
   TZ: "{{ tz }}"
-  SELF_UPDATE: true
-  CLEANUP: true
-  INTERVAL: 86400
+  SELF_UPDATE: "true"
+  CLEANUP: "true"
+  INTERVAL: "86400"
   LOG_LEVEL: "info"
   IGNORE: "mongo influxdb postgres mariadb"
 
