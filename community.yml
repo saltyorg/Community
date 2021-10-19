@@ -76,7 +76,7 @@
     - { role: nextcloud, tags: ['nextcloud'] }
     - { role: ombi, tags: ['ombi'] }
     - { role: ombix, tags: ['ombix'] }
-    # - { role: ouroboros, tags: ['ouroboros'] }
+    - { role: ouroboros, tags: ['ouroboros'] }
     # - { role: jdownloader2, tags: ['jdownloader2'] }
     - { role: petio, tags: ['petio'] }
     - { role: prowlarr, tags: ['prowlarr'] }
