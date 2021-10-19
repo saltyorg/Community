@@ -100,7 +100,6 @@ jdownloader2_docker_volumes_default:
   - "{{ jdownloader2_paths_location }}/config:/config:rw"
   - "{{ jdownloader2_paths_downloads_location }}:/output:rw"
   - "/mnt:/mnt:rw"
-
 jdownloader2_docker_volumes_custom: []
 jdownloader2_docker_volumes: "{{ jdownloader2_docker_volumes_default
                                  + jdownloader2_docker_volumes_custom
