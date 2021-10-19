@@ -57,6 +57,7 @@
     - { role: hetzner_nfs, tags: ['hetzner_nfs_server', 'hetzner_nfs_server_uninstall', 'hetzner_nfs_client_mount', 'hetzner_nfs_client_unmount'] }
     - { role: influxdb, tags: ['influxdb'] }
     # - { role: invoiceninja, tags: ['invoiceninja'] }
+    - { role: jdownloader2, tags: ['jdownloader2'] }
     - { role: jellyfin, tags: ['jellyfin'] }
     - { role: jirafeau, tags: ['jirafeau'] }
     - { role: kavita, tags: ['kavita'] }
@@ -77,7 +78,6 @@
     - { role: ombi, tags: ['ombi'] }
     - { role: ombix, tags: ['ombix'] }
     - { role: ouroboros, tags: ['ouroboros'] }
-    # - { role: jdownloader2, tags: ['jdownloader2'] }
     - { role: petio, tags: ['petio'] }
     - { role: prowlarr, tags: ['prowlarr'] }
     - { role: qbittorrent, tags: ['qbittorrent'] }
@@ -112,3 +112,4 @@
     - { role: watchtower, tags: ['watchtower'] }
     - { role: wordpress, tags: ['wordpress'] }
     # - { role: xteve, tags: ['xteve'] }
+    - { role: yacht, tags: ['yacht'] }

@@ -1,82 +1,35 @@
-#########################################################################
-# Title:            Community: JDownloader2                             #
-# Author(s):        maximuskowalski, desimaniac                         #
-# URL:              https://github.com/saltyorg/Community               #
-#########################################################################
-#                   GNU General Public License v3.0                     #
-#########################################################################
+##########################################################################
+# Title:            Community: JDownloader2                              #
+# Author(s):        kowalski, desimaniac                                 #
+# URL:              https://github.com/saltyorg/Community                #
+# --                                                                     #
+##########################################################################
+#                   GNU General Public License v3.0                      #
+##########################################################################
 ---
-- name: "Set DNS Record on CloudFlare"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: jdownloader2
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Legacy Migration Tasks
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
+
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: "0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
+
+- name: Import Legacy task
   import_tasks: "subtasks/legacy.yml"
 
-- name: Stop and remove any existing container
-  docker_container:
-    name: jdownloader2
-    state: absent
+- name: Import File Extraction tools task
+  import_tasks: "subtasks/unzippers.yml"
 
-- name: Create jdownloader2 directories
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - /opt/jdownloader2
-    - /opt/jdownloader2/config
-    - /opt/jdownloader2/config/libs
-    - "/mnt/local/downloads/jdownloader2/output"
-
-- name: Import 7zip 1509
-  copy:
-    src: "sevenzipjbinding1509.jar"
-    dest: "/opt/jdownloader2/config/libs/sevenzipjbinding1509.jar"
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
-    mode: 0775
-    force: no
-
-- name: Import 7zip 1509Linux
-  copy:
-    src: "sevenzipjbinding1509Linux.jar"
-    dest: "/opt/jdownloader2/config/libs/sevenzipjbinding1509Linux.jar"
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
-    mode: 0775
-    force: no
-
-- name: Create and start container
-  docker_container:
-    name: jdownloader2
-    image: "jlesage/jdownloader-2:latest"
-    pull: yes
-    env:
-      TZ: "{{ tz }}"
-      VIRTUAL_HOST: "jdownloader2.{{ user.domain }}"
-      VIRTUAL_PORT: "5800"
-      LETSENCRYPT_HOST: "jdownloader2.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-      DISPLAY_WIDTH: "1280"
-      DISPLAY_HEIGHT: "768"
-      VNC_PASSWORD: "{{ user.pass }}"
-      USER_ID: "{{ uid }}"
-      GROUP_ID: "{{ gid }}"
-      CLEAN_TMP_DIR: "1"
-      UMASK: "000"
-    volumes:
-      - "/mnt/local/downloads/jdownloader2/output:/output:rw"
-      - "/mnt:/mnt:rw"
-      - "/opt/jdownloader2/config:/config:rw"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - jdownloader2
-    exposed_ports:
-      - 5800
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
