@@ -70,13 +70,13 @@
     # - { role: mediabutler, tags: ['mediabutler'] }
     - { role: medusa, tags: ['medusa'] }
     - { role: monitorr, tags: ['monitorr'] }
+    - { role: moviematch, tags: ['moviematch'] }
     - { role: mylar3, tags: ['mylar3'] }
-    # - { role: navidrome, tags: ['navidrome'] }
+    - { role: navidrome, tags: ['navidrome'] }
     - { role: nextcloud, tags: ['nextcloud'] }
     - { role: ombi, tags: ['ombi'] }
     - { role: ombix, tags: ['ombix'] }
-    # - { role: ouroboros, tags: ['ouroboros'] }
-    # - { role: jdownloader2, tags: ['jdownloader2'] }
+    - { role: ouroboros, tags: ['ouroboros'] }
     - { role: petio, tags: ['petio'] }
     - { role: prowlarr, tags: ['prowlarr'] }
     - { role: qbittorrent, tags: ['qbittorrent'] }
@@ -111,3 +111,4 @@
     - { role: watchtower, tags: ['watchtower'] }
     - { role: wordpress, tags: ['wordpress'] }
     # - { role: xteve, tags: ['xteve'] }
+    - { role: yacht, tags: ['yacht'] }

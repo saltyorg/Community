@@ -25,6 +25,9 @@ lidarrx:
   roles:
     - flac
     - mp3
+moviematch:
+  libraries: Movies
+  plex_url: http://plex:32400
 ombix:
   roles:
     - 4k
@@ -56,9 +59,6 @@ sonarrx:
   roles:
     - 1080webdl
     - 1080remux
-synclounge:
-  domain: ~
-  subdomain: synclounge
 tautullix:
   tautulli: plex
   tautulli2: plex2

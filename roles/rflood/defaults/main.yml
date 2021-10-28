@@ -74,6 +74,8 @@ rflood_config_rflood_rc_settings_default:
   - { option: "dht.mode.set", value: "{{ rflood_config_public_trackers | ternary('on','disable') }}" }
   - { option: "trackers.use_udp.set", value: "{{ rflood_config_public_trackers | ternary('yes','no') }}" }
   - { option: "protocol.pex.set", value: "{{ rflood_config_public_trackers | ternary('yes','no') }}" }
+  # Maximum XMLRPC payloads
+  - { option: "network.xmlrpc.size_limit.set", value: "20M" }
 rflood_config_rflood_rc_settings_custom: []
 rflood_config_rflood_rc_settings_list: "{{ rflood_config_rflood_rc_settings_default
                                            + rflood_config_rflood_rc_settings_custom }}"
