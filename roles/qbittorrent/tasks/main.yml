@@ -24,6 +24,11 @@
     mode: "0775"
   with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
+- name: Check if existing config file exists
+  stat:
+    path: "{{ qbittorrent_paths_conf }}"
+  register: qbittorrent_paths_conf_stat
+
 - name: Pre-Install Tasks
   import_tasks: "subtasks/pre-install/main.yml"
   when: not continuous_integration
@@ -33,4 +38,4 @@
 
 - name: Post-Install Tasks
   import_tasks: "subtasks/post-install/main.yml"
-  when: not continuous_integration
+  when: (not continuous_integration) and (not qbittorrent_paths_conf_stat.stat.exists)
