@@ -13,3 +13,16 @@
     high_bound: 56901
   register: port_lookup_56881
   ignore_errors: true
+
+- name: Post-Install | Settings | Update 'qBittorrent.conf' config settings
+  ini_file:
+    path: "{{ qbittorrent_paths_conf }}"
+    section: Preferences
+    option: Connection\PortRangeMin
+    value: "{{ qbittorrent_docker_ports_56881 }}"
+    no_extra_spaces: true
+    state: present
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: "0775"
+  when: qbittorrent_paths_conf_stat.stat.exists
