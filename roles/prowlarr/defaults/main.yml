@@ -55,6 +55,7 @@ prowlarr_traefik_enabled: true
 # Options can be found at https://github.com/gilbN/theme.park
 prowlarr_themepark_enabled: false
 prowlarr_themepark_theme: "{{ global_themepark_theme }}"
+prowlarr_themepark_domain: "{{ global_themepark_domain }}"
 
 ################################
 # Docker
@@ -83,7 +84,7 @@ prowlarr_docker_envs_default:
   PGID: "{{ gid }}"
   UMASK: "002"
   TZ: "{{ tz }}"
-  TP_DOMAIN: "gilbn.github.io"
+  TP_DOMAIN: "{{ prowlarr_themepark_domain }}"
   TP_THEME: "{{ prowlarr_themepark_theme }}"
   TP_HOTIO: "true"
 prowlarr_docker_envs_custom: {}
