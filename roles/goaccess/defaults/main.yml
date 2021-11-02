@@ -144,5 +144,8 @@ goaccess_docker_restart_policy: unless-stopped
 # State
 goaccess_docker_state: started
 
+# Stop Timeout
+goaccess_docker_stop_timeout: 10
+
 # Force Kill
 goaccess__docker_force_kill: true
