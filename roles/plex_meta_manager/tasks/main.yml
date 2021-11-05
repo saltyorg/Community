@@ -29,7 +29,7 @@
   with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
 
 - name: Download config.yml.template
-  get_url: 
+  get_url:
     url: https://raw.githubusercontent.com/meisnate12/Plex-Meta-Manager/master/config/config.yml.template
     dest: "{{ plex_meta_manager_paths_location }}/config/config.yml.template"
     owner: "{{ user.name }}"
