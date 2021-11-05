@@ -31,6 +31,8 @@ moviematch:
 ombix:
   roles:
     - 4k
+plex_meta_manager:
+  time: 03:00
 qbittorrentvpn:
   vpn_endpoint: netherlands.ovpn
   vpn_user: your_vpn_username
