@@ -107,6 +107,7 @@
     # - { role: ubooquity, tags: ['ubooquity'] }
     # - { role: unifi, tags: ['unifi'] }
     # - { role: unmanic, tags: ['unmanic'] }
+    - { role: unpackerr, tags: ['unpackerr'] }
     - { role: uptime_kuma, tags: ['uptime-kuma'] }
     - { role: varken, tags: ['varken'] }
     - { role: vaultwarden, tags: ['vaultwarden'] }
