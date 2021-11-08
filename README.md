@@ -1,4 +1,5 @@
 # Saltbox Community Repo
+[![Discord](https://img.shields.io/discord/853755447970758686)](https://discord.gg/ugfKXpFND8)
 [![Docs:](https://img.shields.io/badge/docs-docs.saltbox.dev-blue)](https://docs.saltbox.dev)
 [![CI](https://github.com/saltyorg/Community/actions/workflows/community.yml/badge.svg)](https://github.com/saltyorg/Community/actions/workflows/community.yml)
 [![Ansible Lint](https://github.com/saltyorg/Community/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/saltyorg/Community/actions/workflows/ansible-lint.yml)
