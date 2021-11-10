@@ -45,10 +45,12 @@ glances_web_dns_zone: "{{ glances_web_web_domain }}"
 # Traefik
 ################################
 
-glances_web_traefik_middleware: "{{ traefik_default_middleware }},glances-auth"
+glances_web_traefik_sso_middleware: "{{ traefik_default_sso_middleware }}"
+glances_web_traefik_middleware: "{{ traefik_default_middleware + ',' + glances_web_traefik_sso_middleware
+                                 if (glances_web_traefik_sso_middleware | length > 0) 
+                                 else traefik_default_middleware }}"
 glances_web_traefik_certresolver: "{{ traefik_default_certresolver }}"
 glances_web_traefik_enabled: true
-glances_web_auth: "/etc/traefik/auth"
 
 ################################
 # Docker
@@ -109,8 +111,7 @@ glances_web_docker_hosts: "{{ docker_hosts_common
                               | combine(glances_web_docker_hosts_custom) }}"
 
 # Labels
-glances_web_docker_labels_default:
-  traefik.http.middlewares.glances-auth.basicauth.usersfile: "{{ glances_web_auth }}"
+glances_web_docker_labels_default: {}
 glances_web_docker_labels_custom: {}
 glances_web_docker_labels: "{{ docker_labels_common
                                | combine(glances_web_docker_labels_default)

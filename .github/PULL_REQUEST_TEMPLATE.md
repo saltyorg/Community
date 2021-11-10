@@ -6,8 +6,8 @@ Please include a summary of the change and which issue is fixed if any. Please a
 
 Please describe the tests that you ran to verify your changes. Please also note any relevant details for your test configuration.
 
-- [ ] Test A
-- [ ] Test B
+- [ ] I didn't read what this says
+- [ ] And then I checked these boxes
 
 # New Role Checklist:
 
@@ -15,4 +15,4 @@ Please describe the tests that you ran to verify your changes. Please also note 
 - [ ] I have updated the header in any files I may have used as templates with my own information
 - [ ] I have added my new role to `community.yml`
 - [ ] I have verified that any Docker images used are current and supported.
-- [ ] I have made corresponding changes to the documentation
+- [ ] I have made corresponding changes to the documentation or have submitted a separate PR to the docs repo for this purpose.

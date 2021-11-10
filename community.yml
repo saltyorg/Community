@@ -79,6 +79,7 @@
     - { role: ombix, tags: ['ombix'] }
     - { role: ouroboros, tags: ['ouroboros'] }
     - { role: petio, tags: ['petio'] }
+    - { role: plex_meta_manager, tags: ['plex-meta-manager'] }
     - { role: prowlarr, tags: ['prowlarr'] }
     - { role: qbittorrent, tags: ['qbittorrent'] }
     # - { role: qbittorrentvpn, tags: ['qbittorrentvpn'] }
@@ -106,6 +107,7 @@
     # - { role: ubooquity, tags: ['ubooquity'] }
     # - { role: unifi, tags: ['unifi'] }
     # - { role: unmanic, tags: ['unmanic'] }
+    - { role: unpackerr, tags: ['unpackerr'] }
     - { role: uptime_kuma, tags: ['uptime-kuma'] }
     - { role: varken, tags: ['varken'] }
     - { role: vaultwarden, tags: ['vaultwarden'] }
