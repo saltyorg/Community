@@ -1,11 +1,11 @@
-#########################################################################
-# Title:            Community: MKVToolNix                               #
-# Author(s):        sevos                                               #
-# URL:              https://github.com/saltyorg/Community               #
-# --                                                                    #
-#########################################################################
-#                   GNU General Public License v3.0                     #
-#########################################################################
+##########################################################################
+# Title:            Community: MKVToolNix                                #
+# Author(s):        sevos                                                #
+# URL:              https://github.com/saltyorg/Community                #
+# --                                                                     #
+##########################################################################
+#                   GNU General Public License v3.0                      #
+##########################################################################
 ---
 - name: Add DNS record
   include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
