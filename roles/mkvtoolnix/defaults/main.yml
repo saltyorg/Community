@@ -80,7 +80,6 @@ mkvtoolnix_docker_envs_default:
   TZ: "{{ tz }}"
   DISPLAY_WIDTH: "1280"
   DISPLAY_HEIGHT: "768"
-  VNC_PASSWORD: "{{ user.pass }}"
   CLEAN_TMP_DIR: "1"
   UMASK: "000"
   ENABLE_CJK_FONT: "1"
