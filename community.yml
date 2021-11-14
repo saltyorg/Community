@@ -11,6 +11,7 @@
     - { role: sanity_check, tags: ['always', 'sanity_check'] }
     - { role: pre_tasks, tags: ['pre_tasks'] }
     # Apps
+    - { role: adguardhome, tags: ['adguardhome'] }
     - { role: airdcpp, tags: ['airdcpp'] }
     - { role: airsonic, tags: ['airsonic'] }
     - { role: alltube, tags: ['alltube'] }
@@ -73,6 +74,7 @@
     - { role: monitorr, tags: ['monitorr'] }
     - { role: moviematch, tags: ['moviematch'] }
     - { role: mylar3, tags: ['mylar3'] }
+    - { role: mkvtoolnix, tags: ['mkvtoolnix'] }
     - { role: navidrome, tags: ['navidrome'] }
     - { role: nextcloud, tags: ['nextcloud'] }
     - { role: ombi, tags: ['ombi'] }
