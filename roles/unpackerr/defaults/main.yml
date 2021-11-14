@@ -63,6 +63,7 @@ unpackerr_docker_commands: "{{ unpackerr_docker_commands_default
 # Volumes
 unpackerr_docker_volumes_default:
   - "{{ unpackerr_paths_location }}:/config"
+  - "/mnt:/mnt"
 unpackerr_docker_volumes_custom: []
 unpackerr_docker_volumes: "{{ unpackerr_docker_volumes_default
                               + unpackerr_docker_volumes_custom
