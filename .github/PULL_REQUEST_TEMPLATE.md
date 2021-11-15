@@ -11,8 +11,8 @@ Please describe the tests that you ran to verify your changes. Please also note 
 
 # New Role Checklist:
 
-- [ ] <not ready yet> I have reviewed the [Contribute page in the wiki](https://docs.saltbox.dev/xxxx)
+- [ ] <not ready yet> I have reviewed the [Contribution section in the docs](https://docs.saltbox.dev/community/basics/#contributing-to-community-apps)
 - [ ] I have updated the header in any files I may have used as templates with my own information
 - [ ] I have added my new role to `community.yml`
 - [ ] I have verified that any Docker images used are current and supported.
-- [ ] I have made corresponding changes to the documentation or have submitted a separate PR to the docs repo for this purpose.
+- [ ] I have made corresponding changes to the documentation and have submitted a separate PR to the [docs repo](https://github.com/saltyorg/docs) for this purpose.
