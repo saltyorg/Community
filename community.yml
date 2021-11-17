@@ -73,7 +73,7 @@
     - { role: monitorr, tags: ['monitorr'] }
     - { role: moviematch, tags: ['moviematch'] }
     - { role: mylar3, tags: ['mylar3'] }
-    - { role: mkvtoolnix, tags: ['mkvtoolnix'] }    
+    - { role: mkvtoolnix, tags: ['mkvtoolnix'] }
     - { role: navidrome, tags: ['navidrome'] }
     - { role: nextcloud, tags: ['nextcloud'] }
     - { role: ombi, tags: ['ombi'] }
