@@ -82,7 +82,6 @@
     - { role: plex_meta_manager, tags: ['plex-meta-manager'] }
     - { role: prowlarr, tags: ['prowlarr'] }
     - { role: qbittorrent, tags: ['qbittorrent'] }
-    # - { role: qbittorrentvpn, tags: ['qbittorrentvpn'] }
     - { role: qbittorrentx, tags: ['qbittorrentx'] }
     - { role: radarrx, tags: ['radarrx'] }
     - { role: readarr, tags: ['readarr'] }
@@ -102,7 +101,6 @@
     - { role: telegraf, tags: ['telegraf'] }
     - { role: transfer, tags: ['transfer'] }
     - { role: transmission, tags: ['transmission'] }
-    # - { role: transmissionvpn, tags: ['transmissionvpn'] }
     - { role: transmissionx, tags: ['transmissionx'] }
     # - { role: ubooquity, tags: ['ubooquity'] }
     # - { role: unifi, tags: ['unifi'] }
