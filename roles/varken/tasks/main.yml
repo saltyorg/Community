@@ -45,7 +45,7 @@
 
 - name: Check if varken config exists
   stat:
-    path: "/opt/varken/config.json"
+    path: "/opt/varken/varken.ini"
   register: varken_config
 
 - name: Import config tasks
