@@ -68,7 +68,6 @@
     - { role: lazylibrarian, tags: ['lazylibrarian'] }
     - { role: lidarrx, tags: ['lidarrx'] }
     - { role: logarr, tags: ['logarr'] }
-    # - { role: mediabutler, tags: ['mediabutler'] }
     - { role: medusa, tags: ['medusa'] }
     - { role: monitorr, tags: ['monitorr'] }
     - { role: moviematch, tags: ['moviematch'] }
@@ -82,7 +81,6 @@
     - { role: plex_meta_manager, tags: ['plex-meta-manager'] }
     - { role: prowlarr, tags: ['prowlarr'] }
     - { role: qbittorrent, tags: ['qbittorrent'] }
-    # - { role: qbittorrentvpn, tags: ['qbittorrentvpn'] }
     - { role: qbittorrentx, tags: ['qbittorrentx'] }
     - { role: radarrx, tags: ['radarrx'] }
     - { role: readarr, tags: ['readarr'] }
@@ -102,11 +100,10 @@
     - { role: telegraf, tags: ['telegraf'] }
     - { role: transfer, tags: ['transfer'] }
     - { role: transmission, tags: ['transmission'] }
-    # - { role: transmissionvpn, tags: ['transmissionvpn'] }
     - { role: transmissionx, tags: ['transmissionx'] }
     # - { role: ubooquity, tags: ['ubooquity'] }
     # - { role: unifi, tags: ['unifi'] }
-    # - { role: unmanic, tags: ['unmanic'] }
+    - { role: unmanic, tags: ['unmanic'] }
     - { role: unpackerr, tags: ['unpackerr'] }
     - { role: uptime_kuma, tags: ['uptime-kuma'] }
     - { role: varken, tags: ['varken'] }
