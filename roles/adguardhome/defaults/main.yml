@@ -99,7 +99,6 @@ adguardhome_docker_volumes_default:
   - "{{ adguardhome_paths_location }}/work:/opt/adguardhome/work"
   - "{{ adguardhome_paths_location }}/conf:/opt/adguardhome/conf"
 adguardhome_docker_volumes_custom: []
-bazarr_docker_volumes_theme: []
 adguardhome_docker_volumes: "{{ adguardhome_docker_volumes_default }}"
 
 # Devices
