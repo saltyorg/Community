@@ -5,7 +5,9 @@
 [![Ansible Lint](https://github.com/saltyorg/Community/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/saltyorg/Community/actions/workflows/ansible-lint.yml)
 [![License:](https://img.shields.io/github/license/saltyorg/Community)](LICENSE.md)
 
-Community Repository for Unofficial Saltbox Add-ons
+Community Repository for Saltbox Add-ons.
+
+Unmaintained roles will be moved to Sandbox.
 
 ### Requirements
 
