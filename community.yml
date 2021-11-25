@@ -56,7 +56,6 @@
     - { role: heimdall, tags: ['heimdall'] }
     - { role: hetzner_nfs, tags: ['hetzner_nfs_server', 'hetzner_nfs_server_uninstall', 'hetzner_nfs_client_mount', 'hetzner_nfs_client_unmount'] }
     - { role: influxdb, tags: ['influxdb'] }
-    # - { role: invoiceninja, tags: ['invoiceninja'] }
     - { role: jdownloader2, tags: ['jdownloader2'] }
     - { role: jellyfin, tags: ['jellyfin'] }
     - { role: jirafeau, tags: ['jirafeau'] }
@@ -87,22 +86,17 @@
     - { role: readarrx, tags: ['readarrx'] }
     - { role: requestrr, tags: ['requestrr'] }
     - { role: requestrrx, tags: ['requestrrx'] }
-    # - { role: resilio-sync, tags: ['resilio-sync'] }
     - { role: rflood, tags: ['rflood'] }
     - { role: rfloodx, tags: ['rfloodx'] }
-    # - { role: sickchill, tags: ['sickchill'] }
     - { role: sonarrx, tags: ['sonarrx'] }
     - { role: speedtest, tags: ['speedtest'] }
     - { role: sshwifty, tags: ['sshwifty'] }
     - { role: stash, tags: ['stash'] }
-    # - { role: synclounge, tags: ['synclounge'] }
     - { role: tautullix, tags: ['tautullix'] }
     - { role: telegraf, tags: ['telegraf'] }
     - { role: transfer, tags: ['transfer'] }
     - { role: transmission, tags: ['transmission'] }
     - { role: transmissionx, tags: ['transmissionx'] }
-    # - { role: ubooquity, tags: ['ubooquity'] }
-    # - { role: unifi, tags: ['unifi'] }
     - { role: unmanic, tags: ['unmanic'] }
     - { role: unpackerr, tags: ['unpackerr'] }
     - { role: uptime_kuma, tags: ['uptime-kuma'] }
@@ -110,5 +104,5 @@
     - { role: vaultwarden, tags: ['vaultwarden'] }
     - { role: watchtower, tags: ['watchtower'] }
     - { role: wordpress, tags: ['wordpress'] }
-    # - { role: xteve, tags: ['xteve'] }
+    - { role: xteve, tags: ['xteve'] }
     - { role: yacht, tags: ['yacht'] }

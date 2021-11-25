@@ -1,78 +1,29 @@
 #########################################################################
-# Title:            Community: xTeVe                                    #
-# Author(s):        Satz, Migz                                          #
+# Title:            Community: xTeve                                    #
+# Author(s):        Satz, Migz, salty                                   #
 # URL:              https://github.com/saltyorg/Community               #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
 #########################################################################
 ---
-- name: "Setting CloudFlare DNS Record"
-  include_role:
-    name: cloudflare-dns
+- name: Add DNS record
+  include_tasks: "{{ resources_tasks_path }}/dns/tasker.yml"
   vars:
-    record: xteve
-  when: cloudflare_enabled
+    dns_record: "{{ lookup('vars', role_name + '_dns_record') }}"
+    dns_zone: "{{ lookup('vars', role_name + '_dns_zone') }}"
 
-- name: Stop and remove any existing container
-  docker_container:
-    name: xteve
-    state: absent
+- name: Remove existing Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/remove_docker_container.yml"
 
-- name: Create xteve directory
-  file: "path={{ item }} state=directory mode=0775 owner={{ user.name }} group={{ user.name }}"
-  with_items:
-    - /opt/xteve
-
-- name: Xteve | Web redirect
-  blockinfile:
-    path: "/opt/nginx-proxy/vhost.d/xteve.{{ user.domain }}"
-    marker: "### {mark} Xteve - Web Redirect ###"
-    block: |
-      location = / {
-      return 301 /web;
-      }
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
-    mode: 0664
-    create: yes
-
-- name: Create and start container
-  docker_container:
-    name: xteve
-    image: dnsforge/xteve
-    pull: yes
-    env:
-      TZ: "{{ tz }}"
-      VIRTUAL_HOST: "xteve.{{ user.domain }}"
-      VIRTUAL_PORT: "34400"
-      LETSENCRYPT_HOST: "xteve.{{ user.domain }}"
-      LETSENCRYPT_EMAIL: "{{ user.email }}"
-      XTEVE_BRANCH: "beta"
-      XTEVE_UID: "1000"
-      XTEVE_GID: "1000"
-    volumes:
-      - "/opt/xteve/app/config:/home/xteve/conf:rw"
-      - "/opt/xteve/app/tmp:/tmp/xteve:rw"
-      - "/opt/xteve/app/guide2go:/home/xteve/guide2go/conf:rw"
-    labels:
-      "com.github.cloudbox.cloudbox_managed": "true"
-    networks:
-      - name: cloudbox
-        aliases:
-          - xteve
-    purge_networks: yes
-    restart_policy: unless-stopped
-    state: started
-
-- name: Wait for xteve files to create...
-  wait_for:
-    timeout: 30
-
-- name: "Change ownership of xteve folder"
+- name: Create directories
   file:
-    path: /opt/xteve/
+    path: "{{ item }}"
+    state: directory
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
-    mode: 0775
-    recurse: yes
+    mode: "0775"
+  with_items: "{{ lookup('vars', role_name + '_paths_folders_list') }}"
+
+- name: Create Docker container
+  include_tasks: "{{ resources_tasks_path }}/docker/create_docker_container.yml"
