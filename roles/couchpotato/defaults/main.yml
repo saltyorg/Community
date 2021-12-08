@@ -44,7 +44,10 @@ couchpotato_dns_zone: "{{ couchpotato_web_domain }}"
 # Traefik
 ################################
 
-couchpotato_traefik_middleware: "{{ traefik_default_middleware }}"
+couchpotato_traefik_sso_middleware: "{{ traefik_default_sso_middleware }}"
+couchpotato_traefik_middleware: "{{ traefik_default_middleware + ',' + couchpotato_traefik_sso_middleware
+                                 if (couchpotato_traefik_sso_middleware | length > 0)
+                                 else traefik_default_middleware }}"
 couchpotato_traefik_certresolver: "{{ traefik_default_certresolver }}"
 couchpotato_traefik_enabled: true
 
