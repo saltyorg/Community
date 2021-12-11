@@ -75,6 +75,7 @@
     - { role: ombi, tags: ['ombi'] }
     - { role: ombix, tags: ['ombix'] }
     - { role: ouroboros, tags: ['ouroboros'] }
+    - { role: overseerrx, tags: ['overseerrx'] }
     - { role: petio, tags: ['petio'] }
     - { role: plex_meta_manager, tags: ['plex-meta-manager'] }
     - { role: prowlarr, tags: ['prowlarr'] }
