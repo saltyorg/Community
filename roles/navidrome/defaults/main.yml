@@ -85,6 +85,7 @@ navidrome_docker_commands: "{{ navidrome_docker_commands_default
 navidrome_docker_volumes_default:
   - "{{ navidrome_paths_location }}:/data"
   - "/mnt:/mnt"
+  - "/mnt/unionfs/Media/Music:/music"
 navidrome_docker_volumes_custom: []
 navidrome_docker_volumes: "{{ navidrome_docker_volumes_default
                               + navidrome_docker_volumes_custom

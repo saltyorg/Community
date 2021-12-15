@@ -56,6 +56,7 @@ calibre_web_traefik_enabled: true
 # Options can be found at https://github.com/gilbN/theme.park
 calibre_web_themepark_enabled: false
 calibre_web_themepark_theme: "{{ global_themepark_theme }}"
+calibre_web_themepark_domain: "{{ global_themepark_domain }}"
 
 ################################
 # Docker

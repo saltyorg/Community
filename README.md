@@ -1,10 +1,13 @@
 # Saltbox Community Repo
+[![Discord](https://img.shields.io/discord/853755447970758686)](https://discord.gg/ugfKXpFND8)
 [![Docs:](https://img.shields.io/badge/docs-docs.saltbox.dev-blue)](https://docs.saltbox.dev)
 [![CI](https://github.com/saltyorg/Community/actions/workflows/community.yml/badge.svg)](https://github.com/saltyorg/Community/actions/workflows/community.yml)
 [![Ansible Lint](https://github.com/saltyorg/Community/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/saltyorg/Community/actions/workflows/ansible-lint.yml)
 [![License:](https://img.shields.io/github/license/saltyorg/Community)](LICENSE.md)
 
-Community Repository for Unofficial Saltbox Add-ons
+Community Repository for Saltbox Add-ons.
+
+Unmaintained roles will be moved to Sandbox.
 
 ### Requirements
 
@@ -54,17 +57,17 @@ cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep
         </a>
     </td>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
-        <a href=https://github.com/Superduper09>
-            <img src=https://avatars.githubusercontent.com/u/17391966?v=4 width="100;"  alt=herp/>
-            <br />
-            <sub style="font-size:14px"><b>herp</b></sub>
-        </a>
-    </td>
-    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
         <a href=https://github.com/chazlarson>
             <img src=https://avatars.githubusercontent.com/u/3865541?v=4 width="100;"  alt=Chaz Larson/>
             <br />
             <sub style="font-size:14px"><b>Chaz Larson</b></sub>
+        </a>
+    </td>
+    <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
+        <a href=https://github.com/Superduper09>
+            <img src=https://avatars.githubusercontent.com/u/17391966?v=4 width="100;"  alt=herp/>
+            <br />
+            <sub style="font-size:14px"><b>herp</b></sub>
         </a>
     </td>
 </tr>

@@ -44,9 +44,14 @@ prowlarr_dns_zone: "{{ prowlarr_web_domain }}"
 # Traefik
 ################################
 
-prowlarr_traefik_middleware: "{{ traefik_default_middleware }}"
+prowlarr_traefik_sso_middleware: "{{ traefik_default_sso_middleware }}"
+prowlarr_traefik_middleware: "{{ traefik_default_middleware + ',' + prowlarr_traefik_sso_middleware
+                              if (prowlarr_traefik_sso_middleware | length > 0) 
+                              else traefik_default_middleware }}"
 prowlarr_traefik_certresolver: "{{ traefik_default_certresolver }}"
 prowlarr_traefik_enabled: true
+prowlarr_traefik_api_enabled: true
+prowlarr_traefik_api_endpoint: "`/{[0-9]+}/api`"
 
 ################################
 # THEME
@@ -55,6 +60,7 @@ prowlarr_traefik_enabled: true
 # Options can be found at https://github.com/gilbN/theme.park
 prowlarr_themepark_enabled: false
 prowlarr_themepark_theme: "{{ global_themepark_theme }}"
+prowlarr_themepark_domain: "{{ global_themepark_domain }}"
 
 ################################
 # Docker
@@ -83,7 +89,7 @@ prowlarr_docker_envs_default:
   PGID: "{{ gid }}"
   UMASK: "002"
   TZ: "{{ tz }}"
-  TP_DOMAIN: "gilbn.github.io"
+  TP_DOMAIN: "{{ prowlarr_themepark_domain }}"
   TP_THEME: "{{ prowlarr_themepark_theme }}"
   TP_HOTIO: "true"
 prowlarr_docker_envs_custom: {}

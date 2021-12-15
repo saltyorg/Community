@@ -44,10 +44,12 @@ dozzle_dns_zone: "{{ dozzle_web_domain }}"
 # Traefik
 ################################
 
-dozzle_traefik_middleware: "{{ traefik_default_middleware }},dozzle-auth"
+dozzle_traefik_sso_middleware: "{{ traefik_default_sso_middleware }}"
+dozzle_traefik_middleware: "{{ traefik_default_middleware + ',' + dozzle_traefik_sso_middleware
+                            if (dozzle_traefik_sso_middleware | length > 0) 
+                            else traefik_default_middleware }}"
 dozzle_traefik_certresolver: "{{ traefik_default_certresolver }}"
 dozzle_traefik_enabled: true
-dozzle_auth: "/etc/traefik/auth"
 
 ################################
 # Docker
@@ -104,8 +106,7 @@ dozzle_docker_hosts: "{{ docker_hosts_common
                          | combine(dozzle_docker_hosts_custom) }}"
 
 # Labels
-dozzle_docker_labels_default:
-  traefik.http.middlewares.dozzle-auth.basicauth.usersfile: "{{ dozzle_auth }}"
+dozzle_docker_labels_default: {}
 dozzle_docker_labels_custom: {}
 dozzle_docker_labels: "{{ docker_labels_common
                           | combine(dozzle_docker_labels_default)

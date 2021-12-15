@@ -50,9 +50,14 @@ qbittorrent_dns_zone: "{{ qbittorrent_web_domain }}"
 # Traefik
 ################################
 
-qbittorrent_traefik_middleware: "{{ traefik_default_middleware }}"
+qbittorrent_traefik_sso_middleware: "{{ traefik_default_sso_middleware }}"
+qbittorrent_traefik_middleware: "{{ traefik_default_middleware + ',' + qbittorrent_traefik_sso_middleware
+                                 if (qbittorrent_traefik_sso_middleware | length > 0)
+                                 else traefik_default_middleware }}"
 qbittorrent_traefik_certresolver: "{{ traefik_default_certresolver }}"
 qbittorrent_traefik_enabled: true
+qbittorrent_traefik_api_enabled: true
+qbittorrent_traefik_api_endpoint: "`/api`,`/command`,`/query`,`/login`,`/sync`"
 
 ################################
 # Docker
