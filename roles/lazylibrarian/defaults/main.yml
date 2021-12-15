@@ -58,7 +58,7 @@ lazylibrarian_docker_container: "{{ lazylibrarian_name }}"
 # Image
 lazylibrarian_docker_image_pull: true
 lazylibrarian_docker_image_tag: "latest"
-lazylibrarian_docker_image: "lscr.io/lscr.io/linuxserver/lazylibrarian:{{ lazylibrarian_docker_image_tag }}"
+lazylibrarian_docker_image: "lscr.io/linuxserver/lazylibrarian:{{ lazylibrarian_docker_image_tag }}"
 
 # Ports
 lazylibrarian_docker_ports_defaults:
