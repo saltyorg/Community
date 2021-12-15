@@ -2,7 +2,7 @@
 # Title:            Community: BookStack                                #
 # Author(s):        Thomvh, kowalski                                    #
 # URL:              https://github.com/saltyorg/Community               #
-# Docker Image(s):  ghcr.io/linuxserver/bookstack                       #
+# Docker Image(s):  ghcr.io/lscr.io/linuxserver/bookstack                       #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #

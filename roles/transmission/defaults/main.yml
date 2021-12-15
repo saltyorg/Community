@@ -76,7 +76,7 @@ transmission_docker_container: "{{ transmission_name }}"
 # Image
 transmission_docker_image_pull: true
 transmission_docker_image_tag: "latest"
-transmission_docker_image: "linuxserver/transmission:{{ transmission_docker_image_tag }}"
+transmission_docker_image: "lscr.io/linuxserver/transmission:{{ transmission_docker_image_tag }}"
 
 # Ports
 transmission_docker_ports_defaults:

@@ -59,7 +59,7 @@ heimdall_docker_container: "{{ heimdall_name }}"
 # Image
 heimdall_docker_image_pull: true
 heimdall_docker_image_tag: "latest"
-heimdall_docker_image: "lscr.io/linuxserver/heimdall:{{ heimdall_docker_image_tag }}"
+heimdall_docker_image: "lscr.io/lscr.io/linuxserver/heimdall:{{ heimdall_docker_image_tag }}"
 
 # Ports
 heimdall_docker_ports_defaults:

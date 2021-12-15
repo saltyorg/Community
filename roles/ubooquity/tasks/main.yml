@@ -28,7 +28,7 @@
 - name: Create and start container
   docker_container:
     name: ubooquity
-    image: linuxserver/ubooquity
+    image: lscr.io/linuxserver/ubooquity
     pull: yes
     published_ports:
       - "2203:2203"

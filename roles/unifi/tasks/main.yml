@@ -26,12 +26,12 @@
 
 - name: "Pull unifi Docker image"
   docker_image:
-    name: "linuxserver/unifi-controller:latest"
+    name: "lscr.io/linuxserver/unifi-controller:latest"
 
 - name: Create and start unifi container
   docker_container:
     name: unifi
-    image: "linuxserver/unifi-controller:latest"
+    image: "lscr.io/linuxserver/unifi-controller:latest"
     published_ports:
       - 3478:3478/udp
       - "{{ unifi.port|default('8089',true) }}:8080"

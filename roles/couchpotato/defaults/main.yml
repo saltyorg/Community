@@ -58,7 +58,7 @@ couchpotato_docker_container: "{{ couchpotato_name }}"
 # Image
 couchpotato_docker_image_pull: true
 couchpotato_docker_image_tag: "latest"
-couchpotato_docker_image: "linuxserver/couchpotato:{{ couchpotato_docker_image_tag }}"
+couchpotato_docker_image: "lscr.io/linuxserver/couchpotato:{{ couchpotato_docker_image_tag }}"
 
 # Ports
 couchpotato_docker_ports_defaults:

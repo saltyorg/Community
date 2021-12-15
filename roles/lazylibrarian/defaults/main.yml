@@ -58,7 +58,7 @@ lazylibrarian_docker_container: "{{ lazylibrarian_name }}"
 # Image
 lazylibrarian_docker_image_pull: true
 lazylibrarian_docker_image_tag: "latest"
-lazylibrarian_docker_image: "lscr.io/linuxserver/lazylibrarian:{{ lazylibrarian_docker_image_tag }}"
+lazylibrarian_docker_image: "lscr.io/lscr.io/linuxserver/lazylibrarian:{{ lazylibrarian_docker_image_tag }}"
 
 # Ports
 lazylibrarian_docker_ports_defaults:
@@ -74,7 +74,7 @@ lazylibrarian_docker_envs_default:
   PUID: "{{ uid }}"
   PGID: "{{ gid }}"
   TZ: "{{ tz }}"
-  DOCKER_MODS: "linuxserver/calibre-web:calibre|linuxserver/mods:lazylibrarian-ffmpeg"
+  DOCKER_MODS: "lscr.io/linuxserver/calibre-web:calibre|lscr.io/linuxserver/mods:lazylibrarian-ffmpeg"
 lazylibrarian_docker_envs_custom: {}
 lazylibrarian_docker_envs: "{{ lazylibrarian_docker_envs_default
                                | combine(lazylibrarian_docker_envs_custom) }}"
