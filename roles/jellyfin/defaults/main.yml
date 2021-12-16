@@ -90,7 +90,7 @@ jellyfin_docker_container: "{{ jellyfin_name }}"
 # Image
 jellyfin_docker_image_pull: true
 jellyfin_docker_image_tag: "release"
-jellyfin_docker_image: "hotio/jellyfin:{{ jellyfin_docker_image_tag }}"
+jellyfin_docker_image: "cr.hotio.dev/hotio/jellyfin:{{ jellyfin_docker_image_tag }}"
 
 # Ports
 jellyfin_docker_ports_defaults:

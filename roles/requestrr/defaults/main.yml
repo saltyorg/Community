@@ -58,7 +58,7 @@ requestrr_docker_container: "{{ requestrr_name }}"
 # Image
 requestrr_docker_image_pull: true
 requestrr_docker_image_tag: "latest"
-requestrr_docker_image: "hotio/requestrr:{{ requestrr_docker_image_tag }}"
+requestrr_docker_image: "cr.hotio.dev/hotio/requestrr:{{ requestrr_docker_image_tag }}"
 
 # Ports
 requestrr_docker_ports_defaults:

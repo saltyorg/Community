@@ -2,7 +2,6 @@
 # Title:            Community: BookStack                                #
 # Author(s):        Thomvh, kowalski                                    #
 # URL:              https://github.com/saltyorg/Community               #
-# Docker Image(s):  ghcr.io/linuxserver/bookstack                       #
 # --                                                                    #
 #########################################################################
 #                   GNU General Public License v3.0                     #
@@ -59,7 +58,7 @@ bookstack_docker_container: "{{ bookstack_name }}"
 # Image
 bookstack_docker_image_pull: true
 bookstack_docker_image_tag: "latest"
-bookstack_docker_image: "ghcr.io/linuxserver/bookstack:{{ bookstack_docker_image_tag }}"
+bookstack_docker_image: "ghcr.io/lscr.io/linuxserver/bookstack:{{ bookstack_docker_image_tag }}"
 
 # Ports
 bookstack_docker_ports_defaults:

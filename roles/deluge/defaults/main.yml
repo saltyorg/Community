@@ -74,7 +74,7 @@ deluge_docker_container: "{{ deluge_name }}"
 # Image
 deluge_docker_image_pull: true
 deluge_docker_image_tag: "latest"
-deluge_docker_image: "linuxserver/deluge:{{ deluge_docker_image_tag }}"
+deluge_docker_image: "lscr.io/linuxserver/deluge:{{ deluge_docker_image_tag }}"
 
 # Ports
 deluge_docker_ports_defaults:
