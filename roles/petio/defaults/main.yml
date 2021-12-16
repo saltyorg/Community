@@ -58,7 +58,7 @@ petio_docker_container: "{{ petio_name }}"
 # Image
 petio_docker_image_pull: true
 petio_docker_image_tag: "release"
-petio_docker_image: "hotio/petio:{{ petio_docker_image_tag }}"
+petio_docker_image: "cr.hotio.dev/hotio/petio:{{ petio_docker_image_tag }}"
 
 # Ports
 petio_docker_ports_defaults:
