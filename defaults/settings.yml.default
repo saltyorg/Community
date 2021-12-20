@@ -36,12 +36,6 @@ overseerrx:
     - ""
 plex_meta_manager:
   time: "03:00"
-qbittorrentvpn:
-  vpn_endpoint: netherlands.ovpn
-  vpn_user: your_vpn_username
-  vpn_pass: your_vpn_password
-  vpn_prov: pia
-  vpn_client: wireguard # 'wireguard' or 'openvpn'
 qbittorrentx:
   roles:
     - ""
@@ -67,13 +61,6 @@ sonarrx:
 tautullix:
   tautulli: plex
   tautulli2: plex2
-transmissionvpn:
-  vpn_endpoint: netherlands.ovpn
-  vpn_pass: your_vpn_password
-  vpn_prov: NORDVPN
-  vpn_user: your_vpn_username
 transmissionx:
   roles:
     - ""
-unifi:
-  port: 8080
