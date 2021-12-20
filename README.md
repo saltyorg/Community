@@ -27,7 +27,7 @@ or
 ```
 sb list
 ```
-A listing of the Saltbox Community roles is available within the [Saltbox Docs here.](https://docs.saltbox.dev/community/)
+A list of the Saltbox Community roles is available within the [docs](https://docs.saltbox.dev/community/).
 
 ### Contributors
 
