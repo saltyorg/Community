@@ -60,7 +60,7 @@ beets_docker_container: "{{ beets_name }}"
 # Image
 beets_docker_image_pull: true
 beets_docker_image_tag: "latest"
-beets_docker_image: "linuxserver/beets:{{ beets_docker_image_tag }}"
+beets_docker_image: "lscr.io/linuxserver/beets:{{ beets_docker_image_tag }}"
 
 # Ports
 beets_docker_ports_defaults:

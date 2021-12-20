@@ -58,14 +58,14 @@ ombi_docker_container: "{{ ombi_name }}"
 # Image
 ombi_docker_image_pull: true
 ombi_docker_image_tag: "latest"
-ombi_docker_image: "hotio/ombi:{{ ombi_docker_image_tag }}"
+ombi_docker_image: "cr.hotio.dev/hotio/ombi:{{ ombi_docker_image_tag }}"
 
 # Ports
 ombi_docker_ports_defaults:
   - "{{ ombi_web_port }}:{{ ombi_web_port }}"
 ombi_docker_ports_custom: []
 ombi_docker_ports: "{{ ombi_docker_ports_defaults
-                        + ombi_docker_ports_custom
+                       + ombi_docker_ports_custom
                     if (not reverse_proxy_is_enabled)
                     else [] + ombi_docker_ports_custom }}"
 
@@ -91,14 +91,14 @@ ombi_docker_volumes_default:
   - "{{ ombi_paths_location }}:/config"
 ombi_docker_volumes_custom: []
 ombi_docker_volumes: "{{ ombi_docker_volumes_default
-                          + ombi_docker_volumes_custom
-                          + docker_volumes_downloads_common }}"
+                         + ombi_docker_volumes_custom
+                         + docker_volumes_downloads_common }}"
 
 # Devices
 ombi_docker_devices_default: []
 ombi_docker_devices_custom: []
 ombi_docker_devices: "{{ ombi_docker_devices_default
-                          + ombi_docker_devices_custom }}"
+                         + ombi_docker_devices_custom }}"
 
 # Hosts
 ombi_docker_hosts_default: []
@@ -135,7 +135,7 @@ ombi_docker_capabilities: "{{ ombi_docker_capabilities_default
 ombi_docker_security_opts_default: []
 ombi_docker_security_opts_custom: []
 ombi_docker_security_opts: "{{ ombi_docker_security_opts_default
-                                + ombi_docker_security_opts_custom }}"
+                               + ombi_docker_security_opts_custom }}"
 
 # Restart Policy
 ombi_docker_restart_policy: unless-stopped

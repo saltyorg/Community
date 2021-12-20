@@ -51,9 +51,14 @@ transmission_dns_zone: "{{ transmission_web_domain }}"
 # Traefik
 ################################
 
-transmission_traefik_middleware: "{{ traefik_default_middleware }}"
+transmission_traefik_sso_middleware: "{{ traefik_default_sso_middleware }}"
+transmission_traefik_middleware: "{{ traefik_default_middleware + ',' + transmission_traefik_sso_middleware
+                                  if (transmission_traefik_sso_middleware | length > 0)
+                                  else traefik_default_middleware }}"
 transmission_traefik_certresolver: "{{ traefik_default_certresolver }}"
 transmission_traefik_enabled: true
+transmission_traefik_api_enabled: true
+transmission_traefik_api_endpoint: "`/rpc`"
 
 ################################
 # Settings
@@ -76,7 +81,7 @@ transmission_docker_container: "{{ transmission_name }}"
 # Image
 transmission_docker_image_pull: true
 transmission_docker_image_tag: "latest"
-transmission_docker_image: "linuxserver/transmission:{{ transmission_docker_image_tag }}"
+transmission_docker_image: "lscr.io/linuxserver/transmission:{{ transmission_docker_image_tag }}"
 
 # Ports
 transmission_docker_ports_defaults:
