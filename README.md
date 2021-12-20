@@ -23,6 +23,11 @@ List of roles can be found by running
 ```
 cd /opt/community && sudo ansible-playbook community.yml --list-tags 2>&1 | grep "TASK TAGS" | cut -d":" -f2 | awk '{sub(/\[/, "")sub(/\]/, "")}1' | sed -e 's/,//g' | xargs -n 1 | sort -u
 ```
+or
+```
+sb list
+```
+A list of the Saltbox Community roles is available within the [docs](https://docs.saltbox.dev/community/).
 
 ### Contributors
 
