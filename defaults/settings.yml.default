@@ -1,46 +1,28 @@
 ---
 bazarrx:
-  roles:
-    - 1080webdl
-    - 1080remux
+  roles: ["1080webdl", "1080remux"]
 delugex:
-  roles:
-    - ""
+  roles: [""]
 lidarrx:
-  roles:
-    - flac
-    - mp3
+  roles: ["flac", "mp3"]
 ombix:
-  roles:
-    - 4k
+  roles: ["4k"]
 overseerrx:
-  roles:
-    - ""
+  roles: [""]
 qbittorrentx:
-  roles:
-    - ""
+  roles: [""]
 radarrx:
-  roles:
-    - 1080webdl
-    - 1080remux
+  roles: ["1080webdl", "1080remux"]
 readarrx:
-  roles:
-    - ebooks
-    - audiobooks
+  roles: ["ebooks", "audiobooks"]
 requestrrx:
-  roles:
-    - 1080
-    - 4k
+  roles: ["1080w", "4k"]
 rfloodx:
-  roles:
-    - ""
+  roles: [""]
 sonarrx:
-  roles:
-    - 1080webdl
-    - 1080remux
+  roles: ["1080webdl", "1080remux"]
 tautullix:
   tautulli: plex
   tautulli2: plex2
 transmissionx:
-  roles:
-    - ""
+  roles: [""]
