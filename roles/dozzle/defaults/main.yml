@@ -46,7 +46,7 @@ dozzle_dns_zone: "{{ dozzle_web_domain }}"
 
 dozzle_traefik_sso_middleware: "{{ traefik_default_sso_middleware }}"
 dozzle_traefik_middleware: "{{ traefik_default_middleware + ',' + dozzle_traefik_sso_middleware
-                            if (dozzle_traefik_sso_middleware | length > 0) 
+                            if (dozzle_traefik_sso_middleware | length > 0)
                             else traefik_default_middleware }}"
 dozzle_traefik_certresolver: "{{ traefik_default_certresolver }}"
 dozzle_traefik_enabled: true

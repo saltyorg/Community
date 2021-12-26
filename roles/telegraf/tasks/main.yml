@@ -24,7 +24,7 @@
 
 - name: Check if telegraf config exists
   stat:
-   path: "/opt/telegraf/telegraf.conf"
+    path: "/opt/telegraf/telegraf.conf"
   register: telegraf_conf
 
 - name: Import telegraf config if needed

@@ -46,7 +46,7 @@ bazarr_dns_zone: "{{ bazarr_web_domain }}"
 
 bazarr_traefik_sso_middleware: "{{ traefik_default_sso_middleware }}"
 bazarr_traefik_middleware: "{{ traefik_default_middleware + ',' + bazarr_traefik_sso_middleware
-                            if (bazarr_traefik_sso_middleware | length > 0) 
+                            if (bazarr_traefik_sso_middleware | length > 0)
                             else traefik_default_middleware }}"
 bazarr_traefik_certresolver: "{{ traefik_default_certresolver }}"
 bazarr_traefik_enabled: true

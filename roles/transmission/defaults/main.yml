@@ -65,11 +65,12 @@ transmission_traefik_api_endpoint: "`/rpc`"
 ################################
 
 # Options are:
-#"/combustion-release/"
-#"/transmission-web-control/"
-#"/kettu/"
-#"/flood-for-transmission/"
-transmission_ui_home: "/transmission-web-control/" 
+# "/combustion-release/"
+# "/transmission-web-control/"
+# "/kettu/"
+# "/flood-for-transmission/"
+
+transmission_ui_home: "/transmission-web-control/"
 
 ################################
 # Docker

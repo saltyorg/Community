@@ -1,41 +1,21 @@
 ---
-alternatrrx:
-  roles:
-    - 1080webdl
-    - 1080remux
 bazarrx:
   roles:
     - 1080webdl
     - 1080remux
-delugevpn:
-  vpn_endpoint: netherlands.ovpn
-  vpn_pass: your_vpn_password
-  vpn_prov: pia
-  vpn_user: your_vpn_username
-  vpn_client: wireguard # 'wireguard' or 'openvpn'
 delugex:
   roles:
     - ""
-goplaxt:
-  trakt_id: ~
-  trakt_secret: ~
-handbrake:
-  handbrake_pass: saltbox # must be less than eight characters
 lidarrx:
   roles:
     - flac
     - mp3
-moviematch:
-  libraries: Movies
-  plex_url: http://plex:32400
 ombix:
   roles:
     - 4k
 overseerrx:
   roles:
     - ""
-plex_meta_manager:
-  time: "03:00"
 qbittorrentx:
   roles:
     - ""
