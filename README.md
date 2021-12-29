@@ -7,7 +7,7 @@
 
 Community Repository for Saltbox Add-ons.
 
-Unmaintained roles will be moved to Sandbox.
+Unmaintained roles will be moved to Sandbox and the rest will be moved to the main Saltbox repo..
 
 ### Requirements
 
