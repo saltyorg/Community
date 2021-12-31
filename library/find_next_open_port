@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #########################################################################
-# Title:         Saltbox: Ansible | Module | Find Next Open Port        #
+# Title:         Community: Ansible | Module | Find Next Open Port      #
 # Author(s):     desimaniac, salty                                      #
-# URL:           https://github.com/saltyorg/Saltbox                    #
+# URL:           https://github.com/saltyorg/Community                  #
 # Description:   Finds and returns next open port in a given range.     #
 # --                                                                    #
 #########################################################################
