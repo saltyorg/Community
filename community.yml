@@ -22,8 +22,6 @@
     - { role: jellyfin, tags: ['jellyfin'] }
     - { role: lidarrx, tags: ['lidarrx'] }
     - { role: mongodb, tags: ['mongodb'] }
-    - { role: ombi, tags: ['ombi'] }
-    - { role: ombix, tags: ['ombix'] }
     - { role: overseerrx, tags: ['overseerrx'] }
     - { role: petio, tags: ['petio'] }
     - { role: prowlarr, tags: ['prowlarr'] }

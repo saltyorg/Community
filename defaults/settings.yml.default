@@ -5,8 +5,6 @@ delugex:
   roles: [""]
 lidarrx:
   roles: ["flac", "mp3"]
-ombix:
-  roles: ["4k"]
 overseerrx:
   roles: [""]
 qbittorrentx:
@@ -15,8 +13,6 @@ radarrx:
   roles: ["1080webdl", "1080remux"]
 readarrx:
   roles: ["ebooks", "audiobooks"]
-requestrrx:
-  roles: ["1080p", "4k"]
 rfloodx:
   roles: [""]
 sonarrx:
