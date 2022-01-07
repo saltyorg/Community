@@ -14,11 +14,11 @@
   register: port_lookup_56881
   ignore_errors: true
 
-- name: Post-Install | Settings | Update 'qBittorrent.conf' config settings
+- name: Pre-Install | Settings | Update 'qBittorrent.conf' config settings
   ini_file:
     path: "{{ qbittorrent_paths_conf }}"
     section: Preferences
-    option: Connection\PortRangeMin
+    option: Session\Port
     value: "{{ qbittorrent_docker_ports_56881 }}"
     no_extra_spaces: true
     state: present

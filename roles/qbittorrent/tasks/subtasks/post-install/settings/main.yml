@@ -11,7 +11,7 @@
   ini_file:
     path: "{{ qbittorrent_paths_conf }}"
     section: Preferences
-    option: Connection\PortRangeMin
+    option: Session\Port
     value: "{{ qbittorrent_docker_ports_56881 }}"
     no_extra_spaces: true
     state: present
