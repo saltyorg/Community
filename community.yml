@@ -11,20 +11,13 @@
     - { role: sanity_check, tags: ['always', 'sanity_check'] }
     - { role: pre_tasks, tags: ['pre_tasks'] }
     # Apps
-    - { role: asshama, tags: ['asshama'] }
-    - { role: autoscan, tags: ['autoscan'] }
     - { role: bazarr, tags: ['bazarr'] }
     - { role: bazarrx, tags: ['bazarrx'] }
-    - { role: btrfsmaintenance, tags: ['btrfsmaintenance'] }
     - { role: deluge, tags: ['deluge'] }
     - { role: delugex, tags: ['delugex'] }
     - { role: hetzner_nfs, tags: ['hetzner_nfs_server', 'hetzner_nfs_server_uninstall', 'hetzner_nfs_client_mount', 'hetzner_nfs_client_unmount'] }
-    - { role: jellyfin, tags: ['jellyfin'] }
     - { role: lidarrx, tags: ['lidarrx'] }
-    - { role: mongodb, tags: ['mongodb'] }
     - { role: overseerrx, tags: ['overseerrx'] }
-    - { role: petio, tags: ['petio'] }
-    - { role: prowlarr, tags: ['prowlarr'] }
     - { role: qbittorrent, tags: ['qbittorrent'] }
     - { role: qbittorrentx, tags: ['qbittorrentx'] }
     - { role: radarrx, tags: ['radarrx'] }
@@ -34,7 +27,6 @@
     - { role: rfloodx, tags: ['rfloodx'] }
     - { role: sonarrx, tags: ['sonarrx'] }
     - { role: tautullix, tags: ['tautullix'] }
-    - { role: transfer, tags: ['transfer'] }
     - { role: transmission, tags: ['transmission'] }
     - { role: transmissionx, tags: ['transmissionx'] }
     - { role: unpackerr, tags: ['unpackerr'] }
