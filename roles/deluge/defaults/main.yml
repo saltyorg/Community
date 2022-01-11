@@ -46,6 +46,7 @@ deluge_web_url: "{{ 'https://' + deluge_web_subdomain + '.' + deluge_web_domain
 
 deluge_dns_record: "{{ deluge_web_subdomain }}"
 deluge_dns_zone: "{{ deluge_web_domain }}"
+deluge_dns_proxy: "{{ dns.proxied }}"
 
 ################################
 # Traefik
