@@ -39,6 +39,7 @@ bazarr_web_url: "{{ 'https://' + bazarr_web_subdomain + '.' + bazarr_web_domain
 
 bazarr_dns_record: "{{ bazarr_web_subdomain }}"
 bazarr_dns_zone: "{{ bazarr_web_domain }}"
+bazarr_dns_proxy: "{{ dns.proxied }}"
 
 ################################
 # Traefik
