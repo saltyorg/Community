@@ -40,14 +40,20 @@ readarr_web_url: "{{ 'https://' + readarr_web_subdomain + '.' + readarr_web_doma
 
 readarr_dns_record: "{{ readarr_web_subdomain }}"
 readarr_dns_zone: "{{ readarr_web_domain }}"
+readarr_dns_proxy: "{{ dns.proxied }}"
 
 ################################
 # Traefik
 ################################
 
-readarr_traefik_middleware: "{{ traefik_default_middleware }}"
+readarr_traefik_sso_middleware: "{{ traefik_default_sso_middleware }}"
+readarr_traefik_middleware: "{{ traefik_default_middleware + ',' + readarr_traefik_sso_middleware
+                             if (readarr_traefik_sso_middleware | length > 0)
+                             else traefik_default_middleware }}"
 readarr_traefik_certresolver: "{{ traefik_default_certresolver }}"
 readarr_traefik_enabled: true
+readarr_traefik_api_enabled: true
+readarr_traefik_api_endpoint: "`/api`"
 
 ################################
 # Docker
