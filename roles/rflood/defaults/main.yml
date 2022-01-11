@@ -47,6 +47,7 @@ rflood_web_url: "{{ 'https://' + rflood_web_subdomain + '.' + rflood_web_domain
 
 rflood_dns_record: "{{ rflood_web_subdomain }}"
 rflood_dns_zone: "{{ rflood_web_domain }}"
+rflood_dns_proxy: "{{ dns.proxied }}"
 
 ################################
 # Traefik
