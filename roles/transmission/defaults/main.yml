@@ -46,6 +46,7 @@ transmission_web_url: "{{ 'https://' + transmission_web_subdomain + '.' + transm
 
 transmission_dns_record: "{{ transmission_web_subdomain }}"
 transmission_dns_zone: "{{ transmission_web_domain }}"
+transmission_dns_proxy: "{{ dns.proxied }}"
 
 ################################
 # Traefik
