@@ -14,8 +14,7 @@
   include_role:
     name: tautulli
   vars:
-    tautulli_name: "{{ role.key }}"
-    plex_name: "{{ role.value }}"
-  loop: "{{ tautullix | dict2items }}"
+    tautulli_name: "tautulli{{ role }}"
+  with_items: "{{ tautullix.roles }}"
   loop_control:
     loop_var: role
