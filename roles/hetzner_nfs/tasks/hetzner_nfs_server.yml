@@ -75,9 +75,3 @@
     name: nfs_vlan
     daemon_reload: true
     enabled: true
-
-- name: "Add nfs vlan interface to vnstat"
-  shell: "vnstat -i {{ ansible_default_ipv4.interface }}.{{ hetzner_nfs.vlan_id }} -u"
-  become: true
-  become_user: "vnstat"
-  ignore_errors: true
