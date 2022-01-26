@@ -24,4 +24,3 @@
     - { role: readarr, tags: ['readarr'] }
     - { role: readarrx, tags: ['readarrx'] }
     - { role: sonarrx, tags: ['sonarrx'] }
-    - { role: tautullix, tags: ['tautullix'] }
