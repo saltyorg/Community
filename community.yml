@@ -19,7 +19,6 @@
     - { role: overseerrx, tags: ['overseerrx'] }
     - { role: qbittorrent, tags: ['qbittorrent'] }
     - { role: qbittorrentx, tags: ['qbittorrentx'] }
-    - { role: radarrx, tags: ['radarrx'] }
     - { role: readarr, tags: ['readarr'] }
     - { role: readarrx, tags: ['readarrx'] }
     - { role: sonarrx, tags: ['sonarrx'] }
