@@ -21,4 +21,3 @@
     - { role: qbittorrentx, tags: ['qbittorrentx'] }
     - { role: readarr, tags: ['readarr'] }
     - { role: readarrx, tags: ['readarrx'] }
-    - { role: sonarrx, tags: ['sonarrx'] }
