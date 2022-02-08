@@ -298,7 +298,7 @@ A list of the Saltbox Community roles is available within the [docs](https://doc
 </tr>
 <tr>
     <td align="center" style="word-wrap: break-word; width: 150.0; height: 150.0">
-        <a href=https://github.com/AJohnsonCHC>
+        <a href=https://github.com/Ehaic>
             <img src=https://avatars.githubusercontent.com/u/666617?v=4 width="100;"  alt=Andrew Johnson/>
             <br />
             <sub style="font-size:14px"><b>Andrew Johnson</b></sub>
