@@ -15,6 +15,5 @@
     - { role: deluge, tags: ['deluge'] }
     - { role: delugex, tags: ['delugex'] }
     - { role: hetzner_nfs, tags: ['hetzner_nfs_server', 'hetzner_nfs_server_uninstall', 'hetzner_nfs_client_mount', 'hetzner_nfs_client_unmount'] }
-    - { role: overseerrx, tags: ['overseerrx'] }
     - { role: qbittorrent, tags: ['qbittorrent'] }
     - { role: qbittorrentx, tags: ['qbittorrentx'] }

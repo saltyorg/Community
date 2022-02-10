@@ -1,7 +1,5 @@
 ---
 delugex:
   roles: [""]
-overseerrx:
-  roles: [""]
 qbittorrentx:
   roles: [""]
