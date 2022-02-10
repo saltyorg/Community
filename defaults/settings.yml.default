@@ -1,19 +1,7 @@
 ---
-bazarrx:
-  roles: ["1080webdl", "1080remux"]
 delugex:
   roles: [""]
-lidarrx:
-  roles: ["flac", "mp3"]
 overseerrx:
   roles: [""]
 qbittorrentx:
-  roles: [""]
-radarrx:
-  roles: ["1080webdl", "1080remux"]
-readarrx:
-  roles: ["ebooks", "audiobooks"]
-sonarrx:
-  roles: ["1080webdl", "1080remux"]
-tautullix:
   roles: [""]
