@@ -12,6 +12,5 @@
     - { role: sanity_check, tags: ['always', 'sanity_check'] }
     - { role: pre_tasks, tags: ['pre_tasks'] }
     # Apps
-    - { role: hetzner_nfs, tags: ['hetzner_nfs_server', 'hetzner_nfs_server_uninstall', 'hetzner_nfs_client_mount', 'hetzner_nfs_client_unmount'] }
     - { role: qbittorrent, tags: ['qbittorrent'] }
     - { role: qbittorrentx, tags: ['qbittorrentx'] }
